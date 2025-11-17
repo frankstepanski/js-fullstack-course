@@ -16,7 +16,7 @@ You can think of it like **building a house**:
 ## ⚙️ The Six Main Phases of the SDLC
 
 ### 1. **Planning**
-📋 *"What do we want to build — and why?"*
+ *"What do we want to build — and why?"*
 
 In this phase, the goal is to **define the project’s purpose** and **decide if it’s worth doing**.
 
@@ -29,12 +29,12 @@ In this phase, the goal is to **define the project’s purpose** and **decide if
 **Example:**  
 A school wants a web app for students to check grades online. The planning phase would involve discussing who will use it (students, teachers, parents) and what features are needed (login, grades, attendance, etc.).
 
-🧠 *Outcome:* A clear project plan or “blueprint” for the software.
+ *Outcome:* A clear project plan or “blueprint” for the software.
 
 ---
 
 ### 2. **Analysis (or Requirements Gathering)**
-🔍 *"What exactly should the software do?"*
+*"What exactly should the software do?"*
 
 Here, the team gathers **detailed requirements** — all the features, rules, and expectations.
 
@@ -47,12 +47,12 @@ Here, the team gathers **detailed requirements** — all the features, rules, an
 - Functional: Students can log in and see grades  
 - Non-functional: The system should load in less than 3 seconds
 
-🧠 *Outcome:* A **Requirements Document** describing everything the system must do.
+ *Outcome:* A **Requirements Document** describing everything the system must do.
 
 ---
 
 ### 3. **Design**
-🎨 *"How will the software look and work?"*
+ *"How will the software look and work?"*
 
 Now the team decides **how the system will be built** — the structure, the technology, and the interface.
 
@@ -65,12 +65,12 @@ Now the team decides **how the system will be built** — the structure, the tec
 **Example:**  
 A designer creates a prototype of the “student dashboard” showing where buttons and grade tables will go.
 
-🧠 *Outcome:* Detailed **design documents and diagrams** ready for developers to build from.
+ *Outcome:* Detailed **design documents and diagrams** ready for developers to build from.
 
 ---
 
 ### 4. **Development (Implementation)**
-💻 *"Let’s build it!"*
+ *"Let’s build it!"*
 
 This is when developers **write the actual code** to turn the design into a working product.
 
@@ -82,12 +82,12 @@ This is when developers **write the actual code** to turn the design into a work
 **Example:**  
 Developers use React to build the web app’s front end, and Node.js for the back end to connect to the database.
 
-🧠 *Outcome:* A functioning version of the software (the “first draft”).
+ *Outcome:* A functioning version of the software (the “first draft”).
 
 ---
 
 ### 5. **Testing**
-🧪 *"Does it actually work?"*
+ *"Does it actually work?"*
 
 Before releasing it, testers check if the software works **as expected** and **fix any bugs**.
 
@@ -100,12 +100,12 @@ Before releasing it, testers check if the software works **as expected** and **f
 **Example:**  
 A tester logs in as a student, checks if grades show correctly, and reports any glitches.
 
-🧠 *Outcome:* A **stable, reliable version** ready to launch.
+ *Outcome:* A **stable, reliable version** ready to launch.
 
 ---
 
 ### 6. **Deployment & Maintenance**
-🚀 *"Let’s launch — and keep improving it!"*
+ *"Let’s launch — and keep improving it!"*
 
 Once testing is complete, the software goes **live** so users can access it.  
 Then, developers continue to **monitor, fix, and update** it as needed.
@@ -120,11 +120,11 @@ Then, developers continue to **monitor, fix, and update** it as needed.
 The grade portal is launched for all students.  
 Later, updates add attendance reports and push notifications.
 
-🧠 *Outcome:* Real users are using the software — and it keeps improving over time.
+ *Outcome:* Real users are using the software — and it keeps improving over time.
 
 ---
 
-## 🔁 Why SDLC Matters
+##  Why SDLC Matters
 
 | Benefit | Description |
 |----------|--------------|

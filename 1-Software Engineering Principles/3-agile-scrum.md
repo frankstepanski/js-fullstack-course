@@ -6,7 +6,7 @@ That’s where **Agile** and **Scrum** came in — two modern approaches that ma
 
 ##  What Is Agile?
 
-### 🔍 Definition
+###  Definition
 **Agile** is a **mindset** — a way of thinking about and managing projects so teams can **adapt quickly** to change and deliver **working software frequently**.
 
 Instead of spending months planning everything in advance, Agile teams:
@@ -14,7 +14,7 @@ Instead of spending months planning everything in advance, Agile teams:
 - Get **continuous feedback** from users
 - Improve and adjust the product **as they go**
 
-### 💡 Why Agile Was Created
+###  Why Agile Was Created
 Before Agile, most companies used something called the **Waterfall model** — a very step-by-step approach where:
 1. You plan everything,
 2. Then design,
@@ -54,7 +54,7 @@ In 2001, 17 software developers met and wrote the **Agile Manifesto**, which hig
 
 ##  What Is Scrum?
 
-### 🔍 Definition
+###  Definition
 **Scrum** is one of the **most popular frameworks** for practicing Agile.  
 Think of Agile as the **philosophy**, and Scrum as a **recipe** that shows *how* to do it.
 
@@ -85,7 +85,7 @@ Each sprint delivers a **small piece of the product** that can be reviewed and t
 
 ---
 
-## 🔗 How Agile and Scrum Connect to the SDLC
+##  How Agile and Scrum Connect to the SDLC
 
 Agile and Scrum don’t replace the SDLC —  
 they **work within it** to make each phase more **flexible and collaborative**.
