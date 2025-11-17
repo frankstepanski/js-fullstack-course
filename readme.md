@@ -32,8 +32,6 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
   - Using browser APIs & Fetch for data fetching
   - Debugging using breakpoints, stack traces, and logging tools
 
----
-
 ### **Backend Development**
 - **Node.js**: Use JavaScript outside the browser — power your server logic, and integrate APIs.
 - **Express.js**: Build scalable APIs with routes, controllers, middleware, and proper error handling.
@@ -45,7 +43,7 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
   - Authentication and authorization
   - Environment variables and configuration
 
-## Computer Science + Engineering Foundations
+### Computer Science + Engineering Foundations
 - **Data Structures & Algorithms**: Lists, trees, sorting, hashing — critical thinking for coding interviews and performance.
 - **Software Engineering Principles**:
   - Version control with Git/GitHub
