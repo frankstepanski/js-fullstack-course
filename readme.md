@@ -6,12 +6,12 @@ In this course, we’ll explore how small lines of code turn into large, powerfu
 
 ## What You'll Learn — A Full Tour of the JavaScript Stack
 
-### 🧱 **Frontend Development**
+### **Frontend Development**
 - **HTML & CSS**: Structure and style modern web pages — responsive, accessible, and mobile-friendly.
 - **JavaScript (Beginner to Advanced)**: Learn how programming works from variables and functions to working with APIs and events.
 - **React.js**: Build dynamic, interactive UIs using components, props, hooks, and state.
 
-### 📦 **Intermediate to Advanced JavaScript**
+### **Intermediate to Advanced JavaScript**
 
 Go beyond basic syntax and learn how JavaScript truly works under the hood — both in the browser and on Node.js.
 
@@ -26,7 +26,7 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
   - **Execution context** and the **scope chain**
   - What **closures** are and how they preserve data
   - How functions are stored and invoked in memory
-- **Advanced Concepts**:
+- **Developer Essentials**:
   - Modular code organization with ES Modules and CommonJS
   - Error handling strategies in production code
   - Using browser APIs & Fetch for data fetching
@@ -34,7 +34,7 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
 
 ---
 
-### 🛠️ **Backend Development**
+### **Backend Development**
 - **Node.js**: Use JavaScript outside the browser — power your server logic, and integrate APIs.
 - **Express.js**: Build scalable APIs with routes, controllers, middleware, and proper error handling.
 - **Databases**:
@@ -45,7 +45,7 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
   - Authentication and authorization
   - Environment variables and configuration
 
-## 🧠 **Computer Science + Engineering Foundations**
+## Computer Science + Engineering Foundations
 - **Data Structures & Algorithms**: Lists, trees, sorting, hashing — critical thinking for coding interviews and performance.
 - **Software Engineering Principles**:
   - Version control with Git/GitHub
