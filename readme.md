@@ -57,11 +57,11 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
 
 This course doesn’t just teach you code — it teaches you how to **work like a professional developer**.
 
-### 🔄 Agile Methodology
+### Agile Methodology
 - Deliver value in *iterations*
 - Adapt based on feedback
 
-### 👥 Scrum Framework
+### Scrum Framework
 
 You’ll be introduced to **Scrum**, one of the most popular frameworks used in Agile software development teams. You'll learn:
 
