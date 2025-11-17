@@ -1,4 +1,4 @@
-# 🧭 Software Development Life Cycle (SDLC)
+#  Software Development Life Cycle (SDLC)
 
 The **Software Development Life Cycle (SDLC)** is like a **roadmap** that guides how software is created — from the very first idea 💡 to the time it’s used, improved, and maintained over the years.  
 It ensures teams don’t skip steps, waste time, or forget important details.
@@ -13,7 +13,7 @@ You can think of it like **building a house**:
 
 ---
 
-## ⚙️ The Six Main Phases of the SDLC
+## The Six Main Phases of the SDLC
 
 ### 1. **Planning**
  *"What do we want to build — and why?"*
