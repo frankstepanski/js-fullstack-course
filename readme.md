@@ -8,20 +8,30 @@ In this course, we’ll explore how small lines of code turn into large, powerfu
 
 ### 🧱 **Frontend Development**
 - **HTML & CSS**: Structure and style modern web pages — responsive, accessible, and mobile-friendly.
-- **JavaScript (Beginner to Advanced)**: Learn how programming works from variables and functions to working with the DOM and events.
+- **JavaScript (Beginner to Advanced)**: Learn how programming works from variables and functions to working with APIs and events.
 - **React.js**: Build dynamic, interactive UIs using components, props, hooks, and state.
 
 ### 📦 **Intermediate to Advanced JavaScript**
-- **Object-Oriented Programming (OOP)**: Understand classes, inheritance, and abstraction in JavaScript.
-- **Asynchronous Programming**: Write code that's responsive and efficient using:
+
+Go beyond basic syntax and learn how JavaScript truly works under the hood — both in the browser and on Node.js.
+
+- **Object-Oriented Programming (OOP)**: Understand how to design reusable, maintainable code using classes, inheritance, and polymorphism.
+- **Asynchronous Programming**: Master non-blocking code using:
   - Callbacks
   - Promises
   - `async` / `await`
+  - Understanding how the **event loop** handles asynchronous tasks
+- **JavaScript Engine & Execution**
+  - How the **call stack** works in Node and the browser
+  - The role of the **heap**, **memory allocation**, and **garbage collection**
+  - **Execution context** and the **scope chain**
+  - What **closures** are and how they preserve data
+  - How functions are stored and invoked in memory
 - **Advanced Concepts**:
-  - Modular code organization using ES Modules
-  - JavaScript event loop
-  - Error handling and debugging techniques
-  - Working with browser APIs and network requests
+  - Modular code organization with ES Modules and CommonJS
+  - Error handling strategies in production code
+  - Using browser APIs & Fetch for data fetching
+  - Debugging using breakpoints, stack traces, and logging tools
 
 ---
 
