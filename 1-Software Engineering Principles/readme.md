@@ -262,7 +262,7 @@ Pick a small app idea — like **Flashcards**, **To-Do List**, or **Habit Tracke
 
 ---
 
-## 📚 Glossary (Beginner-Friendly)
+## 📚 Glossary 
 
 | Term | Meaning |
 |------|----------|
