@@ -53,9 +53,14 @@ This course doesn’t just teach you code — it teaches you how to **work like 
 - Adapt based on feedback
 
 ### 👥 Scrum Framework
-- Work in **sprints**: time-boxed work cycles (2–3 weeks)
-- Participate in **standups**, **sprint planning**, and **retrospectives**
-- Understand team roles: **Developer**, **Product Owner**, **Scrum Master**
+
+You’ll be introduced to **Scrum**, one of the most popular frameworks used in Agile software development teams. You'll learn:
+
+- What **sprints** are (short, focused work cycles)
+- The purpose of **daily standups**, **sprint planning**, and **retrospectives**
+- The different team roles like **Developer**, **Product Owner**, and **Scrum Master**
+
+By understanding Scrum, you'll gain insight into how professional teams organize their work, collaborate effectively, and deliver software in a structured, predictable way — knowledge that will help you thrive in modern development environments.
 
 You’ll:
 - Break down large features into tasks
