@@ -51,15 +51,15 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
   - Unit testing and debugging
   - Deployment and CI/CD basics
 
-## Collaborate Like a Real Team: Agile & Scrum
+### Collaborate Like a Real Team: Agile & Scrum
 
 This course doesn’t just teach you code — it teaches you how to **work like a professional developer**.
 
-### Agile Methodology
+#### Agile Methodology
 - Deliver value in *iterations*
 - Adapt based on feedback
 
-### Scrum Framework
+#### Scrum Framework
 
 You’ll be introduced to **Scrum**, one of the most popular frameworks used in Agile software development teams. You'll learn:
 
@@ -74,7 +74,7 @@ You’ll:
 - Use JIRA or Trello to manage work
 - Review, demo, and deploy your work — just like real teams
 
-## Your Path from Beginner to Builder
+### Your Path from Beginner to Builder
 
 By the end of the course, you'll be able to:
 
