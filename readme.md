@@ -23,7 +23,6 @@ Go beyond basic syntax and learn how JavaScript truly works under the hood — b
   - Understanding how the **event loop** handles asynchronous tasks
 - **JavaScript Engine & Execution**
   - How the **call stack** works in Node and the browser
-  - The role of the **heap**, **memory allocation**, and **garbage collection**
   - **Execution context** and the **scope chain**
   - What **closures** are and how they preserve data
   - How functions are stored and invoked in memory
