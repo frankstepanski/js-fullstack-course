@@ -1,4 +1,4 @@
-# Fullstack Foundations
+# Getting Started in Web Development
 
 As you begin your fullstack development journey with HTML, CSS, and JavaScript, it's essential to understand the broader context of how the web works, what web developers do, and the tools and environments you’ll use. This foundation not only makes your learning easier but helps you see the bigger picture from day one.
 
