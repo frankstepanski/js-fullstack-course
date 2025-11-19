@@ -13,8 +13,6 @@ Programming languages exist to **translate human logic** into something computer
 
 > 🧠 **Think of code as the recipe — it tells the computer exactly what steps to follow.**
 
----
-
 ###  Quick Activity:
 Try writing a “computer instruction” in plain English:
 
@@ -41,8 +39,6 @@ It’s what brings computers to life — **code working together** to perform us
 
 > 💡 **Think of software as the finished dish — it’s what you get after following the recipe (code).**
 
----
-
 ## Code vs. Software: The Difference
 
 | Concept | Description | Analogy |
@@ -54,8 +50,6 @@ It’s what brings computers to life — **code working together** to perform us
 In short:  
 > 🧠 Code is **how** you tell the computer what to do.  
 > 💻 Software is **what** the computer does when all the code comes together.
-
----
 
 ## What Is Software Engineering?
 
@@ -69,8 +63,6 @@ Just as civil engineers design safe bridges and electrical engineers design effi
 
 Software engineering involves both **technical skill** (coding, debugging, architecture) and **process management** (planning, testing, maintaining).  
 That’s why professionals follow a framework called the **Software Development Life Cycle (SDLC)** — a step-by-step guide to ensure quality and consistency.
-
----
 
 ##  Why Software Engineering Is Needed (Real-World Examples)
 
@@ -98,8 +90,6 @@ Software engineers use **design patterns, SDLC steps, and agile methods** to red
 >  **In short:** Software engineering turns coding into a *reliable craft*.  
 > It ensures what we build isn’t just functional — it’s safe, maintainable, and scalable.
 
----
-
 ##  What Is the Software Development Life Cycle (SDLC)?
 
 The **Software Development Life Cycle (SDLC)** is a structured, repeatable process that software teams follow to **plan, design, build, test, deploy, and maintain** applications.  
@@ -113,8 +103,6 @@ Following the SDLC ensures that:
 - The final software is **high quality**, **user-friendly**, and **maintainable**
 
 >  **In short:** The SDLC gives structure to creativity — it turns messy ideas into reliable software.
-
----
 
 # Additional Materials
 

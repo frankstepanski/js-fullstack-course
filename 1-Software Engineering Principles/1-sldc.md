@@ -4,14 +4,12 @@ The **Software Development Life Cycle (SDLC)** is like a **roadmap** that guides
 It ensures teams don’t skip steps, waste time, or forget important details.
 
 You can think of it like **building a house**:
-- You first plan the design 🏗️  
+- You first plan the design 
 - Then gather materials  
 - Build the structure  
 - Inspect it  
 - Move in  
 - And keep fixing or upgrading things over time
-
----
 
 ## The Six Main Phases of the SDLC
 
@@ -31,7 +29,6 @@ A school wants a web app for students to check grades online. The planning phase
 
  *Outcome:* A clear project plan or “blueprint” for the software.
 
----
 
 ### 2. **Analysis (or Requirements Gathering)**
 *"What exactly should the software do?"*
@@ -48,8 +45,6 @@ Here, the team gathers **detailed requirements** — all the features, rules, an
 - Non-functional: The system should load in less than 3 seconds
 
  *Outcome:* A **Requirements Document** describing everything the system must do.
-
----
 
 ### 3. **Design**
  *"How will the software look and work?"*
@@ -84,8 +79,6 @@ Developers use React to build the web app’s front end, and Node.js for the bac
 
  *Outcome:* A functioning version of the software (the “first draft”).
 
----
-
 ### 5. **Testing**
  *"Does it actually work?"*
 
@@ -101,8 +94,6 @@ Before releasing it, testers check if the software works **as expected** and **f
 A tester logs in as a student, checks if grades show correctly, and reports any glitches.
 
  *Outcome:* A **stable, reliable version** ready to launch.
-
----
 
 ### 6. **Deployment & Maintenance**
  *"Let’s launch — and keep improving it!"*
@@ -122,7 +113,6 @@ Later, updates add attendance reports and push notifications.
 
  *Outcome:* Real users are using the software — and it keeps improving over time.
 
----
 
 ##  Why SDLC Matters
 
@@ -133,9 +123,7 @@ Later, updates add attendance reports and push notifications.
 | **Predictability** | Easier to estimate costs, time, and resources |
 | **Improvement** | Regular updates and feedback loops keep the product useful |
 
----
-
-##  Summary Table
+##  Summary
 
 | Phase | Main Question | Output |
 | --- | --- | --- |
