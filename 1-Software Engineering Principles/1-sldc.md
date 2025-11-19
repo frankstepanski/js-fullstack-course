@@ -135,3 +135,30 @@ Later, updates add attendance reports and push notifications.
 
 ---
 
+##  Summary Table
+
+| Phase | Main Question | Output |
+| --- | --- | --- |
+| Planning | Why are we building this? For whom? | Vision, goals, constraints |
+| Requirements | What must it do? How well? | User stories, requirements list |
+| Design | How will it work? | Architecture, wireframes |
+| Development | How do we build it? | Working code, commits |
+| Testing | Does it work correctly? | Test reports, bug fixes |
+| Deployment & Maintenance | How do we deliver and improve it? | Live app, updates, monitoring |
+
+---
+
+
+## 🎯 Mini Project: Apply the SDLC
+
+Pick a small app idea — like **Flashcards**, **To-Do List**, or **Habit Tracker** — and walk through all six phases:
+
+1. **Planning:** Write a short problem statement.  
+2. **Requirements:** List 6–10 user stories.  
+3. **Design:** Create a simple diagram or UI sketch.  
+4. **Development:** Build a small feature.  
+5. **Testing:** Check if it works as expected.  
+6. **Deployment:** Publish your demo link and note your next steps.
+
+> 🪄 *Tip: Document each phase in a separate Markdown section in your repo.*
+
