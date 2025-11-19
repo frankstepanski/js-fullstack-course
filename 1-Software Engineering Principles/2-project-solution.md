@@ -80,7 +80,7 @@ Maintenance means checking on your app over time and improving it.
 
 Even a simple app can grow and improve as you learn more.
 
-## Summary Table
+## Summary
 
 | **SDLC Phase** | **What Happens** | **Study Tracker Example** |
 |----------------|------------------|----------------------------|
