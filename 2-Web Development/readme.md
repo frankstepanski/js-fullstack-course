@@ -67,5 +67,6 @@ Knowing this helps:
 
 For a detailed overview of these topics, see the full documents:
 
-- [Web Dev Essentials](1-dev-essentials.md)
-- [Systems Foundations](2-system-foundations.md)
+- [Systems Foundations](1-system-foundations.md)
+- [Web Dev Essentials](2-dev-essentials.md)
+- [Visual Studio Code](3-vscode.md)
