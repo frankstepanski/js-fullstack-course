@@ -147,6 +147,3 @@ Pick a small app idea — like **Flashcards**, **To-Do List**, or **Habit Tracke
 4. **Development:** Build a small feature.  
 5. **Testing:** Check if it works as expected.  
 6. **Deployment:** Publish your demo link and note your next steps.
-
-> 🪄 *Tip: Document each phase in a separate Markdown section in your repo.*
-
