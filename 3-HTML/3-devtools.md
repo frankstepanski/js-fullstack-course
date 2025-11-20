@@ -5,6 +5,10 @@ That’s where **Browser Developer Tools (DevTools)** come in.
 
 Think of DevTools as your **X-ray vision** into how a webpage works — you can see, edit, and debug your code right inside your browser.
 
+💡 Note:
+We’ll be learning CSS in detail next, so don’t worry if some of these tools look unfamiliar.
+For now, your goal is simply to understand what DevTools can do and how it helps you see your HTML and CSS working together.
+
 ##  1. What Are Developer Tools?
 
 **Developer Tools** (or **DevTools**) are built into every major browser — Chrome, Firefox, Edge, Safari, etc.  
