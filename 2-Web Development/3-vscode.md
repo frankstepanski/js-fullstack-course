@@ -136,7 +136,7 @@ Once you learn more backend and full-stack development, the terminal becomes ess
 
 A simple repeatable workflow:
 
-1. **Create a project folder**  
-2. **Open the folder in VS Code**  
-3. **Create your files inside VS Code**  
-4. **Use Live Server to preview your HTML**  
+1. Create a project folder
+2. Open the folder in VS Code
+3. Create your files inside VS Code
+4. Use Live Server to preview your HTML
