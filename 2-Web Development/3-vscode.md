@@ -85,8 +85,7 @@ Examples:
 2. Search for “Live Server” (or any name)  
 3. Click **Install**
 
-> Beginners should start with Live Server + Prettier.  
-More extensions can be added later.
+> Start with a few, then add more later.  
 
 ## What Is Emmet
 
