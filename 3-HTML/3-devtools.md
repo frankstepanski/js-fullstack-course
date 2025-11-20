@@ -71,7 +71,7 @@ DevTools helps you **see exactly which rule “won”** and why.
 
 You can test style changes **instantly** inside DevTools — no need to refresh your browser.
 
-### ✏️ Try This:
+###  Try This:
 1. Right-click any element → **Inspect**  
 2. In the **Styles** panel, click on a property (like `color`)  
 3. Change its value (e.g., `color: red;`)  
