@@ -20,7 +20,7 @@ Without forms, websites would be **read-only** — you could only *see* informat
 
 > 💡 Forms turn a static page into an **interactive experience** where users participate.
 
-##  2. How Forms Work (Big Picture)
+##  2. How Forms Work 
 
 A form collects data and then **sends it somewhere** when the user clicks “Submit.”
 
@@ -42,7 +42,7 @@ A form collects data and then **sends it somewhere** when the user clicks “Sub
 
 > 💡 At this stage, you won’t need to build the server — just understand that the form “sends” your data somewhere to be processed.
 
-## 💬 3. Forms and JavaScript (Big Picture View)
+##  3. Forms and JavaScript (Big Picture View)
 
 You’ll learn this part later — but here’s what happens behind the scenes.
 
@@ -67,7 +67,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
 
 Forms are made of **form controls** — input fields that collect different types of data.
 
-### ✏️ Text Inputs
+### Text Inputs
 ```html
 <input type="text" name="username">
 <input type="password" name="password">
