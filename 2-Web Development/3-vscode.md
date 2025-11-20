@@ -70,14 +70,14 @@ Your browser will open automatically and refresh whenever you save changes.
 
 ## What Is a VS Code Extension?
 
-Extensions add new features to VS Code — like apps on your phone.
+[Extensions](https://marketplace.visualstudio.com/vscode) add new features to VS Code — like apps on your phone.
 
 Examples:
-- **Live Server** → automatically refresh your browser  
-- **Live Preview** → previews web pages in your IDE 
-- **Prettier** → auto-format your code  
-- **ESLint** → highlight JavaScript issues  
-- **Path Intellisense** → autocomplete file paths  
+- **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)** → automatically refresh your browser  
+- **[Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server)** → previews web pages in your IDE 
+- **[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)** → auto-format your code  
+- **[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)** → highlight JavaScript issues  
+- **[Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)** → autocomplete file paths  
 
 
 ### How to Install One
