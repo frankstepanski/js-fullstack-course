@@ -796,7 +796,7 @@ Here are the rest of the resources for this topic.
 
 1. [Specificity](1-specificity.md)
 2. [Positioning](2-positioning.md)
-3. [Layout](3-layout.md)  
+3. [Layouts](3-layouts.md)  
 4. [Grid Layout](4-grid-layout.md)  
 5. [Responsive Web Design](5-responsive.md)
 6. [The Design to Developer Workflow](6-design-developer-workflow.md)
