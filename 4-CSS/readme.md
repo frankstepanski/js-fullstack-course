@@ -135,8 +135,6 @@ It looks at your elements:
 
 This becomes the **structure** of your page — like a blueprint.
 
----
-
 ### **2. The browser reads your CSS**
 It takes all your rules and asks:
 - *Which HTML elements do these rules apply to?*  
@@ -144,8 +142,6 @@ It takes all your rules and asks:
 - *Which rule is more specific?*
 
 This is how the browser decides what styles should be used.
-
----
 
 ### **3. The browser matches selectors to elements**
 It finds every element that fits each selector:
@@ -155,8 +151,6 @@ It finds every element that fits each selector:
 - Is there an element with the ID `#hero`?  
 
 Each matching element gets the styles you wrote.
-
----
 
 ### **4. The browser applies the rules (general → specific)**
 If there are multiple rules, the browser uses a system called **specificity** to decide the final style.
@@ -169,8 +163,6 @@ p.special { color: red; }
 ```
 
 A `<p class="special">` turns **red**, not blue, because the second rule is more specific.
-
----
 
 ### **5. The browser “paints” the page**
 Once the browser knows:
