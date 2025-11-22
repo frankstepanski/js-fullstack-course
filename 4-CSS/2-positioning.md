@@ -2,7 +2,7 @@
 
 Before we get into CSS layouts (inline-block, Flexbox, and Grid), it’s important to understand **how elements are positioned on the page**. Positioning determines *exactly where* an element appears, how it interacts with surrounding elements, and how it behaves when the page changes.
 
-This lesson introduces the **five CSS positioning modes**, how they work, when to use them, and how they affect page flow. Understanding positioning first makes layout systems like Flexbox and Grid much easier to learn later.
+Understanding positioning first makes layout systems like Flexbox and Grid much easier to learn later.
 
 ## Why Positioning Matters
 
