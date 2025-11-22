@@ -794,8 +794,8 @@ Once you understand the Box Model, layout becomes easier.
 
 Here are the rest of the resources for this topic.
 
-1. [Specificity](1-forms.md)
-2. [Layout](2-accessibility.md)  
-3. [Grid Layout](3-devtools.md)  
+1. [Specificity](1-specificity.md)
+2. [Layout](2-layout.md)  
+3. [Grid Layout](3-grid-layout.md)  
 4. [Responsive Web Design](4-responsive.md)
 5. [The Design to Developer Workflow](5-design-developer-workflow.md)
