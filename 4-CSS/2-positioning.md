@@ -35,7 +35,7 @@ There are **five** positioning types:
 We'll explore each in a clear, beginner-friendly way.
 
 
-## 1. `position: static` (The Default)
+### 1. `position: static` (The Default)
 
 Every element starts out as `static` — meaning it follows **normal flow** rules.
 
@@ -53,7 +53,7 @@ Every element starts out as `static` — meaning it follows **normal flow** rule
 You rarely set this manually — but it’s important because all other positioning types build on it.
 
 
-## 2. `position: relative` (Offset From Normal Position)
+### 2. `position: relative` (Offset From Normal Position)
 
 A relatively positioned element stays **in the normal flow**, but you can *nudge* it using `top`, `left`, `right`, and `bottom`.
 
@@ -75,7 +75,7 @@ A relatively positioned element stays **in the normal flow**, but you can *nudge
 - Creating a parent for `position: absolute` children  
 - Moving labels, icons, or decorative elements slightly  
 
-## 3. `position: absolute` (Taken Out of the Flow)
+### 3. `position: absolute` (Taken Out of the Flow)
 
 An absolutely positioned element is **removed from normal flow**.  
 It no longer takes up space — it floats freely based on the nearest positioned ancestor.
@@ -99,7 +99,7 @@ If none exists, it attaches to the entire page (`<html>`).
 - Badges and notification bubbles  
 - Overlays inside containers  
 
-## 4. `position: fixed` (Stays on Screen While Scrolling)
+### 4. `position: fixed` (Stays on Screen While Scrolling)
 
 Fixed-position elements are pinned to the **viewport** (the screen), ignoring all scrolling.
 
@@ -117,7 +117,7 @@ nav {
 - Persistent sidebars  
 - Floating help/chat widgets  
 
-## 5. `position: sticky` (Hybrid of Relative + Fixed)
+### 5. `position: sticky` (Hybrid of Relative + Fixed)
 
 Sticky elements behave like `relative` **until** you scroll past a certain point — then they “stick” like a fixed element.
 
@@ -134,7 +134,7 @@ Sticky elements behave like `relative` **until** you scroll past a certain point
 - Table column headers  
 - Sidebar titles  
 
-## 6. Understanding Stacking with `z-index`
+### 6. Understanding Stacking with `z-index`
 
 Positioning often involves layering elements on top of one another.  
 `z-index` controls the **stacking order**.
