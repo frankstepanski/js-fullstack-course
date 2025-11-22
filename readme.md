@@ -4,7 +4,6 @@ Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behi
 
 In this course, you’ll learn how small lines of code grow into full applications — and how real engineering teams design, build, and ship the software you use every day. You’ll work with the same tools and technologies used at top companies and develop the skills to build systems that scale.
 
----
 
 ## 🚀 What You’ll Learn — A Complete Journey Through the JavaScript Stack
 
@@ -14,8 +13,6 @@ Build the parts of a website users see and interact with.
 - **HTML & CSS** — structure and style modern, accessible, responsive pages  
 - **JavaScript** — from fundamentals to advanced concepts (DOM, APIs, events, logic)  
 - **React.js** — build dynamic, component-based interfaces using hooks, props, and state  
-
----
 
 ## ⚙️ Intermediate & Advanced JavaScript
 
@@ -37,8 +34,6 @@ Go beyond “just making it work” and understand how JavaScript runs under the
   - Browser APIs & Fetch  
   - Debugging strategies with breakpoints and stack traces  
 
----
-
 ## 🖥️ Backend Development
 
 Learn how to build the systems that power applications behind the scenes.
@@ -53,8 +48,6 @@ Learn how to build the systems that power applications behind the scenes.
   - Authentication & authorization  
   - Environment variables & secure configuration  
 
----
-
 ## 🧠 Computer Science & Engineering Foundations
 
 Develop the engineering mindset needed for real-world software development.
@@ -65,8 +58,6 @@ Develop the engineering mindset needed for real-world software development.
   - Clean code, modular architecture, DRY/SOLID patterns  
   - Unit testing and debugging techniques  
   - CI/CD and deployment fundamentals  
-
----
 
 ## 👥 Work Like a Real Development Team: Agile & Scrum
 
@@ -85,8 +76,6 @@ You’ll also practice:
 - Managing work using JIRA or Trello  
 - Reviewing, demoing, and deploying your work  
 - Collaborating effectively in a team environment  
-
----
 
 ## 🌱 From Beginner to Builder
 
