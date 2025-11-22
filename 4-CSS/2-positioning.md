@@ -52,7 +52,6 @@ Every element starts out as `static` — meaning it follows **normal flow** rule
 
 You rarely set this manually — but it’s important because all other positioning types build on it.
 
----
 
 ## 2. `position: relative` (Offset From Normal Position)
 
@@ -75,8 +74,6 @@ A relatively positioned element stays **in the normal flow**, but you can *nudge
 - Minor visual adjustments  
 - Creating a parent for `position: absolute` children  
 - Moving labels, icons, or decorative elements slightly  
-
----
 
 ## 3. `position: absolute` (Taken Out of the Flow)
 
@@ -101,8 +98,6 @@ If none exists, it attaches to the entire page (`<html>`).
 - Dropdown menus  
 - Badges and notification bubbles  
 - Overlays inside containers  
-
----
 
 ## 4. `position: fixed` (Stays on Screen While Scrolling)
 
