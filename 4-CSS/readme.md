@@ -624,8 +624,6 @@ Use cascade rules to break ties
 Compute the final style and paint the element
 ```
 
----
-
 ### 12.5 Why the Cascade Matters for Beginners
 
 Understanding the cascade helps you debug questions like:
