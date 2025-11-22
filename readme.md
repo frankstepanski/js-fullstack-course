@@ -14,7 +14,7 @@ Build the parts of a website users see and interact with.
 - **JavaScript** — from fundamentals to advanced concepts (DOM, APIs, events, logic)  
 - **React.js** — build dynamic, component-based interfaces using hooks, props, and state  
 
-## ⚙️ Intermediate & Advanced JavaScript
+### ⚙️ Intermediate & Advanced JavaScript
 
 Go beyond “just making it work” and understand how JavaScript runs under the hood — both in the browser and in Node.js.
 
@@ -34,7 +34,7 @@ Go beyond “just making it work” and understand how JavaScript runs under the
   - Browser APIs & Fetch  
   - Debugging strategies with breakpoints and stack traces  
 
-## 🖥️ Backend Development
+### 🖥️ Backend Development
 
 Learn how to build the systems that power applications behind the scenes.
 
