@@ -1,4 +1,4 @@
-# CSS Specificity — Who Wins?
+# CSS Specificity: Who Wins?
 
 When you write CSS, sometimes multiple rules target the same element.  
 Which one takes effect? 

@@ -1,4 +1,4 @@
-#  Responsive Design — Thinking for Mobile
+#  Responsive Web Design: Thinking for Mobile
 
 When building web pages, one of the biggest challenges is making your design look **great on all devices** — from a wide desktop monitor to a narrow phone screen.  
 
