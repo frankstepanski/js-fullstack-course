@@ -12,10 +12,6 @@ Think of Git as a **time machine for your projects**:
 - It lets you go back to an earlier version if something breaks.
 - It lets multiple people work on the same project *without overwriting each other’s work.*
 
----
-
-###  Why Is Git Used?
-
 Without Git, if you and a teammate edited the same file, one of you might **accidentally erase** the other’s changes.  
 With Git, every change is **tracked**, **merged**, and **recoverable**.
 
@@ -34,7 +30,7 @@ He needed a fast, reliable way for many developers to work on the **Linux kernel
 
 Today, Git is the **most widely used version control system** in the world.
 
-## 🌍 3. Online Git Collaboration Tools
+## 3. Online Git Collaboration Tools
 
 Git works **locally** on your computer — but you can also sync your projects online.
 
