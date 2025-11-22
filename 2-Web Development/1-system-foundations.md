@@ -181,7 +181,7 @@ Let’s connect everything you’ve learned — from files on your computer to h
 1. **You create files on your computer** using your **operating system** (like macOS or Windows).  
    These might include HTML, CSS, and JavaScript files for a website.
 
-2. You manage those files using the **terminal** — navigating folders, creating project directories, and running commands like `npm start` or `python app.py` to launch your code.
+2. You manage those files using the **terminal** — navigating folders, creating project directories, and running commands like `npm start` to launch your code.
 
 3. When your project runs locally, your computer acts as a **local server**, using the **loopback IP address** (`127.0.0.1`) to simulate a website environment.
 
@@ -202,16 +202,6 @@ Let’s connect everything you’ve learned — from files on your computer to h
 | You test locally | Terminal + Localhost | `http://127.0.0.1:3000` |
 | You deploy online | Hosting service | `https://mywebsite.com` |
 | Others access it | Internet + Protocols | Requests & responses via HTTP/HTTPS |
-
-> 💡 **Everything connects:** Your OS stores files → your terminal manages them → your server delivers them → and the internet protocols (IP, DNS, HTTP/HTTPS) make them reachable to anyone, anywhere.
-
-## Why These Concepts Matter for Developers
-
-Understanding these basics helps you:
-- Use tools like Git, Node, or Python confidently in the terminal.  
-- Troubleshoot common issues (e.g., “Why can’t my server connect?”).  
-- Understand how your code moves from your computer → the internet → to a user’s browser.  
-- Build confidence as you move into web development, APIs, and cloud computing.
 
 ---
 
