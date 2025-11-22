@@ -23,14 +23,12 @@ If you don’t use Git:
 - You can’t undo mistakes easily
 - Collaboration becomes chaotic
 
-## 2. A Quick History of Git
-
 Git was created in **2005** by **Linus Torvalds**, the same person who built Linux.  
 He needed a fast, reliable way for many developers to work on the **Linux kernel** without breaking each other’s code.
 
 Today, Git is the **most widely used version control system** in the world.
 
-## 3. Online Git Collaboration Tools
+## 2. Online Git Collaboration Tools
 
 Git works **locally** on your computer — but you can also sync your projects online.
 
@@ -42,7 +40,7 @@ Some platforms that host Git repositories include:
 
 These are online services that **store your code**, **manage collaboration**, and **help teams review and deploy projects**.
 
-## 4. The Difference Between Git and GitHub
+## 3. The Difference Between Git and GitHub
 
 | Feature | Git | GitHub |
 |----------|-----|---------|
@@ -53,7 +51,7 @@ These are online services that **store your code**, **manage collaboration**, an
 
 > 💡 Git is the **engine** — GitHub is the **garage** where you store your car.
 
-## 5. What Is Version Control?
+## 4. What Is Version Control?
 
 **Version control** is the practice of managing and tracking changes to files over time.
 
@@ -62,7 +60,7 @@ It’s important because it allows you to:
 - Revert to earlier versions if something breaks
 - Work with others safely on the same files
 
-## 6. Main Areas of Version Control
+## 5. Main Areas of Version Control
 
 | Area | Description | Example |
 |------|--------------|----------|
@@ -72,7 +70,7 @@ It’s important because it allows you to:
 | **Merge** | Combining changes from branches | Add your new feature to the main project |
 | **Remote** | The online copy of your repo (GitHub) | Push/pull between local and cloud |
 
-## 7. Installing Git
+## 6. Installing Git
 
 ### 🪟 On Windows
 1. Go to [git-scm.com/downloads](https://git-scm.com/downloads)
@@ -88,7 +86,7 @@ It’s important because it allows you to:
    ```
    If Git isn’t installed, it will prompt you to install Xcode Command Line Tools.
 
-## 8. What Is GitHub?
+## 7. What Is GitHub?
 
 **GitHub** is a web-based platform where you can:
 - Store your Git repositories online
@@ -106,7 +104,7 @@ It’s free for individuals and open-source projects.
 3. Verify your email
 4. (Optional) Add your profile picture and bio
 
-## 9. What Is a Repository?
+## 8. What Is a Repository?
 
 A **repository** (or *repo*) is like a project folder that Git tracks.
 
@@ -131,7 +129,7 @@ git clone https://github.com/username/repo-name.git
 ```
 This downloads all project files and history.
 
-## 10. What Is a README.md File?
+## 9. What Is a README.md File?
 
 A `README.md` is a text file (written in Markdown) that explains:
 - What your project does
@@ -140,7 +138,7 @@ A `README.md` is a text file (written in Markdown) that explains:
 
 GitHub automatically displays this file at the bottom of your repo page.
 
-## 11. Creating a Local Git Repo
+## 10. Creating a Local Git Repo
 
 You can make a new Git repo on your computer:
 ```bash
@@ -151,7 +149,7 @@ git init
 
 This creates a hidden `.git` folder that tracks all future changes.
 
-## 12. Connecting Local Git to GitHub
+## 11. Connecting Local Git to GitHub
 
 1. Create a new repo on GitHub  
 2. In your local folder:
@@ -168,13 +166,13 @@ Now your local and online repos are connected.
 
 ---
 
-## 13. Basic Snapshotting
+## 12. Basic Snapshotting
 
 Each time you save work in Git, it’s like taking a **snapshot** of your project.
 
 You stage changes with `git add`, and save them with `git commit`.
 
-##  14. Basic Git Commands
+##  13. Basic Git Commands
 
 | Command | Description |
 |----------|--------------|
@@ -187,7 +185,7 @@ You stage changes with `git add`, and save them with `git commit`.
 | `git pull` | Download latest changes |
 | `git log` | View commit history |
 
-##  15. Git Add vs Git Commit
+##  14. Git Add vs Git Commit
 
 | Step | Description | Example |
 |------|--------------|----------|
@@ -196,7 +194,7 @@ You stage changes with `git add`, and save them with `git commit`.
 
 > 💡 Always `add` before `commit`.
 
-## 💪 16. Practice in the Terminal (Not GUI Tools)
+## 15. Practice in the Terminal (Not GUI Tools)
 
 Many editors (like VS Code) have Git tools built in — but it’s important to **learn Git in the terminal**.  
 
@@ -205,7 +203,7 @@ Typing commands builds **muscle memory** and helps you:
 - Debug problems confidently
 - Work on any computer (no need for GUIs)
 
-##  17. What Are Branches?
+##  16. What Are Branches?
 
 A **branch** is like a copy of your project where you can make changes safely.  
 The main branch is often called `main` or `master`.
@@ -225,7 +223,7 @@ git merge feature-login
 
 > 💡 Teams use branches for each feature — e.g., `feature/login`, `fix/navbar`, `update-readme`.
 
-## 18. Merging vs Rebasing
+## 17. Merging vs Rebasing
 
 | Concept | What It Does | Example |
 |----------|----------------|----------|
@@ -235,7 +233,7 @@ git merge feature-login
 > Merging keeps history.  
 > Rebasing makes it cleaner, but can be risky for shared branches.
 
-## 19. Git Pull vs Git Fetch
+## 18. Git Pull vs Git Fetch
 
 | Command | Description | Example |
 |----------|--------------|----------|
@@ -245,7 +243,7 @@ git merge feature-login
 > 💡 Use `fetch` if you want to review before merging.  
 > Use `pull` when you trust the updates.
 
-## 20. Git Log
+## 19. Git Log
 
 View commit history:
 ```bash
@@ -263,7 +261,7 @@ git log --oneline
 
 > Useful for tracking progress and debugging issues.
 
-## 21. Pull Requests (PRs)
+## 20. Pull Requests (PRs)
 
 A **Pull Request** (PR) is a request to merge your branch into another branch (usually `main`).
 
@@ -279,7 +277,7 @@ Team members can:
 
 > 💡 PRs are essential for team collaboration and code review.
 
-##  22. Comparing Branches — `git diff`
+##  21. Comparing Branches — `git diff`
 
 You can compare what changed:
 ```bash
@@ -288,7 +286,7 @@ git diff main feature-login
 
 > Great for reviewing changes before merging or committing.
 
-## 23. Git Stash
+## 22. Git Stash
 
 Sometimes you need to **pause work** without committing:
 ```bash
@@ -303,7 +301,7 @@ git stash pop
 
 > Example: You’re halfway through a bug fix but need to switch branches — stash your progress safely.
 
-## 24. Undoing Changes
+## 23. Undoing Changes
 
 ### Withdraw staged files:
 ```bash
