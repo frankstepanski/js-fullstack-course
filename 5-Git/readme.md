@@ -28,7 +28,12 @@ He needed a fast, reliable way for many developers to work on the **Linux kernel
 
 Today, Git is the **most widely used version control system** in the world.
 
-## 2. Online Git Collaboration Tools
+**Version control** is the practice of managing and tracking changes to files over time.
+
+It’s important because it allows you to:
+- See what changed, when, and by whom
+- Revert to earlier versions if something breaks
+- Work with others safely on the same files
 
 Git works **locally** on your computer — but you can also sync your projects online.
 
@@ -40,8 +45,6 @@ Some platforms that host Git repositories include:
 
 These are online services that **store your code**, **manage collaboration**, and **help teams review and deploy projects**.
 
-## 3. The Difference Between Git and GitHub
-
 | Feature | Git | GitHub |
 |----------|-----|---------|
 | Type | Tool | Platform |
@@ -51,16 +54,8 @@ These are online services that **store your code**, **manage collaboration**, an
 
 > 💡 Git is the **engine** — GitHub is the **garage** where you store your car.
 
-## 4. What Is Version Control?
 
-**Version control** is the practice of managing and tracking changes to files over time.
-
-It’s important because it allows you to:
-- See what changed, when, and by whom
-- Revert to earlier versions if something breaks
-- Work with others safely on the same files
-
-## 5. Main Areas of Version Control
+### Main Areas of Version Control
 
 | Area | Description | Example |
 |------|--------------|----------|
