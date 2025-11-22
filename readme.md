@@ -91,4 +91,4 @@ Ready to build? Let’s get started — one line of code at a time. 💻✨
 ## License
 © 2025 Frank Stepanski. All rights reserved.  
 This material may not be used, copied, modified, or distributed without prior written permission.  
-See the [LICENSE](./LICENSE) file for full details.
+See the [LICENSE](./LICENSE.md) file for full details.
