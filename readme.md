@@ -87,3 +87,8 @@ By the end of the course, you'll be able to:
 Whether you're preparing to become a software engineer or leveling up your technical skills — this course gives you the hands-on skills, tools, and problem-solving mindset needed to build real-world projects and grow into a confident developer.
 
 Ready to build? Let’s get started — one line of code at a time. 💻✨
+
+## License
+© 2025 Frank Stepanski. All rights reserved.  
+This material may not be used, copied, modified, or distributed without prior written permission.  
+See the [LICENSE](./LICENSE) file for full details.
