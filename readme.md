@@ -102,8 +102,9 @@ Whether you’re preparing for a new career or leveling up your skills, this cou
 
 **Ready to build? Let’s get started — one line of code at a time. 💻✨**
 
->This curriculum repository is for educational use within the course and is protected under a custom proprietary license.
---
+> This curriculum repository is for educational use within the course and is protected under a custom proprietary license.
+
+---
 
 ## License
 ![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)
