@@ -1,3 +1,8 @@
+![Curriculum](https://img.shields.io/badge/Education-Curriculum-blueviolet)
+![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
+![Fullstack](https://img.shields.io/badge/Track-Fullstack-blue)
+
+
 # 👋 Welcome to Full-Stack Software Engineering
 
 Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behind every animation, button click, and login flow is **code** — the language developers use to communicate with computers and bring ideas to life.
