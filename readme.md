@@ -2,7 +2,6 @@
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Fullstack](https://img.shields.io/badge/Track-Fullstack-blue)
 
-
 # 👋 Welcome to Full-Stack Software Engineering
 
 Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behind every animation, button click, and login flow is **code** — the language developers use to communicate with computers and bring ideas to life.
@@ -101,9 +100,9 @@ Whether you’re preparing for a new career or leveling up your skills, this cou
 ## License
 ![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)
 
-© 2025 Frank Stepanski. All Rights Reserved.  
-This repository is protected under a custom proprietary license.  
-Forking and cloning are permitted for personal study only.  
-No redistribution, publication, modification, or teaching use is allowed. 
+> **© 2025 Frank Stepanski. All Rights Reserved.**  
+> This repository is protected under a custom proprietary license.  
+> Forking and cloning are permitted for personal study only.  
+> No redistribution, publication, modification, or teaching use is allowed.  
 
 See the [LICENSE](./LICENSE.md) file for all terms and restrictions.
