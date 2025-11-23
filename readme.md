@@ -8,6 +8,12 @@ Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behi
 
 In this course, you’ll learn how small lines of code grow into full applications — and how real engineering teams design, build, and ship the software you use every day. You’ll work with the same tools and technologies used at top companies and develop the skills to build systems that scale.
 
+## 📘 Prerequisites
+
+This course assumes:
+- No prior coding experience  
+- Basic computer literacy  
+- Willingness to practice and experiment  
 
 ## 🚀 What You’ll Learn — A Complete Journey Through the JavaScript Stack
 
@@ -96,6 +102,8 @@ Whether you’re preparing for a new career or leveling up your skills, this cou
 
 **Ready to build? Let’s get started — one line of code at a time. 💻✨**
 
+>This curriculum repository is for educational use within the course and is protected under a custom proprietary license.
+--
 
 ## License
 ![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)
