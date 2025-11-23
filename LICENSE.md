@@ -30,5 +30,7 @@ Forking or cloning does **not** grant any license to reuse, redistribute, publis
 
 Any unauthorized use, reproduction, or redistribution of this material is strictly prohibited and constitutes a violation of civil and criminal laws. Access to the repository or its forks may be revoked at any time without notice.
 
+This license shall be governed by and interpreted in accordance with the laws of the United States and the State of Pennsylvania.
+
 For permissions, licensing inquiries, or authorized use, you MUST obtain prior express written consent from:
-**Frank Stepanski**
+Frank Stepanski
