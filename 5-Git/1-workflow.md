@@ -1,4 +1,4 @@
-# Essential Git Workflows 
+# Essential Git Workflow
 
 Git can feel confusing when you first start learning it—but the core workflow is actually simple once you understand the big picture. This will walk you through the **essential Git commands** you’ll use every day: `add`, `commit`, `push`, `pull`, and `fetch`. The foundational workflow that every developer needs to master before moving on to collaboration.
 
