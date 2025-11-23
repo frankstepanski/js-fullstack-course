@@ -94,6 +94,11 @@ Whether you’re preparing for a new career or leveling up your skills, this cou
 
 
 ## License
-© 2025 Frank Stepanski. All rights reserved.  
-This material may not be used, copied, modified, or distributed without prior written permission.  
-See the [LICENSE](./LICENSE.md) file for full details.
+![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)
+
+© 2025 Frank Stepanski. All Rights Reserved.  
+This repository is protected under a custom proprietary license.  
+Forking and cloning are permitted for personal study only.  
+No redistribution, publication, modification, or teaching use is allowed. 
+
+See the [LICENSE](./LICENSE.md) file for all terms and restrictions.
