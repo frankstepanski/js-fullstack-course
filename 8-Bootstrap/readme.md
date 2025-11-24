@@ -74,7 +74,7 @@ A design system is the highest-level tool with rules for:
 These layers build on one another and help teams maintain consistency and speed.
 
 
->## Newer, More Modern Frameworks (Expanded)
+>## Newer, More Modern Frameworks
 
 As web development evolved, teams began needing more customization, deeper JavaScript integration, improved accessibility, and better performance. This led to the rise of modern CSS frameworks and component systems that solve problems Bootstrap couldn’t originally address.
 
