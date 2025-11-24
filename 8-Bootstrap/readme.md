@@ -214,7 +214,7 @@ This option uses **modern JavaScript imports** while keeping the project simple:
 - A tiny dev server (**http-server**)
 - **No bundler** required
 
-This is the best beginner-friendly introduction to real modern workflows.
+This is a beginner-friendly introduction to real modern workflows.
 
 ### Step 1- Project Setup
 
