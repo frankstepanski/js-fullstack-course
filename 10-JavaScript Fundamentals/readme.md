@@ -481,7 +481,7 @@ logMessage(() => console.log("Callback executed!"));
 2. Inside `logMessage`, we print a message, then *call* the callback using `callback()`.
 3. When `logMessage()` is called, we pass in another function as the argument — an arrow function that prints `"Callback executed!"`.
 
-🧠 **In plain English:**  
+ **In plain English:**  
 “Run this message first, and then run whatever function I give you next.”
 
 ---
