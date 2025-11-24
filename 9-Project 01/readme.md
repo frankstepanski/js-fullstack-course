@@ -22,7 +22,7 @@ However, you’ll be evaluated on both your **technical implementation** and **w
 
 These requirements relate to **how** you plan and build your project — not just the code.
 
-### 📝 Planning Phase (Before Coding)
+### Planning Phase (Before Coding)
 
 #### 1️⃣ User Stories
 Write at least **three user stories** that describe how users will interact with your site.
@@ -39,7 +39,6 @@ They should include key elements like:
 - Navigation  
 
 Wireframes can be drawn **on paper** or created using a free tool like [draw.io](https://app.diagrams.net/).
-
 
 ### Development Phase
 
