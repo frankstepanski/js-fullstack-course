@@ -1,4 +1,4 @@
-# Bootstrap & Beyond
+# CSS Frameworks: Bootstrap & Beyond
 
 Bootstrap is one of the oldest and still widely popular front-end frameworks. Launched in 2011, it brought a standardized way to build responsive websites quickly. Today, it remains heavily used, especially for educational projects, landing pages, admin dashboards, and rapid prototyping.
 
