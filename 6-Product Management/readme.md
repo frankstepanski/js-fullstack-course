@@ -446,23 +446,23 @@ During **Sprint Planning**, teams pull tasks from the backlog into the new sprin
 - Organize the backlog  
 - Prepare each sprint  
 
-### ⭐ Developers
+#### ⭐ Developers
 - Pick up assigned tasks  
 - Move issues across the board  
 - Add comments or questions  
 - Submit work for review  
 
-### ⭐ Designers
+#### ⭐ Designers
 - Attach mockups  
 - Update UX tasks  
 - Collaborate with PMs on workflows  
 
-### ⭐ QA Testers
+#### ⭐ QA Testers
 - Test completed features  
 - Log bugs  
 - Validate acceptance criteria  
 
-### ⭐ Scrum Masters
+#### ⭐ Scrum Masters
 - Facilitate meetings  
 - Remove blockers  
 - Ensure the process runs smoothly  
