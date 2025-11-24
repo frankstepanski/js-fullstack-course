@@ -68,7 +68,7 @@ Designers often call this the **“UX Venn Diagram.”**
           /        \
          /          \
 +-------------+    +-------------+
-|   People    |    | Technology |
+|   People    |    | Technology  |
 +-------------+    +-------------+
 ```
 
