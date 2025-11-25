@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <!-- the head section is where you would link to external files (eg. CSS and JS)-->
+        <link rel="stylesheet" href="style.css">
+        <script defer src="index.js"></script>
+      </head>
+      <body>
+        <!-- a DIV element is a generic container to be used for anything -->
+        <div>
+        <header>
+            <img src="https://picsum.photos/200/300" alt="kitty" height="150" width="150">
+            <h1>My Webs</h1>
+        </header>
+        
+        <main>
+            <h2>This is a header. The H2 header</h2>
+            <p>This is a paragraph</p>
+            <p>This is another paragraph</p>
+            <p>This is a paragraph with <strong>strong</strong> text</p>
+            
+            <!-- a section is used more for short content that is more unique -->
+            <section>
+                <h3>This is a section</h3>
+                <p>This is a paragraph inside a section</p>
+            </section>
+            
+            <!-- an article is usually repeated that has information that is similar -->
+            <article>
+                <ul> <!-- unordered list -->
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </article>
+            
+            <br/>  <!-- line break -->
+            <hr /> <!-- horizontal rule -->
+
+            <form action="#" method="post">
+                <div>
+                  <label for="username">Username:</label>
+                  <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" name="password" required>
+                </div>
+                <div>
+                  <label for="role">Role:</label>
+                  <select id="role" name="role">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="submit">Login</button>
+                </div>
+              </form>
+
+            <article>
+                <ol> <!-- ordered list -->
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ol>
+            </article>  
+            
+            <!-- relative url -->
+            <a target = "_blank" href="contact.html">Google</a>
+        
+            <pre>
+                Paragraph element: &lt;p&gt; 
+               
+            </pre>
+
+        </main>
+        
+        <footer>
+            <p>&copy; 2025</p>
+        </footer>
+     </div>
+       
+      </body>
+    </html>
