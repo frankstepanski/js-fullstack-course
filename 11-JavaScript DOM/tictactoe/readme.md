@@ -514,6 +514,105 @@ And the reverse (NodeList index → dataset) is as simple as adding `data-index`
 
 ---
 
+### Visual Overview of How the Game Works
+
+```
+ Player Action (click cell)
+           │
+           ▼
+ +-----------------------+
+ |  onCellClick(index)   |
+ +-----------------------+
+           │
+           ▼
+ Update state.board[index]
+           │
+           ▼
+Check for Winner or Draw?
+   │               │
+   │ Yes           │ No
+   ▼               ▼
+Set winner      Switch player
+Set gameOver       (X ↔ O)
+           │
+           ▼
+       render()
+           │
+           ▼
+ UI updates based on state
+```
+
+### Render Cycle Diagram
+
+```
+ State Object
+ (board, currentPlayer,
+  isGameOver, winner)
+           │
+           ▼
+     render()
+           │
+           ▼
++-----------------------------+
+| 1. Update cell text         |
+| 2. Disable used cells       |
+| 3. Update status message    |
+| 4. Stop board if game over  |
++-----------------------------+
+           │
+           ▼
+      Updated UI
+```
+
+### Board Index Mapping
+
+```
+UI Grid        State Indexes
+
+[ 0 ][ 1 ][ 2 ]   →   board[0], board[1], board[2]
+[ 3 ][ 4 ][ 5 ]   →   board[3], board[4], board[5]
+[ 6 ][ 7 ][ 8 ]   →   board[6], board[7], board[8]
+```
+
+### Game Logic Flow
+
+```
+Start Game
+    │
+    ▼
+currentPlayer = "X"
+    │
+    ▼
+Player clicks a cell
+    │
+    ▼
+Is cell empty?
+   │       │
+   │ No    │ Yes
+   ▼       ▼
+Ignore   Place X/O
+            │
+            ▼
+   Check winning lines
+            │
+            ▼
+Winner? ───────────► Yes → End Game
+   │
+   ▼
+Board full?
+   │
+   ▼
+Draw? ─────────────► Yes → End Game
+   │
+   ▼
+Switch Player (X ↔ O)
+    │
+    ▼
+Repeat
+```
+
+---
+
 ### ✅ Takeaway
 
 - `data-*` attributes give you a clean, semantic way to **label elements with meaning** your JavaScript can read.  
