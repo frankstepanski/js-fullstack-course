@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding and mobile-friendly viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Basic metadata -->
+  <title>Moonlight Pizza Co.</title>
+  <meta name="description" content="Moonlight Pizza Co. - A fictional pizza restaurant example page for learning HTML.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip link for keyboard and screen reader users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- PAGE HEADER -->
+  <header>
+    <h1>Moonlight Pizza Co.</h1>
+    <p>Fresh, handmade pizza baked under a midnight sky (not really, but it sounds cool 😄).</p>
+
+    <!-- Primary navigation with a clear label and list structure -->
+    <nav aria-label="Main site navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#specials">Specials</a></li>
+        <li><a href="#order">Order Online</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero image (optional) -->
+    <figure>
+      <img
+        src="images/pizza-hero.png"
+        width="300"
+        alt="A large pizza on a wooden board with toppings under soft lighting"
+      >
+      <figcaption>Welcome to our (fictional) pizza place!</figcaption>
+    </figure>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+    <!-- ABOUT SECTION -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">1. About Moonlight Pizza Co.</h2>
+      <p>
+        Welcome to <strong>Moonlight Pizza Co.</strong>, a fictional neighborhood pizza spot created to help you learn
+        HTML. We may not exist in real life, but your code does!
+      </p>
+      <p>
+        Our “story” is simple: crispy crust, fresh toppings, and a menu that’s easy to read for humans and browsers.
+        This section shows how you can use headings, paragraphs, and semantic structure to introduce a business.
+      </p>
+
+      <!-- Hours as a simple list -->
+      <h3>Hours</h3>
+      <ul>
+        <li>Monday – Thursday: 11:00 AM – 9:00 PM</li>
+        <li>Friday – Saturday: 11:00 AM – 11:00 PM</li>
+        <li>Sunday: 12:00 PM – 8:00 PM</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- MENU SECTION -->
+    <section id="menu" aria-labelledby="menu-heading">
+      <h2 id="menu-heading">2. Our Pizzas</h2>
+      <p>Here are some of our “famous” (pretend) pizzas, each with an image stored in the <code>images/</code> folder:</p>
+
+      <!-- Each pizza as an article with an image -->
+      <article aria-labelledby="pizza-margherita-heading">
+        <h3 id="pizza-margherita-heading">The Classic Margherita</h3>
+        <figure>
+          <img
+            src="images/pizza-margherita.png"
+            width="150"
+            alt="Classic margherita pizza with tomato, mozzarella, and basil"
+          >
+          <figcaption>Simple, fresh, and delicious.</figcaption>
+        </figure>
+        <p>
+          Tomato sauce, fresh mozzarella, basil, and a drizzle of olive oil.
+        </p>
+        <p><strong>Price:</strong> $12.00 (Medium) / $15.00 (Large)</p>
+      </article>
+
+      <article aria-labelledby="pizza-supreme-heading">
+        <h3 id="pizza-supreme-heading">Moonlight Supreme</h3>
+        <figure>
+          <img
+            src="images/pizza-supreme.png"
+            width="150"
+            alt="Supreme pizza with pepperoni, sausage, mushrooms, and peppers"
+          >
+          <figcaption>Loaded with toppings for big appetites.</figcaption>
+        </figure>
+        <p>
+          Pepperoni, sausage, mushrooms, onions, and bell peppers on our signature crust.
+        </p>
+        <p><strong>Price:</strong> $16.00 (Medium) / $19.00 (Large)</p>
+      </article>
+
+      <article aria-labelledby="pizza-veggie-heading">
+        <h3 id="pizza-veggie-heading">Stargazer Veggie</h3>
+        <figure>
+          <img
+            src="images/pizza-veggie.png"
+            width="150"
+            alt="Vegetarian pizza with spinach, olives, mushrooms, and peppers"
+          >
+          <figcaption>Colorful veggies on a crispy base.</figcaption>
+        </figure>
+        <p>
+          Spinach, olives, roasted red peppers, mushrooms, and feta cheese.
+        </p>
+        <p><strong>Price:</strong> $14.00 (Medium) / $17.00 (Large)</p>
+      </article>
+
+      <article aria-labelledby="pizza-bbq-heading">
+        <h3 id="pizza-bbq-heading">Comet BBQ Chicken</h3>
+        <figure>
+          <img
+            src="images/pizza-bbq.png"
+            width="150"
+            alt="BBQ chicken pizza with red onions and cilantro"
+          >
+          <figcaption>Smoky, tangy, and cheesy.</figcaption>
+        </figure>
+        <p>
+          BBQ sauce, grilled chicken, red onions, and cilantro, topped with mozzarella and cheddar.
+        </p>
+        <p><strong>Price:</strong> $15.00 (Medium) / $18.00 (Large)</p>
+      </article>
+    </section>
+
+    <hr>
+
+    <!-- DAILY SPECIALS SECTION -->
+    <section id="specials" aria-labelledby="specials-heading">
+      <h2 id="specials-heading">3. Daily Specials</h2>
+      <p>
+        This section demonstrates lists and simple text formatting.
+      </p>
+
+      <ul>
+        <li><strong>Monday:</strong> Buy one medium pizza, get a second one 50% off.</li>
+        <li><strong>Wednesday:</strong> Free drink with any large pizza.</li>
+        <li><strong>Friday Night:</strong> Family combo – 2 large pizzas + breadsticks.</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- ORDER FORM SECTION -->
+    <section id="order" aria-labelledby="order-heading">
+      <h2 id="order-heading">4. Order Online (Demo Form)</h2>
+      <p id="order-description">
+        This form doesn’t actually place an order, but it shows how a basic order form might look.
+        In a real app, the <code>action</code> would send data to a backend.
+      </p>
+
+      <form action="/place-order" method="post" aria-describedby="order-description">
+        <fieldset>
+          <legend>Your Information</legend>
+
+          <div>
+            <label for="name">Full Name:</label><br>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Taylor Swift"
+              required
+              autocomplete="name"
+            >
+          </div>
+
+          <br>
+
+          <div>
+            <label for="phone">Phone Number:</label><br>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="555-123-4567"
+              required
+              autocomplete="tel"
+            >
+          </div>
+
+          <br>
+
+          <div>
+            <label for="pickup-delivery">Pickup or Delivery?</label><br>
+            <select id="pickup-delivery" name="order_type">
+              <option value="pickup">Pickup</option>
+              <option value="delivery">Delivery</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+          <legend>Your Pizza</legend>
+
+          <div>
+            <label for="pizza-type">Choose a pizza:</label><br>
+            <select id="pizza-type" name="pizza_type">
+              <option value="margherita">The Classic Margherita</option>
+              <option value="supreme">Moonlight Supreme</option>
+              <option value="veggie">Stargazer Veggie</option>
+              <option value="bbq-chicken">Comet BBQ Chicken</option>
+            </select>
+          </div>
+
+          <br>
+
+          <fieldset>
+            <legend>Size</legend>
+            <div>
+              <input
+                type="radio"
+                id="size-medium"
+                name="size"
+                value="medium"
+                checked
+              >
+              <label for="size-medium">Medium</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="size-large"
+                name="size"
+                value="large"
+              >
+              <label for="size-large">Large</label>
+            </div>
+          </fieldset>
+
+          <br>
+
+          <div>
+            <label for="extra-notes">Extra notes (optional):</label><br>
+            <textarea
+              id="extra-notes"
+              name="notes"
+              rows="3"
+              cols="30"
+              placeholder="No onions, extra cheese, etc."
+            ></textarea>
+          </div>
+        </fieldset>
+
+        <br>
+
+        <button type="submit">Place Order (Demo)</button>
+      </form>
+    </section>
+
+    <hr>
+
+    <!-- CONTACT & LOCATION SECTION -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">5. Contact &amp; Location</h2>
+
+      <address>
+        <p><strong>Address:</strong> 123 Moonlight Lane, Fictional City, Web 00000</p>
+        <p><strong>Phone:</strong> <a href="tel:+15559876543">(555) 987-6543</a></p>
+        <p><strong>Email:</strong> <a href="mailto:hello@moonlightpizza.example">hello@moonlightpizza.example</a></p>
+      </address>
+
+      <p>
+        Questions, feedback, or looking for a job? This could link to a separate contact page.
+        For now, it just shows how to present contact info in plain HTML.
+      </p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning HTML.</p>
+  </footer>
+</body>
+</html>

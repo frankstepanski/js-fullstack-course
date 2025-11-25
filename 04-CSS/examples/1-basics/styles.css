@@ -1,0 +1,324 @@
+/* 
+  Import a Google Font (Poppins)
+  - This line MUST be at the very top of the CSS file.
+  - It tells the browser to download the font from Google Fonts.
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+/* 
+  1. Page defaults (applied to the whole page)
+  - Set the default font, background color, and text color.
+*/
+body {
+    /* Set our main font (Poppins) and some fallbacks if it’s not available */
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* Remove default browser margin/padding so we can control spacing ourselves */
+    margin: 0;
+    padding: 0;
+
+    /* Light beige background behind the entire page */
+    background-color: #faf5ef;
+
+    /* Dark gray text for good contrast */
+    color: #222;
+}
+
+/* 
+  2. Keep content centered and readable
+  - main: the central content area of the page.
+*/
+main {
+    /* Maximum width so the text doesn’t stretch too wide on big screens */
+    max-width: 900px;
+
+    /* Center the main content horizontally */
+    margin: 0 auto;
+
+    /* Add space inside the main container so text doesn’t touch the edges */
+    padding: 1rem;
+}
+
+/* 
+  Header and footer share similar styles:
+  - dark background with light text
+  - centered content
+*/
+header,
+footer {
+    background-color: #2b2d42; /* dark blue/gray */
+    color: #fff;               /* white text for contrast */
+    padding: 1.5rem 1rem;      /* vertical and horizontal padding */
+    text-align: center;        /* center text inside header and footer */
+}
+
+/* 
+  Make the main page title (inside header) sit closer to the subtitle.
+*/
+header h1 {
+    margin-bottom: 0.25rem;
+}
+
+/* 
+  Control spacing of the subtitle paragraph in the header.
+*/
+header p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+/* 
+  3. Navigation styling
+  - By default, a <ul> renders its <li> items in a VERTICAL list (one per line with bullets).
+  - Here we remove the bullets and turn each <li> into an inline box so the links appear HORIZONTAL in a row.
+*/
+
+nav ul {
+    list-style: none;   /* remove default bullet points so it doesn't look like a bulleted list */
+    padding: 0;         /* remove default left padding that browsers add to <ul> */
+    margin: 0;          /* remove default top/bottom margin around the list */
+}
+
+nav li {
+    font-size: 1.1rem;   /* slightly larger text for nav links */
+    display: inline-block; 
+    /* inline-block = each <li> sits next to the others horizontally,
+       but still allows margin/padding like a block element */
+}
+
+nav a {
+    color: #ffe066;        /* yellow-ish links that stand out on dark header */
+    text-decoration: none; /* remove underline by default so it looks like a clean nav bar */
+    margin: 0 0.5rem;      /* small horizontal spacing between links */
+    font-weight: 500;      /* slightly bolder text to make nav stand out */
+}
+
+nav a:hover {
+    text-decoration: underline; /* underline on hover so users see it's interactive */
+}
+
+
+/* 
+  4. Hero image and figures
+  - <figure> wraps images + captions.
+*/
+figure {
+    margin: 1rem auto;   /* add some space around and center horizontally */
+    text-align: center;  /* center caption text */
+}
+
+/* 
+  Style the images inside <figure>.
+*/
+figure img {
+    display: block;                         /* remove small gap under images */
+    margin: 0 auto;                         /* center the image */
+    border-radius: 8px;                     /* slightly rounded corners */
+    border: 3px solid #fff;                 /* white border around image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* soft shadow for depth */
+}
+
+/* 
+  Caption text under images.
+*/
+figure figcaption {
+    font-size: 0.9rem;  /* a bit smaller than normal text */
+    color: #555;        /* medium gray color */
+    margin-top: 0.5rem; /* space between image and caption */
+}
+
+/* 
+  5. Section spacing + headings
+  - Each <section> looks like a "card" with a white background.
+*/
+section {
+    background-color: #ffffff;                  /* white card background */
+    margin: 1.5rem 0;                           /* space above and below each section */
+    padding: 1rem 1.25rem;                      /* space inside the section */
+    border-radius: 8px;                         /* rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);  /* very light shadow */
+}
+
+/* 
+  Main section headings (h2)
+*/
+h2 {
+    margin-top: 0;          /* remove extra space at the top of the section */
+    color: #d35400;         /* pizza-ish orange for main headings */
+}
+
+/* 
+  Subheadings (h3)
+*/
+h3 {
+    color: #34495e;         /* dark blue-gray */
+}
+
+/* 
+  6. Menu articles (each pizza “card”)
+  - Every <article> in the menu gets a top border to separate items.
+*/
+article {
+    border-top: 1px solid #eee; /* thin gray line between pizzas */
+    padding-top: 1rem;          /* space above the content within the article */
+    margin-top: 1rem;           /* space above each article block */
+}
+
+/* 
+  Remove the top border and extra space from the first <article>
+  so the top of the section doesn’t have an extra line.
+*/
+article:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* 
+  7. Lists and text spacing
+*/
+ul {
+   padding-left: 1.25rem; /* indent list items slightly */
+}
+
+ul li {
+    margin-bottom: 0.25rem; /* small space between each list item */
+}
+
+/* 
+  Make paragraphs easier to read by increasing line spacing.
+*/
+p {
+   line-height: 1.5;
+}
+
+/* 
+  8. Form styling (very basic)
+  - Makes the form look cleaner and easier to read.
+*/
+form {
+    margin-top: 1rem; /* space between the intro text and the form fields */
+}
+
+/* 
+  Group related form controls together using fieldsets.
+*/
+fieldset {
+    border: 1px solid #ccc;              /* light gray border around each group */
+    border-radius: 6px;                  /* rounded corners */
+    padding: 0.75rem 1rem 1rem;          /* inner spacing */
+    margin-bottom: 1rem;                 /* space between fieldsets */
+}
+
+/* 
+  Legend is the label sitting on the border of a fieldset.
+*/
+legend {
+    font-weight: bold;
+    padding: 0 0.25rem; /* tiny horizontal padding so text doesn’t touch border */
+}
+
+/* 
+  Labels for inputs, selects, and textareas.
+*/
+label {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* 
+  Inputs, selects, and textareas share similar styling:
+  - full width (up to a max width),
+  - small padding,
+  - border and radius.
+*/
+input,
+select,
+textarea {
+    width: 100%;             /* let the form control grow to full container width */
+    max-width: 320px;        /* but don’t get too wide on large screens */
+    padding: 0.4rem;         /* inner space so text isn’t stuck to the edge */
+    margin-top: 0.25rem;     /* small gap between label and control */
+    border-radius: 4px;      /* rounded corners */
+    border: 1px solid #ccc;  /* light border */
+    font: inherit;           /* use the same font as the page */
+    box-sizing: border-box;  /* include padding/border in the width calculation */
+}
+
+/* 
+  Allow users to resize the textarea vertically (up/down) only.
+*/
+textarea {
+    resize: vertical;
+}
+
+/* 
+  Radio buttons:
+  - keep their natural small width
+  - sit next to their labels (not stretched or centered)
+*/
+input[type="radio"] {
+    width: auto;           /* radios should not be full width */
+    max-width: none;
+    margin-top: 0.4rem;    /* small vertical alignment tweak */
+    margin-right: 0.25rem; /* tiny space between the radio and its label text */
+}
+
+/* Optional: add a bit of horizontal spacing between the size labels */
+label[for="size-medium"],
+label[for="size-large"] {
+    margin-right: 1rem;
+}
+
+/* 
+  Style for the form submit button.
+*/
+button[type="submit"] {
+    padding: 0.5rem 1.25rem;     /* vertical and horizontal padding */
+    font-size: 1rem;             /* base font size */
+    border-radius: 4px;          /* rounded corners */
+    border: none;                /* remove default border */
+    background-color: #e67e22;   /* orange background */
+    color: white;                /* white text */
+    cursor: pointer;             /* show pointer cursor on hover */
+}
+
+/* 
+  Slightly darker background when hovering over the button.
+*/
+button[type="submit"]:hover {
+    background-color: #cf711f;
+}
+
+/* 
+  9. Footer
+*/
+footer p {
+      margin: 0;
+      font-size: 0.9rem;  /* make footer text slightly smaller */
+}
+
+/* 
+  10. Skip link (for accessibility)
+  - This styles the "Skip to main content" link.
+  - It is hidden off-screen by default, but becomes visible when focused
+    (for keyboard users who tab through the page).
+*/
+.skip-link {
+    position: absolute;
+    left: -999px;         /* move it off the visible screen area */
+    top: 0;
+    background: #000;     /* black background */
+    color: #fff;          /* white text */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    z-index: 100;         /* keep it on top of other elements when visible */
+}
+
+/* 
+  When the skip link receives keyboard focus (Tab key),
+  move it back into view so users can see and use it.
+*/
+.skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+}
