@@ -208,17 +208,6 @@ div.main h1 {
 
 ✅ Final color = **green** — because it’s the only rule that matches `<h1>` directly.
 
-## Summary
-
-| Rule | Meaning |
-|------|----------|
-| **Specificity** decides which CSS rule wins |
-| **Higher scores** beat lower ones |
-| **Later rules** win if scores are equal |
-| `!important` overrides all (use sparingly) |
-| **Classes** are the best balance of flexibility and control |
-| **IDs and inline styles** should be avoided for scalable CSS |
-
 ---
 
 > **In short:**  
