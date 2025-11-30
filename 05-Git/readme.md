@@ -484,3 +484,4 @@ Here are the rest of the resources for this topic.
 1. [Essential Git Workflow](1-workflow.md)
 2. [Team Workflow](2-team-workflow.md)  
 3. [Basic Exercises](3-exercises.md)
+4. [Publish to Github Pages](4-publish.md)
