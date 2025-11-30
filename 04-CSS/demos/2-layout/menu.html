@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and mobile-friendly viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Basic metadata -->
+    <title>Moonlight Pizza Co.</title>
+    <meta
+      name="description"
+      content="Moonlight Pizza Co. - A fictional pizza restaurant example page for learning HTML."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/menu.css" />
+  </head>
+
+  <body>
+    <!-- PAGE HEADER -->
+    <header>
+      <!-- Flexbox container: brand on the left, nav on the right -->
+      <div class="header-inner">
+        <div class="brand">
+          <h1>Moonlight Pizza Co.</h1>
+          <p>Fresh, handmade pizza baked under a midnight sky.</p>
+        </div>
+
+        <!-- Primary navigation with a clear label and list structure -->
+        <nav aria-label="Main site navigation">
+          <ul>
+            <li><a href="index.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="specials.html">Specials</a></li>
+            <li><a href="order.html">Order Online</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+      <!-- MENU SECTION -->
+      <section id="menu" aria-labelledby="menu-heading">
+        <h2 id="menu-heading">Our Pizzas</h2>
+        <p>Here are some of our “famous” (pretend) pizzas:</p>
+
+        <div class="menu-columns">
+          <!-- Margherita -->
+          <article aria-labelledby="pizza-margherita-heading">
+            <h3 id="pizza-margherita-heading">The Classic Margherita</h3>
+
+            <div class="menu-card-content">
+              <figure>
+                <img
+                  src="images/pizza-margherita.png"
+                  width="150"
+                  alt="Classic margherita pizza with tomato, mozzarella, and basil"
+                />
+                <figcaption>Simple, fresh, and delicious.</figcaption>
+              </figure>
+
+              <div class="menu-card-text">
+                <p>
+                  Tomato sauce, fresh mozzarella, basil, and a drizzle of olive
+                  oil.
+                </p>
+                <p><strong>Price:</strong> $12.00 (Medium) / $15.00 (Large)</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Supreme -->
+          <article aria-labelledby="pizza-supreme-heading">
+            <h3 id="pizza-supreme-heading">Moonlight Supreme</h3>
+
+            <div class="menu-card-content">
+              <figure>
+                <img
+                  src="images/pizza-supreme.png"
+                  width="150"
+                  alt="Supreme pizza with pepperoni, sausage, mushrooms, and peppers"
+                />
+                <figcaption>Loaded with toppings for big appetites.</figcaption>
+              </figure>
+
+              <div class="menu-card-text">
+                <p>
+                  Pepperoni, sausage, mushrooms, onions, and bell peppers on our
+                  signature crust.
+                </p>
+                <p><strong>Price:</strong> $16.00 (Medium) / $19.00 (Large)</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Veggie -->
+          <article aria-labelledby="pizza-veggie-heading">
+            <h3 id="pizza-veggie-heading">Stargazer Veggie</h3>
+
+            <div class="menu-card-content">
+              <figure>
+                <img
+                  src="images/pizza-veggie.png"
+                  width="150"
+                  alt="Vegetarian pizza with spinach, olives, mushrooms, and peppers"
+                />
+                <figcaption>Colorful veggies on a crispy base.</figcaption>
+              </figure>
+
+              <div class="menu-card-text">
+                <p>
+                  Spinach, olives, roasted red peppers, mushrooms, and feta
+                  cheese.
+                </p>
+                <p><strong>Price:</strong> $14.00 (Medium) / $17.00 (Large)</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- BBQ Chicken -->
+          <article aria-labelledby="pizza-bbq-heading">
+            <h3 id="pizza-bbq-heading">Comet BBQ Chicken</h3>
+
+            <div class="menu-card-content">
+              <figure>
+                <img
+                  src="images/pizza-bbq.png"
+                  width="150"
+                  alt="BBQ chicken pizza with red onions and cilantro"
+                />
+                <figcaption>Smoky, tangy, and cheesy.</figcaption>
+              </figure>
+
+              <div class="menu-card-text">
+                <p>
+                  BBQ sauce, grilled chicken, red onions, and cilantro, topped
+                  with mozzarella and cheddar.
+                </p>
+                <p><strong>Price:</strong> $15.00 (Medium) / $18.00 (Large)</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        &copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning
+        HTML and CSS
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+/* ============================
+   Contact page styles
+   - Layout: cards side by side
+   - Button-style links for actions
+============================ */
+
+/* Contact section uses the page background
+   (we remove the default section styling from base.css) */
+#contact {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Main contact layout:
+   two (or more) cards side by side */
+.contact-layout {
+  display: flex;      /* place contact cards in a row */
+  gap: 1.5rem;        /* space between cards */
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+/* Each contact "card" box */
+.contact-card {
+  flex: 1;            /* cards share the available space equally */
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #d35400;
+}
+
+/* Use normal font style instead of italic for address text */
+#contact address {
+  font-style: normal;
+}
+
+/* Contact links (phone, email, etc.) */
+#contact a {
+  color: #d35400;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
+/* ============================
+   Contact actions
+   - “Call” / “Email” buttons
+============================ */
+
+.contact-actions {
+  margin-top: 1rem;
+  display: flex;      /* lay buttons out in a row */
+  gap: 0.75rem;
+  flex-wrap: wrap;    /* let them wrap on small screens */
+}
+
+/* Button-style links */
+.contact-button {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;          /* pill shape */
+  border: none;
+  background-color: #e67e22;
+  color: #fff !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  background-color: #cf711f;
+}

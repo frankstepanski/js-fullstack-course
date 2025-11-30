@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Layout Snippets</title>
+
+  <style>
+    /* This page demonstrates layout-related CSS.
+       Order:
+       1) text-align
+       2) positioning
+       3) inline-block
+       4) flexbox 
+       5) CSS grid 
+       6) Combining flexbox + grid
+    */
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 1rem;
+      line-height: 1.5;
+      background-color: #f8f9fa;
+    }
+
+    hr {
+      margin: 2rem 0;
+    }
+
+    /* ---------------------------
+       1. Layout with text-align
+       --------------------------- */
+
+    .ta-demo-box {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      background-color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .ta-left-box {
+      text-align: left;
+    }
+
+    .ta-center-box {
+      text-align: center;
+    }
+
+    .ta-right-box {
+      text-align: right;
+    }
+
+    .ta-justify-box {
+      text-align: justify;
+      max-width: 26rem;
+    }
+
+    /* ---------------------------
+       2. Positioning (relative + absolute)
+       --------------------------- */
+
+    .position-card {
+      position: relative;         /* parent box */
+      border: 1px solid #bbb;
+      padding: 1rem;
+      border-radius: 6px;
+      background-color: #ffffff;
+      width: 260px;
+      margin-bottom: 1rem;
+    }
+
+    .position-badge {
+      position: absolute;         /* sits on top of the card */
+      top: -10px;
+      right: -10px;
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+    }
+
+    .position-label {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background-color: #2ecc71;
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+      border-radius: 4px;
+    }
+
+    /* ---------------------------
+       3. display: inline-block
+       --------------------------- */
+
+    .inline-block-nav {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .inline-block-item {
+      display: inline-block;      /* sits next to other inline-blocks */
+      padding: 0.25rem 0.75rem;
+      margin-right: 0.25rem;
+      background-color: #0984e3;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    .inline-block-item:last-child {
+      margin-right: 0;
+    }
+
+    .inline-block-item:hover {
+      background-color: #0656a1;
+    }
+
+    /* inline-block “cards” */
+    .inline-block-cards {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+    }
+
+    .inline-card {
+      display: inline-block;      /* cards line up next to each other */
+      width: 140px;
+      margin: 0.25rem;
+      padding: 0.5rem;
+      background-color: #ffeaa7;
+      border-radius: 4px;
+      vertical-align: top;
+    }
+
+    /* ---------------------------
+       4. Flexbox 
+       --------------------------- */
+
+    /* Example 1: simple row of equal-width boxes */
+    .flex-row-basic {
+      display: flex;              /* turn container into flexbox */
+      gap: 0.5rem;                /* space between items */
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+    }
+
+    .flex-row-basic .flex-item {
+      flex: 1;                    /* each box shares the row space */
+      padding: 0.5rem;
+      background-color: #ffeaa7;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    /* Example 2: column layout (stacked sections) */
+    .flex-column-basic {
+      display: flex;
+      flex-direction: column;     /* stack items vertically */
+      gap: 0.5rem;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      max-width: 320px;
+    }
+
+    .flex-column-section {
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .flex-column-section--top {
+      background-color: #ffeaa7;
+    }
+
+    .flex-column-section--middle {
+      background-color: #dfe6e9;
+    }
+
+    .flex-column-section--bottom {
+      background-color: #fab1a0;
+    }
+
+    /* Example 3: common header layout – logo left, nav right */
+    .flex-header {
+      display: flex;
+      justify-content: space-between; /* push logo and nav to edges */
+      align-items: center;            /* center vertically */
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ddd;
+      background-color: #ffffff;
+      margin-top: 1rem;
+      gap: 0.75rem;
+    }
+
+    .flex-header-logo {
+      font-weight: 700;
+    }
+
+    .flex-header-nav {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .flex-header-nav a {
+      text-decoration: none;
+      color: #0984e3;
+    }
+
+    .flex-header-nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Example 4: two-column layout – sidebar + main content */
+    .flex-sidebar-layout {
+      display: flex;
+      gap: 0.75rem;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      margin-top: 1rem;
+      max-width: 520px;
+    }
+
+    .flex-sidebar-layout aside {
+      flex: 0 0 140px;           /* fixed-ish sidebar width */
+      background-color: #fab1a0;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .flex-sidebar-layout main {
+      flex: 1;                   /* main area takes remaining space */
+      background-color: #dfe6e9;
+      padding: 0.5rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    /* ---------------------------
+       5. CSS Grid 
+       --------------------------- */
+
+    /* Example 1: two equal columns */
+    .grid-two-columns {
+      display: grid;              /* turn container into grid */
+      grid-template-columns: 1fr 1fr; /* 2 equal columns */
+      gap: 0.75rem;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .grid-box {
+      background-color: #ffeaa7;
+      padding: 0.5rem;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    /* Example 2: three equal columns */
+    .grid-three-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+      gap: 0.75rem;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .grid-three-columns .grid-box {
+      background-color: #dfe6e9;
+    }
+
+    /* Example 3: simple page layout – header, two columns, footer */
+    .grid-page-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;   /* sidebar + content */
+      grid-template-rows: auto auto auto;
+      gap: 0.5rem;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      margin-bottom: 1rem;
+      max-width: 520px;
+    }
+
+    .grid-page-header,
+    .grid-page-footer {
+      grid-column: 1 / -1;       /* span both columns */
+      background-color: #ffeaa7;
+      padding: 0.5rem;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .grid-page-sidebar {
+      background-color: #fab1a0;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .grid-page-main {
+      background-color: #dfe6e9;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Example 4: simple “card grid” gallery */
+    .grid-card-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);  /* 2 columns */
+      gap: 0.75rem;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      max-width: 520px;
+    }
+
+    .grid-card {
+      background-color: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .grid-card h4 {
+      margin: 0 0 0.25rem;
+      font-size: 1rem;
+    }
+
+    .grid-card p {
+      margin: 0;
+      font-size: 0.85rem;
+    }
+
+    /* ---------------------------
+       6. Combining Flexbox + Grid
+       --------------------------- */
+
+    /* Example 1: Grid of cards, each card uses flexbox */
+    .combo-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #ffffff;
+      max-width: 640px;
+    }
+
+    .combo-card {
+      display: flex;                  /* flex inside each card */
+      flex-direction: column;         /* stack title, text, button */
+      padding: 0.75rem;
+      background-color: #fdfdfd;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      font-size: 0.9rem;
+    }
+
+    .combo-card h4 {
+      margin: 0 0 0.25rem;
+      font-size: 1rem;
+    }
+
+    .combo-card p {
+      margin: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .combo-card button {
+      margin-top: auto;               /* push button to bottom */
+      align-self: flex-start;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: none;
+      background-color: #0984e3;
+      color: #fff;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .combo-card button:hover {
+      background-color: #0656a1;
+    }
+
+    /* Example 2: Flex row of sections, each section uses grid */
+    .combo-flex-row {
+      display: flex;
+      gap: 0.75rem;
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      background-color: #ffffff;
+      max-width: 640px;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .combo-flex-section {
+      flex: 1 1 200px;                /* flex item that can wrap */
+      background-color: #f5f5ff;
+      border-radius: 4px;
+      padding: 0.5rem;
+      display: grid;                  /* grid inside each section */
+      grid-template-columns: 1fr 1fr; /* simple 2-column list */
+      gap: 0.25rem 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .combo-flex-section h4 {
+      grid-column: 1 / -1;            /* header spans both columns */
+      margin: 0 0 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .combo-flex-section span {
+      background-color: #e0e7ff;
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Layout Snippets</h1>
+  <!-- This page shows layout techniques in a gentle order:
+       text-align → positioning → inline-block → flexbox → CSS grid → flex + grid. -->
+
+  <hr>
+
+  <!-- 1. Layout with text-align -->
+  <h2>1. Layout with text-align</h2>
+  <!-- text-align controls how inline content is aligned inside its container. -->
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.ta-left-box { text-align: left; }</code><br>
+    <code>.ta-center-box { text-align: center; }</code><br>
+    <code>.ta-right-box { text-align: right; }</code><br>
+    <code>.ta-justify-box { text-align: justify; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="ta-demo-box ta-left-box"&gt;Left aligned text&lt;/div&gt;</code><br>
+    <code>&lt;div class="ta-demo-box ta-center-box"&gt;Centered text&lt;/div&gt;</code><br>
+    <code>&lt;div class="ta-demo-box ta-right-box"&gt;Right aligned text&lt;/div&gt;</code><br>
+    <code>&lt;div class="ta-demo-box ta-justify-box"&gt;Justified text (stretches each line).&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="ta-demo-box ta-left-box">Left aligned text</div>
+  <div class="ta-demo-box ta-center-box">Centered text</div>
+  <div class="ta-demo-box ta-right-box">Right aligned text</div>
+  <div class="ta-demo-box ta-justify-box">
+    Justified text. The browser stretches each line so the text touches both the left and right sides.
+  </div>
+
+  <hr>
+
+  <!-- 2. Positioning -->
+  <h2>2. Positioning (relative + absolute)</h2>
+  <!-- position: relative makes the element a reference box.
+       position: absolute lets us place a small element on top of it. -->
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.position-card { position: relative; }</code><br>
+    <code>.position-badge { position: absolute; top: -10px; right: -10px; }</code><br>
+    <code>.position-label { position: absolute; bottom: 8px; left: 8px; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="position-card"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;span class="position-badge"&gt;New&lt;/span&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;p&gt;Pizza of the Day&lt;/p&gt;</code><br>
+    <code>&lt;/div&gt;</code><br><br>
+    <code>&lt;div class="position-card"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;span class="position-label"&gt;Limited time&lt;/span&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;p&gt;Special offer details go here.&lt;/p&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="position-card">
+    <span class="position-badge">New</span>
+    <p>Pizza of the Day</p>
+  </div>
+
+  <div class="position-card">
+    <span class="position-label">Limited time</span>
+    <p>Special offer details go here.</p>
+  </div>
+
+  <hr>
+
+  <!-- 3. display: inline-block -->
+  <h2>3. display: inline-block</h2>
+  <!-- inline-block makes elements line up next to each other but still behave like small boxes. -->
+
+  <h3>Example 1: Simple nav pills</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.inline-block-item { display: inline-block; padding: 0.25rem 0.75rem; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="inline-block-nav"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;a href="#" class="inline-block-item"&gt;Home&lt;/a&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;a href="#" class="inline-block-item"&gt;Menu&lt;/a&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;a href="#" class="inline-block-item"&gt;Contact&lt;/a&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="inline-block-nav">
+    <a href="#" class="inline-block-item">Home</a>
+    <a href="#" class="inline-block-item">Menu</a>
+    <a href="#" class="inline-block-item">Contact</a>
+  </div>
+
+  <h3>Example 2: Small “cards” in a row</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.inline-card { display: inline-block; width: 140px; margin: 0.25rem; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="inline-block-cards"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="inline-card"&gt;Card 1&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="inline-card"&gt;Card 2&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="inline-card"&gt;Card 3&lt;/div&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="inline-block-cards">
+    <div class="inline-card">Card 1</div>
+    <div class="inline-card">Card 2</div>
+    <div class="inline-card">Card 3</div>
+  </div>
+
+  <hr>
+
+  <!-- 4. Flexbox  -->
+  <h2>4. Flexbox </h2>
+  <!-- Flexbox is for arranging items in a row or column with easy spacing. -->
+
+  <h3>Example 1: Row of equal-width boxes</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.flex-row-basic { display: flex; gap: 0.5rem; }</code><br>
+    <code>.flex-row-basic .flex-item { flex: 1; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="flex-row-basic"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="flex-item"&gt;Box 1&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="flex-item"&gt;Box 2&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="flex-item"&gt;Box 3&lt;/div&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="flex-row-basic">
+    <div class="flex-item">Box 1</div>
+    <div class="flex-item">Box 2</div>
+    <div class="flex-item">Box 3</div>
+  </div>
+
+  <h3>Example 2: Column layout – stacked sections</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.flex-column-basic { display: flex; flex-direction: column; gap: 0.5rem; }</code><br>
+    <code>.flex-column-section--top { background-color: #ffeaa7; }</code><br>
+    <code>.flex-column-section--middle { background-color: #dfe6e9; }</code><br>
+    <code>.flex-column-section--bottom { background-color: #fab1a0; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="flex-column-basic"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;section class="flex-column-section flex-column-section--top"&gt;Hero / Intro section&lt;/section&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;section class="flex-column-section flex-column-section--middle"&gt;Main content section&lt;/section&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;section class="flex-column-section flex-column-section--bottom"&gt;Call-to-action section&lt;/section&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="flex-column-basic">
+    <section class="flex-column-section flex-column-section--top">Hero / Intro section</section>
+    <section class="flex-column-section flex-column-section--middle">Main content section</section>
+    <section class="flex-column-section flex-column-section--bottom">Call-to-action section</section>
+  </div>
+
+  <h3>Example 3: Header – logo left, nav right</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.flex-header { display: flex; justify-content: space-between; align-items: center; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;header class="flex-header"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="flex-header-logo"&gt;Moonlight Pizza&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;nav class="flex-header-nav"&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;a href="#"&gt;About&lt;/a&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;a href="#"&gt;Menu&lt;/a&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;a href="#"&gt;Contact&lt;/a&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;/nav&gt;</code><br>
+    <code>&lt;/header&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <header class="flex-header">
+    <div class="flex-header-logo">Moonlight Pizza</div>
+    <nav class="flex-header-nav">
+      <a href="#">About</a>
+      <a href="#">Menu</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <h3>Example 4: Two-column layout – sidebar + main content</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.flex-sidebar-layout { display: flex; gap: 0.75rem; }</code><br>
+    <code>.flex-sidebar-layout aside { flex: 0 0 140px; }</code><br>
+    <code>.flex-sidebar-layout main { flex: 1; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="flex-sidebar-layout"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;aside&gt;Sidebar links&lt;/aside&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;main&gt;Main article content goes here.&lt;/main&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="flex-sidebar-layout">
+    <aside>Sidebar links</aside>
+    <main>Main article content goes here.</main>
+  </div>
+
+  <hr>
+
+  <!-- 5. CSS Grid  -->
+  <h2>5. CSS Grid </h2>
+  <!-- Grid is for making simple rows and columns. -->
+
+  <h3>Example 1: Two equal columns</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.grid-two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="grid-two-columns"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="grid-box"&gt;Left column&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="grid-box"&gt;Right column&lt;/div&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="grid-two-columns">
+    <div class="grid-box">Left column</div>
+    <div class="grid-box">Right column</div>
+  </div>
+
+  <h3>Example 2: Three equal columns</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.grid-three-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="grid-three-columns"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="grid-box"&gt;Card 1&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="grid-box"&gt;Card 2&lt;/div&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;div class="grid-box"&gt;Card 3&lt;/div&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="grid-three-columns">
+    <div class="grid-box">Card 1</div>
+    <div class="grid-box">Card 2</div>
+    <div class="grid-box">Card 3</div>
+  </div>
+
+  <h3>Example 3: Simple page layout – header, sidebar, main, footer</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.grid-page-layout { display: grid; grid-template-columns: 1fr 2fr; }</code><br>
+    <code>.grid-page-header, .grid-page-footer { grid-column: 1 / -1; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="grid-page-layout"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;header class="grid-page-header"&gt;Header&lt;/header&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;aside class="grid-page-sidebar"&gt;Sidebar&lt;/aside&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;main class="grid-page-main"&gt;Main content&lt;/main&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;footer class="grid-page-footer"&gt;Footer&lt;/footer&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="grid-page-layout">
+    <header class="grid-page-header">Header</header>
+    <aside class="grid-page-sidebar">Sidebar</aside>
+    <main class="grid-page-main">Main content</main>
+    <footer class="grid-page-footer">Footer</footer>
+  </div>
+
+  <h3>Example 4: Simple “card grid” gallery</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.grid-card-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="grid-card-gallery"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;article class="grid-card"&gt;&lt;h4&gt;Margherita&lt;/h4&gt;&lt;p&gt;Classic favorite.&lt;/p&gt;&lt;/article&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;article class="grid-card"&gt;&lt;h4&gt;Pepperoni&lt;/h4&gt;&lt;p&gt;Spicy and bold.&lt;/p&gt;&lt;/article&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;article class="grid-card"&gt;&lt;h4&gt;Veggie&lt;/h4&gt;&lt;p&gt;Loaded with veggies.&lt;/p&gt;&lt;/article&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;article class="grid-card"&gt;&lt;h4&gt;BBQ Chicken&lt;/h4&gt;&lt;p&gt;Sweet and smoky.&lt;/p&gt;&lt;/article&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="grid-card-gallery">
+    <article class="grid-card">
+      <h4>Margherita</h4>
+      <p>Classic favorite.</p>
+    </article>
+    <article class="grid-card">
+      <h4>Pepperoni</h4>
+      <p>Spicy and bold.</p>
+    </article>
+    <article class="grid-card">
+      <h4>Veggie</h4>
+      <p>Loaded with veggies.</p>
+    </article>
+    <article class="grid-card">
+      <h4>BBQ Chicken</h4>
+      <p>Sweet and smoky.</p>
+    </article>
+  </div>
+
+  <hr>
+
+  <!-- 6. Combining Flexbox + Grid -->
+  <h2>6. Combining Flexbox + Grid</h2>
+  <!-- Common pattern: use grid for the big layout, flex inside cards (or vice versa). -->
+
+  <h3>Example 1: Grid of cards, each card uses Flexbox</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.combo-grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }</code><br>
+    <code>.combo-card { display: flex; flex-direction: column; }</code><br>
+    <code>.combo-card button { margin-top: auto; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="combo-grid-cards"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;article class="combo-card"&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;h4&gt;Cheese Pizza&lt;/h4&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;p&gt;Simple and classic.&lt;/p&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;button&gt;Order&lt;/button&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;/article&gt;</code><br>
+    &nbsp;&nbsp;... more cards ...<br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="combo-grid-cards">
+    <article class="combo-card">
+      <h4>Cheese Pizza</h4>
+      <p>Simple and classic.</p>
+      <button>Order</button>
+    </article>
+    <article class="combo-card">
+      <h4>Pepperoni</h4>
+      <p>Lots of pepperoni on top.</p>
+      <button>Order</button>
+    </article>
+    <article class="combo-card">
+      <h4>Veggie</h4>
+      <p>Loaded with fresh vegetables.</p>
+      <button>Order</button>
+    </article>
+  </div>
+
+  <h3>Example 2: Flex row of sections, each section uses Grid</h3>
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>.combo-flex-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }</code><br>
+    <code>.combo-flex-section { display: grid; grid-template-columns: 1fr 1fr; }</code><br>
+    <code>.combo-flex-section h4 { grid-column: 1 / -1; }</code>
+  </p>
+
+  <h3>Code (HTML):</h3>
+  <p>
+    <code>&lt;div class="combo-flex-row"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;section class="combo-flex-section"&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;h4&gt;Toppings&lt;/h4&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;span&gt;Mushrooms&lt;/span&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;span&gt;Olives&lt;/span&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;span&gt;Onions&lt;/span&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;span&gt;Peppers&lt;/span&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;/section&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;section class="combo-flex-section"&gt;...&lt;/section&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="combo-flex-row">
+    <section class="combo-flex-section">
+      <h4>Toppings</h4>
+      <span>Mushrooms</span>
+      <span>Olives</span>
+      <span>Onions</span>
+      <span>Peppers</span>
+    </section>
+    <section class="combo-flex-section">
+      <h4>Sizes</h4>
+      <span>Small</span>
+      <span>Medium</span>
+      <span>Large</span>
+      <span>XL</span>
+    </section>
+  </div>
+
+  <hr>
+
+</body>
+</html>

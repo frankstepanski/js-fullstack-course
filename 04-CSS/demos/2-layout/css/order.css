@@ -1,0 +1,100 @@
+/* ============================
+   Order page form styles
+   - Two-column layout using Flexbox
+   - Styled fieldsets, inputs, and submit button
+============================ */
+
+/* Basic spacing above the form */
+form {
+  margin-top: 1rem;
+}
+
+/* Two-column layout for the form sections */
+.form-columns {
+  display: flex;        /* put fieldsets next to each other */
+  gap: 1.5rem;          /* space between columns */
+  align-items: flex-start;
+}
+
+/* Each main fieldset (e.g., customer info, order details) */
+.form-columns fieldset {
+  flex: 1;              /* each column takes up equal space */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem 1.25rem;
+  background-color: #fffaf2;
+}
+
+/* Fieldset title */
+form legend {
+  font-weight: 600;
+  color: #d35400;
+  padding: 0 0.25rem;
+}
+
+/* Wrap each label + input group */
+form fieldset > div {
+  margin-bottom: 0.75rem;
+}
+
+/* Labels above inputs */
+form label {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+/* Text inputs, selects, and textarea share the same base style */
+form input[type="text"],
+form input[type="tel"],
+form select,
+form textarea {
+  width: 100%;                  /* fill the column width */
+  padding: 0.45rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font: inherit;                /* match the page font */
+  box-sizing: border-box;
+}
+
+/* Focus styles: make it clear which field is active */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: 2px solid #d35400;
+  outline-offset: 1px;
+  border-color: #d35400;
+}
+
+/* Radio buttons stay small (no full width) */
+form input[type="radio"] {
+  width: auto;
+  margin-right: 0.25rem;
+}
+
+/* Nested fieldset inside another (e.g., crust type, size group) */
+form fieldset fieldset {
+  border: 1px dashed #e0e0e0;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+/* Submit button styling */
+form button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;      /* pill-shaped button */
+  border: none;
+  background-color: #e67e22;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Hover state for the submit button */
+form button[type="submit"]:hover {
+  background-color: #cf711f;
+}
+

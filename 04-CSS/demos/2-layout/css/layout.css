@@ -1,0 +1,120 @@
+/* ============================
+   Layout styles (shared on all pages)
+   - Main content width
+   - Header hero with background image
+   - Navigation layout
+   - Footer
+============================ */
+
+/* Main layout container
+   - Centers content and keeps it from getting too wide */
+main {
+  max-width: 1200px;  /* max width on large screens */
+  margin: 0 auto;     /* center horizontally */
+  padding: 1rem;      /* breathing room inside the main area */
+}
+
+/* ============================
+   Header hero section
+   - Background image + dark overlay
+============================ */
+
+/* Dark overlay on top of the background image,
+   but behind the text */
+header::before {
+  content: "";          /* required for ::before to show */
+  position: absolute;
+  inset: 0;             /* fill the entire header area */
+  background: rgba(0, 0, 0, 0.45); /* semi-transparent black */
+  z-index: 0;           /* stay behind the header content */
+}
+
+/* Make header children (like .header-inner)
+   sit above the overlay */
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  position: relative;   /* so ::before is positioned relative to header */
+  background-image: url("../images/pizza-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff;          /* white text on dark overlay */
+  padding: 4rem 1rem;   /* tall hero area */
+}
+
+/* Inner header wrapper:
+   brand on the left, nav on the right */
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;                  /* row layout */
+  align-items: center;            /* vertically center brand + nav */
+  justify-content: space-between; /* push brand and nav apart */
+  gap: 1rem;
+}
+
+/* Brand (logo + tagline) */
+.brand h1 {
+  font-size: 2.3rem;
+  margin: 0 0 0.25rem;
+}
+
+.brand p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ============================
+   Navigation styles
+============================ */
+
+/* Navigation list layout */
+nav ul {
+  list-style: none;   /* remove bullets */
+  padding: 0;
+  margin: 0;
+
+  display: flex;      /* lay items out in a row */
+  gap: 0.75rem;       /* space between links */
+}
+
+/* Nav links styled as pill-shaped buttons */
+nav a {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;         /* pill shape */
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffe066;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+/* Hover state: darken background on hover */
+nav a:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* ============================
+   Footer
+============================ */
+
+footer {
+  background-color: #2b2d42;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+

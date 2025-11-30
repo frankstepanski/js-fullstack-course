@@ -142,26 +142,183 @@
 
   <hr>
 
-  <!-- 9. Mini practice snippet -->
-  <h2>9. Mini Practice Snippet</h2>
-  <!-- Use this as a quick assignment for students to type from scratch. -->
+  <!-- 9. Unordered list (ul/li) -->
+  <h2>9. Unordered List (ul/li)</h2>
+  <!-- ul = unordered list (bullets), li = list items. -->
 
-  <h3>Goal Code:</h3>
+  <h3>Code:</h3>
   <p>
-    <code>&lt;h1&gt;My First HTML Page&lt;/h1&gt;</code><br>
-    <br>
-    <code>&lt;p&gt;My name is ...&lt;/p&gt;</code><br>
-    <br>
-    <code>&lt;p&gt;One thing I like&lt;/p&gt;</code><br>
-    <code>&lt;p&gt;Another thing I like&lt;/p&gt;</code>
+    <code>&lt;ul&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;li&gt;Margherita&lt;/li&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;li&gt;Pepperoni&lt;/li&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;li&gt;Veggie&lt;/li&gt;</code><br>
+    <code>&lt;/ul&gt;</code>
   </p>
 
-  <!-- Ask students to:
-       1. Create a new .html file
-       2. Type this code by hand
-       3. Open the file in a browser and see the result
-  -->
+  <h3>Rendered result:</h3>
+  <ul>
+    <li>Margherita</li>
+    <li>Pepperoni</li>
+    <li>Veggie</li>
+  </ul>
+
+  <hr>
+
+  <!-- 10. Basic form structure -->
+  <h2>10. Basic Form Structure</h2>
+  <!-- A form wraps inputs and a button.
+       action is where the data would be sent (not working here, just syntax). -->
+
+  <h3>Code:</h3>
+  <p>
+    <code>&lt;form action="/submit-here" method="post"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;button type="submit"&gt;Send&lt;/button&gt;</code><br>
+    <code>&lt;/form&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <form action="/submit-here" method="post">
+    <button type="submit">Send</button>
+  </form>
+
+  <hr>
+
+  <!-- 11. Label + text input -->
+  <h2>11. Text Input with Label</h2>
+  <!-- label "for" attribute connects to the input "id". -->
+
+  <h3>Code:</h3>
+  <p>
+    <code>&lt;form&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label for="name"&gt;Your name:&lt;/label&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;input type="text" id="name" name="name"&gt;</code><br>
+    <code>&lt;/form&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <form>
+    <label for="name">Your name:</label><br>
+    <input type="text" id="name" name="name">
+  </form>
+
+  <hr>
+
+  <!-- 12. Email + required + placeholder -->
+  <h2>12. Email Input (Required)</h2>
+  <!-- type="email" gives basic validation; required means the field can't be empty. -->
+
+  <h3>Code:</h3>
+  <p>
+    <code>&lt;form&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label for="email"&gt;Email address:&lt;/label&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;input type="email" id="email" name="email" placeholder="you@example.com" required&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;button type="submit"&gt;Join newsletter&lt;/button&gt;</code><br>
+    <code>&lt;/form&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <form>
+    <label for="email">Email address:</label><br>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    <br><br>
+    <button type="submit">Join newsletter</button>
+  </form>
+
+  <hr>
+
+  <!-- 13. Radio buttons and checkboxes -->
+  <h2>13. Radio Buttons and Checkboxes</h2>
+  <!-- Radios: choose ONE option from a group (same name).
+       Checkboxes: can choose many. -->
+
+  <h3>Code:</h3>
+  <p>
+    <code>&lt;form&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;p&gt;Choose a size:&lt;/p&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label&gt;&lt;input type="radio" name="size" value="small"&gt; Small&lt;/label&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label&gt;&lt;input type="radio" name="size" value="large"&gt; Large&lt;/label&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;p&gt;Extra toppings:&lt;/p&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label&gt;&lt;input type="checkbox" name="toppings" value="cheese"&gt; Extra cheese&lt;/label&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label&gt;&lt;input type="checkbox" name="toppings" value="mushrooms"&gt; Mushrooms&lt;/label&gt;</code><br>
+    <code>&lt;/form&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <form>
+    <p>Choose a size:</p>
+    <label><input type="radio" name="size" value="small"> Small</label><br>
+    <label><input type="radio" name="size" value="large"> Large</label>
+
+    <p>Extra toppings:</p>
+    <label><input type="checkbox" name="toppings" value="cheese"> Extra cheese</label><br>
+    <label><input type="checkbox" name="toppings" value="mushrooms"> Mushrooms</label>
+  </form>
+
+  <hr>
+
+  <!-- 14. Select (dropdown) and textarea -->
+  <h2>14. Select and Textarea</h2>
+  <!-- select creates a dropdown; textarea is for multi-line text. -->
+
+  <h3>Code:</h3>
+  <p>
+    <code>&lt;form&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label for="favorite"&gt;Favorite pizza:&lt;/label&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;select id="favorite" name="favorite"&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;option value="margherita"&gt;Margherita&lt;/option&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;option value="pepperoni"&gt;Pepperoni&lt;/option&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;option value="veggie"&gt;Veggie&lt;/option&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;/select&gt;&lt;br&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label for="notes"&gt;Special instructions:&lt;/label&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;textarea id="notes" name="notes" rows="3" cols="30"&gt;&lt;/textarea&gt;</code><br>
+    <code>&lt;/form&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <form>
+    <label for="favorite">Favorite pizza:</label><br>
+    <select id="favorite" name="favorite">
+      <option value="margherita">Margherita</option>
+      <option value="pepperoni">Pepperoni</option>
+      <option value="veggie">Veggie</option>
+    </select>
+    <br><br>
+    <label for="notes">Special instructions:</label><br>
+    <textarea id="notes" name="notes" rows="3" cols="30"></textarea>
+  </form>
+
+  <hr>
+
+  <!-- 15. Simple dropdown-only form -->
+  <h2>15. Dropdown-Only Form</h2>
+  <!-- A small form that only uses a dropdown and a submit button. -->
+
+  <h3>Code:</h3>
+  <p>
+    <code>&lt;form&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;label for="day"&gt;Pick a day for your order:&lt;/label&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;select id="day" name="day"&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;option value="monday"&gt;Monday&lt;/option&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;option value="friday"&gt;Friday&lt;/option&gt;</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;option value="saturday"&gt;Saturday&lt;/option&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;/select&gt;&lt;br&gt;&lt;br&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;button type="submit"&gt;Schedule order&lt;/button&gt;</code><br>
+    <code>&lt;/form&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <form>
+    <label for="day">Pick a day for your order:</label><br>
+    <select id="day" name="day">
+      <option value="monday">Monday</option>
+      <option value="friday">Friday</option>
+      <option value="saturday">Saturday</option>
+    </select>
+    <br><br>
+    <button type="submit">Schedule order</button>
+  </form>
+
+  <hr>
 
 </body>
 </html>
-

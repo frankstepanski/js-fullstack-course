@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and mobile-friendly viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Basic metadata -->
+    <title>Moonlight Pizza Co.</title>
+    <meta
+      name="description"
+      content="Moonlight Pizza Co. - A fictional pizza restaurant example page for learning HTML."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/specials.css" />
+  </head>
+  <body>
+    <!-- PAGE HEADER -->
+    <header>
+      <!-- Flexbox container: brand on the left, nav on the right -->
+      <div class="header-inner">
+        <div class="brand">
+          <h1>Moonlight Pizza Co.</h1>
+          <p>Fresh, handmade pizza baked under a midnight sky.</p>
+        </div>
+
+        <!-- Primary navigation with a clear label and list structure -->
+        <nav aria-label="Main site navigation">
+          <ul>
+            <li><a href="index.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="specials.html">Specials</a></li>
+            <li><a href="order.html">Order Online</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+      <!-- DAILY SPECIALS SECTION -->
+
+      <section id="specials" aria-labelledby="specials-heading">
+        <h2 id="specials-heading">Daily Specials</h2>
+        <p>
+          Check out our weekly deals — perfect for planning your next pizza
+          night.
+        </p>
+
+        <div class="specials-grid">
+          <article class="special-card">
+            <p class="special-day">Monday</p>
+            <h3>2-for-1 Medium Pizzas</h3>
+            <p class="special-text">
+              Buy one medium pizza, get a second one <strong>50% off</strong>.
+            </p>
+            <p class="special-tag">Start the week with a deal ✨</p>
+          </article>
+
+          <article class="special-card">
+            <p class="special-day">Wednesday</p>
+            <h3>Free Drink with Any Large</h3>
+            <p class="special-text">
+              Order any large pizza and get a <strong>free soft drink</strong>.
+            </p>
+            <p class="special-tag">Midweek recharge 🥤</p>
+          </article>
+
+          <article class="special-card">
+            <p class="special-day">Friday Night</p>
+            <h3>Family Combo Feast</h3>
+            <p class="special-text">
+              <strong>2 large pizzas + breadsticks</strong> for one
+              family-friendly price.
+            </p>
+            <p class="special-tag">Perfect for movie night 🎬</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        &copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning
+        HTML and CSS
+      </p>
+    </footer>
+  </body>
+</html>

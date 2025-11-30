@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Snippets - Basics</title>
+
+  <style>
+    /* This page demonstrates basic CSS selectors and properties for beginners.
+       Order: element selectors → class selectors → descendant selectors. */
+
+    /* ---------------------------
+       ELEMENT SELECTORS
+       --------------------------- */
+
+    /* 1. font-size on all <p> elements */
+    p.example-font-size {
+      font-size: 20px;
+    }
+
+    /* 2. color on all <h1> elements */
+    h1.example-color {
+      color: darkred;
+    }
+
+    /* 3. background-color on all <body> (page background) */
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 1rem;
+      line-height: 1.5;
+      background-color: #f9f9f9; /* light gray page background */
+    }
+
+    /* 4. text-align: center on all <h2> elements with this class */
+    h2.example-center {
+      text-align: center;
+    }
+
+    /* 5. border on all <img> elements with this class */
+    img.example-border {
+      border: 3px solid #333;
+    }
+
+    /* 6. width and height on a <div> */
+    div.example-size {
+      width: 200px;
+      height: 100px;
+      background-color: #ffeaa7;
+    }
+
+    /* 7. border + padding + margin (box model) */
+    div.example-box-model {
+      border: 2px solid #0984e3;  /* line around the box */
+      padding: 10px;              /* space INSIDE the box */
+      margin: 15px 0;             /* space OUTSIDE the box */
+      background-color: #dfe6e9;
+    }
+
+    /* ---------------------------
+       CLASS SELECTORS
+       --------------------------- */
+
+    /* 8. class selector for highlighting text */
+    .highlight {
+      color: #d35400;
+      background-color: #fff3e0;
+    }
+
+    /* 9. class selector for a reusable box */
+    .box {
+      border: 1px solid #555;
+      padding: 8px;
+      margin-bottom: 8px;
+      background-color: #ffffff;
+    }
+
+    /* 10. display: inline-block on navigation items */
+    .nav-item {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      margin-right: 0.25rem;
+      background-color: #0984e3;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    /* Simple hover so students can see a small change */
+    .nav-item:hover {
+      background-color: #0656a1;
+    }
+
+    /* ---------------------------
+       DESCENDANT / CHILD SELECTORS
+       --------------------------- */
+
+    /* 11. Descendant selector: color only paragraphs inside .note */
+    .note p {
+      color: #2d3436;
+      font-size: 0.95rem;
+    }
+
+    .note {
+      border-left: 4px solid #fdcb6e;
+      padding-left: 0.75rem;
+      margin: 1rem 0;
+      background-color: #fffaf0;
+    }
+
+    /* 12. Descendant selector: list items inside ul.example-list only */
+    ul.example-list li {
+      color: #6c5ce7;
+    }
+
+    /* 13. Child selector: style only direct <strong> inside .card-title */
+    .card-title > strong {
+      color: #e17055;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* General spacing between sections */
+    hr {
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Snippets – Basic Selectors and Properties</h1>
+  <!-- This page shows small, focused CSS examples.
+       Use it to teach: element selectors → class selectors → descendant selectors. -->
+
+  <hr>
+
+  <!-- 1. font-size with an element selector -->
+  <h2>1. Element Selector: font-size</h2>
+  <!-- We target <p> elements (with a specific class here so it doesn't affect all p's on the page). -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>p.example-font-size { font-size: 20px; }</code><br>
+    <code>&lt;p class="example-font-size"&gt;This paragraph text is larger.&lt;/p&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <p class="example-font-size">This paragraph text is larger.</p>
+
+  <hr>
+
+  <!-- 2. color with an element selector -->
+  <h2>2. Element Selector: color</h2>
+  <!-- We change the text color of an h1. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>h1.example-color { color: darkred; }</code><br>
+    <code>&lt;h1 class="example-color"&gt;This heading is dark red&lt;/h1&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <h1 class="example-color">This heading is dark red</h1>
+
+  <hr>
+
+  <!-- 3. background-color with an element selector -->
+  <h2>3. Element Selector: background-color</h2>
+  <!-- Here the body element has a light gray background. -->
+
+  <h3>Code (CSS):</h3>
+  <p>
+    <code>body { background-color: #f9f9f9; }</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <p>The whole page has a light gray background because we set <code>background-color</code> on the <code>body</code> element.</p>
+
+  <hr>
+
+  <!-- 4. text-align: center with an element selector -->
+  <h2>4. Element Selector: text-align: center</h2>
+  <!-- We center an h2 heading. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>h2.example-center { text-align: center; }</code><br>
+    <code>&lt;h2 class="example-center"&gt;Centered heading&lt;/h2&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <h2 class="example-center">Centered heading</h2>
+
+  <hr>
+
+  <!-- 5. border around an image -->
+  <h2>5. Element Selector: border</h2>
+  <!-- We put a simple border around an image. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>img.example-border { border: 3px solid #333; }</code><br>
+    <code>&lt;img class="example-border" src="https://picsum.photos/120" alt="Example image"&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <img class="example-border" src="https://picsum.photos/120" alt="Example image">
+
+  <hr>
+
+  <!-- 6. width and height -->
+  <h2>6. Element Selector: width and height</h2>
+  <!-- We give a div a fixed size. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>div.example-size { width: 200px; height: 100px; background-color: #ffeaa7; }</code><br>
+    <code>&lt;div class="example-size"&gt;Fixed-size box&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="example-size">Fixed-size box</div>
+
+  <hr>
+
+  <!-- 7. border + padding + margin (box model) -->
+  <h2>7. Element Selector: Box Model (border, padding, margin)</h2>
+  <!-- border = line around the box, padding = space inside, margin = space outside. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>div.example-box-model { border: 2px solid #0984e3; padding: 10px; margin: 15px 0; background-color: #dfe6e9; }</code><br>
+    <code>&lt;div class="example-box-model"&gt;Box model example&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="example-box-model">Box model example</div>
+
+  <hr>
+
+  <!-- CLASS SELECTORS -->
+
+  <h2>8. Class Selector: .highlight</h2>
+  <!-- Class selectors let us reuse styles on many elements. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>.highlight { color: #d35400; background-color: #fff3e0; }</code><br>
+    <code>&lt;p&gt;Normal text and &lt;span class="highlight"&gt;highlighted text&lt;/span&gt;.&lt;/p&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <p>Normal text and <span class="highlight">highlighted text</span>.</p>
+
+  <hr>
+
+  <h2>9. Class Selector: .box</h2>
+  <!-- A simple "card" we can reuse. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>.box { border: 1px solid #555; padding: 8px; margin-bottom: 8px; background-color: #ffffff; }</code><br>
+    <code>&lt;div class="box"&gt;First box&lt;/div&gt;</code><br>
+    <code>&lt;div class="box"&gt;Second box&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="box">First box</div>
+  <div class="box">Second box</div>
+
+  <hr>
+
+  <!-- 10. display: inline-block for "nav" links -->
+  <h2>10. Class Selector: display: inline-block</h2>
+  <!-- inline-block makes elements line up next to each other but still act like small boxes. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>.nav-item { display: inline-block; padding: 0.25rem 0.75rem; background-color: #0984e3; color: #fff; border-radius: 999px; }</code><br>
+    <code>&lt;a href="#" class="nav-item"&gt;Home&lt;/a&gt;</code><br>
+    <code>&lt;a href="#" class="nav-item"&gt;Menu&lt;/a&gt;</code><br>
+    <code>&lt;a href="#" class="nav-item"&gt;Contact&lt;/a&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <a href="#" class="nav-item">Home</a>
+  <a href="#" class="nav-item">Menu</a>
+  <a href="#" class="nav-item">Contact</a>
+
+  <hr>
+
+  <!-- DESCENDANT SELECTORS -->
+
+  <h2>11. Descendant Selector: .note p</h2>
+  <!-- Only paragraphs inside .note are styled. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>.note p { color: #2d3436; font-size: 0.95rem; }</code><br>
+    <code>&lt;div class="note"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;p&gt;This paragraph is inside .note and will be styled.&lt;/p&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;p&gt;This one too.&lt;/p&gt;</code><br>
+    <code>&lt;/div&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <div class="note">
+    <p>This paragraph is inside .note and will be styled.</p>
+    <p>This one too.</p>
+  </div>
+
+  <hr>
+
+  <h2>12. Descendant Selector: ul.example-list li</h2>
+  <!-- Only li elements inside ul.example-list are styled, not all li on the page. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>ul.example-list li { color: #6c5ce7; }</code><br>
+    <code>&lt;ul class="example-list"&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;li&gt;Item A&lt;/li&gt;</code><br>
+    &nbsp;&nbsp;<code>&lt;li&gt;Item B&lt;/li&gt;</code><br>
+    <code>&lt;/ul&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <ul class="example-list">
+    <li>Item A</li>
+    <li>Item B</li>
+  </ul>
+
+  <hr>
+
+  <h2>13. Child Selector: .card-title &gt; strong</h2>
+  <!-- The > selector targets only direct children, not deeper descendants. -->
+
+  <h3>Code (CSS + HTML):</h3>
+  <p>
+    <code>.card-title &gt; strong { color: #e17055; text-transform: uppercase; }</code><br>
+    <code>&lt;p class="card-title"&gt;Today&apos;s special: &lt;strong&gt;margherita pizza&lt;/strong&gt;&lt;/p&gt;</code>
+  </p>
+
+  <h3>Rendered result:</h3>
+  <p class="card-title">Today's special: <strong>margherita pizza</strong></p>
+
+  <hr>
+
+</body>
+</html>

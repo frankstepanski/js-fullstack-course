@@ -1,0 +1,47 @@
+/* ============================
+   Specials page layout
+   - 3-column grid of “special” cards
+============================ */
+
+/* Specials section layout: 3 cards per row */
+.specials-grid {
+  display: grid;                                   /* use CSS Grid for the specials layout */
+  grid-template-columns: repeat(3, minmax(0, 1fr));/* 3 equal-width columns */
+  gap: 1.5rem;                                     /* space between cards */
+  align-items: stretch;
+}
+
+/* Individual specials cards */
+.special-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f2e2cc;
+
+  display: flex;           /* stack content vertically inside the card */
+  flex-direction: column;
+  margin-top: 0;           /* override base article margin so rows line up evenly */
+}
+
+/* Consistent spacing inside each card */
+.special-card h3 {
+  margin: 0 0 0.75rem;
+}
+
+.special-card p {
+  margin: 0 0 0.5rem;
+}
+
+/* Optional styling for the "day" label */
+.special-day {
+  margin-bottom: 0.5rem;
+}
+
+/* Tag line at the bottom (e.g., “Dine-in only”) */
+.special-tag {
+  margin-top: auto;        /* push this to the bottom of the card */
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #7f7f7f;
+}

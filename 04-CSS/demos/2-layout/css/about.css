@@ -1,0 +1,85 @@
+/* ============================
+   About section layout
+   - Two-column layout: text + hours card
+   - Uses flexbox on .about-layout
+============================ */
+
+#about {
+  /* Extra padding so the section has room to breathe */
+  padding: 1.75rem 2rem;
+}
+
+/* Flexbox container:
+   left = about text, right = hours card */
+.about-layout {
+  display: flex;         /* place children side by side */
+  gap: 2rem;             /* space between the two columns */
+  align-items: flex-start; /* align items at the top */
+}
+
+/* Left column: main about text takes more space */
+.about-text {
+  flex: 2;               /* grow to take about 2/3 of the row */
+}
+
+.about-text p {
+  margin-bottom: 0.75rem;
+}
+
+/* Small tagline above the main copy */
+.about-tagline {
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b45b1f;
+  margin-bottom: 0.9rem;
+}
+
+/* Right column: "Hours" card */
+.about-hours {
+  flex: 1;               /* takes less space than the text column */
+  min-width: 240px;
+  max-width: 280px;
+  background-color: #fffaf2;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.about-hours h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #d35400;
+}
+
+/* Hours list: stacked rows with two sides:
+   left = day, right = time */
+.hours-list {
+  margin: 0;
+  padding: 0;
+}
+
+.hours-row {
+  display: flex;                  /* day and time on one line */
+  justify-content: space-between; /* push them to opposite sides */
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed #f1e0c8;
+  font-size: 0.95rem;
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+}
+
+.hours-row dt {
+  font-weight: 600;  /* day label a bit bolder */
+}
+
+.hours-row dd {
+  margin: 0;
+  text-align: right;
+}
