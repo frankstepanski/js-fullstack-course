@@ -268,7 +268,7 @@ PMs communicate regularly with:
 
 They translate business needs into actionable technical work.
 
-### 🗓️ A PM’s Day-to-Day Activities
+## 7. 🗓️ A PM’s Day-to-Day Activities
 
 #### **Morning**
 - Review standup updates  
@@ -290,7 +290,7 @@ They translate business needs into actionable technical work.
 >**In simple terms:**  
 > The PM ensures the *right work* gets done, at the *right time*, for the *right reasons*.  
 
-## 7. JIRA (Product Management Tool)
+## 8. JIRA (Product Management Tool)
 
 **Jira** is one of the most widely used tools in the software industry for tracking work, organizing tasks, and keeping teams aligned.  
 Think of Jira as a digital command center where developers, designers, and product managers all see what’s happening, what’s coming next, and what’s done.
