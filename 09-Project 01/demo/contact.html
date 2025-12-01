@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and mobile-friendly viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Basic metadata -->
+    <title>Moonlight Pizza Co.</title>
+    <meta
+      name="description"
+      content="Moonlight Pizza Co. - A fictional pizza restaurant example page for learning HTML."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+  </head>
+
+  <body>
+    <!-- PAGE HEADER -->
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <h1>Moonlight Pizza Co.</h1>
+          <p>Fresh, handmade pizza baked under a midnight sky.</p>
+        </div>
+
+        <nav aria-label="Main site navigation">
+          <ul>
+            <li><a href="index.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="specials.html">Specials</a></li>
+            <li><a href="order.html">Order Online</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+      <!-- CONTACT & LOCATION SECTION -->
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact &amp; Location</h2>
+
+        <div class="contact-layout">
+          <div class="contact-card">
+            <h3>Visit Us</h3>
+            <address>
+              <p>
+                <strong>Address:</strong><br />
+                123 Moonlight Lane<br />
+                Fictional City, Web 00000
+              </p>
+              <p>
+                <strong>Phone:</strong><br />
+                <a href="tel:+15559876543">(555) 987-6543</a>
+              </p>
+              <p>
+                <strong>Email:</strong><br />
+                <a href="mailto:hello@moonlightpizza.example"
+                  >hello@moonlightpizza.example</a
+                >
+              </p>
+            </address>
+          </div>
+
+          <div class="contact-card">
+            <h3>Get in Touch</h3>
+            <p>
+              Have a question about your order, planning a party, or curious
+              about our (fictional) catering options? We'd love to hear from
+              you.
+            </p>
+            <p>
+              For now, this is just a demo page, but it shows how you might
+              highlight different ways to contact a real restaurant.
+            </p>
+
+            <div class="contact-actions">
+              <a class="contact-button" href="tel:+15559876543">Call Us</a>
+              <a
+                class="contact-button contact-button-secondary"
+                href="mailto:hello@moonlightpizza.example"
+              >
+                Email Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        &copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning
+        HTML and CSS
+      </p>
+    </footer>
+  </body>
+</html>

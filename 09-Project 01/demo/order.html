@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and mobile-friendly viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Basic metadata -->
+    <title>Moonlight Pizza Co.</title>
+    <meta
+      name="description"
+      content="Moonlight Pizza Co. - A fictional pizza restaurant example page for learning HTML."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/order.css" />
+  </head>
+  <body>
+    <!-- PAGE HEADER -->
+    <header>
+      <!-- Flexbox container: brand on the left, nav on the right -->
+      <div class="header-inner">
+        <div class="brand">
+          <h1>Moonlight Pizza Co.</h1>
+          <p>Fresh, handmade pizza baked under a midnight sky.</p>
+        </div>
+
+        <!-- Primary navigation with a clear label and list structure -->
+        <nav aria-label="Main site navigation">
+          <ul>
+            <li><a href="index.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="specials.html">Specials</a></li>
+            <li><a href="order.html">Order Online</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+      <!-- ORDER FORM SECTION -->
+      <section id="order" aria-labelledby="order-heading">
+        <h2 id="order-heading">Order Online</h2>
+        <p id="order-description">
+          This form doesn’t actually place an order, but it shows how a basic
+          order form might look. In a real app, the <code>action</code> would
+          send data to a backend.
+        </p>
+
+        <form
+          action="/place-order"
+          method="post"
+          aria-describedby="order-description"
+        >
+          <div class="form-columns">
+            <fieldset>
+              <legend>Your Information</legend>
+
+              <div>
+                <label for="name">Full Name:</label><br />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Taylor Swift"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+
+              <br />
+
+              <div>
+                <label for="phone">Phone Number:</label><br />
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="555-123-4567"
+                  required
+                  autocomplete="tel"
+                />
+              </div>
+
+              <br />
+
+              <div>
+                <label for="pickup-delivery">Pickup or Delivery?</label><br />
+                <select id="pickup-delivery" name="order_type">
+                  <option value="pickup">Pickup</option>
+                  <option value="delivery">Delivery</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Your Pizza</legend>
+
+              <div>
+                <label for="pizza-type">Choose a pizza:</label><br />
+                <select id="pizza-type" name="pizza_type">
+                  <option value="margherita">The Classic Margherita</option>
+                  <option value="supreme">Moonlight Supreme</option>
+                  <option value="veggie">Stargazer Veggie</option>
+                  <option value="bbq-chicken">Comet BBQ Chicken</option>
+                </select>
+              </div>
+
+              <br />
+
+              <fieldset>
+                <legend>Size</legend>
+                <div>
+                  <input
+                    type="radio"
+                    id="size-medium"
+                    name="size"
+                    value="medium"
+                    checked
+                  />
+                  <label for="size-medium">Medium</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="size-large"
+                    name="size"
+                    value="large"
+                  />
+                  <label for="size-large">Large</label>
+                </div>
+              </fieldset>
+
+              <br />
+
+              <div>
+                <label for="extra-notes">Extra notes (optional):</label><br />
+                <textarea
+                  id="extra-notes"
+                  name="notes"
+                  rows="3"
+                  cols="30"
+                  placeholder="No onions, extra cheese, etc."
+                ></textarea>
+              </div>
+            </fieldset>
+          </div>
+
+          <br />
+
+          <button type="submit">Place Order (Demo)</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        &copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning
+        HTML and CSS
+      </p>
+    </footer>
+    
+  </body>
+</html>

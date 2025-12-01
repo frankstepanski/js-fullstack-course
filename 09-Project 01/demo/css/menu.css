@@ -1,0 +1,111 @@
+/* ============================
+   Menu page layout (mobile-first)
+   - Default: single-column list
+   - Larger screens: 2-column grid
+   - Each card: image + text
+============================ */
+
+/* MOBILE DEFAULT:
+   - One card per row */
+.menu-columns {
+  display: grid;                  /* CSS Grid for the overall layout */
+  grid-template-columns: 1fr;     /* single column on small screens */
+  gap: 1rem;                      /* space between cards */
+  align-items: stretch;
+}
+
+/* Individual menu cards */
+.menu-columns article {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  background-color: #fffdf8;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Card heading (e.g., “Margherita Pizza”) */
+.menu-columns h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* Inside each card:
+   MOBILE DEFAULT: stack image above text */
+.menu-card-content {
+  display: flex;
+  flex-direction: column;   /* image on top, text below */
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* Image container (figure) */
+.menu-card-content figure {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.4rem;
+  border-radius: 12px;
+  background-color: #fff;   /* white card inside the creamy card */
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  text-align: center;
+  width: 100%;              /* let it fill the card width on mobile */
+}
+
+/* Menu item image */
+.menu-card-content img {
+  display: block;
+  width: 100%;             /* fill the figure width */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Small caption under the image (optional) */
+.menu-card-content figcaption {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Text column under the image on mobile */
+.menu-card-text {
+  flex: 1;
+}
+
+/* Description + price text */
+.menu-card-text p {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Last paragraph often used for price or highlight line */
+.menu-card-text p:last-of-type {
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* ============================
+   MEDIA QUERY: larger screens
+   - 2 columns
+   - Image + text side by side
+============================ */
+
+@media (min-width: 768px) {
+  .menu-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 equal-width columns */
+    gap: 1.25rem;
+  }
+
+  .menu-card-content {
+    flex-direction: row;   /* image | text side by side */
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .menu-card-content figure {
+    flex: 0 0 130px;       /* fixed image column width on larger screens */
+    width: auto;           /* let flexbox control the width now */
+  }
+}
