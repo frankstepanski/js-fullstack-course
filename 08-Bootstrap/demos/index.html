@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vite-project</title>
+  </head>
+  <body class="bg-light">
+
+ <header class="moonlight-hero">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+        <!-- Brand -->
+        <div>
+          <h1 class="moonlight-brand-title mb-1">Moonlight Pizza Co.</h1>
+          <p class="moonlight-brand-tagline">
+            Fresh, handmade pizza baked under a midnight sky.
+          </p>
+        </div>
+
+        <!-- Nav using Bootstrap pills -->
+        <nav aria-label="Main site navigation">
+          <ul class="nav nav-pills flex-wrap">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="menu.html">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="specials.html">Specials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="order.html">Order Online</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================
+       MAIN CONTENT
+  ============================= -->
+  <main id="main-content" class="py-4">
+    <div class="container">
+      <!-- ABOUT SECTION -->
+      <section
+        id="about"
+        aria-labelledby="about-heading"
+        class="moonlight-section"
+      >
+        <h2 id="about-heading">About Moonlight Pizza Co.</h2>
+
+        <div class="row g-4 align-items-start">
+          <!-- Left column: about text -->
+          <div class="col-12 col-lg-8">
+            <p class="about-tagline">
+              Neighborhood favorite • Wood-fired crust • Late-night slices
+            </p>
+
+            <p>
+              Welcome to <strong>Moonlight Pizza Co.</strong>, a fictional
+              neighborhood pizza spot created to help you learn HTML, CSS, and
+              Bootstrap. We may not exist in real life, but your code does!
+            </p>
+
+            <p>
+              Our “story” is simple: crispy crust, fresh toppings, and a menu
+              that’s easy to read for both humans and browsers. This page is a
+              mini demo of how you can combine semantic structure with clean
+              design to introduce a business.
+            </p>
+          </div>
+
+          <!-- Right column: hours card -->
+          <aside
+            class="col-12 col-lg-4 d-flex justify-content-lg-end"
+            aria-label="Restaurant hours"
+          >
+            <div class="about-hours-card w-100">
+              <h3>Hours</h3>
+              <dl class="mb-0">
+                <div class="hours-row d-flex justify-content-between gap-2">
+                  <dt class="fw-semibold mb-0">Mon – Thu</dt>
+                  <dd class="mb-0 text-end">11:00 AM – 9:00 PM</dd>
+                </div>
+                <div class="hours-row d-flex justify-content-between gap-2">
+                  <dt class="fw-semibold mb-0">Fri – Sat</dt>
+                  <dd class="mb-0 text-end">11:00 AM – 11:00 PM</dd>
+                </div>
+                <div class="hours-row d-flex justify-content-between gap-2">
+                  <dt class="fw-semibold mb-0">Sun</dt>
+                  <dd class="mb-0 text-end">12:00 PM – 8:00 PM</dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============================
+       FOOTER
+  ============================= -->
+  <footer class="moonlight-footer">
+    <p class="mb-0">
+      &copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning
+      HTML, CSS, and Bootstrap
+    </p>
+  </footer>
+
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

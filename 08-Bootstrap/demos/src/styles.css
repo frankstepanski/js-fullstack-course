@@ -1,0 +1,117 @@
+    :root {
+      --moonlight-bg: #faf5ef;
+      --moonlight-orange: #d35400;
+      --moonlight-navy: #2b2d42;
+      --moonlight-tagline: #b45b1f;
+      --moonlight-hours-bg: #fffaf2;
+      --moonlight-hours-border: #f1e0c8;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background-color: var(--moonlight-bg);
+      color: #222;
+    }
+
+    /* Hero header with background image + overlay */
+    header.moonlight-hero {
+      position: relative;
+      background-image: url("images/pizza-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+      padding: 4rem 1rem;
+    }
+
+    header.moonlight-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
+
+    header.moonlight-hero > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Brand text tweaks */
+    .moonlight-brand-title {
+      font-size: 2.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .moonlight-brand-tagline {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    /* Section card look (like original white card sections) */
+    section.moonlight-section {
+      background-color: #ffffff;
+      margin: 1.5rem 0;
+      padding: 1.5rem 1.75rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    section.moonlight-section h2 {
+      color: var(--moonlight-orange);
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    section.moonlight-section h3 {
+      color: #34495e;
+    }
+
+    /* About tagline */
+    .about-tagline {
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--moonlight-tagline);
+      margin-bottom: 0.9rem;
+    }
+
+    /* Hours card (right column) */
+    .about-hours-card {
+      background-color: var(--moonlight-hours-bg);
+      border-radius: 0.75rem;
+      border: 1px solid var(--moonlight-hours-border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      padding: 1rem 1.1rem;
+      min-width: 240px;
+      max-width: 280px;
+    }
+
+    .about-hours-card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--moonlight-orange);
+    }
+
+    .hours-row {
+      border-bottom: 1px dashed var(--moonlight-hours-border);
+      padding: 0.35rem 0;
+      font-size: 0.95rem;
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    footer.moonlight-footer {
+      background-color: var(--moonlight-navy);
+      color: #fff;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }

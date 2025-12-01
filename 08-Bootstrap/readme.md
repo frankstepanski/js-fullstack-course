@@ -230,7 +230,7 @@ A normal browser **cannot** handle all these features by itself. This is where *
 
 ### What Vite Actually Does 
 
-Think of Vite as a **toolbox** that prepares your website so the browser can understand it — and so it loads fast when deployed.
+Think of [Vite](https://vite.dev/) as a **toolbox** that prepares your website so the browser can understand it — and so it loads fast when deployed.
 
 #### 🌟 Vite Makes Your Code Work in the Browser
 
@@ -255,37 +255,6 @@ Vite solves this by:
 - rewriting the file paths
 - bundling CSS + JS together
 - making everything browser-friendly
-
-Without Vite, **imports break**.
-
-#### 🌟 Vite Makes Your Website Load Faster
-
-Before deployment, Vite:
-
-- **minifies** files (removes whitespace)
-- **bundles** code (fewer network requests)
-- **removes unused code**
-- **optimizes assets**
-
-This produces a fast, professional-quality build.
-
-#### 🌟 Vite Gives You a Professional Dev Server
-
-When you run:
-
-```bash
-npm run dev
-```
-
-You get:
-
-- instant page reloads  
-- fast updates when you save files  
-- support for modern JS imports  
-- readable error messages  
-- zero configuration needed  
-
-This lets you develop like real frontend engineers.
 
 ### 1️⃣ Step 1 – Create a Vite Project
 
@@ -386,18 +355,6 @@ http://localhost:5173/
 Open that URL.  
 You should now see Bootstrap fully applied with no errors.
 
-#### 🌟 Why Vite Works
-
-- Understands imports like:
-
-  ```js
-  import "bootstrap/dist/css/bootstrap.min.css";
-  ```
-
-- Rewrites them into valid browser URLs  
-- Bundles CSS imports correctly  
-- Supports modern module syntax  
-
 ```
  ┌──────────────────────────────────────────────────────────────┐
  │                        YOUR PROJECT                           │
@@ -439,6 +396,7 @@ You should now see Bootstrap fully applied with no errors.
                  └──────────────────────┘
 ```
 
+> 💡 To learn more about Vite and how to properly deploy a website that uses Vite, [read here](1-what-does-vite-do.md).
 
 ##  3. What Is a Component?
 
