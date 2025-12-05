@@ -1,0 +1,118 @@
+{
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "The Classic Margherita",
+      "description": "Tomato sauce, fresh mozzarella, basil, and a drizzle of olive oil.",
+      "prices": {
+        "medium": 12.0,
+        "large": 15.0
+      },
+      "imageSrc": "images/pizza-margherita.png",
+      "imageAlt": "Classic margherita pizza with tomato, mozzarella, and basil",
+      "imageCaption": "Simple, fresh, and delicious."
+    },
+    {
+      "id": 2,
+      "name": "Moonlight Supreme",
+      "description": "Pepperoni, sausage, mushrooms, onions, and bell peppers on our signature crust.",
+      "prices": {
+        "medium": 16.0,
+        "large": 19.0
+      },
+      "imageSrc": "images/pizza-supreme.png",
+      "imageAlt": "Supreme pizza with pepperoni, sausage, mushrooms, and peppers",
+      "imageCaption": "Loaded with toppings for big appetites."
+    },
+    {
+      "id": 3,
+      "name": "Stargazer Veggie",
+      "description": "Spinach, olives, roasted red peppers, mushrooms, and feta cheese.",
+      "prices": {
+        "medium": 14.0,
+        "large": 17.0
+      },
+      "imageSrc": "images/pizza-veggie.png",
+      "imageAlt": "Vegetarian pizza with spinach, olives, mushrooms, and peppers",
+      "imageCaption": "Colorful veggies on a crispy base."
+    },
+    {
+      "id": 4,
+      "name": "Comet BBQ Chicken",
+      "description": "BBQ sauce, grilled chicken, red onions, and cilantro, topped with mozzarella and cheddar.",
+      "prices": {
+        "medium": 15.0,
+        "large": 18.0
+      },
+      "imageSrc": "images/pizza-bbq.png",
+      "imageAlt": "BBQ chicken pizza with red onions and cilantro",
+      "imageCaption": "Smoky, tangy, and cheesy."
+    }
+  ],
+  "specials": [
+    {
+      "id": 1,
+      "dayLabel": "Monday",
+      "title": "2-for-1 Medium Pizzas",
+      "descriptionHtml": "Buy one medium pizza, get a second one <strong>50% off</strong>.",
+      "tagline": "Start the week with a deal ✨"
+    },
+    {
+      "id": 2,
+      "dayLabel": "Wednesday",
+      "title": "Free Drink with Any Large",
+      "descriptionHtml": "Order any large pizza and get a <strong>free soft drink</strong>.",
+      "tagline": "Midweek recharge 🥤"
+    },
+    {
+      "id": 3,
+      "dayLabel": "Friday Night",
+      "title": "Family Combo Feast",
+      "descriptionHtml": "<strong>2 large pizzas + breadsticks</strong> for one family-friendly price.",
+      "tagline": "Perfect for movie night 🎬"
+    }
+  ],
+ "contactCards": [
+    {
+      "id": 1,
+      "type": "visit",
+      "title": "Visit Us",
+      "addressLines": [
+        "123 Moonlight Lane",
+        "Fictional City, Web 00000"
+      ],
+      "phoneDisplay": "(555) 987-6543",
+      "phoneHref": "tel:+15559876543",
+      "emailDisplay": "hello@moonlightpizza.example",
+      "emailHref": "mailto:hello@moonlightpizza.example"
+    },
+    {
+      "id": 2,
+      "type": "info",
+      "title": "Get in Touch",
+      "paragraphs": [
+        "Have a question about your order, planning a party, or curious about our (fictional) catering options? We'd love to hear from you.",
+        "For now, this is just a demo page, but it shows how you might highlight different ways to contact a real restaurant."
+      ],
+      "actions": [
+        {
+          "kind": "primary",
+          "label": "Call Us",
+          "href": "tel:+15559876543"
+        },
+        {
+          "kind": "secondary",
+          "label": "Email Us",
+          "href": "mailto:hello@moonlightpizza.example"
+        }
+      ]
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "items": []
+    }
+  ],
+  "orders": []
+}

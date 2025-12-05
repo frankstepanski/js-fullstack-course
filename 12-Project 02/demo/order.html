@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and mobile-friendly viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Basic metadata -->
+    <title>Moonlight Pizza Co.</title>
+    <meta
+      name="description"
+      content="Moonlight Pizza Co. - A fictional pizza restaurant example page for learning HTML."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/order.css" />
+
+   <script src="order.js" defer></script>
+
+  </head>
+  <body>
+    <!-- PAGE HEADER -->
+    <header>
+      <!-- Flexbox container: brand on the left, nav on the right -->
+      <div class="header-inner">
+        <div class="brand">
+          <h1>Moonlight Pizza Co.</h1>
+          <p>Fresh, handmade pizza baked under a midnight sky.</p>
+        </div>
+
+        <!-- Primary navigation with a clear label and list structure -->
+        <nav aria-label="Main site navigation">
+          <ul>
+            <li><a href="index.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="specials.html">Specials</a></li>
+            <li><a href="order.html">Order Online</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+ <!-- MAIN CONTENT -->
+    <main id="main-content">
+     <section id="order" aria-labelledby="order-heading">
+  <h2 id="order-heading">Order Online</h2>
+  <p id="order-description">
+    Build a pretend order from our menu. When you place your order, it will be
+    saved to a local JSON API (json-server) for demo purposes.
+  </p>
+
+  <div class="order-layout">
+    <!-- Left: menu list -->
+    <section aria-label="Menu" class="order-menu">
+      <h3>Menu</h3>
+      <p id="menu-status">Loading menu…</p>
+      <ul id="menu-list" class="menu-list"></ul>
+    </section>
+
+    <!-- Right: cart + actions -->
+    <aside aria-label="Cart" class="order-cart">
+      <h3>Your Cart</h3>
+      <ul id="cart-list" class="cart-list"></ul>
+      <p id="cart-total" class="cart-total">Total: $0.00</p>
+
+      <div class="cart-actions">
+        <button type="button" id="cart-clear">Clear Cart</button>
+        <button type="button" id="cart-checkout">Place Order (Demo)</button>
+      </div>
+
+      <p id="order-status" class="order-status" aria-live="polite"></p>
+    </aside>
+  </div>
+</section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        &copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning
+        HTML and CSS
+      </p>
+    </footer>
+    
+  </body>
+</html>
