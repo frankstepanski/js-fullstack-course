@@ -112,8 +112,33 @@ By the end of this course, you will:
 - Debug confidently with modern tools  
 - Use Git, GitHub, and Agile workflows collaboratively  
 - Present your work like a professional engineer  
+- **Think like an engineer — solve problems you haven’t seen before**
 
-Whether you’re preparing for a new career or leveling up your skills, this course gives you the tools, experience, and confidence to build real-world projects.
+### 🧠 Engineering Mindset: Solving the Unknown
+
+>Being a great developer isn’t just about knowing the tech stack — it’s about solving real problems, including ones you've never seen before.
+
+You’ll learn how to:
+
+- Break large, unfamiliar problems into smaller, manageable steps
+- Google effectively and read documentation like a pro
+- Adapt patterns and code snippets to new use-cases
+- Think critically and test multiple solutions
+- Stay curious and persistent when the answer isn’t obvious
+- **Use AI tools wisely to accelerate your learning and problem-solving**
+
+### 🤖 Using AI Tools as a Problem-Solving Partner
+
+Modern software engineers increasingly use AI tools to work faster and smarter. You’ll practice how to:
+
+- Use tools like **GitHub Copilot**, **ChatGPT**, **Cursor**, and **Codeium** to get unstuck and explore code solutions  
+- Prompt AI clearly with context and constraints (e.g. "Write a function in JavaScript that...")  
+- Review and refine AI-generated code, rather than copy-pasting blindly  
+- Use AI as a research assistant — summarizing docs, explaining errors, or generating boilerplate code  
+- Avoid over-reliance: always understand what code does before using it  
+
+AI tools are powerful collaborators — but **your logic, judgment, and debugging skills still matter most**. You'll learn how to balance speed with understanding as you grow from beginner to builder.
+
 
 **Ready to build? Let’s get started — one line of code at a time. 💻✨**
 
