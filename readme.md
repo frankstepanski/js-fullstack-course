@@ -96,12 +96,6 @@ Mastering code is only one part of becoming a professional engineer. You'll also
 - Common question types: data structures, system design, behavioral
 - **STAR** method for communicating clearly in interviews
 
-### 🎭 Mock Interview Practice
-
-- Mock interviews with peers, mentors, and staff
-- Practice both behavioral and technical interviews
-- Get personalized feedback and build interview stamina
-
 ## 🌱 From Beginner to Builder
 
 By the end of this course, you will:
