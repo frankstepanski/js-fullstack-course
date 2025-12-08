@@ -110,7 +110,7 @@ By the end of this course, you will:
 - Design and deploy secure REST APIs  
 - Structure clean, maintainable JavaScript code  
 - Debug confidently with modern tools  
-- Understand the importance of **testing**, including unit tests, debugging, and test-driven development (TDD)  
+- Understand **testing**, including unit tests, debugging, and test-driven development (TDD)  
 - Present your work like a professional engineer  
 - **Think like an engineer — solve problems you haven’t seen before**
 
