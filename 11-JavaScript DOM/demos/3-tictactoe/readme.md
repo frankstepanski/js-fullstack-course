@@ -6,8 +6,6 @@ This project strengthens your understanding of **layout (CSS Grid)**, **logic (J
 
 By completing this, you’ll have a small but complete web application — something that reacts to user actions, updates dynamically, and represents real-world software development patterns in miniature.
 
----
-
 ### What the Game Should Do (Functionality)
 
 - Two players: **X** and **O**, taking turns.  
@@ -17,8 +15,6 @@ By completing this, you’ll have a small but complete web application — somet
 - If all 9 cells are filled without a winner, it’s a **draw**.  
 - A **status message** shows whose turn it is or who won.  
 - A **Reset** button clears the board and starts a new game.
-
----
 
 ### How We’ll Build the Interface (Board, Cells, Layout)
 
@@ -40,8 +36,6 @@ By completing this, you’ll have a small but complete web application — somet
 ```
 
 Each cell corresponds to an index in the JavaScript array.
-
----
 
 ### High-Level Flow (How It Works) 
 
@@ -127,8 +121,6 @@ function render() {
 | Forgetting to re-render | UI doesn’t match state | Call `render()` after each state change |
 
 > **Pro Tip:** Even without frameworks like React, thinking in terms of **state + render** will make your JavaScript code cleaner, more predictable, and easier to debug.
-
----
 
 ### Step-by-Step Implementation
 
@@ -274,8 +266,6 @@ function render() {
 </script>
 ```
 
----
-
 ### Key Ideas Explained
 
 - **Winning Combinations**: Predefined sets of 3 cells that make a win.  
@@ -284,16 +274,6 @@ function render() {
 - **Switching Turns**: Toggle between X and O each move.  
 - **Draws**: When all cells are filled and no winner is found.
 
----
-
-### Try It Yourself
-
-1. Highlight the winning row or column.  
-2. Add a scoreboard.  
-3. Add an “O starts first” toggle.  
-4. Prevent clicking the same cell twice.  
-
----
 
 ### Common Mistakes & Pro Tips
 
@@ -364,8 +344,6 @@ function onCellClick(e) {
 
 This is simple, explicit, and scales well when elements might be **reordered** in the DOM (the mapping lives on the element itself).
 
----
-
 ### C) Alternatives to `data-*` (pros, cons, examples)
 
 There are several other valid ways to map a DOM element to your **board index**. Use whichever fits your app’s structure and team conventions.
@@ -386,8 +364,6 @@ function onCellClick(e) {
 **Pros:** No extra HTML attributes.  
 **Cons:** Breaks if DOM order and board order ever diverge (e.g., reordering, new nodes).
 
----
-
 ### 2) Use predictable `id`s (e.g., `id="cell-5"`) and parse
 Instead of `data-index`, store the index in an `id` and extract it.
 
@@ -404,8 +380,6 @@ function onCellClick(e) {
 
 **Pros:** Readable and familiar.  
 **Cons:** `id`s must be **unique**, and parsing strings can be brittle if you later change the naming scheme.
-
----
 
 ### 3) Use a 2D row/col map (then compute to 0..8)
 If you think in **rows and columns**, encode those and compute the linear index.
@@ -424,8 +398,6 @@ function onCellClick(e) {
 
 **Pros:** Clear mental model for grid‑based games; scales to bigger boards.  
 **Cons:** Slightly more typing; still uses `data-*` (but more descriptive).
-
----
 
 ### 4) Event delegation + a prebuilt Map
 Attach **one** listener to the board, and keep a `Map<Element, index>`.
@@ -446,8 +418,6 @@ boardEl.addEventListener('click', (e) => {
 **Pros:** One listener for many cells; flexible for dynamic content.  
 **Cons:** Slightly more advanced; you must keep the Map in sync if cells are recreated.
 
----
-
 ### 5) Closures when generating cells in JS
 If you **create the grid in JavaScript**, you can close over `i` directly (no attributes needed).
 
@@ -466,7 +436,6 @@ for (let i = 0; i < 9; i++) {
 **Pros:** Clean; no parsing; no dataset needed.  
 **Cons:** Only applies when you **generate elements programmatically**.
 
----
 
 ### D) Which approach should I choose?
 
@@ -480,8 +449,6 @@ for (let i = 0; i < 9; i++) {
 | JS‑generated with closures | You create cells in JS | Not applicable to static HTML grids |
 
 **Beginner recommendation:** Start with **`data-index`**. It’s explicit, easy to read, and resilient to layout changes. As you grow, try event delegation or JS‑generated grids with closures for larger or dynamic apps.
-
----
 
 ### E) Common mistakes (and how to avoid them)
 
@@ -497,8 +464,6 @@ for (let i = 0; i < 9; i++) {
 - **Using non‑standard attributes**  
   Don’t invent `index="3"` — use `data-index="3"` to stay valid and semantic.
 
----
-
 ### F) Tiny refactor: dataset → NodeList index (no `data-*`)
 
 ```js
@@ -511,8 +476,6 @@ function onCellClick(e) {
 ```
 
 And the reverse (NodeList index → dataset) is as simple as adding `data-index` back into HTML and reading `.dataset.index`.
-
----
 
 ### Visual Overview of How the Game Works
 

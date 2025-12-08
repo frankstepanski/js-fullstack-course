@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pizza Slice Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <h1 class="app-title">Pizza Slice Counter 🍕</h1>
+
+      <p class="app-subtitle">
+        Click the buttons to choose how many slices you want.
+      </p>
+
+      <div class="count-display">
+        <span id="slice-count">0</span>
+        <span class="count-label">slices</span>
+      </div>
+
+      <p id="status-message" class="status-message">
+        No slices yet. Start your order!
+      </p>
+
+      <div class="button-row">
+        <button id="decrease-btn" class="btn">– Remove slice</button>
+        <button id="increase-btn" class="btn btn-primary">+ Add slice</button>
+        <button id="reset-btn" class="btn btn-secondary">Reset</button>
+      </div>
+    </section>
+  </main>
+
+
+</body>
+</html>
