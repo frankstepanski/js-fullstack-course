@@ -80,12 +80,27 @@ You’ll learn the foundations of Agile and the **Scrum** framework:
 - Sprint planning & retrospectives  
 - Team roles: Developer, Product Owner, Scrum Master  
 
-You’ll also practice:
+## 💼 Career Readiness: Job Search Prep
 
-- Breaking features down into tasks  
-- Managing work using JIRA or Trello  
-- Reviewing, demoing, and deploying your work  
-- Collaborating effectively in a team environment  
+Mastering code is only one part of becoming a professional engineer. You'll also build the confidence and skills to get hired.
+
+### ✍️ Resume & LinkedIn Best Practices
+
+- Learn how to write strong bullet points using the **impact → action → context** framework
+- Highlight projects with live links, GitHub repos, and tech stack
+- Tailor your profile to reflect real-world development experience
+
+### 🗣️ Interview Preparation
+
+- Technical interview strategies (whiteboarding, pair coding, debugging)
+- Common question types: data structures, system design, behavioral
+- **STAR** method for communicating clearly in interviews
+
+### 🎭 Mock Interview Practice
+
+- Mock interviews with peers, mentors, and staff
+- Practice both behavioral and technical interviews
+- Get personalized feedback and build interview stamina
 
 ## 🌱 From Beginner to Builder
 
