@@ -141,7 +141,7 @@ You can think of `git init` as saying:
 
 > “Hey Git, this folder is now a project. Please start tracking changes here.”
 
-### 🔹 Recommended Steps to Create a New Local Git Repo
+### Recommended Steps to Create a New Local Git Repo
 
 1. **Create a project folder**
 
@@ -181,7 +181,7 @@ Untracked files:
 
 This means Git is aware of `README.md`, but it’s not being tracked yet.
 
-### 🔹 When to use `git init`
+### When to use `git init`
 
 Use `git init` when:
 
@@ -203,7 +203,7 @@ Use `git init` when:
 
 You should get used to running `git status` often—it’s like a dashboard for your project.
 
-### 🔹 Example
+### Example
 
 ```bash
 git status
@@ -234,12 +234,12 @@ Use `git status` whenever you’re unsure what’s going on. It’s your best fr
 
 The `git add` command tells Git which files you want to include in your next snapshot (commit).
 
-### 🔹 What the staging area is
+### What the staging area is
 Imagine taking individual pages from your desk and placing them into a tray labeled **“Ready to Save.”**
 
 Those pages represent **modified files**, and the tray is your **staging area**.
 
-### 🔹 Example
+### Example
 
 ```bash
 git add index.html
@@ -269,13 +269,13 @@ You can add just one file, some files, or all files.
 
 A **commit** is a permanent snapshot of your project at a specific moment in time—like clicking “Save As” on an entire folder.
 
-### 🔹 Example
+### Example
 
 ```bash
 git commit -m "Add homepage layout and styles"
 ```
 
-### 🔹 What a commit message should do
+### What a commit message should do
 Think of commit messages like diary entries:
 
 - What did you do?
@@ -287,7 +287,7 @@ Examples:
 - `"Add user login form"`
 - `"Update README with setup instructions"`
 
-### 🔹 Why commits matter
+### Why commits matter
 Commits allow you to:
 
 - Undo mistakes  
@@ -306,7 +306,7 @@ Once you have commits saved locally, you need to **upload** (push) them to GitHu
 
 GitHub is your **online backup**, your **portfolio**, and your future collaboration space.
 
-### 🔹 Example
+### Example
 
 ```bash
 git push
@@ -318,11 +318,11 @@ If it’s your first push:
 git push -u origin main
 ```
 
-### 🔹 What push actually does
+### What push actually does
 Think of GitHub as a remote copy of your project.  
 Pushing sends the snapshots from your local repo to the remote repo.
 
-### 🔹 When to push
+### When to push
 - After finishing a feature  
 - At the end of a work session  
 - Before switching computers  
@@ -337,19 +337,19 @@ Always push your work!
 
 `git pull` is how you keep your local project **up to date** with GitHub.
 
-### 🔹 Example
+### Example
 
 ```bash
 git pull
 ```
 
-### 🔹 What it does
+### What it does
 Git pull performs two actions:
 
 1. **Fetch** — downloads new data from GitHub  
 2. **Merge** — integrates those changes into your local project  
 
-### 🔹 When to pull
+### When to pull
 - Before you start working  
 - If you switch devices  
 - After making changes on GitHub  
@@ -363,13 +363,13 @@ Always pull *before* you start typing code—it prevents conflicts later.
 
 `git fetch` downloads the latest information from GitHub but **does not** merge or update your working files.
 
-### 🔹 Example
+### Example
 
 ```bash
 git fetch
 ```
 
-### 🔹 Why fetch is useful
+### Why fetch is useful
 Think of fetch as checking your mailbox:
 
 - You see new mail arrived  
