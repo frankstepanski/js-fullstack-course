@@ -409,7 +409,7 @@ git log main..origin/main   # show what changed
 
 Great for reviewing changes before applying them.
 
-## ⭐ 4.2 `git merge`  
+##  4.2 `git merge`  
 ### Combines updates into your current branch
 
 Merge applies changes you fetched:
@@ -745,11 +745,11 @@ Use this when:
 Conflict:
 
 ```
-<<<<<<< HEAD
+<<<<<< HEAD
 <h1>Welcome</h1>
 =======
 <h1>Welcome to MyApp</h1>
->>>>>>> feature-login
+>>>>>> feature-login
 ```
 
 Combined solution:

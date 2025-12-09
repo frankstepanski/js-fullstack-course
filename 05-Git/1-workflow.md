@@ -20,6 +20,112 @@ Git helps you:
 
 Once you learn the basic workflow, Git becomes a powerful *safety net* and *time machine* for your code.
 
+## How Do I Start a Project?
+
+When you start working with Git + GitHub, you have **three different ways** to begin a project—and choosing the right one depends on **what you’re trying to do**.
+
+### Option 1 — `git init`
+
+#### Use when: you’re starting a brand‑new project from scratch on your computer.
+
+```bash
+mkdir my-project
+cd my-project
+git init
+```
+
+Creates:
+- a folder
+- a `.git/` history
+- **no remote GitHub repo yet**
+
+### Option 2 — `git clone`
+#### Use when: a project already exists on GitHub and you want a **local working copy**.
+
+This downloads:
+- all files
+- commit history
+- branches
+- and automatically connects to GitHub
+
+Example:
+```bash
+git clone https://github.com/someone/cool-project.git
+```
+
+Now you have a folder like:
+```
+cool-project/
+  index.js
+  package.json
+  .git
+```
+
+> **Note:** you can commit + push if you own the repo **or have permission**.
+
+### Option 3 — GitHub **Fork**
+
+#### Use when: you want **your own copy** of someone else’s repo
+and you **don’t have permission to push to theirs**.
+
+#### Step 1️⃣ Click “Fork” on GitHub
+This makes a **new repo in your own GitHub account**.
+
+Example:
+```
+github.com/yourName/cool-project
+```
+
+#### Step 2️⃣ Clone your fork
+```bash
+git clone https://github.com/yourName/cool-project.git
+```
+
+Now you can:
+- commit normally
+- push normally
+- open pull requests
+
+---
+
+### Which should I use in these situations?
+
+#### 🟩 Starting a new project
+```text
+git init
+```
+
+#### 🟦 Working on a class assignment you already own
+```text
+git clone
+```
+
+#### 🟨 Contributing to open source
+```text
+Fork → Clone your fork → PR
+```
+
+#### 🟪 Editing someone else’s repo you don’t own
+Fork → clone your fork  
+
+---
+
+| Action      | You Own Repo? | Creates new GitHub repo? | Local copy? | Use Case                |
+|-------------|---------------|---------------------------|-------------|--------------------------|
+| `git init`  | ✅             | ❌                         | ✅           | new project              |
+| `git clone` | ✅ or access   | ❌                         | ✅           | existing repo            |
+| Fork        | ❌             | ✅                         | ✅ (after clone) | open-source / PR work |
+
+---
+
+### 👍 TL;DR
+
+- **git init** → brand‑new project
+- **git clone** → copy a project that already exists
+- **fork** → personal copy of someone else’s repo
+- **pull request** → propose your changes back
+
+---
 
 ## 1. `git init` — Creating a Local Git Repository  
 ### “Tell Git to start tracking this project.”
