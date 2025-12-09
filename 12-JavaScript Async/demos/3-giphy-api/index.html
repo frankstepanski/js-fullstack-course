@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GIPHY GIF Search 🎬</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem 2rem;
+    line-height: 1.5;
+    background: #f5f7fb;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  p.description {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  /* FORM LAYOUT */
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .controls-row {
+    flex: 1 1 260px;   /* each group grows/shrinks nicely */
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .controls label {
+    font-size: 0.85rem;
+    color: #333;
+  }
+
+  input[type="text"],
+  select {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    min-width: 0;
+  }
+
+  button {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #4f46e5;
+    background: #4f46e5;
+    color: #ffffff;
+    align-self: flex-start; /* button hugs the left in its column */
+  }
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  #status {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #555;
+    min-height: 1.2em;
+  }
+
+  #error {
+    text-align: left;
+    color: darkred;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+  }
+
+  /* GIF GRID */
+
+  #gif-grid {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .gif-card {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #dde1ee;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gif-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .gif-caption {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.8rem;
+    color: #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 640px) {
+    .controls {
+      flex-direction: column;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <h1>GIPHY GIF Search 🎬</h1>
+  <p class="description">
+    Search GIPHY for GIFs using a custom term or a quick topic. Great for practicing
+    <strong>fetch</strong>, <strong>Promises</strong>, and <strong>async/await</strong>.
+  </p>
+
+  <div class="controls">
+    <!-- Left: search input -->
+    <div class="controls-row">
+      <label for="search-input">Search term:</label>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="e.g. cats, memes, happy, dance..."
+        aria-label="Search term"
+      />
+    </div>
+
+    <!-- Middle: quick topic + limit -->
+    <div class="controls-row">
+      <label for="topic-select">Quick topic:</label>
+      <select id="topic-select" aria-label="Quick topic">
+        <option value="">-- none --</option>
+        <option value="cats">Cats</option>
+        <option value="dogs">Dogs</option>
+        <option value="memes">Memes</option>
+        <option value="coding">Coding</option>
+        <option value="happy">Happy</option>
+        <option value="dance">Dance</option>
+        <option value="fail">Fails</option>
+        <option value="celebration">Celebration</option>
+      </select>
+
+      <label for="limit-select">Results:</label>
+      <select id="limit-select" aria-label="Number of GIFs">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+
+    <!-- Right: single action -->
+    <div class="controls-row">
+      <button id="search-btn">Search GIFs</button>
+    </div>
+  </div>
+
+  <p id="status"></p>
+  <p id="error"></p>
+
+  <div id="gif-grid">
+    <!-- GIF cards injected here -->
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

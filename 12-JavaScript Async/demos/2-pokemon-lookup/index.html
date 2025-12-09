@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon Lookup Demo 🎮</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.5;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .search-bar select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      min-width: 200px;
+    }
+
+    .search-bar button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    #status {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+      min-height: 1.2em;
+    }
+
+    #error {
+      text-align: center;
+      color: darkred;
+      min-height: 1.2em;
+    }
+
+    #pokemon-card {
+      margin-top: 1.5rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      display: none; /* hidden until we have data */
+    }
+
+    #pokemon-image {
+      max-width: 150px;
+      image-rendering: pixelated;
+    }
+
+    .pokemon-name {
+      font-size: 1.5rem;
+      margin: 0.5rem 0 0.25rem;
+      text-transform: capitalize;
+    }
+
+    .pokemon-id {
+      font-size: 0.9rem;
+      color: #666;
+      margin: 0 0 0.5rem;
+    }
+
+    .pokemon-types {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .type-pill {
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      background-color: #eee;
+      text-transform: capitalize;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pokémon Lookup Demo 🎮</h1>
+  <p>Select a Pokémon from the list and click search.</p>
+
+  <div class="search-bar">
+    <select id="pokemon-select" aria-label="Choose a Pokémon">
+      <option value="">-- Choose a Pokémon --</option>
+      <option value="bulbasaur">Bulbasaur</option>
+      <option value="ivysaur">Ivysaur</option>
+      <option value="venusaur">Venusaur</option>
+      <option value="charmander">Charmander</option>
+      <option value="charmeleon">Charmeleon</option>
+      <option value="charizard">Charizard</option>
+      <option value="squirtle">Squirtle</option>
+      <option value="wartortle">Wartortle</option>
+      <option value="blastoise">Blastoise</option>
+      <option value="pikachu">Pikachu</option>
+      <option value="raichu">Raichu</option>
+      <option value="jigglypuff">Jigglypuff</option>
+      <option value="meowth">Meowth</option>
+      <option value="psyduck">Psyduck</option>
+      <option value="machop">Machop</option>
+      <option value="gengar">Gengar</option>
+      <option value="onix">Onix</option>
+      <option value="eevee">Eevee</option>
+      <option value="snorlax">Snorlax</option>
+      <option value="mewtwo">Mewtwo</option>
+    </select>
+
+    <button id="search-btn">Search</button>
+  </div>
+
+  <p id="status"></p>
+  <p id="error"></p>
+
+  <div id="pokemon-card">
+    <img id="pokemon-image" src="" alt="Pokémon sprite" />
+    <h2 class="pokemon-name" id="pokemon-name"></h2>
+    <div class="pokemon-id" id="pokemon-id"></div>
+    <div class="pokemon-types" id="pokemon-types"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
