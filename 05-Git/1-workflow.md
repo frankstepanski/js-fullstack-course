@@ -252,7 +252,7 @@ Or add everything:
 git add .
 ```
 
-### 🔹 When to use it
+### When to use it
 Use `git add` when:
 
 - You modified existing files  
