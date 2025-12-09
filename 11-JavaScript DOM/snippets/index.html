@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Basics</title>
+  <style>
+    body {
+        margin-bottom: 50px;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+    .hidden {
+      display: none;
+    }
+    .dark-mode {
+      background-color: #333;
+      color: white;
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      background-color: lightblue;
+      margin: 5px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<h1>DOM Practice Examples</h1>
+
+<!-- Example 1: Change text when clicking a button -->
+<h2 id="example1">Example 1: Click the button to change this text!</h2>
+<button id="btn1">Click Me</button>
+
+<!-- Example 2: Change color when clicking a button -->
+<h2 id="example2">Example 2: Click the button to change my color!</h2>
+<button id="btn2">Change Color</button>
+
+<!-- Example 3: Hide and show a paragraph -->
+<p id="example3">Example 3: I will hide or show.</p>
+<button id="hideBtn3">Hide</button>
+<button id="showBtn3">Show</button>
+
+<!-- Example 4: Add list items dynamically -->
+<h2>Example 4: Add Items</h2>
+<ul id="list4"></ul>
+<button id="addItemBtn4">Add Item</button>
+
+<!-- Example 5: Remove last item -->
+<h2>Example 5: Remove Last Item</h2>
+<ul id="list5">
+  <li>First Item</li>
+  <li>Second Item</li>
+</ul>
+<button id="removeItemBtn5">Remove Last</button>
+
+<!-- Example 6: Toggle a highlight class -->
+<h2 id="example6">Example 6: Toggle Highlight</h2>
+<button id="toggleBtn6">Toggle Highlight</button>
+
+<!-- Example 7: Form input greeting -->
+<h2>Example 7: Say Hello</h2>
+<input id="nameInput7" type="text" placeholder="Enter your name">
+<button id="greetBtn7">Greet Me</button>
+<p id="greeting7"></p>
+
+<!-- Example 8: Counter App -->
+<h2>Example 8: Counter</h2>
+<p id="counter8">0</p>
+<button id="increaseBtn8">Increase</button>
+<button id="decreaseBtn8">Decrease</button>
+<button id="resetBtn8">Reset</button>
+
+<!-- Example 9: Dark Mode Toggle -->
+<h2>Example 9: Dark Mode</h2>
+<button id="darkModeBtn">Toggle Dark Mode</button>
+
+<!-- Example 10: Live Character Limit Checker -->
+<h2>Example 10: Character Limit (20 Max)</h2>
+<input id="charInput" type="text" placeholder="Type something...">
+<p id="charMessage"></p>
+
+<!-- Example 11: Build a Box Grid -->
+<h2>Example 11: Create Boxes</h2>
+<button id="addBoxBtn">Add Box</button>
+<div id="boxContainer"></div>
+
+<!-- Example 12: Real-Time Input Mirror -->
+<h2>Example 12: Live Mirror</h2>
+<input id="mirrorInput12" type="text" placeholder="Type here">
+<p id="mirrorOutput12"></p>
+
+<!-- Example 13: Dropdown Display -->
+<h2>Example 13: Favorite Animal</h2>
+<select id="animalSelect13">
+  <option value="">Choose one</option>
+  <option value="Cat">Cat</option>
+  <option value="Dog">Dog</option>
+  <option value="Penguin">Penguin</option>
+</select>
+<p id="animalDisplay13"></p>
+
+<!-- Example 14: Image Toggle -->
+<h2>Example 14: Toggle Image</h2>
+<img id="toggleImage14" src="https://placecats.com/bella/300/200" alt="A cute animal" width="150">
+<br>
+<button id="toggleImageBtn14">Toggle Image</button>
+
+<!-- Example 15: Simple Todo List -->
+<h2>Example 15: Todo List</h2>
+<input id="todoInput15" type="text" placeholder="Enter a todo">
+<button id="addTodoBtn15">Add Todo</button>
+<ul id="todoList15"></ul>
+
+<!-- Example 16: Add Table Row -->
+<h2>Example 16: Add Table Row</h2>
+<table id="dynamicTable" border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Occupation</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    <tr>
+      <td>John</td>
+      <td>30</td>
+      <td>Engineer</td>
+    </tr>
+  </tbody>
+</table>
+
+<input id="nameInput16" type="text" placeholder="Name">
+<input id="ageInput16" type="number" placeholder="Age">
+<input id="occupationInput16" type="text" placeholder="Occupation">
+<button id="addRowBtn16">Add Row</button>
+
+<script>
+  // -------------------------------
+  // Example 1: Change text content
+  // -------------------------------
+  const btn1 = document.querySelector('#btn1');
+  const example1 = document.querySelector('#example1');
+
+  btn1.addEventListener('click', function() {
+    example1.textContent = 'Nice! You clicked the button!';
+  });
+
+  // -------------------------------
+  // Example 2: Change text color
+  // -------------------------------
+  const btn2 = document.querySelector('#btn2');
+  const example2 = document.querySelector('#example2');
+
+  btn2.addEventListener('click', function() {
+    example2.style.color = 'blue';
+  });
+
+  // -------------------------------
+  // Example 3: Hide and show paragraph
+  // -------------------------------
+  const hideBtn3 = document.querySelector('#hideBtn3');
+  const showBtn3 = document.querySelector('#showBtn3');
+  const example3 = document.querySelector('#example3');
+
+  hideBtn3.addEventListener('click', function() {
+    example3.style.visibility = 'hidden';
+  });
+
+  showBtn3.addEventListener('click', function() {
+    example3.style.visibility = 'visible';
+  });
+
+  // -------------------------------
+  // Example 4: Add new list items
+  // -------------------------------
+  const addItemBtn4 = document.querySelector('#addItemBtn4');
+  const list4 = document.querySelector('#list4');
+  let itemCount4 = 1;
+
+  addItemBtn4.addEventListener('click', function() {
+    // step 1: create an empty node element
+    const newItem = document.createElement('li');
+    // step 2: add content to the node element
+    newItem.textContent = 'Item ' + itemCount4;
+    // step 3: add it to the page (so you can see it)
+    list4.appendChild(newItem);
+    itemCount4++;
+  });
+
+  // -------------------------------
+  // Example 5: Remove last list item
+  // -------------------------------
+  const removeItemBtn5 = document.querySelector('#removeItemBtn5');
+  const list5 = document.querySelector('#list5');
+
+  removeItemBtn5.addEventListener('click', function() {
+    const lastItem = list5.lastElementChild;
+    if (lastItem) {
+      list5.removeChild(lastItem);
+    }
+  });
+
+  // -------------------------------
+  // Example 6: Toggle highlight class
+  // -------------------------------
+  const toggleBtn6 = document.querySelector('#toggleBtn6');
+  const example6 = document.querySelector('#example6');
+
+  toggleBtn6.addEventListener('click', function() {
+    example6.classList.toggle('highlight');
+  });
+
+  // -------------------------------
+  // Example 7: Greet user from input
+  // -------------------------------
+  const nameInput7 = document.querySelector('#nameInput7');
+  const greetBtn7 = document.querySelector('#greetBtn7');
+  const greeting7 = document.querySelector('#greeting7');
+
+  greetBtn7.addEventListener('click', function() {
+    const name = nameInput7.value.trim();
+    if (name !== '') {
+      greeting7.textContent = 'Hello, ' + name + '!';
+    } else {
+      greeting7.textContent = 'Please enter your name!';
+    }
+  });
+
+  // -------------------------------
+  // Example 8: Simple counter app
+  // -------------------------------
+  const counter8 = document.querySelector('#counter8');
+  const increaseBtn8 = document.querySelector('#increaseBtn8');
+  const decreaseBtn8 = document.querySelector('#decreaseBtn8');
+  const resetBtn8 = document.querySelector('#resetBtn8');
+
+  let count8 = 0;
+
+  increaseBtn8.addEventListener('click', function() {
+    count8++;
+    counter8.textContent = count8;
+  });
+
+  decreaseBtn8.addEventListener('click', function() {
+    count8--;
+    counter8.textContent = count8;
+  });
+
+  resetBtn8.addEventListener('click', function() {
+    count8 = 0;
+    counter8.textContent = count8;
+  });
+
+  // -------------------------------
+  // Example 9: Dark Mode Toggle
+  // -------------------------------
+  const darkModeBtn = document.querySelector('#darkModeBtn');
+
+  darkModeBtn.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+  });
+
+  // -------------------------------
+  // Example 10: Live Character Limit Checker
+  // -------------------------------
+  const charInput = document.querySelector('#charInput');
+  const charMessage = document.querySelector('#charMessage');
+
+  charInput.addEventListener('input', function() {
+    const maxLength = 20;
+    const currentLength = charInput.value.length;
+
+    if (currentLength > maxLength) {
+      charMessage.textContent = '❌ Too many characters! Limit is ' + maxLength + '.';
+      charMessage.style.color = 'red';
+    } else {
+      charMessage.textContent = '✅ Characters used: ' + currentLength;
+      charMessage.style.color = 'green';
+    }
+  });
+
+  // -------------------------------
+  // Example 11: Build a Box Grid
+  // -------------------------------
+  const addBoxBtn = document.querySelector('#addBoxBtn');
+  const boxContainer = document.querySelector('#boxContainer');
+
+  addBoxBtn.addEventListener('click', function() {
+    const box = document.createElement('div');
+    box.classList.add('box');
+    boxContainer.appendChild(box);
+  });
+
+   // -------------------------------
+  // Example 12: Live Mirror Input
+  // -------------------------------
+  const mirrorInput12 = document.querySelector('#mirrorInput12');
+  const mirrorOutput12 = document.querySelector('#mirrorOutput12');
+
+  mirrorInput12.addEventListener('input', function () {
+    mirrorOutput12.textContent = mirrorInput12.value;
+  });
+
+  // -------------------------------
+  // Example 13: Dropdown Display
+  // -------------------------------
+  const animalSelect13 = document.querySelector('#animalSelect13');
+  const animalDisplay13 = document.querySelector('#animalDisplay13');
+
+  animalSelect13.addEventListener('change', function () {
+    const animal = animalSelect13.value;
+    if (animal) {
+      animalDisplay13.textContent = `You selected: ${animal}`;
+    } else {
+      animalDisplay13.textContent = '';
+    }
+  });
+
+  // -------------------------------
+  // Example 14: Toggle Image
+  // -------------------------------
+  const toggleImageBtn14 = document.querySelector('#toggleImageBtn14');
+  const toggleImage14 = document.querySelector('#toggleImage14');
+
+  // Set initial state
+  let imageToggle = true;
+  const img1 = 'https://placecats.com/bella/300/200';
+  const img2 = 'https://placecats.com/millie/150/150';
+
+  // Set initial image source
+  toggleImage14.src = img1;
+
+  toggleImageBtn14.addEventListener('click', function () {
+    if (imageToggle) {
+      toggleImage14.src = img2;
+    } else {
+      toggleImage14.src = img1;
+    }
+    // Flip the toggle state
+    imageToggle = !imageToggle;
+});
+
+  // -------------------------------
+  // Example 15: Simple Todo List
+  // -------------------------------
+  const todoInput15 = document.querySelector('#todoInput15');
+  const addTodoBtn15 = document.querySelector('#addTodoBtn15');
+  const todoList15 = document.querySelector('#todoList15');
+
+  addTodoBtn15.addEventListener('click', function () {
+    const todoText = todoInput15.value.trim();
+    if (todoText !== '') {
+      const todoItem = document.createElement('li');
+      todoItem.textContent = todoText;
+      todoList15.appendChild(todoItem);
+      todoInput15.value = '';
+    }
+  });
+
+// -------------------------------
+// Example 16: Add Table Row
+// -------------------------------
+// Adds a new row to the table with values from the inputs
+const nameInput16 = document.querySelector('#nameInput16');
+const ageInput16 = document.querySelector('#ageInput16');
+const occupationInput16 = document.querySelector('#occupationInput16');
+const addRowBtn16 = document.querySelector('#addRowBtn16');
+const tableBody16 = document.querySelector('#tableBody');
+
+addRowBtn16.addEventListener('click', function () {
+  const name = nameInput16.value.trim();
+  const age = ageInput16.value.trim();
+  const occupation = occupationInput16.value.trim();
+
+  // making sure all fields have been entered
+  if (name !== '' && age !== '' && occupation !== '') {
+    // Create a new row
+    const newRow = document.createElement('tr');
+    
+    // Create and append cells
+    const nameCell = document.createElement('td');
+    const ageCell = document.createElement('td');
+    const occupationCell = document.createElement('td');
+    
+    nameCell.textContent = name;
+    ageCell.textContent = age;
+    occupationCell.textContent = occupation;
+    
+    newRow.appendChild(nameCell);
+    newRow.appendChild(ageCell);
+    newRow.appendChild(occupationCell);
+    
+    // Add the row to the table body
+    tableBody16.appendChild(newRow);
+    
+    // Clear inputs
+    nameInput16.value = '';
+    ageInput16.value = '';
+    occupationInput16.value = '';
+  } else {
+    alert('Please fill out all fields.');
+  }
+});
+
+
+</script>
+
+</body>
+</html>

@@ -4,8 +4,6 @@ Learning to code isn’t just about memorizing syntax — it’s about *building
 
 This project strengthens your understanding of **layout (CSS Grid)**, **logic (JavaScript)**, and **user interaction (DOM events)**. It also challenges your creativity and problem-solving skills as you translate abstract game rules into step-by-step logic that a computer can follow.
 
-By completing this, you’ll have a small but complete web application — something that reacts to user actions, updates dynamically, and represents real-world software development patterns in miniature.
-
 ### What the Game Should Do (Functionality)
 
 - Two players: **X** and **O**, taking turns.  

@@ -52,7 +52,7 @@ You’ll practice:
 
 👉 Think: "my page actually reacts to the user!"
 
-## 1️⃣ Add a script Tag
+### 1️⃣ Add a script Tag
 
 At the bottom of your '<body>' tag.
 

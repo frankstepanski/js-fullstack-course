@@ -29,9 +29,7 @@ project-final.html
 project-final-final.html  
 project-really-final-this-time.html
 ```
-
 Version control fixes all of it by keeping *every version* safely in one place.
-
 
 ## 2. What Is Git?
 
