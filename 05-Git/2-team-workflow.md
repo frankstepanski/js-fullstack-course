@@ -520,7 +520,7 @@ main
  └── feature/user-profile
 ```
 
-## What Is a Git Branch?  
+### What Is a Git Branch?  
 
 A **branch** is one of the most important ideas in Git — and one of the easiest to misunderstand at first. This guide breaks it down using analogies, visuals, and real-world examples so beginners can understand both the *big picture* and the *practical details*.
 
