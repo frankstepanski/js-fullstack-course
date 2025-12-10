@@ -848,7 +848,7 @@ For every challenge, you’ll be provided with:
 
 - 📸 Sample images (product photos, icons, etc.)  
 - 🎨 A basic **style guide** (fonts, colors, spacing rules)  
-- Copy/text content
+- 📝 Copy/text content
 
 In real-world projects, a designer typically provides even more detailed artifacts to help developers build **pixel-perfect layouts**:
 
