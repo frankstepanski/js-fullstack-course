@@ -1,0 +1,161 @@
+/* ============================
+   About section layout
+   - Mobile-first
+   - Stack content by default
+   - Switch to two columns on larger screens
+============================ */
+
+#about {
+  padding: 1.25rem 1rem;   /* slightly smaller on mobile */
+}
+
+/* MOBILE DEFAULT:
+   - Stack text and hours card vertically */
+.about-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Left column (on desktop), top block (on mobile) */
+.about-text {
+  flex: 2;
+}
+
+.about-text p {
+  margin-bottom: 0.75rem;
+}
+
+/* Small tagline above the main copy */
+.about-tagline {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b45b1f;
+  margin-bottom: 0.9rem;
+}
+
+/* Hours card */
+.about-hours {
+  flex: 1;
+  background-color: #fffaf2;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+  /* On mobile, let it be full width */
+  min-width: 0;
+  max-width: 100%;
+}
+
+.about-hours h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #d35400;
+}
+
+/* Hours list: stacked rows with two sides:
+   left = day, right = time */
+.hours-list {
+  margin: 0;
+  padding: 0;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed #f1e0c8;
+  font-size: 0.95rem;
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+}
+
+.hours-row dt {
+  font-weight: 600;
+}
+
+.hours-row dd {
+  margin: 0;
+  text-align: right;
+}
+
+/* ============================
+   About page – reviews section
+============================ */
+
+.about-reviews {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f1e0c8;
+}
+
+.about-reviews h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #34495e;
+}
+
+.reviews-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.review-card {
+  background-color: #fffaf2;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.review-quote {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.review-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  color: #555;
+}
+
+.review-rating {
+  font-size: 0.85rem;
+  color: #e0a800; /* gold-ish stars */
+}
+
+
+
+/* ============================
+   MEDIA QUERY: larger screens
+   - Switch About section to 2 columns
+============================ */
+
+@media (min-width: 768px) {
+  #about {
+    padding: 1.75rem 2rem;
+  }
+
+  .about-layout {
+    flex-direction: row;       /* text | hours side by side */
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .about-hours {
+    min-width: 240px;
+    max-width: 280px;          /* only constrain width on larger screens */
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Character encoding and mobile-friendly viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Basic metadata -->
+  <title>Moonlight Pizza Co.</title>
+  <meta name="description" content="Moonlight Pizza Co. - A fictional pizza restaurant example page for learning HTML.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/about.css">
+
+  <script src="about.js" defer></script>
+
+</head>
+
+<body>
+  <!-- PAGE HEADER -->
+  <header>
+    <!-- Flexbox container: brand on the left, nav on the right -->
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Moonlight Pizza Co.</h1>
+        <p>Fresh, handmade pizza baked under a midnight sky.</p>
+      </div>
+
+      <!-- Primary navigation with a clear label and list structure -->
+      <nav aria-label="Main site navigation">
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="specials.html">Specials</a></li>
+          <li><a href="order.html">Order Online</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+    <!-- ABOUT SECTION -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Moonlight Pizza Co.</h2>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="about-tagline">
+            Neighborhood favorite • Wood-fired crust • Late-night slices
+          </p>
+
+          <p>
+            Welcome to <strong>Moonlight Pizza Co.</strong>, a fictional neighborhood pizza spot
+            created to help you learn HTML and CSS. We may not exist in real life, but your code does!
+          </p>
+
+          <p>
+            Our “story” is simple: crispy crust, fresh toppings, and a menu that’s easy to read for
+            both humans and browsers. This page is a mini demo of how you can combine semantic
+            structure with clean design to introduce a business.
+          </p>
+        </div>
+
+        <aside class="about-hours" aria-label="Restaurant hours">
+          <h3>Hours</h3>
+          <dl class="hours-list">
+            <div class="hours-row">
+              <dt>Mon – Thu</dt>
+              <dd>11:00 AM – 9:00 PM</dd>
+            </div>
+            <div class="hours-row">
+              <dt>Fri – Sat</dt>
+              <dd>11:00 AM – 11:00 PM</dd>
+            </div>
+            <div class="hours-row">
+              <dt>Sun</dt>
+              <dd>12:00 PM – 8:00 PM</dd>
+            </div>
+          </dl>
+        </aside>
+        
+      </div>
+    </section>
+
+     <section class="about-reviews" aria-labelledby="reviews-heading">
+    <h3 id="reviews-heading">What Our Guests Say</h3>
+    <div id="reviews-list" class="reviews-list" aria-live="polite">
+      <!-- JS will inject 2–3 random reviews here -->
+    </div>
+  </section>
+                                                        
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning HTML and CSS</p>
+  </footer>
+</body>
+
+</html>
