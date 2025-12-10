@@ -879,4 +879,3 @@ Here are the rest of the resources for this topic.
 4. [Positioning](4-positioning.md)
 5. [Responsive Web Design](5-responsive.md)
 6. [The Design to Developer Workflow](6-design-developer-workflow.md)
-7. [Design Practice](7-design-practice.md)
