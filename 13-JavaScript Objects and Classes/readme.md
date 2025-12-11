@@ -558,4 +558,3 @@ game.play("rock");
 JavaScript gives you many ways to work with data:
 - Start with **objects and functions**
 - Move to **classes** when building interactive, stateful systems (like games)
-- Learn **OOP** concepts like inheritance, abstraction, and encapsulation to scale your code
