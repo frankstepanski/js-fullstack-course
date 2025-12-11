@@ -6,8 +6,8 @@
 const API_BASE_URL = "http://localhost:3000";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const statusEl = document.getElementById("menu-status");
-  const listEl = document.getElementById("menu-list");
+  const statusEl = document.querySelector("#menu-status");
+  const listEl = document.querySelector("#menu-list");
 
   if (!statusEl || !listEl) return;
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const article = document.createElement("article");
       const headingId = `pizza-${pizza.id}-heading`;
 
-      const imgSrc = pizza.imageSrc || "images/pizza-placeholder.png";
+      const imgSrc = pizza.imageSrc;
       const imgAlt = pizza.imageAlt || `${pizza.name} pizza`;
       const imgCaption = pizza.imageCaption || "";
 

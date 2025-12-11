@@ -8,7 +8,7 @@
         "medium": 12,
         "large": 15
       },
-      "imageSrc": "images/pizza-margherita.png",
+      "imageSrc": "../images/pizza-margherita.png",
       "imageAlt": "Classic margherita pizza with tomato, mozzarella, and basil",
       "imageCaption": "Simple, fresh, and delicious."
     },
@@ -20,7 +20,7 @@
         "medium": 16,
         "large": 19
       },
-      "imageSrc": "images/pizza-supreme.png",
+      "imageSrc": "../images/pizza-supreme.png",
       "imageAlt": "Supreme pizza with pepperoni, sausage, mushrooms, and peppers",
       "imageCaption": "Loaded with toppings for big appetites."
     },
@@ -32,7 +32,7 @@
         "medium": 14,
         "large": 17
       },
-      "imageSrc": "images/pizza-veggie.png",
+      "imageSrc": "../images/pizza-veggie.png",
       "imageAlt": "Vegetarian pizza with spinach, olives, mushrooms, and peppers",
       "imageCaption": "Colorful veggies on a crispy base."
     },
@@ -44,7 +44,7 @@
         "medium": 15,
         "large": 18
       },
-      "imageSrc": "images/pizza-bbq.png",
+      "imageSrc": "../images/pizza-bbq.png",
       "imageAlt": "BBQ chicken pizza with red onions and cilantro",
       "imageCaption": "Smoky, tangy, and cheesy."
     }
@@ -120,9 +120,36 @@
           "quantity": 4,
           "unitPrice": 14,
           "subtotal": 56
+        },
+        {
+          "key": "1-medium",
+          "pizzaId": "1",
+          "name": "The Classic Margherita",
+          "size": "medium",
+          "quantity": 4,
+          "unitPrice": 12,
+          "subtotal": 48
+        },
+        {
+          "key": "2-medium",
+          "pizzaId": "2",
+          "name": "Moonlight Supreme",
+          "size": "medium",
+          "quantity": 2,
+          "unitPrice": 16,
+          "subtotal": 32
+        },
+        {
+          "key": "4-medium",
+          "pizzaId": "4",
+          "name": "Comet BBQ Chicken",
+          "size": "medium",
+          "quantity": 1,
+          "unitPrice": 15,
+          "subtotal": 15
         }
       ],
-      "updatedAt": "2025-12-06T03:01:21.038Z"
+      "updatedAt": "2025-12-10T23:47:12.283Z"
     }
   ],
   "orders": [],
