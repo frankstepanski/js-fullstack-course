@@ -1,6 +1,4 @@
-# Learning JavaScript Objects & OOP
-
-Welcome! This beginner-friendly guide introduces you to **JavaScript Objects** and **Object-Oriented Programming (OOP)** concepts — using real examples and mini-games.
+# JavaScript Objects & Classes
 
 ## Objects and Data Modeling in Applications
 

@@ -1,6 +1,6 @@
 # Moonlight Pizza Co. — Project Planning 
 
-This document guides beginners through the **planning phase** of a web project — *before any coding starts*.  
+This document guides students through the **planning phase** of a web project — *before any coding starts*.  
 These steps mirror real-world software development and help teams build the right thing, not just write code.
 
 Before writing HTML, CSS, or JavaScript, every successful project starts with a clear understanding of **who the site is for and what they need**. Planning saves time, reduces confusion, and helps teams stay aligned.
