@@ -17,28 +17,18 @@ main {
    - Background image + dark overlay
 ============================ */
 
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 0;
-}
-
-header > * {
-  position: relative;
-  z-index: 1;
-}
-
 header {
-  position: relative;
-  background-image: url("../images/pizza-hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+   background-image: url("../images/pizza-hero.jpg"); /* path to your new pizza image */
+  
+   background-color: rgba(0, 0, 0, 0.3); 
+   background-blend-mode: darken; /* blends the background-color with the background image */
 
-  color: #fff;
-  padding: 2.5rem 1rem;   /* a bit smaller on mobile */
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+
+   color: #fff;          /* white text on dark overlay */
+   padding: 2.5rem 1rem;   /* a bit smaller on mobile */
 }
 
 /* ============================

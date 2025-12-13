@@ -19,26 +19,12 @@ main {
    - Background image + dark overlay
 ============================ */
 
-/* Dark overlay on top of the background image,
-   but behind the text */
-header::before {
-  content: "";          /* required for ::before to show */
-  position: absolute;
-  inset: 0;             /* fill the entire header area */
-  background: rgba(0, 0, 0, 0.45); /* semi-transparent black */
-  z-index: 0;           /* stay behind the header content */
-}
-
-/* Make header children (like .header-inner)
-   sit above the overlay */
-header > * {
-  position: relative;
-  z-index: 1;
-}
-
 header {
-  position: relative;   /* so ::before is positioned relative to header */
-  background-image: url("../images/pizza-hero.jpg");
+   background-image: url("../images/pizza-hero.jpg"); /* path to your new pizza image */
+  
+   background-color: rgba(0, 0, 0, 0.3); 
+   background-blend-mode: darken; /* blends the background-color with the background image */
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

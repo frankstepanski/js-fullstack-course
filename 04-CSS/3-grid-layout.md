@@ -333,8 +333,129 @@ Now that you understand how Grid works, it’s important to know when to use it 
 - Card grids  
 - Sidebar + main + footer  
 
+## 5. Using CSS Grid and Flexbox Together 
+
+In real projects, you almost never use only Grid or only Flexbox.
+Most professional layouts use **both**, each doing what it does best.
+
+**Mental model to remember:**
+- **Grid** = overall structure
+- **Flexbox** = alignment inside sections
+
 ---
 
-**In short:**  
-Grid exists because Flexbox wasn’t designed for two-dimensional page layout.  
-Grid doesn’t replace Flexbox — it *completes* it.
+### Example 1: Page Layout with Grid, Content with Flexbox
+
+**Grid defines the main layout:**
+- Header
+- Sidebar
+- Main content
+- Footer
+
+```css
+.page-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+```
+
+**Flexbox aligns content inside sections:**
+
+```css
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+```
+
+**Why this works well:**
+- Grid decides where sections go
+- Flexbox aligns what’s inside them
+
+---
+
+### Example 2: Grid for Cards, Flexbox for Card Content
+
+**Grid creates a responsive card layout:**
+
+```css
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+```
+
+**Flexbox handles alignment inside each card:**
+
+```css
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+```
+
+**What this gives you:**
+- Responsive card layout
+- Consistent spacing inside cards
+- Buttons stay aligned even if text length changes
+
+---
+
+### Example 3: Dashboard Layout 
+
+**Grid defines the dashboard structure:**
+
+```css
+.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+```
+
+**Flexbox organizes items inside the sidebar:**
+
+```css
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+```
+
+**Why dashboards use both:**
+- Grid manages layout complexity
+- Flexbox keeps menus readable and easy to space
+
+---
+
+### Example 4: Centering Content Inside a Grid Cell
+
+Grid places the item.
+Flexbox centers the content inside it.
+
+```css
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+This is one of the most common real-world patterns you’ll use.
+
+---
+
+### Rule of Thumb to Remember
+
+> **Use Grid for structure. Use Flexbox for alignment.**
+
+If you’re fighting Flexbox to build a page layout → use Grid.  
+If you’re overengineering Grid just to center or space items → use Flexbox.
+
+Used together, they make CSS layouts cleaner, more predictable, and easier to maintain.
+

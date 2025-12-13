@@ -229,7 +229,6 @@ The **child elements** inside the container can **grow**, **shrink**, and **alig
   align-items: center;
   background-color: #eee;
   padding: 20px;
-  gap: 16px;
 }
 
 .box {
