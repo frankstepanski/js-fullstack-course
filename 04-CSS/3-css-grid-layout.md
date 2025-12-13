@@ -1,4 +1,4 @@
-# CSS Grid for Layout 
+# CSS Grid Layout (aka "Grid" or "CSS Grid") 
 
 **CSS Grid** is a modern layout system designed for **precise, two-dimensional control** — across both **rows** and **columns**.  
 It gives developers a cleaner, more intuitive way to organize full-page layouts compared to older or more limited systems.
