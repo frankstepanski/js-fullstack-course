@@ -10,7 +10,7 @@ That means being confident when:
 
 If you can recover on your own without panic, you’re ready to advance.
 
-This guide focuses on building that confidence first.
+>This guide focuses on building that confidence first.
 
 You will practice the Git skills you actually use when working solo:
 
