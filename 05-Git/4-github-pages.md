@@ -115,7 +115,7 @@ git commit -m "Update site"
 git push
 ```
 
-GitHub Pages will automatically redeploy your site. Refresh the page after a minute to see updates.
+>GitHub Pages will automatically redeploy your site. Refresh the page after a minute to see updates.
 
 ## Common Gotchas (Quick Checks)
 
