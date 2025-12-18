@@ -14,7 +14,7 @@ When you click “Add to Cart,” JavaScript uses the DOM to:
 
 In short, the DOM turns **static HTML into interactive web experiences.**
 
-## 1. What is an API?
+## What is an API?
 
 An **API (Application Programming Interface)** is a tool that allows two different systems or programs to communicate. It provides a structured way for developers to use specific features of another system without needing to understand its inner workings.  
 
@@ -27,7 +27,7 @@ Imagine you’re ordering at a restaurant — you don’t need to know how the k
 | **Browser APIs** | Built into browsers to access features (DOM, Geolocation, etc.) |
 | **Server APIs** | Allow frontend apps to talk to backend systems |
 
-## 2. Web APIs and JavaScript
+## Web APIs and JavaScript
 
 JavaScript is powerful because browsers come with many **built-in APIs** that developers can access. These APIs allow JavaScript to go beyond just text and calculations — they give it control over the browser itself.  
 
@@ -40,7 +40,7 @@ Here are a few common Web APIs available to developers:
 
  **Why this matters:** APIs make web pages *dynamic and data-driven.*
 
-## 3. How the Browser Builds the DOM
+## How the Browser Builds the DOM
 
 Before JavaScript can interact with a webpage, the **browser has to build the DOM** — a live, in-memory version of your HTML that it can work with. This process is what turns plain text (your HTML file) into the interactive, visual page users see.
 
@@ -81,7 +81,7 @@ When your JavaScript runs too early — before the DOM is fully built — you’
 To fix this, make sure your `<script>` tag is placed **just before the closing `</body>`** tag or wrapped in a `DOMContentLoaded` event listener.
 
 
-## 4. What is the DOM API?
+## What is the DOM API?
 
 When learning JavaScript, one of the first things to understand is that **you don’t directly control the HTML file itself**. Instead, JavaScript communicates with the browser through a set of special tools and instructions — and those tools make up the **DOM API**.
 
@@ -100,7 +100,7 @@ document.querySelector("h1").textContent = "Hello, World!";
 - The **DOM** is the structure (the “tree”).  
 - The **DOM API** is the toolset to access and modify it.
 
-## 5. What is the DOM?
+## What is the DOM?
 
 To truly understand how web pages work — and how JavaScript brings them to life — you need to understand the **DOM**, which stands for **Document Object Model**.  
 
@@ -189,7 +189,7 @@ Beginners often think modifying the DOM changes their original HTML file.
 In reality, the HTML file stays the same; only the **live DOM model** in the browser gets updated while the page is open.
 
 
-## 6. What is a Document?
+## What is a Document?
 
 The **document** object is your main gateway into the world of the DOM. It’s the **entry point** that JavaScript uses to access and interact with everything on your webpage — every tag, every element, and every piece of text.  
 
@@ -258,7 +258,7 @@ Many beginners forget that `document` only exists **inside the browser**. If you
 🧰 **Pro Tip:**  
 When debugging, try running `console.dir(document)` instead of `console.log(document)`. It shows the document object as a tree of properties, which makes it easier to explore programmatically.
 
-## 7. Inspecting the DOM in Developer Tools
+## Inspecting the DOM in Developer Tools
 
 You can view and edit the DOM live in your browser:
 
@@ -274,7 +274,7 @@ document.querySelector("h1");
 
 ✅ This live editing helps you debug, experiment, and learn how JavaScript interacts with real web pages.
 
-## 8. What is a Node?
+## What is a Node?
 
 When working with the DOM, you’ll hear the word **node** used a lot. In simple terms, a **node** is any single piece or unit inside the DOM tree. Every element, attribute, comment, and even plain text on a webpage is represented as a *node*.
 
@@ -354,7 +354,7 @@ Understanding these differences helps avoid confusion when debugging DOM travers
 🧰 **Pro Tip:**  
 Use your browser’s **Elements tab** (under DevTools) to inspect and visualize nodes in action. When you hover over elements in the HTML panel, you’re literally exploring the **DOM nodes** behind your webpage.
 
-## 10. Querying the DOM (Selecting Elements)
+##  Querying the DOM (Selecting Elements)
 
 One of the most common tasks in JavaScript is finding specific elements on a webpage so that you can read or change them. This process is called **querying the DOM**, and it’s how JavaScript “reaches into” the page to interact with individual nodes.
 
@@ -426,7 +426,7 @@ This gives you powerful control and precision when targeting elements — just l
 | Modifying NodeLists directly | NodeLists are not arrays — you can’t use `push()` or `pop()` on them. Convert them using `Array.from()` if needed. |
 
 
-## 11. Changing Content
+## Changing Content
 
 Once you can select elements from the DOM, the next step is **changing what they display**.  
 JavaScript gives you several ways to update text, insert HTML, or modify multiple elements at once — all through the DOM API.
@@ -603,7 +603,7 @@ And remember — for performance, try not to use `innerHTML` repeatedly inside l
 
 ---
 
-## 12. Manipulating Styles
+## Manipulating Styles
 
 After learning how to change content on a web page, the next exciting step is learning how to **change how things look** — directly from JavaScript.  
 You can use the **DOM API** to modify the appearance of elements in real time by changing their **style properties** or toggling **CSS classes**.  
@@ -787,7 +787,7 @@ CSS:
 - JavaScript style properties use **camelCase** instead of CSS’s **hyphen-case**.  
 - Keep your logic (JavaScript) and design (CSS) separate whenever possible.
 
-## 13. Creating New Elements
+## Creating New Elements
 
 Up until now, we’ve been changing and styling elements that already exist in our HTML.  
 But one of JavaScript’s greatest powers is the ability to **create entirely new elements** on the fly!  
@@ -936,7 +936,7 @@ oldItem.parentNode.replaceChild(newItem, oldItem);
 - Dynamic element creation is the core of interactive, modern web applications.
 
 
-## 14. Responding to User Actions (Events)
+## Responding to User Actions (Events)
 
 
 Modern web pages are interactive — they respond to what users do.  
@@ -1112,7 +1112,7 @@ This ensures your app doesn’t repeatedly perform the same action unnecessarily
 - The event object contains useful data about what happened.  
 - Events make your web pages dynamic, interactive, and fun to use.
 
-## 15. Event Flow and Bubbling
+## Event Flow and Bubbling
 
 Once you understand how to respond to user actions with events, the next step is to understand how **events actually move** through a web page. This concept is called **event flow**, and it’s an important part of mastering interactive web development.
 
@@ -1209,8 +1209,6 @@ button.addEventListener("click", (event) => {
 
 Now, when the button is clicked, the card’s event listener won’t run.
 
----
-
 ##  Preventing Default Behavior
 
 Some elements (like forms or links) have built-in browser behaviors.  
@@ -1262,7 +1260,7 @@ Example:
 - `event.preventDefault()` stops default browser actions (like form submission or link navigation).  
 - `event.target` and `event.currentTarget` help identify where an event came from and where it’s being handled.
 
-## 16. Forms and Input Handling
+## Forms and Input Handling
 
 Now that you know how events travel through the DOM, let’s use that knowledge for one of the most important web development tasks — **handling forms**.  
 

@@ -2,7 +2,7 @@
 
 Modern web apps load data, respond to clicks, animate UI, and talk to servers — often **at the same time**. To do this smoothly, JavaScript uses **asynchronous** programming. This guide explains what synchronous vs asynchronous code means, why async is essential, and how to use **callbacks**, **Promises**, **fetch()**, and **async/await** with clear examples and DOM updates.
 
-## 1) Synchronous Code — One Thing at a Time
+## Synchronous Code — One Thing at a Time
 
 When you write **synchronous code**, your JavaScript executes **step-by-step**, **top to bottom**, and **one task must finish before the next one starts**.  
 
@@ -89,7 +89,7 @@ but once you need to **wait for something external** (like user input, API data,
 you should switch to **asynchronous code**.
 
 
-## 2) Asynchronous Code — Don’t Wait, Schedule It
+## Asynchronous Code — Don’t Wait, Schedule It
 
 In modern web development, not everything happens instantly. Sometimes, your code needs to **wait** — for data from a server, a user’s click, or even a simple timer. If JavaScript waited for these things *synchronously*, the browser would freeze until everything was done. That’s where **asynchronous programming** comes in.
 
@@ -183,7 +183,7 @@ They let you:
 You’ll soon learn how JavaScript manages these tasks using **Promises**, **fetch()**, and **async/await** — all built on this same async foundation.
 
 
-## 3) Why Asynchronous JavaScript Matters in Web Development
+## Why Asynchronous JavaScript Matters in Web Development
 
 Modern websites aren’t just static pages anymore — they’re full-fledged **applications** that constantly talk to servers, load new data, and react instantly to what users do. When you open Instagram, new posts appear without refreshing. When you type in Google, results appear as you type. When you watch YouTube, comments and recommendations load while your video plays.  
 All of this happens because of **asynchronous JavaScript**.
@@ -285,7 +285,7 @@ Asynchronous programming is one of the **core building blocks** of web developme
 Without it, every web app would feel sluggish and unresponsive. With it, your apps can feel alive, interactive, and modern.
 
 
-## 4) How JavaScript Handles Asynchrony
+##  How JavaScript Handles Asynchrony
 
 - **Callbacks** — Pass a function to run later.
 - **Promises** — An object representing a value that may be available **now**, **later**, or **never**.
@@ -295,7 +295,7 @@ Without it, every web app would feel sluggish and unresponsive. With it, your ap
 > You’ll still use callbacks (e.g., event listeners), but Promises/async–await are the standard for async workflows.
 
 
-## 5) Promises — The Core of Asynchronous JavaScript
+## Promises — The Core of Asynchronous JavaScript
 
 When you ask JavaScript to do something that takes time (like fetching data or waiting on a timer), you don’t want to freeze your app while waiting.  
 A **Promise** is JavaScript’s built-in way of saying:  
@@ -404,7 +404,7 @@ Promises are the foundation of modern asynchronous JavaScript.
 They turn long-running or delayed operations (like API calls) into manageable, chainable, and predictable flows.  
 Once you understand Promises, you can easily build complex async workflows using **fetch()** or **async/await**, which build directly on this concept.
 
-## 6) The Fetch API — Making HTTP Requests
+## The Fetch API — Making HTTP Requests
 
 In practice, you **rarely** construct Promises by hand. Instead, Promises are usually a **byproduct** of other APIs you call. You use those Promises by attaching `.then(...)`, `.catch(...)`, or by using `async/await`.
 
@@ -580,7 +580,7 @@ fetch("https://jsonplaceholder.typicode.com/posts")
 ```
 
 
-## 7) Frontend ↔ Backend Communication
+## Frontend ↔ Backend Communication
 
 Now that you have a good understanding of what **asynchronous code** is, why it’s important, and how it works in JavaScript — let’s take a step back and understand *how communication actually happens* between the **frontend** and **backend** of a web application.
 
@@ -761,7 +761,7 @@ Install a **JSON Formatter** browser extension to make API responses easier to r
 Next, we’ll dive into how different HTTP methods — `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` — correspond to CRUD operations and how to use them with `fetch()`.
 
 
-## 8) - Wrapping It All Up: Working with APIs Yourself
+## Wrapping It All Up: Working with APIs Yourself
 
 Now that you understand how the frontend and backend communicate — through HTTP requests, responses, and asynchronous JavaScript — it’s time to take the next step: **working with real APIs**.  
 This is where everything you’ve learned about the Fetch API, promises, and JSON truly comes to life.

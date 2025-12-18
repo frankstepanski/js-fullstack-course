@@ -17,7 +17,7 @@ Programming is not about being perfect; it’s about being patient and curious.
 
 With that mindset, let’s begin exploring JavaScript — one of the most versatile and beginner-friendly languages in the world.
 
-## 1. What Is JavaScript?
+## What Is JavaScript?
 
 JavaScript (JS) is a **high-level programming language** that brings interactivity to websites.
 
@@ -46,7 +46,7 @@ console.log("Hello, world!");
 [ JavaScript ] → Behavior / Interactivity
 ```
 
-## 2. Data Types in JavaScript
+## Data Types in JavaScript
 
 Everything in JavaScript has a type.
 
@@ -87,7 +87,7 @@ console.log(typeof null); // what happens here?
 🧰 **Pro Tip**
 You can use `Array.isArray()` to check arrays correctly.
 
-## 3. Variables — let, const, and scope
+## Variables — let, const, and scope
 
 Variables are like **containers** that hold data.
 
@@ -142,7 +142,7 @@ Always use `const` by default, and only switch to `let` if you plan to reassign.
 ⚠️ **Common Mistake**
 Avoid `var`. It ignores block scope and leads to confusing bugs.
 
-## 4. Strings and String Operations
+## Strings and String Operations
 
 Strings store text.
 
@@ -172,7 +172,7 @@ Write a string and use `.toLowerCase()` and `.includes()` to check if it contain
 ⚠️ **Common Mistake**
 Forgetting backticks (`` ` ``) in template literals causes syntax errors.
 
-## 5. Null vs Undefined
+## Null vs Undefined
 
 | Type | Meaning |
 |------|----------|
@@ -189,7 +189,7 @@ console.log(b); // null
 🧰 **Pro Tip**
 Use `===` instead of `==` to avoid confusion with type coercion.
 
-## 6. Operators
+## Operators
 
 | Type | Example | Description |
 |------|----------|-------------|
@@ -209,7 +209,7 @@ console.log(message);
 ⚠️ **Common Mistake**
 Using `==` instead of `===` — `==` allows type coercion.
 
-## 7. Running JavaScript
+## Running JavaScript
 
 ### A) Using Node.js
 ```bash
@@ -244,7 +244,7 @@ Run `console.log("Hello from JS!")` both in Node and in your browser console —
 🧰 **Pro Tip**
 Always place `<script>` tags **before `</body>`** to ensure the DOM is loaded.
 
-## 8. Arrays
+## Arrays
 
  Arrays are special data structures that store **ordered lists of items** — imagine a row of boxes, each with its own label (numbered starting from zero). Each box can hold anything: numbers, strings, or even other arrays and objects. This makes arrays extremely powerful because they can organize multiple related pieces of data in a single, easy-to-manage variable.
 
@@ -280,7 +280,7 @@ Create an array of your favorite foods and log each one using a `for` loop.
 ⚠️ **Common Mistake**
 Arrays start at index **0**, not 1.
 
-## 9. Objects
+## Objects
 
 Before learning how to use objects in JavaScript, it’s helpful to think about how data works in real life. You might describe a person with information like their name, age, or hobbies — each of those pieces of information has a label and a value. That’s exactly what objects do in programming: they hold related data together in a single structure, using **key–value pairs**. Each key (like `name`) is a label, and its corresponding value (like `"Liam"`) is the actual piece of information.
 
@@ -317,7 +317,7 @@ Confusing arrays and objects — arrays use index numbers, objects use keys.
 🧰 **Pro Tip**
 Use dot notation for readability (`user.name`) instead of brackets (`user["name"]`).
 
-## 10. Functions
+## Functions
 
 When writing code, you’ll often find yourself repeating the same steps over and over again — like displaying messages, performing calculations, or validating user input. Functions solve this problem by allowing you to group code into **reusable blocks**. You define a function once, and then you can “call” it whenever you need it. This helps keep your code cleaner, more organized, and easier to understand. Think of a function as a small machine: you feed it input, it performs a task, and then it gives you output.
 
@@ -455,7 +455,7 @@ console.log(square(5)); // Output: 25
 - Understanding functions is essential — they’re the building blocks for everything from user interaction to data processing in JavaScript.
 
 
-## 11. Callbacks (Functions as Arguments)
+##  Callbacks (Functions as Arguments)
 
 At this point, you already know that functions can take **parameters** and **return values**, but in JavaScript, functions are also considered **first-class citizens** — meaning you can treat them like any other value. You can store them in variables, return them from other functions, or even **pass them as arguments** into other functions. When a function is passed as an argument to another function, it’s called a **callback**.
 
@@ -536,7 +536,7 @@ Callbacks let your code **react** to things happening — like loading data from
 ### ✅ Key Takeaway
 Callbacks let you **pass behavior** into functions, giving your code flexibility and control over *what happens next*. They’re one of the first steps toward mastering JavaScript’s event-driven and asynchronous nature.
 
-## 12. Loops
+## Loops
 
 When writing code, you’ll often need to perform the same action multiple times — for example, printing numbers, checking items in a list, or processing user input. Rather than writing the same line of code again and again, you can use **loops** to repeat a task automatically.  
 
@@ -668,7 +668,7 @@ Loop through an array of numbers and log their **squares** (e.g., `num * num`).
 
 Once you get comfortable with loops, you’ll see them everywhere — processing data, running animations, validating input, and more!
 
-## 13. Conditional Statements
+## Conditional Statements
 
 When your program needs to **make a decision**, conditional statements choose which path to follow. They let your code react to different inputs and situations — the same way you decide what to wear based on the weather, or whether to take an umbrella if it looks cloudy. Mastering conditionals is essential because most real apps behave differently depending on user actions, data from servers, or the current state of the UI.
 
@@ -711,7 +711,7 @@ if (temp >= 85) {
 
 ---
 
-### 🧩 Nested If Statements
+### Nested If Statements
 
 Nested `if` statements are useful when a decision depends on a **previous decision** (multi-step logic). Use sparingly and format clearly so it’s easy to read.
 
@@ -873,7 +873,7 @@ console.log(5 === "5");  // false (different types)
 - Use **`switch`** when matching one value against **many discrete cases**.  
 - Prefer **strict equality** (`===`) to avoid coercion surprises, and remember truthy vs falsy.
 
-## 14. Debugging in JavaScript 🪲
+## Debugging in JavaScript 🪲
 
 Debugging means **finding and fixing errors**.
 
@@ -913,7 +913,7 @@ Use `console.table()` for cleaner array/object logs.
 ⚠️ **Common Mistake**
 Ignoring the console! It’s your best friend for debugging.
 
-## 🏁 Summary
+## Summary
 
 You’ve learned:
 - Variables, types, strings, arrays, objects
