@@ -204,7 +204,7 @@ Add this inside your `<head>` tag:
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 ```
 
-### ✅ Option 2: Using Bootstrap with ES Modules and Bundler (JS + Node + Vite)
+### ✅ Option 2: Using Bootstrap with Vite (Dev Sever + Bundler + Node)
 
 This option uses **modern JavaScript imports** with a real bundler:
 
@@ -356,13 +356,13 @@ Open that URL.
 You should now see Bootstrap fully applied with no errors.
 
 ```
- ┌──────────────────────────────────────────────────────────────┐
- │                        YOUR PROJECT                           │
- │                                                               │
- │  index.html        src/main.js        node_modules/           │
- │  style.css         components/        bootstrap/              │
- │                                                               │
- └──────────────┬────────────────────────────────────────────────┘
+ ┌──────────────────────────────────────────────────────────┐
+ │                        YOUR PROJECT                      │
+ │                                                          │
+ │  index.html        src/main.js        node_modules/      │
+ │  style.css         components/        bootstrap/         │
+ │                                                          │
+ └──────────────┬───────────────────────────────────────────┘
                 │
                 │  (1) You write modern code with imports
                 ▼
