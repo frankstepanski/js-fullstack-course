@@ -1,6 +1,6 @@
 # Git Solo Practice — Undo, Reset, Fork & Clone
 
-Before you move on to **intermediate Git topics** or **team workflows** (branches, pull requests, merges, resolving conflicts), you need to be able to **handle common Git scenarios by yourself**.
+Before you move on to **team workflows** practices (branches, pull requests, merges, resolving conflicts), you need to be able to **handle common Git scenarios by yourself**.
 
 That means being confident when:
 - You make mistakes
