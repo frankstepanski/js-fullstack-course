@@ -313,9 +313,7 @@ git push
 
 The file disappears from the repository going forward.
 
-
-
-## 7. Practice Checklist
+## Key Takeaways
 
 Apart from the normal daily workflow:
 
@@ -333,11 +331,7 @@ You should be familiar and comfortable with the following skills:
 
 These commands form your **Git foundation**.
 
-Once you can use them confidently on your own — including fixing mistakes — you’re ready to move into **team-based Git workflows**, such as:
+## What's Next: Github Pages
 
-- Branching
-- Pull Requests (PRs)
-- Merging
-- Resolving merge conflicts
+Before diving into **team workflows**, we'll switch gears and learn how to make your web pages live for everyone to see. This lesson introduces GitHub Pages, which lets you publish your projects directly from a GitHub repository.
 
-If you can recover from common Git mistakes without panic, you’re building the right instincts to work safely on a team.

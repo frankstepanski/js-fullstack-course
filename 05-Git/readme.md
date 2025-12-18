@@ -480,6 +480,7 @@ Now that Git and GitHub are set up, the next step is learning the core skills yo
 Here are the rest of the resources for this topic.
 
 1. [Essential Git Workflow](1-workflow.md)
-2. [Team Workflow](2-team-workflow.md)  
+2. [Add Commit Revisited](2-add-commit-revisited.md)
 3. [Solo Exercises](3-solo-exercises.md)
-4. [Publish to Github Pages](4-publish.md)
+4. [Publish with Github Pages](4-github-pages.md)  
+5. [Team Workflow](5-team-workflow.md)

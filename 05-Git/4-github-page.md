@@ -127,13 +127,16 @@ GitHub Pages will automatically redeploy your site. Refresh the page after a min
 - Check file paths (they are case-sensitive)
 - Make sure files exist in the GitHub repo
 
-## Final Result
+## Key Takeaways
 
-You now have:
+- Static HTML and CSS sites need hosting, and GitHub Pages provides a simple, free way to publish them online
 
-- A version-controlled project
-- A public GitHub repository
-- A real, shareable website URL
-- A workflow used by professional developers
+- GitHub Pages serves files directly from a GitHub repository and automatically updates the live site when you push changes
 
-Perfect for portfolios, demos, and sharing your work 🚀
+- Publishing a site with GitHub Pages reinforces core Git skills like committing, pushing, and managing a repository
+
+- The result is a real, public website URL suitable for portfolios, class projects, and sharing your work.
+
+## What's Next: Team Workflows
+
+We’ll shift from working alone to working with others by learning how teams use Git and GitHub safely. You'll be introduced to branches, pull requests, and code reviews, and learn how these tools help multiple people work on the same project without overwriting each other’s changes.

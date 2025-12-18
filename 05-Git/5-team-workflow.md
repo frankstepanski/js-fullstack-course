@@ -2,7 +2,7 @@
 
 Modern software development is a team sport. Whether you're building a website, mobile app, or backend API, real engineering teams rely on Git and GitHub every single day to keep their work organized, safe, and collaborative. 
 
-Once you move beyond the basics, skills like viewing history, undoing mistakes, branching, merging, and opening pull requests become essential — not just "nice to know," but how real teams stay productive without breaking each other’s work.
+The basics of Git are knowing how to add, commit, and push changes, undo added files or commits, and copy projects using fork and clone. Once you move beyond these fundamentals, skills like **branching**, **merging**, and **opening pull requests** become essential for working on real teams without breaking each other’s work.
 
 Imagine a team working on the same project:
 
@@ -1087,14 +1087,14 @@ If the team is small and only one reviewer is available, AI can act as a helpful
 
 ## Wrap up
 
-This guide introduced the essential collaboration practices used across modern engineering teams. Mastering Git and GitHub is about more than learning commands — it’s about understanding *how teams build software together*.
+This introduced you to the essential collaboration practices used across modern engineering teams. Mastering Git and GitHub is about more than learning commands — it's about understanding *how teams build software together*.
 
 Modern software development depends on predictable workflows, shared ownership of code, and practices that ensure stability even as many developers work simultaneously. Git and GitHub give teams the structure, safety, and visibility needed to work at scale.
 
-Throughout this document, you’ve learned how developers:
+You’ve learned how developers:
 
 - Track the evolution of a project using commit history  
-- Recover safely from mistakes with Git’s undo tools  
+- Recover safely from mistakes with Git's undo tools  
 - Work independently using branches  
 - Merge features responsibly  
 - Collaborate through pull requests  

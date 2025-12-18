@@ -437,15 +437,18 @@ GitHub sends you any changes (even if you worked on your laptop instead of your 
 
 Once these basics feel natural, learning advanced Git becomes *much* easier.
 
-## Wrap Up
+## Key Takeaways
 
-You’ve now learned the essential daily Git workflow used by professional developers everywhere.  
-As long as you know how to add → commit → push → pull, you can safely track your work, back up your projects, and prepare for collaboration.
 
-When you're ready, the next step is learning:
+- Git works in three stages: **working directory → staging area → commit history**
+- The core daily workflow is **add → commit → push → pull**
+- `git add` lets you choose *what* changes go into the next snapshot
+- `git commit` saves those changes as a permanent, undoable checkpoint
+- `git push` and `git pull` keep your local work in sync with GitHub
+- Understanding these basics makes advanced Git workflows much easier to learn later
 
-- Undoing
-- Branching  
-- Merging  
-- Pull requests  
-- Code reviews  
+## What's Next: Revisting Add and Commit
+
+We'll revisit `git add` and `git commit` in more depth, focusing on *when* you should add changes and *when* you should commit them.
+
+We’ll look at real examples of work in progress, decide what belongs together in a single commit, and practice building a clean commit history that makes undoing mistakes and collaborating later much easier.
