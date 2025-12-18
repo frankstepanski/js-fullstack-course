@@ -1,4 +1,4 @@
-# JavaScript DOM Complete Guide
+# JavaScript DOM
 
 When you start learning JavaScript for web development, one of the most important things you’ll encounter is the **DOM** — short for **Document Object Model**. It’s the way JavaScript interacts with and controls everything on a web page.  
 
