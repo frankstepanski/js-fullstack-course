@@ -319,6 +319,111 @@ git push
 ```bash
 git rm --cached <file>
 ```
+
+
+## 7. Practice:  Fixing Remotes, Fetch, and Pull
+
+Most Git problems at this stage are not code problems.
+They happen because:
+
+- Git is pointing to the wrong repository
+- GitHub has changes your computer doesn’t
+- You pulled or fetched without checking first
+
+### Exercise A: Inspecting a Remote
+
+#### Goal
+Learn how to confirm where your local project is pointing before doing anything else. 
+
+1. Open a Git project on your computer.
+2. Run:
+   ```bash
+   git remote -v
+   ```
+
+#### Questions to Answer
+- What is the repository URL?
+- Does the GitHub username match your account?
+- Does the repository name match what you expect?
+
+---
+
+### Exercise B: Removing and Replacing a Remote
+
+#### Scenario
+You discover your project is connected to the wrong GitHub repository.
+
+1. Inspect the remote:
+   ```bash
+   git remote -v
+   ```
+2. Remove the existing remote:
+   ```bash
+   git remote remove origin
+   ```
+3. Confirm it is gone:
+   ```bash
+   git remote -v
+   ```
+4. Add the correct remote:
+   ```bash
+   git remote add origin <correct-github-repo-url>
+   ```
+5. Verify again:
+   ```bash
+   git remote -v
+   ```
+
+### Exercise C: Updating a Remote URL
+
+#### Scenario
+The repository exists, but its URL has changed.
+
+1. Run:
+   ```bash
+   git remote set-url origin <new-github-repo-url>
+   ```
+2. Verify:
+   ```bash
+   git remote -v
+   ```
+
+---
+
+### Exercise D: Understanding `git fetch`
+
+#### Goal
+Practice checking GitHub for changes **without modifying local files**.
+
+1. Run:
+   ```bash
+   git fetch
+   ```
+2. Immediately run:
+   ```bash
+   git status
+   ```
+
+#### Expected Result
+- No local files should change
+- GitHub information is updated
+
+### Exercise E: Using `git pull` Intentionally
+
+#### Goal
+Understand how `git pull` affects your files.
+
+1. Create or edit a file directly on GitHub using the web interface.
+2. Back in your local project, run:
+   ```bash
+   git pull
+   ```
+
+#### Observe
+- What files changed?
+- Did Git modify your working directory?
+
+
 ## Key Takeaways
 
 Apart from the normal daily workflow:
@@ -334,6 +439,8 @@ You should be familiar and comfortable with the following skills:
 - `git reset --soft` / `git reset --hard`
 - `git checkout <commit>`
 - `git rm`
+- `git remote`
+- `git pull`
 
 These commands form your **Git foundation**.
 
