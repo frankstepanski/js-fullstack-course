@@ -1,7 +1,7 @@
 <a href="https://buymeacoffee.com/frankstepanski">
   <img
     src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"
-    height="28"
+    height="35"
     alt="Buy Me A Coffee"
   />
 </a>
