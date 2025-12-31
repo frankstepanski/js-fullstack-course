@@ -1,14 +1,14 @@
 ![Curriculum](https://img.shields.io/badge/Education-Curriculum-blueviolet)
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Fullstack](https://img.shields.io/badge/Track-Fullstack-blue)
-<div style="text-align: right;">
+<p align="right">
   <a href="https://buymeacoffee.com/frankstepanski">
     <img
       src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"
       alt="Buy Me A Coffee"
     />
   </a>
-</div>
+</p>
 
 # 👋 Welcome to Full-Stack Software Engineering
 
