@@ -1,7 +1,15 @@
 ![Curriculum](https://img.shields.io/badge/Education-Curriculum-blueviolet)
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Fullstack](https://img.shields.io/badge/Track-Fullstack-blue)
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/frankstepanski)
+<div style="text-align: right;">
+  <a href="https://buymeacoffee.com/frankstepanski">
+    <img
+      src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"
+      alt="Buy Me A Coffee"
+    />
+  </a>
+</div>
+
 # 👋 Welcome to Full-Stack Software Engineering
 
 Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behind every animation, button click, and login flow is **code** — the language developers use to communicate with computers and bring ideas to life.
