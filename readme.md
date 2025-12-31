@@ -1,12 +1,12 @@
 <a href="https://buymeacoffee.com/frankstepanski">
-  <img align="right"
+  <img
     src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"
     height="28"
     alt="Buy Me A Coffee"
   />
 </a>
 
-# 👋 Full-Stack Software Engineering
+# 👋 Welcome to Full-Stack Software Engineering Bootcamp
 
 Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behind every animation, button click, and login flow is **code** — the language developers use to communicate with computers and bring ideas to life.
 
