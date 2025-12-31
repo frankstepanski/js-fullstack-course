@@ -1,14 +1,16 @@
-![Curriculum](https://img.shields.io/badge/Education-Curriculum-blueviolet)
-![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
-![Fullstack](https://img.shields.io/badge/Track-Fullstack-blue)
-<p align="right">
+<div style="display:flex; justify-content:space-between; align-items:center;">
+  <div>
+    <img src="https://img.shields.io/badge/Education-Curriculum-blueviolet" />
+    <img src="https://img.shields.io/badge/Author-Instructor%20Created-important" />
+    <img src="https://img.shields.io/badge/Track-Fullstack-blue" />
+  </div>
   <a href="https://buymeacoffee.com/frankstepanski">
     <img
       src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"
       alt="Buy Me A Coffee"
     />
   </a>
-</p>
+</div>
 
 # 👋 Welcome to Full-Stack Software Engineering
 
