@@ -14,6 +14,8 @@ In this program, you’ll learn how small lines of code grow into full applicati
 
 ![Curriculum](https://img.shields.io/badge/Education-Curriculum-blueviolet)
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
+![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-success)
+![Industry Aligned](https://img.shields.io/badge/Aligned-Industry%20Practices-informational)
 ![Fullstack](https://img.shields.io/badge/Track-Fullstack-blue)
 
 ## 📘 Prerequisites
