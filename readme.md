@@ -12,7 +12,6 @@ Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behi
 
 In this program, you’ll learn how small lines of code grow into full applications — and how real engineering teams design, build, and ship the software you use every day. You’ll work with the same tools and technologies used at top companies and develop the skills to build systems that scale.
 
-![Curriculum](https://img.shields.io/badge/Education-Curriculum-blueviolet)
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-success)
 ![Industry Aligned](https://img.shields.io/badge/Aligned-Industry%20Practices-informational)
