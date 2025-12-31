@@ -6,7 +6,7 @@
   />
 </a>
 
-# 👋 Welcome to Full-Stack Software Engineering Bootcamp
+# 👋 Welcome to Full-Stack Software Engineering
 
 Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behind every animation, button click, and login flow is **code** — the language developers use to communicate with computers and bring ideas to life.
 
