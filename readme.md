@@ -145,7 +145,7 @@ AI tools are powerful collaborators — but **your logic, judgment, and debuggin
 
 **Ready to build? Let’s get started — one line of code at a time. 💻✨**
 
-> This curriculum repository is for educational use within the course and is protected under a custom proprietary license.
+> This curriculum repository is for educational use and is protected under a custom proprietary license.
 
 ---
 
