@@ -1,12 +1,3 @@
-<a href="https://buymeacoffee.com/frankstepanski">
-  <img
-    align="right"
-    src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png"
-    height="35"
-    alt="Buy Me A Coffee"
-  />
-</a>
-
 # 👋 Welcome to Full-Stack Software Engineering
 
 Ever wonder how apps like Spotify, TikTok, or ChatGPT actually work? Behind every animation, button click, and login screen is code, the language developers use to turn ideas into real, working software.
