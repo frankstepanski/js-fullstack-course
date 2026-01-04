@@ -9,11 +9,11 @@
 
 # 👋 Welcome to Full-Stack Software Engineering
 
-Have you ever wondered how apps like Spotify, TikTok, or ChatGPT are built? Behind every animation, button click, and login flow is code — the language developers use to communicate with computers and bring ideas to life.
+Ever wonder how apps like Spotify, TikTok, or ChatGPT actually work? Behind every animation, button click, and login screen is code, the language developers use to turn ideas into real, working software.
 
-In this program, you'll learn how small lines of code grow into full applications — and how real engineering teams design, build, and ship the software you use every day. The curriculum is delivered through live, interactive sessions led by an instructor, where you can ask questions, get real-time feedback, and learn alongside others in a collaborative environment. You’ll work with the same tools and technologies used at top companies and develop the skills needed to build systems that scale.
+In this program, you’ll learn how small pieces of code come together to form full applications, and how real engineering teams plan, build, and ship the products we use every day. The curriculum is delivered through live, interactive sessions, so you are learning directly with an instructor, asking questions, and receiving feedback along the way. You will work with the same tools and technologies used by real-world teams and develop skills that extend well beyond tutorials.
 
-If you’re reviewing this curriculum outside of the program or exploring it independently, you're not on your own. You’re welcome to reach out to schedule a 1:1 session for guided walkthroughs, deeper explanations, or personalized support based on your goals and experience level.
+If you are reviewing this curriculum independently and are not currently enrolled in the program, you are still welcome to reach out. One-on-one sessions are available for guided walkthroughs, deeper explanations, personalized technical support, and career coaching guidance, including advice on learning paths, portfolios, interviews, and next steps toward your goals.
 
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-success)
