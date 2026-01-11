@@ -900,6 +900,6 @@ As you continue learning, you’ll build on this foundation with essential topic
 - [Custom Hooks](4-custom-hooks.md) – Reusing logic across components  
 - [Routing](5-routing.md) – Creating multi-page experiences in a single-page app  
 - [Layouts](6-layouts.md) – Reusable page structures  
-- [Styling Options](7-styling.md) – CSS modules, frameworks, libraries  
-- [Global State](8-global-state.md) – Global State patterns  
+- [Styling Options](7-styling.md) – CSS patterns and libraries  
+- [Global State](8-global-state.md) – Managing state beyond useState  
 - [Deployment](9-deployment.md) – Getting our React App online  
