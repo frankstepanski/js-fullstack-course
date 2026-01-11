@@ -52,14 +52,16 @@ Wireframes may be hand-drawn or digital.
 Before coding:
 
 1. Create a GitHub repository  
-2. Clone it locally  
-3. Install json-server globally  
-   `npm install -g json-server`
-4. Create a `db.json`
-5. Start json-server  
-   `json-server --watch db.json`
-6. Create multiple HTML pages
-7. At least **two different pages** must fetch and display data
+2. Create a local git repo
+3. Add the remote to the Github repository
+4. Install json-server
+   `npm install json-server`
+5. Create a `db.json` (database for API)
+6. Start json-server  
+   `json-server --watch db.json` (that is your API)
+7. Create multiple HTML pages
+8. At least **two different pages** must fetch and display data
+8. Deploy your site on Github Pages
 
 ## Technical Requirements
 

@@ -42,13 +42,14 @@ Wireframes can be drawn **on paper** or created using a free tool like [draw.io]
 
 ### Development Phase
 
-Before writing any code:
-
-1. **Create a GitHub repository** on [GitHub.com](https://github.com)  
-2. **Clone it** to your local machine  
-3. **Commit frequently** with descriptive messages such as:  
+1. Create a GitHub repository on [GitHub.com](https://github.com)  
+2. Create a local Git repo (`git init`)
+3. Connect the remote to your Github repository
+4. Start building your webpages
+5. **Commit frequently** with descriptive messages such as:  
    - `"add navigation bar to home page"`  
    - `"add form validation to contact page"`
+6. Deplopy to Github Pages
 
 ## Technical Requirements
 
