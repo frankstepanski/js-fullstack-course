@@ -1,0 +1,36 @@
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.app {
+  text-align: center;
+  padding: 2rem;
+}
+
+.game {
+  display: inline-block;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.game-info {
+  margin-top: 1rem;
+}
+
+.status {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}

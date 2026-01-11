@@ -1,0 +1,11 @@
+/* Global styles: all components can use it */
+
+body {
+  background-color: aqua;
+  font-size: 22px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h3 {
+  text-align: left;
+}

@@ -1,0 +1,58 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f5f6f8;
+  color: #222;
+}
+
+/* App container */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+.nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Nav links */
+.nav-links a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+/* Page content */
+.page {
+  flex: 1;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-top: 0;
+}

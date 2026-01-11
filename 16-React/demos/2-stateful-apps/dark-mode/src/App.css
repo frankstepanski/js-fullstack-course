@@ -1,0 +1,131 @@
+/* ===== RESET / BASE ===== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* ===== APP CONTAINER ===== */
+
+.container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  color: #2b283a;
+}
+
+.container.dark {
+  background-color: #1c1c1c;
+  color: #ffffff;
+}
+
+/* ===== NAVBAR ===== */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background-color: #ffffff;
+}
+
+.nav.dark {
+  background-color: #21222a;
+}
+
+.nav--left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav--logo {
+  width: 32px;
+}
+
+.nav--title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #61dafb;
+}
+
+/* ===== TOGGLER ===== */
+
+.toggler {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.toggler span {
+  opacity: 0.6;
+}
+
+.toggler span.active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.toggler--slider {
+  width: 42px;
+  height: 22px;
+  background-color: #ccc;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.toggler--slider.dark {
+  background-color: #61dafb;
+  justify-content: flex-end;
+}
+
+.toggler--circle {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* ===== MAIN CONTENT ===== */
+
+.main {
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main.dark {
+  background-color: #1c1c1c;
+}
+
+.main--title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.main--facts {
+  list-style: none;
+  padding-left: 0;
+}
+
+.main--facts li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.main--facts li::before {
+  content: "⚛️";
+  position: absolute;
+  left: 0;
+}

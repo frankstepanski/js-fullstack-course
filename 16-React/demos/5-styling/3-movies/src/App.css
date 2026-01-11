@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+ /* ==========================================================================
+   Global styles 
+   ========================================================================== */
+
+ html {
+    font-size: 16px; /* base font size : 1rem */
+ }
+
+ body{
+    font-family: 'Lato', sans-serif;
+ }
+
+ a {
+    text-decoration: none;
+    color: #000;
+ }
+
+ /* replaces "sticky" footer */
+.container {
+   max-width: 1440px;
+   width: 90%;
+   margin: auto;
+   border:   1px solid #ccc;
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+/* 
+   issue: can only set background properities (color or image) on <main>
+   use-case: set specific background-image on <NotFound />; container element is not full height
+   solution: unknown
+*/
+main {
+   flex: 1;
+}
+
+/* ==========================================================================
+
+   Header 
+
+   => ./components/layout/Header.module.css
+   => ./components/layout/Navigation.module.css
+
+   Footer 
+
+   => ./components/layout/Footer/Footer.module.css
+
+   Home Page
+
+    => ./components/pages/Home.module.css
+
+   Movies Page
+
+   =>  ./components/pagesMovies.module.css
+
+   Reviews 
+
+   => ./components/Reviews.module.css
+
+   StarRating Component 
+
+   => ./components/StarRating.module.css
+
+   ReviewModal Component 
+
+   => ./components/ReviewModal.module.css
+
+   ========================================================================== */
+

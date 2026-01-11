@@ -1,0 +1,58 @@
+.nowPlaying {
+    padding: 2%;
+}
+
+.nowPlayingList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem .3rem;
+    flex-basis: 18%;
+    margin: .5rem;
+    background-color: #f8f9fa; 
+    border: 1px solid #ccc;
+    border-radius: 2%;
+    box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.1);
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 .3rem .5rem .3rem;
+}
+
+.details h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+
+}
+
+.details h2 {
+   text-align: center;
+   font-size: 1.2rem;
+}
+
+.poster {
+    width: 250px;
+    height: auto;
+    border-radius: 2% 0 0 0;
+}
+
+.rating, .release {
+    font-weight: 400;
+}
+
+.star {
+    display: inline-block;
+    padding: 0;
+    position: relative;
+    top: .1rem;
+    left: -.2rem;
+}

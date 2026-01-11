@@ -1,0 +1,84 @@
+/* Reset & base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f4f6f8;
+}
+
+/* App container */
+.app {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Search form */
+.search-form {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px 0 0 6px;
+  border: 1px solid #ccc;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #10b981;
+}
+
+/* Button */
+.search-button {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 0 6px 6px 0;
+  border: none;
+  background-color: #10b981;
+  color: white;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #059669;
+}
+
+/* Results */
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Word badge */
+.word-item {
+  padding: 0.4rem 0.75rem;
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Empty state */
+.empty {
+  color: #666;
+  font-style: italic;
+}

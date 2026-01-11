@@ -1,0 +1,223 @@
+/* ==================================================
+   Global page defaults
+   ==================================================
+   - Sets a neutral system font
+   - Light background for contrast
+   - Dark text for readability
+*/
+body {
+  font-family: system-ui, sans-serif;
+  background: #f6f6f6;
+  color: #222;
+}
+
+/* ==================================================
+   Page container
+   ==================================================
+   - Centers content on large screens
+   - Limits line length for readability
+   - Adds horizontal padding for small screens
+*/
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ==================================================
+   Header styles
+   ==================================================
+   - Simple, readable title styling
+*/
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ==================================================
+   Movie Card
+   ==================================================
+   - Each movie is displayed as a "card"
+   - White background separates it from page
+   - Shadow adds subtle depth
+*/
+article {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Layout for movie poster + details */
+article > header {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Movie poster image */
+.thumbnail {
+  width: 120px;
+  height: 180px;
+  object-fit: cover; /* prevents image distortion */
+  border-radius: 6px;
+}
+
+/* Text details next to the poster */
+.details h3 {
+  margin: 0;
+}
+
+.details p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+/* ==================================================
+   Categories (genre tags)
+   ==================================================
+   - Displayed as small "pill" labels
+*/
+.categories {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.categories ul {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories li {
+  background: #eee;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* ==================================================
+   Reviews layout
+   ==================================================
+   - Reviews list and review form sit side-by-side
+   - Same height for visual balance
+*/
+.reviews-section {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch; /* keeps both columns equal height */
+}
+
+/* Two-column layout:
+   - Left: reviews
+   - Right: add review form
+*/
+aside {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Scrollable reviews container */
+.reviewsContainer {
+  flex: 1;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Individual review block */
+.reviewContainer {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Review author name */
+.reviewUser {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* ==================================================
+   Review form styles
+   ==================================================
+   - Clean vertical layout
+   - Consistent spacing between fields
+*/
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Each input group (label + field) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Text inputs and textarea */
+.form-group input,
+.form-group textarea {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+/* Submit button */
+.submit-btn {
+  align-self: flex-start;
+  background: #222;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Hover feedback for button */
+.submit-btn:hover {
+  background: #000;
+}
+
+/* ==================================================
+   Star rating component
+   ==================================================
+   - Stars appear inline
+   - Used for both display and input
+*/
+.starRating {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+/* Clickable star icon */
+.star-icon {
+  cursor: pointer;
+}
+
+/* ==================================================
+   Accessibility-friendly radio hiding
+   ==================================================
+   - Radios still exist for form submission
+   - Visually hidden but keyboard/screen-reader safe
+*/
+.starRating input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,43 @@
+/* Container for a single todo item */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+
+  transition: background-color 0.2s ease;
+}
+
+/* Slight hover feedback */
+.item:hover {
+  background-color: #f9fafb;
+}
+
+/* The todo text */
+.text {
+  flex: 1;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* Input shown when editing */
+.editInput {
+  flex: 1;
+  font-size: 0.95rem;
+  padding: 0.25rem 0.5rem;
+
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+}
+
+/* Focus state for edit input */
+.editInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+}

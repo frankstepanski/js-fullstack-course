@@ -1,0 +1,87 @@
+/* 🐾 GLOBAL RESET */
+body {
+  font-family: "Comic Sans MS", "Poppins", system-ui, sans-serif;
+  background: linear-gradient(135deg, #fff1f5, #fef9c3);
+  margin: 0;
+  padding: 2rem;
+}
+
+/* 🐱 APP LAYOUT */
+.app-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* 🐈 CAT CARD */
+.cat-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1rem 1.25rem 1.5rem;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  border: 4px dashed #fda4af;
+}
+
+/* 😺 CAT IMAGE */
+.cat-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  border: 3px solid #fde68a;
+}
+
+/* 🧶 DETAILS */
+.cat-details {
+  background: #fff7ed;
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+}
+
+/* 🐾 ROW */
+.cat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+/* 🏷 LABEL */
+.cat-label {
+  font-weight: bold;
+  color: #9a3412;
+}
+
+/* 💕 VALUE */
+.cat-value {
+  color: #7c2d12;
+}
+
+/* ⬅️➡️ NAV BUTTONS */
+.nav-button {
+  background: #fda4af;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+/* 😼 HOVER */
+.nav-button:hover {
+  background: #fb7185;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* 😽 CLICK */
+.nav-button:active {
+  transform: scale(0.95);
+}

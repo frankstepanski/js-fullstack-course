@@ -1,0 +1,247 @@
+/* =========================================================
+   GLOBAL RESET & DEFAULTS
+   ========================================================= */
+
+/*
+  Apply box-sizing globally so padding and borders
+  are included in width/height calculations.
+
+  This prevents layout bugs and is considered
+  a modern CSS best practice.
+*/
+* {
+  box-sizing: border-box;
+}
+
+/*
+  Base styles for the entire application.
+  These styles apply to every page unless overridden.
+*/
+body {
+  margin: 0; /* Remove default browser spacing */
+  font-family: system-ui, sans-serif;
+  background: #f6f7fb; /* Light app background */
+  color: #1f2937;      /* Default text color */
+}
+
+/* =========================================================
+   APP LAYOUT STRUCTURE
+   ========================================================= */
+
+/*
+  .site is the OUTER layout wrapper.
+
+  It:
+  - Fills the full viewport height
+  - Uses flexbox to stack header, main, and footer
+*/
+.site {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  Top header area shared across all pages.
+  Typically contains branding and navigation.
+*/
+.site-header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 1.25rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*
+  Brand/title inside the header.
+*/
+.brand {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   MAIN NAVIGATION
+   ========================================================= */
+
+/*
+  Primary navigation container.
+  Uses flexbox to space links horizontally.
+*/
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+/*
+  Navigation links (Home, About, Contact, etc.)
+*/
+.nav a {
+  text-decoration: none; /* Remove underline */
+  color: #1f2937;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+
+/*
+  Hover state improves usability and feedback.
+*/
+.nav a:hover {
+  background: #e5e7eb;
+}
+
+/* =========================================================
+   MAIN CONTENT AREA
+   ========================================================= */
+
+/*
+  The main page content container.
+
+  Notes:
+  - flex: 1 pushes the footer to the bottom
+  - max-width keeps content readable on large screens
+*/
+.site-main {
+  flex: 1;
+  padding: 1.25rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   CARD COMPONENT
+   ========================================================= */
+
+/*
+  .card is a reusable UI pattern.
+
+  Used for:
+  - Pages
+  - Sections
+  - Content blocks
+
+  This keeps visual consistency across the app.
+*/
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+/*
+  Footer shared across all pages.
+  Usually contains copyright or meta info.
+*/
+.site-footer {
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* =========================================================
+   SUB-NAVIGATION (PAGE-LEVEL NAV)
+   ========================================================= */
+
+/*
+  Sub-navigation is used INSIDE a page
+  (not the main site navigation).
+
+  Example use case:
+  - Tabs
+  - Filters
+  - Section switching
+*/
+.sub-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+/*
+  Sub-nav buttons act like tabs.
+*/
+.sub-nav button {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/*
+  Hover state for better interaction feedback.
+*/
+.sub-nav button:hover {
+  background: #e5e7eb;
+}
+
+/*
+  Active state shows which tab is selected.
+*/
+.sub-nav button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/*
+  Content that changes when sub-nav buttons are clicked.
+*/
+.sub-content {
+  margin-top: 0.75rem;
+  color: #374151;
+}
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+/*
+  Form layout uses column flexbox
+  so inputs stack vertically.
+*/
+.contact-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*
+  Group label + input together for consistency.
+*/
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/*
+  Label styling improves readability.
+*/
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/*
+  Shared styles for text inputs and textareas.
+*/
+.form-group input,
+.form-group textarea {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+}

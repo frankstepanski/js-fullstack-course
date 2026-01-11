@@ -1,0 +1,51 @@
+/* ======================================
+   Navigation Layout
+   ====================================== */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1.25rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Logo / Title */
+.nav__logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+/* Navigation links list */
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem; /* 👈 controls spacing between links */
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual links */
+.nav__link {
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #555;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+
+/* Hover state */
+.nav__link:hover {
+  color: #000;
+}
+
+/* Active route styling */
+.nav__link.active {
+  color: #000;
+  font-weight: 600;
+  border-bottom: 2px solid #000;
+}

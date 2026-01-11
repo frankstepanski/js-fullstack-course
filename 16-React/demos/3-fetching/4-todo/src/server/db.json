@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "text": "Learn React basics",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "text": "Practice CRUD with json-server",
+      "completed": true
+    },
+    {
+      "id": "b92d",
+      "text": "test",
+      "completed": false
+    }
+  ]
+}

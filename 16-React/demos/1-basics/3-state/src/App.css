@@ -1,0 +1,248 @@
+/* 
+  Import a Google Font (Poppins)
+  - This line MUST be at the very top of the CSS file.
+  - It tells the browser to download the font from Google Fonts.
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+/* 
+  1. Page defaults (applied to the whole page)
+  - Set the default font, background color, and text color.
+*/
+body {
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #faf5ef; /* light beige background */
+    color: #222;               /* dark gray text */
+}
+
+/* 
+  2. Keep content centered and readable
+  - main: the central content area of the page.
+*/
+main {
+    max-width: 900px; /* don’t let lines get too long */
+    margin: 0 auto;   /* center the main content */
+    padding: 1rem;    /* space inside main */
+}
+
+/* 
+  3. HEADER (hero)
+  - We turn the header into a full-width hero area:
+    * use the pizza image as a background
+    * stretch it to cover the entire header
+*/
+
+header {
+
+   background-image: url("images/pizza-hero.jpg"); /* path to your new pizza image */
+  
+   background-color: rgba(0, 0, 0, 0.3); 
+   background-blend-mode: darken; /* blends the background-color with the background image */
+  
+   background-size: cover;        /* ensures the image covers entire header */
+   background-position: center;   /* centers the most important part of the image */
+   background-repeat: no-repeat;  /* prevents tiling */
+
+   min-height: 300px;             /* adjust to make hero taller or shorter */
+   color: #fff;                 /* white text on darkened image */
+   text-align: center;            /* center hero text + nav */
+   padding: 3rem 1rem 2.5rem;     /* extra top padding to feel “hero-like” */
+}
+
+/* main site title sits close to subtitle */
+header h1 {
+    font-size: 3rem;
+    margin: 0 0 0.25rem;
+}
+
+/* subtitle spacing */
+header p {
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
+}
+
+/* 
+  4. Navigation styling
+  - By default, a <ul> is vertical.
+  - We remove bullets and make each <li> inline-block so the links line up horizontally.
+*/
+nav ul {
+    font-size: 1.25rem;
+    list-style: none; /* remove bullets */
+    padding: 0;       /* remove left padding */
+    margin: 0;        /* remove top/bottom margin */
+}
+
+nav li {
+    font-size: 1.1rem;
+    display: inline-block; /* sit next to each other in one row */
+}
+
+nav a {
+    color: #ffe066;        /* yellow-ish links that pop on dark background */
+    text-decoration: none; /* no underline by default */
+    margin: 0 0.5rem;      /* space between links */
+    font-weight: 500;      /* slightly bolder */
+}
+
+nav a:hover {
+    text-decoration: underline; /* show underline on hover for affordance */
+}
+
+/* 
+  6. Section spacing + headings
+  - Each <section> looks like a “card” on top of the beige background.
+*/
+section {
+    background-color: #ffffff;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+h2 {
+    margin-top: 0;
+    color: #d35400; /* pizza orange */
+}
+
+h3 {
+    color: #34495e;
+}
+
+/* 
+  7. Menu articles (each pizza “card”)
+*/
+article {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+article:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* 
+  8. Lists and text spacing
+*/
+ul {
+   padding-left: 1.25rem;
+}
+
+ul li {
+    margin-bottom: 0.25rem;
+}
+
+p {
+   line-height: 1.5;
+}
+
+/* 
+  9. Form styling (basic)
+*/
+form {
+    margin-top: 1rem;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.75rem 1rem 1rem;
+    margin-bottom: 1rem;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.25rem;
+}
+
+label {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.4rem;
+    margin-top: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* radio buttons: keep natural size and sit next to labels */
+input[type="radio"] {
+    width: auto;
+    max-width: none;
+    margin-top: 0.4rem;
+    margin-right: 0.25rem;
+}
+
+label[for="size-medium"],
+label[for="size-large"] {
+    margin-right: 1rem;
+}
+
+/* submit button */
+button[type="submit"] {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #e67e22;
+    color: white;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #cf711f;
+}
+
+/* 
+  10. Footer
+  - Footer keeps the original dark bar styling.
+*/
+footer {
+    background-color: #2b2d42;
+    color: #fff;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* 
+  11. Skip link (for accessibility)
+*/
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+}

@@ -1,0 +1,33 @@
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f6f6f6;
+  margin: 0;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+.main-nav a.active {
+  font-weight: bold;
+}
+
+.dashboard {
+  padding: 2rem;
+}
+
+.dashboard-nav {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
