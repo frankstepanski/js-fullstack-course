@@ -901,5 +901,5 @@ As you continue learning, you’ll build on this foundation with essential topic
 - [Routing](5-routing.md) – Creating multi-page experiences in a single-page app  
 - [Layouts](6-layouts.md) – Reusable page structures  
 - [Styling Options](7-styling.md) – CSS modules, frameworks, libraries  
-- [Component Libraries](8-component-libraries.md) – Pre-built UI components  
-- [Global State](9-global-state.md) – Tools like Context, Redux, Zustand, Jotai  
+- [Global State](8-global-state.md) – Global State patterns  
+- [Deployment](9-deployment.md) – Getting our React App online  
