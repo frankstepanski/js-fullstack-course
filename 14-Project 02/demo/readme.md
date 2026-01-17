@@ -7,12 +7,12 @@ In this **second project**, students take their frontend skills further by simul
 
 ## What’s New in This Version?
 
-Unlike Project 1, which focused on:
+Unlike Project 1, which primarily focused on:
 
 - UX design and planning
+- File structure and organization
 - Responsive layout using CSS Flexbox and Grid
 - Mobile-first CSS
-- File structure and organization
 
 This version now introduces:
 

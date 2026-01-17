@@ -101,21 +101,6 @@ Your website must include:
 
 Each API-driven page should display data from at least one of these arrays.
 
-## Deliverables
-
-Your submission must include:
-
-- 🧠 User Stories (minimum 3)
-- 🧾 Wireframes for at least two API pages
-- 💻 Source Code in GitHub
-- 📘 README.md including:
-  - name
-  - project overview
-  - how to run json-server
-  - technologies used
-  - ideas for future improvements
-- 🧩 Commit history (15+)
-- 🌐 Hosted website (GitHub Pages front-end)
 
 > Note: Your API only runs locally—GitHub Pages only hosts the front-end.
 
