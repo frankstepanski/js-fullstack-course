@@ -46,6 +46,42 @@ console.log("Hello, world!");
 [ JavaScript ] → Behavior / Interactivity
 ```
 
+## Running JavaScript
+
+### A) Using Node.js
+```bash
+node app.js
+```
+
+### B) In HTML
+```html
+<!DOCTYPE html>
+<html>
+<head><title>JS Example</title></head>
+<body>
+  <h1>Hello JavaScript!</h1>
+  <script src="app.js"></script>
+</body>
+</html>
+```
+
+**Illustration: File setup**
+
+```
+project/
+ ├── index.html
+ ├── app.js
+ └── css/
+     └── style.css
+```
+
+💡 **Try It Yourself**
+Run `console.log("Hello from JS!")` both in Node and in your browser console — notice the difference.
+
+🧰 **Pro Tip**
+Always place `<script>` tags **before `</body>`** to ensure the DOM is loaded.
+
+
 ## Data Types in JavaScript
 
 Everything in JavaScript has a type.
@@ -209,40 +245,212 @@ console.log(message);
 ⚠️ **Common Mistake**
 Using `==` instead of `===` — `==` allows type coercion.
 
-## Running JavaScript
 
-### A) Using Node.js
-```bash
-node app.js
+## Conditional Statements
+
+When your program needs to **make a decision**, conditional statements choose which path to follow. They let your code react to different inputs and situations — the same way you decide what to wear based on the weather, or whether to take an umbrella if it looks cloudy. Mastering conditionals is essential because most real apps behave differently depending on user actions, data from servers, or the current state of the UI.
+
+At a high level, you’ll use conditionals to check **boolean expressions** (true/false questions) and then run the matching block of code. JavaScript gives you several tools for this: `if / else if / else`, **nested** `if` statements for multi-level checks, the **ternary operator** for short, inline choices, and `switch` for clean branching when you have a set of discrete options (like days of the week or menu choices).
+
+---
+
+### ✅ If / Else: The Basics
+
+```js
+let age = 20;
+
+if (age >= 18) {
+  console.log("Adult");
+} else {
+  console.log("Minor");
+}
 ```
 
-### B) In HTML
-```html
-<!DOCTYPE html>
-<html>
-<head><title>JS Example</title></head>
-<body>
-  <h1>Hello JavaScript!</h1>
-  <script src="app.js"></script>
-</body>
-</html>
+**How it works**  
+- The condition `age >= 18` is evaluated.  
+- If it’s `true`, the **if block** runs; otherwise, the **else block** runs.
+
+**Else If (ladder)**  
+Use `else if` to check additional, mutually exclusive conditions.
+
+```js
+const temp = 55;
+
+if (temp >= 85) {
+  console.log("Hot");
+} else if (temp >= 60) {
+  console.log("Mild");
+} else {
+  console.log("Chilly");
+}
 ```
 
-**Illustration: File setup**
+**Pro Tip — Order Matters:** Put the **most specific** or **highest priority** checks first. Once a condition matches, the rest are skipped.
 
+---
+
+### Nested If Statements
+
+Nested `if` statements are useful when a decision depends on a **previous decision** (multi-step logic). Use sparingly and format clearly so it’s easy to read.
+
+```js
+const age2 = 17;
+
+if (age2 > 0) {
+  if (age2 >= 18) {
+    console.log("Adult");
+  } else if (age2 >= 13) {
+    console.log("Teenager");
+  } else {
+    console.log("Child");
+  }
+} else {
+  console.log("Invalid age");
+}
 ```
-project/
- ├── index.html
- ├── app.js
- └── css/
-     └── style.css
+
+**Another Nested Example — Role + Status**
+
+```js
+const role = "editor"; // "admin" | "editor" | "viewer"
+const isActive = true;
+
+if (isActive) {
+  if (role === "admin") {
+    console.log("Full access");
+  } else if (role === "editor") {
+    console.log("Edit access");
+  } else {
+    console.log("Read-only");
+  }
+} else {
+  console.log("Account disabled");
+}
 ```
 
-💡 **Try It Yourself**
-Run `console.log("Hello from JS!")` both in Node and in your browser console — notice the difference.
+**Readability Tip:** If nesting gets deep, consider **early returns / guard clauses** (in functions) or combine conditions with logical operators:
 
-🧰 **Pro Tip**
-Always place `<script>` tags **before `</body>`** to ensure the DOM is loaded.
+```js
+if (!isActive) {
+  console.log("Account disabled");
+} else if (role === "admin") {
+  console.log("Full access");
+} else if (role === "editor") {
+  console.log("Edit access");
+} else {
+  console.log("Read-only");
+}
+```
+
+---
+
+### Ternary Operator (Inline If)
+
+Use the **ternary** for tiny, single-expression decisions (especially inside `console.log` or JSX):
+
+```js
+const score = 92;
+const grade = score >= 90 ? "A" : "Not A";
+console.log(grade);
+```
+
+Avoid chaining multiple ternaries — it becomes hard to read. Prefer `if / else` for complex logic.
+
+---
+
+### Switch: Clean Branching by Value
+
+`switch` is perfect when you’re matching the **same variable** against a list of **known, discrete cases**.
+
+```js
+let color = "blue";
+switch (color) {
+  case "red":
+    console.log("Stop");
+    break;
+  case "green":
+    console.log("Go");
+    break;
+  case "blue":
+    console.log("Chill");
+    break;
+  default:
+    console.log("Unknown color");
+}
+```
+
+**Why `break`?**  
+Without `break`, execution **falls through** to the next case. Fall-through can be useful intentionally, but beginners usually want to stop at the first match.
+
+**Grouped Cases (Intentional Fall-Through)**
+
+```js
+const day = "sat";
+switch (day) {
+  case "sat":
+  case "sun":
+    console.log("Weekend");
+    break;
+  case "mon":
+  case "tue":
+  case "wed":
+  case "thu":
+  case "fri":
+    console.log("Weekday");
+    break;
+  default:
+    console.log("Unknown day");
+}
+```
+
+---
+
+### Truthy, Falsy, and Comparisons
+
+JavaScript will sometimes **coerce** values to `true` or `false` in conditions. These values are **falsy**: `false`, `0`, `""` (empty string), `null`, `undefined`, and `NaN`. Everything else is **truthy**.
+
+```js
+const name = "";
+if (name) {
+  console.log("Has a name");
+} else {
+  console.log("Empty string is falsy");
+}
+```
+
+**Use strict equality** (`===`) to avoid type coercion surprises:
+
+```js
+console.log(5 == "5");   // true  (coerces string to number)
+console.log(5 === "5");  // false (different types)
+```
+
+---
+
+### 🧰 Common Mistakes & Pro Tips
+
+**Mistakes**
+- Using `=` (assignment) instead of `===` (comparison) in conditions.  
+- Forgetting `break` in `switch` and accidentally falling through.  
+- Overusing nested `if`s instead of combining conditions.  
+- Comparing different types without realizing (e.g., number vs string).
+
+**Pro Tips**
+- Prefer **`===`** and **`!==`** over `==` and `!=`.  
+- Order conditions from **most specific** to **least specific**.  
+- Keep conditions small and readable; extract to functions when needed.  
+- Use ternaries only for short expressions.
+
+---
+
+### ✅ Key Takeaways
+
+- Use **`if / else if / else`** for general branching.  
+- Use **nested `if`s** for multi-step logic, but keep it readable.  
+- Use **ternaries** for short, inline choices.  
+- Use **`switch`** when matching one value against **many discrete cases**.  
+- Prefer **strict equality** (`===`) to avoid coercion surprises, and remember truthy vs falsy.
+
 
 ## Arrays
 
@@ -667,211 +875,6 @@ Loop through an array of numbers and log their **squares** (e.g., `num * num`).
 - Always ensure your loop will **eventually stop**, or you’ll create an infinite loop.  
 
 Once you get comfortable with loops, you’ll see them everywhere — processing data, running animations, validating input, and more!
-
-## Conditional Statements
-
-When your program needs to **make a decision**, conditional statements choose which path to follow. They let your code react to different inputs and situations — the same way you decide what to wear based on the weather, or whether to take an umbrella if it looks cloudy. Mastering conditionals is essential because most real apps behave differently depending on user actions, data from servers, or the current state of the UI.
-
-At a high level, you’ll use conditionals to check **boolean expressions** (true/false questions) and then run the matching block of code. JavaScript gives you several tools for this: `if / else if / else`, **nested** `if` statements for multi-level checks, the **ternary operator** for short, inline choices, and `switch` for clean branching when you have a set of discrete options (like days of the week or menu choices).
-
----
-
-### ✅ If / Else: The Basics
-
-```js
-let age = 20;
-
-if (age >= 18) {
-  console.log("Adult");
-} else {
-  console.log("Minor");
-}
-```
-
-**How it works**  
-- The condition `age >= 18` is evaluated.  
-- If it’s `true`, the **if block** runs; otherwise, the **else block** runs.
-
-**Else If (ladder)**  
-Use `else if` to check additional, mutually exclusive conditions.
-
-```js
-const temp = 55;
-
-if (temp >= 85) {
-  console.log("Hot");
-} else if (temp >= 60) {
-  console.log("Mild");
-} else {
-  console.log("Chilly");
-}
-```
-
-**Pro Tip — Order Matters:** Put the **most specific** or **highest priority** checks first. Once a condition matches, the rest are skipped.
-
----
-
-### Nested If Statements
-
-Nested `if` statements are useful when a decision depends on a **previous decision** (multi-step logic). Use sparingly and format clearly so it’s easy to read.
-
-```js
-const age2 = 17;
-
-if (age2 > 0) {
-  if (age2 >= 18) {
-    console.log("Adult");
-  } else if (age2 >= 13) {
-    console.log("Teenager");
-  } else {
-    console.log("Child");
-  }
-} else {
-  console.log("Invalid age");
-}
-```
-
-**Another Nested Example — Role + Status**
-
-```js
-const role = "editor"; // "admin" | "editor" | "viewer"
-const isActive = true;
-
-if (isActive) {
-  if (role === "admin") {
-    console.log("Full access");
-  } else if (role === "editor") {
-    console.log("Edit access");
-  } else {
-    console.log("Read-only");
-  }
-} else {
-  console.log("Account disabled");
-}
-```
-
-**Readability Tip:** If nesting gets deep, consider **early returns / guard clauses** (in functions) or combine conditions with logical operators:
-
-```js
-if (!isActive) {
-  console.log("Account disabled");
-} else if (role === "admin") {
-  console.log("Full access");
-} else if (role === "editor") {
-  console.log("Edit access");
-} else {
-  console.log("Read-only");
-}
-```
-
----
-
-### Ternary Operator (Inline If)
-
-Use the **ternary** for tiny, single-expression decisions (especially inside `console.log` or JSX):
-
-```js
-const score = 92;
-const grade = score >= 90 ? "A" : "Not A";
-console.log(grade);
-```
-
-Avoid chaining multiple ternaries — it becomes hard to read. Prefer `if / else` for complex logic.
-
----
-
-### Switch: Clean Branching by Value
-
-`switch` is perfect when you’re matching the **same variable** against a list of **known, discrete cases**.
-
-```js
-let color = "blue";
-switch (color) {
-  case "red":
-    console.log("Stop");
-    break;
-  case "green":
-    console.log("Go");
-    break;
-  case "blue":
-    console.log("Chill");
-    break;
-  default:
-    console.log("Unknown color");
-}
-```
-
-**Why `break`?**  
-Without `break`, execution **falls through** to the next case. Fall-through can be useful intentionally, but beginners usually want to stop at the first match.
-
-**Grouped Cases (Intentional Fall-Through)**
-
-```js
-const day = "sat";
-switch (day) {
-  case "sat":
-  case "sun":
-    console.log("Weekend");
-    break;
-  case "mon":
-  case "tue":
-  case "wed":
-  case "thu":
-  case "fri":
-    console.log("Weekday");
-    break;
-  default:
-    console.log("Unknown day");
-}
-```
-
----
-
-### Truthy, Falsy, and Comparisons
-
-JavaScript will sometimes **coerce** values to `true` or `false` in conditions. These values are **falsy**: `false`, `0`, `""` (empty string), `null`, `undefined`, and `NaN`. Everything else is **truthy**.
-
-```js
-const name = "";
-if (name) {
-  console.log("Has a name");
-} else {
-  console.log("Empty string is falsy");
-}
-```
-
-**Use strict equality** (`===`) to avoid type coercion surprises:
-
-```js
-console.log(5 == "5");   // true  (coerces string to number)
-console.log(5 === "5");  // false (different types)
-```
-
----
-
-### 🧰 Common Mistakes & Pro Tips
-
-**Mistakes**
-- Using `=` (assignment) instead of `===` (comparison) in conditions.  
-- Forgetting `break` in `switch` and accidentally falling through.  
-- Overusing nested `if`s instead of combining conditions.  
-- Comparing different types without realizing (e.g., number vs string).
-
-**Pro Tips**
-- Prefer **`===`** and **`!==`** over `==` and `!=`.  
-- Order conditions from **most specific** to **least specific**.  
-- Keep conditions small and readable; extract to functions when needed.  
-- Use ternaries only for short expressions.
-
----
-
-### ✅ Key Takeaways
-
-- Use **`if / else if / else`** for general branching.  
-- Use **nested `if`s** for multi-step logic, but keep it readable.  
-- Use **ternaries** for short, inline choices.  
-- Use **`switch`** when matching one value against **many discrete cases**.  
-- Prefer **strict equality** (`===`) to avoid coercion surprises, and remember truthy vs falsy.
 
 ## Debugging in JavaScript 🪲
 
