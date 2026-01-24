@@ -1,9 +1,11 @@
-# Project 02: Multi-Page Website Using Your Own API
+# Project 02: Multi-Page Website Using Your Own API (Local Development Only)
 
 ## Project Overview
 In this project, you’ll build a **multi-page website** that connects to a JSON API you create yourself using **json-server** and a local **db.json** file.
 
 Your website may have multiple pages, but **at least two pages must fetch and display API data** using JavaScript `fetch()`.
+
+This project is focused on **local development only**. You will **not deploy this project** to GitHub Pages or any hosting platform.
 
 Your app should:
 - run a local fake API with json-server
@@ -13,10 +15,11 @@ Your app should:
 - dynamically update the DOM
 - style pages with CSS or Bootstrap
 
-> 🎯 **Goal:** Learn how real websites request and display data from APIs instead of hard-coding content.
+> 🎯 **Goal:** Learn how real websites request and display data from APIs instead of hard-coding content, while understanding the difference between local development and deployment.
+
+---
 
 ## Key Skills Covered
-
 - JSON APIs
 - json-server
 - fetch & async JavaScript
@@ -28,13 +31,13 @@ Your app should:
 
 ## Workflow Requirements
 
-These relate to planning and workflow—not just code.
-
 ### 1️⃣ User Stories
 Write at least **three user stories** describing what users want to do with your site.
 
 **Example:**  
-> As a user, I want to view menu items so I can decide what to order.
+As a user, I want to view menu items so I can decide what to order.
+
+---
 
 ### 2️⃣ Wireframes
 Create wireframes for **at least two pages** that use API data.
@@ -52,27 +55,28 @@ Wireframes may be hand-drawn or digital.
 Before coding:
 
 1. Create a GitHub repository  
-2. Create a local git repo
-3. Add the remote to the Github repository
-4. Install json-server
-   `npm install json-server`
-5. Create a `db.json` (database for API)
+2. Create a local git repository  
+3. Add the remote to the GitHub repository  
+4. Install json-server  
+   `npm install json-server`  
+5. Create a `db.json` file (this is your API database)  
 6. Start json-server  
-   `json-server --watch db.json` (that is your API)
-7. Create multiple HTML pages
-8. At least **two different pages** must fetch and display data
-8. Deploy your site on Github Pages
+   `json-server --watch db.json`  
+7. Create multiple HTML pages  
+8. At least **two different pages** must fetch and display API data  
+9. Commit your work frequently and push to GitHub  
+
+> 🚫 **Do NOT deploy this project.**  
+> This project is designed to run locally only.
 
 ## Technical Requirements
-
-Your website must include:
 
 | # | Requirement | Description |
 |---|-------------|-------------|
 | 1 | **Multi-page site** | Must include multiple HTML pages linked together. |
 | 2 | **Two API pages** | At least two **different** pages must GET API data. |
 | 3 | **db.json storage** | All dynamic data must come from db.json. |
-| 4 | **DOM updates** | Use textContent, innerHTML, appendChild, etc. |
+| 4 | **DOM updates** | Use `textContent`, `innerHTML`, `appendChild`, etc. |
 | 5 | **Responsive layout** | Use CSS Flexbox/Grid for layout. |
 | 6 | **GitHub repository** | Full project must be pushed to GitHub. |
 | 7 | **Commit history** | At least 15 commits with descriptive messages. |
@@ -84,7 +88,7 @@ Your website must include:
 | # | Optional Requirement | Description |
 |---|----------------------|-------------|
 | 8 | **POST request** | Submit a review, add an item, or send user input to db.json. |
-| 9 | **Bootstrap** | Use layout or components; optional bonus. |
+| 9 | **Bootstrap** | Use Bootstrap for layout or components (optional bonus). |
 | 10 | **Local images** | Store images inside project folders. |
 
 ---
@@ -92,7 +96,6 @@ Your website must include:
 ## Required JSON Data
 
 `db.json` must contain at least one array of objects—such as:
-
 - `menu`
 - `products`
 - `cards`
@@ -101,45 +104,41 @@ Your website must include:
 
 Each API-driven page should display data from at least one of these arrays.
 
-
-> Note: Your API only runs locally—GitHub Pages only hosts the front-end.
+> **Important:** Your API runs locally with json-server. This project is not deployed, so the API and frontend are expected to work together only in your local environment.
 
 ## Submission Instructions
 
 Submit a **single document** containing:
 - GitHub repository link
-- GitHub Pages link
 
 Upload under Project Submission.
+
+---
 
 ## Project Grading Criteria
 
 | Category | Description |
 |-----------|-------------|
-| **Functionality** | Do two pages load API data correctly? |
+| **Functionality** | Do two pages load API data correctly locally? |
 | **Responsiveness** | Does the layout adapt to mobile? |
 | **Creativity & UX** | Clean, readable, user-friendly design |
 | **GitHub Workflow** | Frequent commits with meaningful messages |
-| **Documentation** | README explains setup & usage |
+| **Documentation** | README explains local setup clearly |
 | **API Integration** | Proper json-server + fetch usage |
 
----
-
 ## Tools and Resources
-
-- json-server docs
-- GitHub Pages
-- Google Fonts
-- Draw.io
-- W3C HTML Validator
-- JSON Formatter
+- json-server docs  
+- Google Fonts  
+- Draw.io  
+- W3C HTML Validator  
+- JSON Formatter  
 
 ## Final Notes
-
 - API must come from json-server
 - Two pages must GET data
 - One optional POST
 - All dynamic data must come from db.json
 - Don’t hard-code repeated lists
+- This project is **about learning API integration**, not deployment
 
-> “This is your first full-stack style project — a real API talking to your front-end, just like professional applications.”
+> “This is your first full-stack-style project — a real API talking to your front-end, just like professional applications — but running locally.”
