@@ -571,7 +571,6 @@ function greet(name) { // `name` is a parameter
 greet("Alex");
 greet("Jordan");
 
-
 // 13.2 Function Expression
 // - Function is stored in a variable
 // - Not hoisted the same way; must be defined before you use it.
@@ -588,6 +587,9 @@ sayGoodbye("Sam");
 // - Especially used with array methods and callbacks.
 
 const add = (a, b) => {
+  // if ..
+  // loops ..
+  // lots of code ..
   return a + b;
 };
 
@@ -601,6 +603,7 @@ const double = x => {
 console.log("double(5):", double(5));
 
 // Arrow function with a single expression can omit `return` and { }:
+// This is called an "implicit return".
 const triple = x => x * 3;
 console.log("triple(4):", triple(4));
 
@@ -697,7 +700,7 @@ console.log(Math.min(5, 10, 3)); // 3
 
 
 // Random numbers
-console.log(Math.random()); // random number 0–1
+console.log(Math.random()); // random number 0–1 which is 0.1 to 0.9999...
 
 // Random integer between 1–10
 const randomOneToTen = Math.floor(Math.random() * 10) + 1;
@@ -750,6 +753,9 @@ console.log(Number(inputValue) + 1);   // 6 (correct)
 
 function doMath(a, b, operationCallback) {
   // `operationCallback` is EXPECTED to be a function
+  // .. other code
+  // other code ..
+
   const result = operationCallback(a, b);
   console.log("Result of operation:", result);
 }
@@ -810,9 +816,9 @@ processOrder(102, id => {
  *  - Function scope → available only inside that function
  *  - Block scope    → available only inside { } (if, for, etc.)
  *
- * var  → function-scoped (ignores block scope)
- * let  → block-scoped
- * const→ block-scoped
+ * var   → function-scoped (ignores block scope)
+ * let   → block-scoped
+ * const → block-scoped
  ****************************************************/
 
 

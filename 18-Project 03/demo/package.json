@@ -1,0 +1,27 @@
+{
+  "name": "moonlight-react-demo",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "api": "json-server --watch db.json --port 3000",
+    "start": "concurrently -n API,WEB -c green,cyan \"npm run api\" \"npm run dev\""
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.13.0",
+    "styled-components": "^6.1.12"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^9.0.1",
+    "json-server": "^1.0.0-beta.3",
+    "vite": "^7.3.1"
+  }
+}

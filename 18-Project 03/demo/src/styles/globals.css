@@ -1,0 +1,15 @@
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #fafafa;
+  color: #222;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+p { line-height: 1.5; }
