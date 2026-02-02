@@ -1,205 +1,271 @@
-# Moonlight Pizza Co. — React Web App (Project 3)
+# Moonlight Pizza Co. — React Web App (Project 03)
 
-This project is a **React-based rebuild** of the Moonlight Pizza Co. application previously created using **vanilla HTML, CSS, and JavaScript**.
+This project rebuilds **Moonlight Pizza Co. Project 02** using **React** while keeping the **same UI, same API, and same data**.
 
-In **Project 2**, students simulated a full-stack application using static HTML pages, custom JavaScript files, and data fetched from a REST API powered by `json-server`.
+The goal of this project is **not** to add new features — it’s to understand how a real-world vanilla JavaScript app translates into a modern React architecture.
 
-In **Project 3**, we keep the **same API, same data, and same features** — but rebuild the frontend using **React**, the most common UI library used in modern web applications.
+> If Project 02 taught you *how the browser works*, this project teaches you *how teams actually build frontend apps*.
 
-This project focuses on **how React fundamentally changes the way we structure, reason about, and scale frontend applications**.
+## What Stayed the Same
 
-## What Changed from the Vanilla JS Version?
+This React version intentionally preserves everything that already worked:
 
-### 🔙 Project 2 (Vanilla JavaScript)
+- Same visual design (100% UI parity)
+- Same responsive behavior (mobile-first)
+- Same REST API
+- Same endpoints
+- Same data flow
+- Same user experience
 
-Previously, the app relied on:
+The backend **does not change**.
 
-- Multiple HTML pages (`menu.html`, `order.html`, etc.)
-- Manual DOM manipulation (`document.createElement`, `innerHTML`)
-- Page-specific JavaScript files
-- Careful coordination between:
-  - HTML structure
-  - CSS files
-  - JavaScript logic
-- Fetch calls tied directly to specific pages
+We are still using [`json-server`](https://github.com/typicode/json-server) as a mock REST API.
 
-This approach works — and is **important to understand** — but it becomes difficult to scale as applications grow.
+## What Changed (High-Level)
 
-### 🔁 Project 3 (React)
+| Vanilla JS (Project 02) | React (Project 03) |
+|------------------------|-------------------|
+| Multiple HTML files | One HTML file |
+| File-based navigation | Client-side routing |
+| Manual DOM updates | State-driven rendering |
+| Global variables | React Context |
+| `querySelector` / `innerHTML` | JSX |
+| Script tags | ES module imports |
+| Event listeners | JSX event handlers |
 
-In this version:
+## Key Conceptual Shift
 
-- The entire UI is rendered from **JavaScript**
-- Pages are replaced with **React components**
-- UI updates are driven by **state**, not manual DOM updates
-- Data fetching is handled inside components using hooks
-- Layout and logic are co-located for better maintainability
+**Vanilla JS**  
+> "Find elements → update them manually"
 
-Instead of asking *“How do I change this part of the DOM?”*, React encourages you to think:
+**React**  
+> "Describe what the UI should look like for a given state"
 
-> “Given this state, what should the UI look like?”
+You no longer *tell* the DOM what to do.  
+You *declare* what the UI should look like — React handles the updates.
 
-## What’s New in This Version?
+## 🧱 Tech Stack
 
-Compared to the vanilla JS project, this React version introduces:
+- Vite + React
+- React Router
+- React Context
+- styled-components
+- json-server (unchanged)
 
-- Component-based architecture
-- Reusable UI components (MenuItem, PizzaCard, CartItem, etc.)
-- Declarative rendering (React decides how the DOM updates)
-- Centralized application state
-- Cleaner separation of **data → state → UI**
-- A modern development environment using **Vite**
-
-The backend API remains the same and is still powered by `json-server`.
-
-## 📁 Project File Structure (React)
+## 📁 Project Structure (React)
 
 ```
-moonlight-pizza/
+moonlight-pizza-react/
+├── public/
+│   └── images/
 ├── src/
 │   ├── components/
-│   │   ├── MenuList.jsx
-│   │   ├── PizzaCard.jsx
-│   │   ├── Cart.jsx
-│   │   └── Header.jsx
 │   ├── pages/
+│   │   ├── Home.jsx
 │   │   ├── Menu.jsx
 │   │   ├── Specials.jsx
 │   │   ├── Order.jsx
 │   │   └── Contact.jsx
-│   ├── services/
-│   │   └── api.js
+│   ├── context/
+│   │   └── CartContext.jsx
+│   ├── styles/
+│   │   └── GlobalStyles.js
 │   ├── App.jsx
-│   ├── main.jsx
-│   └── styles/
-│       ├── base.css
-│       └── layout.css
+│   └── main.jsx
 ├── db.json
-├── index.html
-└── package.json
+├── package.json
 ```
 
-### How This Differs from Vanilla JS
+## HTML Pages → React Components
 
-| Vanilla JS                    | React                              |
-|--------------------------------|------------------------------------|
-| Multiple HTML files            | Single HTML entry point            |
-| Page-specific JS files         | Reusable components                |
-| Manual DOM manipulation        | Declarative rendering              |
-| Tight coupling to HTML         | UI driven by state                 |
-| Hard to share logic            | Easy logic reuse via components    |
+### Before (Vanilla JS)
 
-## Routing: Pages vs Components
+- `index.html`
+- `menu.html`
+- `specials.html`
+- `order.html`
+- `contact.html`
 
-In Project 2, navigation happened through **separate HTML files**.
+### Now (React)
 
-In React:
+Each page is a **React component**:
 
-- Pages are components
-- Navigation is handled inside the app (often with React Router)
-- No full page reloads
-- State can persist between views
+| Page | Component |
+|------|-----------|
+| Home | `Home.jsx` |
+| Menu | `Menu.jsx` |
+| Specials | `Specials.jsx` |
+| Order | `Order.jsx` |
+| Contact | `Contact.jsx` |
+All pages render inside a **single HTML file** (`index.html`), which React controls.
 
-This creates a smoother user experience and simplifies data sharing.
+## Navigation → React Router
 
-## API + Frontend (Same Backend, New Frontend)
+### Before
 
-Just like Project 2, this project simulates a full-stack app by running **two servers**:
-
-| Server Type     | Purpose                    | How to Start        |
-|-----------------|----------------------------|---------------------|
-| **JSON Server** | Simulated REST API backend | `npm run server`    |
-| **Vite Dev**    | React frontend             | `npm run dev`       |
-
-The API endpoints remain unchanged.
-
-### API Endpoints Used
-
-```
-http://localhost:3000/pizzas
-http://localhost:3000/specials
-http://localhost:3000/contactCards
-http://localhost:3000/cart
-http://localhost:3000/orders
-http://localhost:3000/testimonials
+```html
+<a href="menu.html">Menu</a>
 ```
 
-React components fetch only the data they need.
+### Now
 
-## Example: Fetching Data in React
+```jsx
+<Link to="/menu">Menu</Link>
+```
+
+Routes are defined once in the app:
+
+```jsx
+<Route path="/menu" element={<Menu />} />
+```
+
+Navigation happens **without reloading the page**.
+
+## CSS → styled-components
+
+### Before
+
+- Global CSS files loaded with `<link>`
+- Styles applied by class names
+
+### Now
+
+- Styles live next to components
+- Components encapsulate structure + styles
+- Visual output remains **identical**
+
+```js
+import styled from "styled-components";
+
+const Card = styled.article`
+  background: white;
+  padding: 1rem;
+`;
+```
+
+A `GlobalStyles` file injects the original CSS rules so spacing, fonts, and breakpoints match exactly.
+
+## DOM Manipulation → State
+
+### Before
+
+```js
+container.innerHTML += pizzaHTML;
+```
+
+### Now
+
+```jsx
+{pizzas.map((pizza) => (
+  <PizzaCard key={pizza.id} {...pizza} />
+))}
+```
+
+React updates the DOM automatically whenever state changes.
+
+## Global Variables → React Context
+
+Shared state (cart / order data) is handled with **React Context** instead of global variables.
+
+```jsx
+<CartProvider>
+  <App />
+</CartProvider>
+```
+
+This allows:
+
+- Shared state across pages
+- Predictable data flow
+- No manual syncing
+- Cleaner architecture
+
+## 🧠 How the App Runs (Frontend + Backend)
+
+This project still runs **two servers**, just like Project 02.
+
+| Server | Purpose | Port |
+|-------|--------|------|
+| Frontend (Vite) | React app | `5173` |
+| Backend | json-server API | `3001` |
+
+## 📜 npm Scripts
+
+```json
+"scripts": {
+  "dev": "vite",
+  "server": "json-server --watch db.json --port 3001",
+  "dev:all": "concurrently \"npm run dev\" \"npm run server\""
+}
+```
+
+### Script Breakdown
+
+- **`npm run dev`**  
+  Starts the React dev server  
+  `http://localhost:5173`
+
+- **`npm run server`**  
+  Starts the API  
+  `http://localhost:3001`
+
+- **`npm run dev:all`**  
+  Runs both at once (recommended)
+
+## ▶️ Running the Project
+
+```bash
+npm install
+npm run dev:all
+```
+
+Open in browser:
+
+- Frontend → http://localhost:5173
+- API → http://localhost:3001
+
+## API Endpoints (Unchanged)
+
+```
+http://localhost:3001/pizzas
+http://localhost:3001/specials
+http://localhost:3001/contactCards
+http://localhost:3001/cart
+http://localhost:3001/orders
+http://localhost:3001/testimonials
+```
+
+Each page fetches **only the data it needs**.
+
+## Example Fetch in React
 
 ```js
 useEffect(() => {
-  fetch("http://localhost:3000/pizzas")
-    .then(res => res.json())
+  fetch("http://localhost:3001/pizzas")
+    .then((res) => res.json())
     .then(setPizzas)
     .catch(console.error);
 }, []);
 ```
 
-Key differences from vanilla JS:
+## Why This Project Exists
 
-- Runs when the component mounts
-- Updates state
-- Automatically re-renders the UI
-- No manual DOM updates required
+This project is the **bridge**:
 
-## Why React Is an Upgrade (Conceptually)
+- From static pages → component architecture
+- From scripts → applications
+- From DOM manipulation → state-driven UI
+- From beginner projects → professional frontend patterns
 
-React doesn’t replace JavaScript — it **organizes it**.
+Nothing magical happened — React simply organizes what you already know.
 
-### Advantages Over Vanilla JS
+## What Comes Next
 
-- Predictable UI updates
-- Easier mental model for complex UIs
-- Less fragile DOM code
-- Better reuse of logic and layout
-- Industry-standard tooling and patterns
-- Scales well as applications grow
+In future projects, you will:
 
-### Important Note
+- Build new features directly in React
+- Replace `json-server` with a real backend
+- Add authentication and persistence
+- Deploy frontend and backend separately
 
-Understanding **vanilla JavaScript first** is critical.
-
-React makes more sense *because* you’ve already experienced:
-
-- Manual DOM updates
-- Shared state between pages
-- Repeated logic
-- UI bugs caused by timing issues
-
-## How to Run This Project
-
-### 1️⃣ Install Dependencies
-
-```bash
-npm install
-```
-
-### 2️⃣ Start the API Server
-
-```bash
-npm run server
-```
-
-Runs at: http://localhost:3000
-
-### 3️⃣ Start the React App
-
-```bash
-npm run dev
-```
-
-Runs at: http://localhost:5173
-
-## What This Project Is Teaching You
-
-This project is **not about memorizing React syntax**.
-
-It’s about learning:
-
-- How modern frontend apps are structured
-- How state drives UI
-- How components replace static pages
-- How APIs integrate with UI frameworks
-- How real production apps are built
+By then, React should feel **familiar**, not confusing.

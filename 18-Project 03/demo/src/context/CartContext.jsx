@@ -1,194 +1,157 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useReducer,
-  useRef,
-  useState,
-} from "react";
-
-import { api } from "../api/client.js";
-import { cartReducer, initialCartState } from "./cartReducer.js";
-
-/* --------------------------------------------------
-   CartContext.jsx
-   --------------------------------------------------
-   This file manages the GLOBAL cart state for the app.
-
-   Why Context?
-   - The cart is needed in multiple places:
-     - Menu (add items)
-     - Cart UI (view/remove items)
-     - Order page (submit order)
-     - Header (show cart count)
-   - Passing props everywhere would be messy ("prop drilling")
-
-   Why useReducer?
-   - Cart state has multiple actions (add, remove, update)
-   - Reducers keep state updates predictable and centralized
-
-   Why is this file "advanced"?
-   - It combines Context + Reducer + side effects (API)
-   - This mirrors how real production React apps manage global state
--------------------------------------------------- */
+import React, { createContext, useContext, useEffect, useMemo, useReducer, useRef } from "react";
+import { api } from "../lib/api.js";
 
 const CartContext = createContext(null);
 
-/* --------------------------------------------------
-   CartProvider
-   --------------------------------------------------
-   The Provider owns the cart state and side effects.
-   Any component wrapped by CartProvider can access the cart.
--------------------------------------------------- */
+function mapFromItems(items = []) {
+  const m = new Map();
+  for (const item of items) m.set(item.key, item);
+  return m;
+}
+
+function itemsFromMap(map) {
+  return Array.from(map.values());
+}
+
+function calcTotals(map) {
+  let total = 0;
+  for (const item of map.values()) total += item.subtotal || 0;
+  return total;
+}
+
+function cartReducer(state, action) {
+  switch (action.type) {
+    case "HYDRATE": {
+      const cartMap = mapFromItems(action.payload?.items || []);
+      return { ...state, cart: cartMap, status: "ready", error: "" };
+    }
+    case "ERROR":
+      return { ...state, status: "error", error: action.payload || "Something went wrong." };
+
+    case "ADD": {
+      const { pizza, size } = action.payload;
+      const key = `${pizza.id}-${size}`;
+      const price = pizza.prices?.[size] ?? 0;
+
+      const next = new Map(state.cart);
+      const existing = next.get(key);
+      const quantity = (existing?.quantity || 0) + 1;
+
+      const item = {
+        key,
+        pizzaId: pizza.id,
+        name: pizza.name,
+        size,
+        price,
+        quantity,
+        subtotal: price * quantity,
+      };
+
+      next.set(key, item);
+      return { ...state, cart: next };
+    }
+
+    case "UPDATE_QTY": {
+      const { key, quantity } = action.payload;
+      const next = new Map(state.cart);
+      const item = next.get(key);
+      if (!item) return state;
+
+      const q = Math.max(1, Number(quantity) || 1);
+      next.set(key, { ...item, quantity: q, subtotal: item.price * q });
+      return { ...state, cart: next };
+    }
+
+    case "REMOVE": {
+      const next = new Map(state.cart);
+      next.delete(action.payload);
+      return { ...state, cart: next };
+    }
+
+    case "CLEAR":
+      return { ...state, cart: new Map() };
+
+    default:
+      return state;
+  }
+}
+
 export function CartProvider({ children }) {
-  /* -------------------------------
-     STATE (Reducer-driven)
-     -------------------------------
-     state.itemsByKey holds cart items in an object
-     for fast lookup and updates
-  ------------------------------- */
-  const [state, dispatch] = useReducer(cartReducer, initialCartState);
+  const [state, dispatch] = useReducer(cartReducer, {
+    cart: new Map(),
+    status: "loading",
+    error: "",
+  });
 
-  /* Indicates whether the initial cart has finished loading.
-     This prevents saving before the cart is hydrated from the API. */
-  const [isCartReady, setIsCartReady] = useState(false);
+  // Avoid PUT spam on first hydrate.
+  const hydratedRef = useRef(false);
 
-  /* Ref used to debounce saves.
-     useRef persists values across renders without causing re-renders. */
-  const saveTimerRef = useRef(null);
-
-  /* --------------------------------------------------
-     1️⃣ Load cart ONCE when the app starts
-     --------------------------------------------------
-     This effect runs a single time on mount.
-     It fetches the cart from the API and initializes state.
-  -------------------------------------------------- */
   useEffect(() => {
     let cancelled = false;
 
-    async function load() {
+    (async () => {
       try {
-        const cartDoc = await api.getCart();
-
-        /* Defensive programming:
-           Always normalize data from the API */
-        const items = Array.isArray(cartDoc?.items) ? cartDoc.items : [];
-
-        /* Convert array → object for efficient updates */
-        const itemsByKey = {};
-
-        items.forEach((item) => {
-          if (!item.key) return;
-          itemsByKey[item.key] = item;
-        });
-
-        /* Only update state if the component is still mounted */
-        if (!cancelled) {
-          dispatch({ type: "CART/LOAD", payload: itemsByKey });
-        }
-      } catch {
-        /* json-server may return 404 if the cart does not exist yet.
-           This is expected behavior — we start with an empty cart. */
-      } finally {
-        if (!cancelled) setIsCartReady(true);
+        const cart = await api.getCart();
+        if (cancelled) return;
+        dispatch({ type: "HYDRATE", payload: cart || { id: 1, items: [] } });
+        hydratedRef.current = true;
+      } catch (err) {
+        if (cancelled) return;
+        dispatch({ type: "ERROR", payload: err?.message || String(err) });
       }
-    }
+    })();
 
-    load();
-
-    /* Cleanup to avoid setting state after unmount */
     return () => {
       cancelled = true;
     };
   }, []);
 
-  /* --------------------------------------------------
-     2️⃣ Persist cart AFTER state changes
-     --------------------------------------------------
-     This effect runs whenever cart items change.
-     It saves the cart back to the API, but:
-     - Only after initial load is complete
-     - With debouncing to reduce API calls
-  -------------------------------------------------- */
+  // Persist to API on changes (after hydration).
   useEffect(() => {
-    if (!isCartReady) return;
+    if (!hydratedRef.current) return;
 
-    /* Clear any pending save */
-    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    const payload = { id: 1, items: itemsFromMap(state.cart) };
 
-    /* Debounce save by 400ms */
-    saveTimerRef.current = setTimeout(async () => {
-      const items = Object.values(state.itemsByKey);
+    // Fire-and-forget; errors are logged to avoid breaking UI.
+    api.putCart(payload).catch((err) => {
+      console.error("Failed to persist cart:", err);
+    });
+  }, [state.cart]);
 
-      try {
-        await api.saveCart({ id: 1, items });
-      } catch {
-        /* 
-           In real applications, you would show an error,
-           retry the request, or notify the user.
-           We intentionally keep this simple here. */
-      }
-    }, 400);
-
-    /* Cleanup timeout if state changes again */
-    return () => {
-      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-    };
-  }, [state.itemsByKey, isCartReady]);
-
-  /* --------------------------------------------------
-     3️⃣ Derived values (memoized)
-     --------------------------------------------------
-     useMemo prevents recalculating values on every render
-     unless the dependencies actually change.
-  -------------------------------------------------- */
   const value = useMemo(() => {
-    const items = Object.values(state.itemsByKey);
-
-    const total = items.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
+    const total = calcTotals(state.cart);
 
     return {
-      /* Raw reducer state */
-      state,
+      cartStatus: state.status,
+      cartError: state.error,
+      cartMap: state.cart,
+      cartItems: itemsFromMap(state.cart),
+      cartTotal: total,
 
-      /* Dispatch function for reducer actions */
-      dispatch,
+      addToCart: (pizza, size) => dispatch({ type: "ADD", payload: { pizza, size } }),
+      updateQuantity: (key, quantity) => dispatch({ type: "UPDATE_QTY", payload: { key, quantity } }),
+      removeFromCart: (key) => dispatch({ type: "REMOVE", payload: key }),
+      clearCart: () => dispatch({ type: "CLEAR" }),
 
-      /* Derived data */
-      items,
-      total,
-
-      /* Readiness flag for UI control */
-      isCartReady,
+      // Place order (demo): POST /orders, then clear cart.
+      placeOrder: async () => {
+        const order = {
+          createdAt: new Date().toISOString(),
+          items: itemsFromMap(state.cart),
+          total,
+        };
+        const saved = await api.postOrder(order);
+        dispatch({ type: "CLEAR" });
+        return saved;
+      },
     };
-  }, [state, isCartReady]);
+  }, [state]);
 
-  return (
-    /* The Provider makes cart data available
-       to all descendant components */
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
-/* --------------------------------------------------
-   Custom Hook: useCart
-   --------------------------------------------------
-   This is the ONLY supported way to access cart state.
-   It improves readability and prevents incorrect usage.
--------------------------------------------------- */
 export function useCart() {
   const ctx = useContext(CartContext);
-
-  /* Guardrail: ensure provider is mounted */
-  if (!ctx) {
-    throw new Error("useCart must be used inside CartProvider");
-  }
-
+  if (!ctx) throw new Error("useCart must be used inside <CartProvider>");
   return ctx;
 }

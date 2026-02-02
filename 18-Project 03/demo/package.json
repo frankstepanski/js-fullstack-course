@@ -1,5 +1,5 @@
 {
-  "name": "moonlight-react-demo",
+  "name": "moonlight-pizza-react",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,13 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "api": "json-server --watch db.json --port 3000",
-    "start": "concurrently -n API,WEB -c green,cyan \"npm run api\" \"npm run dev\""
+    "server": "json-server --watch db.json --port 3000",
+    "dev:all": "concurrently -n server,client -c auto \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.13.0",
+    "react-router-dom": "^6.26.2",
     "styled-components": "^6.1.12"
   },
   "devDependencies": {
@@ -22,6 +22,6 @@
     "@vitejs/plugin-react": "^4.3.1",
     "concurrently": "^9.0.1",
     "json-server": "^1.0.0-beta.3",
-    "vite": "^7.3.1"
+    "vite": "^5.4.8"
   }
 }

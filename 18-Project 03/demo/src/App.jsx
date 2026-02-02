@@ -1,36 +1,28 @@
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import AppLayout from "./components/layout/AppLayout.jsx";
-import Home from "./pages/Home.jsx";
-import Menu from "./pages/Menu.jsx";
-import Specials from "./pages/Specials.jsx";
-import Order from "./pages/Order.jsx";
-import Contact from "./pages/Contact.jsx";
-import About from "./pages/About.jsx";
+import Layout from "./components/Layout.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import MenuPage from "./pages/MenuPage.jsx";
+import SpecialsPage from "./pages/SpecialsPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import OrderPage from "./pages/OrderPage.jsx";
 
 export default function App() {
-
-  /* App.jsx typically holds:
-   * - Global layout
-   *  - Routing
-   * - Shared UI (header, footer, nav)
-   *
-   * It should NOT contain heavy business logic.
-   * That logic belongs in page or component files.
-  */
-
   return (
-    <AppLayout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/specials" element={<Specials />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
-
-        {/* Redirect unknown routes back home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </AppLayout>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<AboutPage />} />
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/specials" element={<SpecialsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/order" element={<OrderPage />} />
+        {/* Back-compat with vanilla paths */}
+        <Route path="/pages/menu.html" element={<Navigate to="/menu" replace />} />
+        <Route path="/pages/specials.html" element={<Navigate to="/specials" replace />} />
+        <Route path="/pages/contact.html" element={<Navigate to="/contact" replace />} />
+        <Route path="/pages/order.html" element={<Navigate to="/order" replace />} />
+        <Route path="/index.html" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   );
 }
