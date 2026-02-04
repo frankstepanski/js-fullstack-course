@@ -3,7 +3,7 @@
 // - Fetches pizzas from json-server (/pizzas)
 // - Renders cards using fields stored in db.json
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "http://localhost:3001";
 
 document.addEventListener("DOMContentLoaded", () => {
   const statusEl = document.querySelector("#menu-status");

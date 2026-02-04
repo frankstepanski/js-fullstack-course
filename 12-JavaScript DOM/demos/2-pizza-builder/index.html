@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pizza Order Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<main class="app">
+  <section class="card">
+    <h1>Pizza Order Builder 🍕</h1>
+    <p class="subtitle">
+      Build a custom pizza and see your total update in real time.
+    </p>
+
+    <!-- SECTION 1 -->
+    <section class="section">
+      <h2>1. Choose your size</h2>
+
+      <label>
+        Pizza size
+        <select id="sizeSelect">
+          <option value="small" data-price="10">Small ($10)</option>
+          <option value="medium" data-price="12" selected>Medium ($12)</option>
+          <option value="large" data-price="14">Large ($14)</option>
+        </select>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" id="glutenCheckbox" />
+        Gluten-free crust (+$2)
+      </label>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section">
+      <h2>2. Add toppings</h2>
+
+      <div class="row">
+        <select id="toppingSelect">
+          <option value="Pepperoni" data-price="1.5">Pepperoni ($1.50)</option>
+          <option value="Mushrooms" data-price="1">Mushrooms ($1.00)</option>
+          <option value="Onions" data-price="0.75">Onions ($0.75)</option>
+          <option value="Extra Cheese" data-price="1.25">Extra Cheese ($1.25)</option>
+        </select>
+
+        <button id="addToppingBtn" class="primary">
+          Add topping
+        </button>
+      </div>
+
+      <p class="hint">
+        You can add the same topping multiple times.
+      </p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="section">
+      <h2>3. Order summary</h2>
+
+      <p id="summaryText"></p>
+
+      <ul id="toppingsList"></ul>
+
+      <div class="total-row">
+        <span>Total</span>
+        <strong>$<span id="totalPrice">0.00</span></strong>
+      </div>
+
+      <button id="resetBtn" class="secondary">
+        Reset order
+      </button>
+    </section>
+
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -5,7 +5,7 @@
 // - Saves cart back to API on every change (PUT /cart/1)
 // - Saves final orders to json-server (/orders)
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "http://localhost:3001";
 
 const state = {
   pizzas: [],

@@ -3,7 +3,7 @@
 // - Fetches specials from json-server (/specials)
 // - Renders cards into .specials-grid
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "http://localhost:3001";
 
 document.addEventListener("DOMContentLoaded", () => {
   const statusEl = document.querySelector("#specials-status");

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pizza Shopping Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<main class="app">
+  <section class="card">
+
+    <header>
+      <h1>Pizza Shopping Cart 🍕</h1>
+      <p class="subtitle">
+        Build pizzas, add them to your cart, and review your full order.
+      </p>
+    </header>
+
+    <!-- BUILDER -->
+    <section class="section">
+      <h2>Build your pizza</h2>
+
+      <label>
+        Size
+        <select id="sizeSelect">
+          <option value="small" data-price="10">Small ($10)</option>
+          <option value="medium" data-price="12" selected>Medium ($12)</option>
+          <option value="large" data-price="14">Large ($14)</option>
+        </select>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" id="glutenCheckbox" />
+        Gluten-free crust (+$2)
+      </label>
+
+      <h3 class="subheading">Toppings</h3>
+
+      <div class="toppings-grid" id="toppingsCheckboxes">
+        <label>
+          <input type="checkbox" value="Pepperoni" data-price="1.5" />
+          <span>Pepperoni</span>
+          <em>$1.50</em>
+        </label>
+
+        <label>
+          <input type="checkbox" value="Mushrooms" data-price="1" />
+          <span>Mushrooms</span>
+          <em>$1.00</em>
+        </label>
+
+        <label>
+          <input type="checkbox" value="Onions" data-price="0.75" />
+          <span>Onions</span>
+          <em>$0.75</em>
+        </label>
+
+        <label>
+          <input type="checkbox" value="Extra Cheese" data-price="1.25" />
+          <span>Extra Cheese</span>
+          <em>$1.25</em>
+        </label>
+      </div>
+
+      <button id="addToppingsBtn" class="secondary">
+        Add selected toppings
+      </button>
+
+      <ul id="builderToppings" class="builder-list"></ul>
+
+      <button id="addPizzaBtn" class="primary full">
+        Add pizza to cart
+      </button>
+    </section>
+
+    <!-- CART -->
+    <section class="section">
+      <h2>Your cart</h2>
+
+      <ul id="cartList" class="cart-list"></ul>
+
+      <div class="total-row">
+        <span>Order total</span>
+        <strong>$<span id="orderTotal">0.00</span></strong>
+      </div>
+    </section>
+
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

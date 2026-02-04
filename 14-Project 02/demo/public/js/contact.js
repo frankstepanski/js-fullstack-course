@@ -3,7 +3,7 @@
 // - Fetches contactCards from json-server (/contactCards)
 // - Renders "Visit Us" + "Get in Touch" cards into .contact-layout
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "http://localhost:3001";
 
 document.addEventListener("DOMContentLoaded", () => {
   const statusEl = document.querySelector("#contact-status");
