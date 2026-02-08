@@ -1,0 +1,16 @@
+{
+  "name": "dashboard-vanilla",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
