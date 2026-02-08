@@ -1,5 +1,4 @@
-# TypeScript Types in a React App
-
+# Typed User Dashboard - React
 ## The Big Idea
 
 In a React app, TypeScript does **not** change how React works.
