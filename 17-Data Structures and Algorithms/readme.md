@@ -502,9 +502,9 @@ The resources below focus on practical problem-solving patterns — the mental t
 
 - [Problem Solving Fundamentals](1-problem-solving.md) – structured thinking before coding
 - [Hashmaps](2-hash-maps.md) – fast lookup by key
-- [Stacks and Queues.](3-stacks-queues.md) – ordered data access (LIFO / FIFO)  
+- [Stacks and Queues](3-stacks-queues.md) – ordered data access (LIFO / FIFO)  
 - [Sliding Window](4-sliding-window.md) – moving range over data
 - [Two Pointer](5-two-pointer.md) – coordinated index movement  
 - [Prefix Sum](6-prefix-sum.md) – cumulative totals for ranges  
-- [Dynamic Programming](7-dynamic-progamming.md) – reuse solved subproblems  
+- [Dynamic Programming](7-dynamic-programming.md) – reuse solved subproblems  
 - [Search Patterns](8-search-patterns.md) – efficiently finding answers
