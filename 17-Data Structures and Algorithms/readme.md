@@ -493,12 +493,12 @@ You might use:
 
 Depending on performance, readability, or your use case, you choose how to implement the abstract idea.
 
-## What’s Next: Learn to Apply Data Structures
+## What’s Next: Applying Data Structures & Algorithms
 
-You now know why data structures and algorithms matter — but **how do you actually use them in real apps and interview problems?**
+Understanding what data structures and algorithms are is only the starting point.
+The real skill is knowing when to use them and why.
 
-Here are the resources to help you dive deeper into real-world usage patterns and problem-solving techniques with:
-
+The resources below focus on practical problem-solving patterns — the mental tools developers use to reason through real applications, technical interviews, and everyday engineering trade-offs. Each section helps you recognize common scenarios and apply the right approach with confidence.
 
 - [Problem Solving Fundamentals](1-problem-solving.md) – structured thinking before coding
 - [Hashmaps](2-hash-maps.md) – fast lookup by key
