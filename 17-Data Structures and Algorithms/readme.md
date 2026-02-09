@@ -507,4 +507,4 @@ Here are the resources to help you dive deeper into real-world usage patterns an
 - [Two Pointer](5-two-pointer.md) – coordinated index movement  
 - [Prefix Sum](6-prefix-sum.md) – cumulative totals for ranges  
 - [Dynamic Programming](7-dynamic-progamming.md) – reuse solved subproblems  
-- [Search Patterns](8-search-aptterns.md) – efficiently finding answers
+- [Search Patterns](8-search-patterns.md) – efficiently finding answers
