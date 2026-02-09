@@ -500,18 +500,11 @@ You now know why data structures and algorithms matter — but **how do you actu
 Here are the resources to help you dive deeper into real-world usage patterns and problem-solving techniques with:
 
 
-- 🧠 [Problem Solving Fundamentals](1-problem-solving.md) – learning to break problems down]
-- 📦 [Arrays.md] – iteration, searching, transforming, nested loops  
-- 🧱 [Objects](3-objects.md) – key-value lookups, frequency maps, grouping  
-- 🧩 [Common Data Patterns](4-common-patterns.md) – real-world patterns built from arrays & objects
-- 🌀 [Stacks & Queues](5-stacks-and-queues.md) – undo/redo, BFS/DFS, order-based processing  
-- 🔗 [Linked Lists](6-linked-lists.md) – node navigation, memory-efficient updates  
-- 🌳 [Trees](7-trees.md) – hierarchical data, recursion, traversals (DFS/BFS)
-
-Each one includes:
-- Common algorithm patterns  
-- Beginner-friendly examples  
-- Practice problems with real use-cases  
-- Diagrams and visual walkthroughs
-
-These documents will help you **go beyond theory** and actually **build your problem-solving muscles** — even when you're facing something you've never solved before.
+- [Problem Solving Fundamentals](1-problem-solving.md) – structured thinking before coding
+- [Hashmaps](2-hash-maps.md) – fast lookup by key
+- [Stacks and Queues.](3-stacks-queues.md) – ordered data access (LIFO / FIFO)  
+- [Sliding Window](4-sliding-window.md) – moving range over data
+- [Two Pointer](5-two-pointer.md) – coordinated index movement  
+- [Prefix Sum](6-prefix-sum.md) – cumulative totals for ranges  
+- [Dynamic Programming](7-dynamic-progamming.md) – reuse solved subproblems  
+- [Search Patterns](8-search-aptterns.md) – efficiently finding answers
