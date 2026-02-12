@@ -47,6 +47,40 @@ Go beyond “just making it work” and understand how JavaScript runs under the
   - Browser APIs & Fetch  
   - Debugging strategies with breakpoints and stack traces  
 
+
+### 🔷 TypeScript Fundamentals
+
+Learn how professional teams add **safety, clarity, and confidence** to JavaScript codebases.
+
+- Why TypeScript exists and what problems it solves  
+- Primitive types, objects, arrays, and functions  
+- Type inference vs explicit typing  
+- Interfaces and type aliases  
+- Optional properties and union types  
+- Using TypeScript with React components  
+- Understanding compile-time errors vs runtime behavior  
+
+> Emphasis is placed on **using TypeScript as a development tool**, not a replacement for JavaScript.
+
+---
+
+### 🧪 Testing Fundamentals
+
+Learn how engineers verify that code works — and keeps working as applications grow.
+
+- Why testing exists and what problems it solves  
+- Types of testing  
+  - Unit tests  
+  - Integration tests  
+  - Component tests  
+  - End-to-end (E2E) tests  
+- Writing basic tests for JavaScript and React components  
+- Understanding test assertions and expectations  
+- How testing improves refactoring confidence and code quality  
+
+> Testing is taught as a **confidence and safety tool**, not a requirement for perfection.
+
+
 ### 🖥️ Backend Development
 
 Learn how to build the systems that power applications behind the scenes.
