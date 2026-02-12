@@ -93,18 +93,6 @@ Learn how to build the systems that power applications behind the scenes.
   - Authentication & authorization  
   - Environment variables & secure configuration  
 
-### 🧠 Computer Science & Engineering Foundations
-
-Develop the engineering mindset needed for real-world software development.
-
-- **Data Structures & Algorithms** — arrays, lists, trees, hashing, sorting  
-- **Software Engineering Principles**  
-  - Git & GitHub version control  
-  - Clean code, modular architecture, DRY/SOLID patterns  
-  - Unit testing and debugging techniques  
-  - CI/CD and deployment fundamentals  
-
-
 ### 🤖 Using AI Tools as a Problem-Solving Partner
 
 Modern software engineers increasingly use AI tools to work faster and smarter. You’ll practice how to:
