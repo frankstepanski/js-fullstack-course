@@ -93,7 +93,7 @@ Learn how to build the systems that power applications behind the scenes.
   - Authentication & authorization  
   - Environment variables & secure configuration  
 
-## 🧠 Computer Science & Engineering Foundations
+### 🧠 Computer Science & Engineering Foundations
 
 Develop the engineering mindset needed for real-world software development.
 
@@ -104,7 +104,20 @@ Develop the engineering mindset needed for real-world software development.
   - Unit testing and debugging techniques  
   - CI/CD and deployment fundamentals  
 
-## 👥 Work Like a Real Development Team: Agile & Scrum
+
+### 🤖 Using AI Tools as a Problem-Solving Partner
+
+Modern software engineers increasingly use AI tools to work faster and smarter. You’ll practice how to:
+
+- Use tools like **GitHub Copilot**, **ChatGPT**, **Cursor**, and **Codeium** to get unstuck and explore code solutions  
+- Prompt AI clearly with context and constraints (e.g. "Write a function in JavaScript that...")  
+- Review and refine AI-generated code, rather than copy-pasting blindly  
+- Use AI as a research assistant — summarizing docs, explaining errors, or generating boilerplate code  
+- Avoid over-reliance: always understand what code does before using it  
+
+AI tools are powerful collaborators — but **your logic, judgment, and debugging skills still matter most**. You'll learn how to balance speed with understanding as you grow from beginner to builder.
+
+### 👥 Work Like a Real Development Team: Agile & Scrum
 
 This course doesn’t just teach you code — it teaches you **how professional engineering teams operate**.
 
@@ -115,7 +128,7 @@ You’ll learn the foundations of Agile and the **Scrum** framework:
 - Sprint planning & retrospectives  
 - Team roles: Developer, Product Owner, Scrum Master  
 
-## 💼 Career Readiness: Job Search Prep
+### 💼 Career Readiness: Job Search Prep
 
 Mastering code is only one part of becoming a professional engineer. You'll also build the confidence and skills to get hired.
 
@@ -143,37 +156,10 @@ By the end of this course, you will:
 - Present your work like a professional engineer  
 - **Think like an engineer — solve problems you haven’t seen before**
 
-### 🧠 Engineering Mindset: Solving the Unknown
 
->Being a great developer isn’t just about knowing the tech stack — it’s about solving real problems, including ones you've never seen before.
-
-You’ll learn how to:
-
-- Break large, unfamiliar problems into smaller, manageable steps
-- Google effectively and read documentation like a pro
-- Adapt patterns and code snippets to new use-cases
-- Think critically and test multiple solutions
-- Stay curious and persistent when the answer isn’t obvious
-- **Use AI tools wisely to accelerate your learning and problem-solving**
-
-### 🤖 Using AI Tools as a Problem-Solving Partner
-
-Modern software engineers increasingly use AI tools to work faster and smarter. You’ll practice how to:
-
-- Use tools like **GitHub Copilot**, **ChatGPT**, **Cursor**, and **Codeium** to get unstuck and explore code solutions  
-- Prompt AI clearly with context and constraints (e.g. "Write a function in JavaScript that...")  
-- Review and refine AI-generated code, rather than copy-pasting blindly  
-- Use AI as a research assistant — summarizing docs, explaining errors, or generating boilerplate code  
-- Avoid over-reliance: always understand what code does before using it  
-
-AI tools are powerful collaborators — but **your logic, judgment, and debugging skills still matter most**. You'll learn how to balance speed with understanding as you grow from beginner to builder.
-
-
-**Ready to build? Let’s get started — one line of code at a time. 💻✨**
+Ready to build? Let’s get started — one line of code at a time. 💻✨
 
 > This curriculum repository is for educational use and is protected under a custom proprietary license.
-
----
 
 ## License
 ![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)
