@@ -1,0 +1,15 @@
+{
+  "name": "4-json-server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+   "server": "json-server --watch db.json --port 3001"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.5"
+  }
+}

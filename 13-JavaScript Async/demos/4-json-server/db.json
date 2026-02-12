@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "Learn JSON Server",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Build a Vanilla JS Todo App",
+      "completed": false
+    },
+    {
+      "id": "cba6",
+      "title": "goto gym",
+      "completed": false
+    },
+    {
+      "id": "d465",
+      "title": "eat a snack",
+      "completed": false
+    }
+  ]
+}
