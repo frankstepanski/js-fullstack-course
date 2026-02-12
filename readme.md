@@ -62,8 +62,6 @@ Learn how professional teams add **safety, clarity, and confidence** to JavaScri
 
 > Emphasis is placed on **using TypeScript as a development tool**, not a replacement for JavaScript.
 
----
-
 ### 🧪 Testing Fundamentals
 
 Learn how engineers verify that code works — and keeps working as applications grow.
