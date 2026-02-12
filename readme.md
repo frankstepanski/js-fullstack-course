@@ -120,13 +120,13 @@ You’ll learn the foundations of Agile and the **Scrum** framework:
 
 Mastering code is only one part of becoming a professional engineer. You'll also build the confidence and skills to get hired.
 
-### ✍️ Resume & LinkedIn Best Practices
+#### ✍️ Resume & LinkedIn Best Practices
 
 - Learn how to write strong bullet points using the **impact → action → context** framework
 - Highlight projects with live links, GitHub repos, and tech stack
 - Tailor your profile to reflect real-world development experience
 
-### 🗣️ Interview Preparation
+#### 🗣️ Interview Preparation
 
 - Technical interview strategies (whiteboarding, pair coding, debugging)
 - Common question types: data structures, system design, behavioral
