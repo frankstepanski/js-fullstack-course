@@ -1,7 +1,5 @@
 # 👋 Welcome to Full-Stack Software Engineering
 
-Ever wonder how apps like Spotify, TikTok, or ChatGPT actually work? Behind every animation, button click, and login screen is code, the language developers use to turn ideas into real, working software.
-
 In this program, you’ll learn how small pieces of code come together to form full applications, and how real engineering teams plan, build, and ship the products we use every day. The curriculum is delivered through live, interactive sessions, so you are learning directly with an instructor, asking questions, and receiving feedback along the way. You will work with the same tools and technologies used by real-world teams and develop skills that extend well beyond tutorials.
 
 If you are reviewing this curriculum independently and are not currently enrolled in the program, you are still welcome to reach out. One-on-one sessions are available for guided walkthroughs, deeper explanations, personalized technical support, and career coaching guidance, including advice on learning paths, portfolios, interviews, and next steps toward your goals.
