@@ -152,11 +152,10 @@ Upload under Project Submission.
 
 ## Final Notes
 - **json-server is strongly recommended**
-- Third-party APIs are allowed **only for this project**
 - GET requests are required
 - POST requests are optional
 - Project 03 **will require json-server**
 - Don’t hard-code repeated lists
-- This project is about **learning API integration**, not deployment
+- This project is about **learning API integration**
 
 > “This is your first real step toward full-stack development — understanding how data flows from an API into a user interface.”
