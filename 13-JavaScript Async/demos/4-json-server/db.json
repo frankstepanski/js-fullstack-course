@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Learn JSON Server",
-      "completed": false
+      "completed": true
     },
     {
       "id": "2",
@@ -18,6 +18,21 @@
     {
       "id": "d465",
       "title": "eat a snack",
+      "completed": false
+    },
+    {
+      "id": "739c",
+      "title": "take a nap",
+      "completed": false
+    },
+    {
+      "id": "2c47",
+      "title": "zdczxczxc",
+      "completed": false
+    },
+    {
+      "id": "d9b0",
+      "title": "goto gym",
       "completed": false
     }
   ]

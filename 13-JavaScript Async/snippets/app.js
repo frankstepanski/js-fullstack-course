@@ -157,7 +157,7 @@ function createPromiseFetchNative() {
   // fetch() returns a Promise
   fetch('https://api.github.com/users/github')
     .then((response) => {
-      // Step 1: Check if the response is OK (status 200–299)
+      // Step 1: Check if the response is OK (status 200–299 and 300-399)
       if (!response.ok) {
         // Manually trigger an error to be caught in .catch()
         throw new Error('Network response was not ok: ' + response.status);
@@ -194,7 +194,7 @@ async function fetchWithAsyncAwait() {
     // Step 1: Wait for fetch to complete
     const response = await fetch('https://api.github.com/users/github');
 
-    // Step 2: Check if response was successful (status 200-299)
+    // Step 2: Check if response was successful (status 200-299 and 300-399)
     if (!response.ok) {
       throw new Error('Network response was not ok: ' + response.status);
     }

@@ -1,31 +1,40 @@
-# Project 02: Multi-Page Website Using Your Own API (Local Development Only)
+# Project 02: Multi-Page Website Using an API 
 
 ## Project Overview
-In this project, you’ll build a **multi-page website** that connects to a JSON API you create yourself using **json-server** and a local **db.json** file.
+In this project, you’ll build a **multi-page website** that connects to an API and displays real data using JavaScript.
+
+🔹 **Recommended approach:**  
+Use json-server with a local `db.json` file to create your own API during local development.
+
+🔹 **Alternative option:**  
+If you find an appropriate third-party API, you may use it instead of json-server for this project.
+A POST request is **optional**.
+
+> ⚠️ **Important:** While a third-party API is allowed in **Project 02**, **json-server will be required in Project 03**, so using it now is strongly recommended to prepare you for what’s next.
 
 Your website may have multiple pages, but **at least two pages must fetch and display API data** using JavaScript `fetch()`.
 
 This project is focused on **local development only**. You will **not deploy this project** to GitHub Pages or any hosting platform.
 
 Your app should:
-- run a local fake API with json-server
-- read from `db.json`
+- fetch data from an API (json-server **recommended**)
 - use `fetch()` to request data
 - receive and parse JSON responses
 - dynamically update the DOM
 - style pages with CSS or Bootstrap
+- run locally on your machine
 
-> 🎯 **Goal:** Learn how real websites request and display data from APIs instead of hard-coding content, while understanding the difference between local development and deployment.
+> 🎯 **Goal:** Learn how real websites request and display data from APIs instead of hard-coding content, while understanding how frontend and backend pieces communicate.
 
 ## Key Skills Covered
-- JSON APIs
-- json-server
-- fetch & async JavaScript
-- DOM manipulation
-- responsive layout
-- multi-page architecture
-- REST conventions (GET + optional POST)
-- Git & GitHub
+- JSON APIs  
+- json-server (recommended)  
+- REST conventions (GET + optional POST)  
+- fetch & async JavaScript  
+- DOM manipulation  
+- responsive layout  
+- multi-page architecture  
+- Git & GitHub  
 
 ## Workflow Requirements
 
@@ -55,11 +64,23 @@ Before coding:
 1. Create a GitHub repository  
 2. Create a local git repository  
 3. Add the remote to the GitHub repository  
+
+### If using **json-server (recommended)**:
 4. Install json-server  
-   `npm install json-server`  
-5. Create a `db.json` file (this is your API database)  
+   ```bash
+   npm install json-server
+   ```
+5. Create a `db.json` file  
 6. Start json-server  
-   `json-server --watch db.json`  
+   ```bash
+   json-server --watch db.json
+   ```
+
+### If using a **third-party API**:
+- Ensure the API supports **GET requests**
+- Keep authentication simple (or none)
+- API must return usable JSON data
+
 7. Create multiple HTML pages  
 8. At least **two different pages** must fetch and display API data  
 9. Commit your work frequently and push to GitHub  
@@ -73,7 +94,7 @@ Before coding:
 |---|-------------|-------------|
 | 1 | **Multi-page site** | Must include multiple HTML pages linked together. |
 | 2 | **Two API pages** | At least two **different** pages must GET API data. |
-| 3 | **db.json storage** | All dynamic data must come from db.json. |
+| 3 | **API source** | Use **json-server (recommended)** or an approved third-party API. |
 | 4 | **DOM updates** | Use `textContent`, `innerHTML`, `appendChild`, etc. |
 | 5 | **Responsive layout** | Use CSS Flexbox/Grid for layout. |
 | 6 | **GitHub repository** | Full project must be pushed to GitHub. |
@@ -85,24 +106,24 @@ Before coding:
 
 | # | Optional Requirement | Description |
 |---|----------------------|-------------|
-| 8 | **POST request** | Submit a review, add an item, or send user input to db.json. |
-| 9 | **Bootstrap** | Use Bootstrap for layout or components (optional bonus). |
+| 8 | **POST request** | Submit a review, add an item, or send user input to an API. |
+| 9 | **Bootstrap** | Use Bootstrap for layout or components. |
 | 10 | **Local images** | Store images inside project folders. |
 
 ---
 
-## Required JSON Data
+## Required JSON Data (If Using json-server)
 
-`db.json` must contain at least one array of objects—such as:
+If you use **json-server**, your `db.json` must contain at least one array of objects—such as:
 - `menu`
 - `products`
 - `cards`
 - `abilities`
 - `reviews`
 
-Each API-driven page should display data from at least one of these arrays.
+Each API-driven page should display data from at least one array.
 
-> **Important:** Your API runs locally with json-server. This project is not deployed, so the API and frontend are expected to work together only in your local environment.
+> **Note:** Using json-server in this project will make **Project 03 significantly easier**, where json-server will be **required**.
 
 ## Submission Instructions
 
@@ -111,18 +132,16 @@ Submit a **single document** containing:
 
 Upload under Project Submission.
 
----
-
 ## Project Grading Criteria
 
 | Category | Description |
 |-----------|-------------|
-| **Functionality** | Do two pages load API data correctly locally? |
+| **Functionality** | Do two pages load API data correctly? |
 | **Responsiveness** | Does the layout adapt to mobile? |
 | **Creativity & UX** | Clean, readable, user-friendly design |
 | **GitHub Workflow** | Frequent commits with meaningful messages |
-| **Documentation** | README explains local setup clearly |
-| **API Integration** | Proper json-server + fetch usage |
+| **Documentation** | README explains setup clearly |
+| **API Integration** | Proper `fetch()` usage and data handling |
 
 ## Tools and Resources
 - json-server docs  
@@ -132,11 +151,12 @@ Upload under Project Submission.
 - JSON Formatter  
 
 ## Final Notes
-- API must come from json-server
-- Two pages must GET data
-- One optional POST
-- All dynamic data must come from db.json
+- **json-server is strongly recommended**
+- Third-party APIs are allowed **only for this project**
+- GET requests are required
+- POST requests are optional
+- Project 03 **will require json-server**
 - Don’t hard-code repeated lists
-- This project is **about learning API integration**, not deployment
+- This project is about **learning API integration**, not deployment
 
-> “This is your first full-stack-style project — a real API talking to your front-end, just like professional applications — but running locally.”
+> “This is your first real step toward full-stack development — understanding how data flows from an API into a user interface.”
