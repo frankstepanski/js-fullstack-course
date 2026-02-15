@@ -1,116 +1,117 @@
-// Pokémon Lookup using fetch + Promises (Dropdown Version)
-// --------------------------------------------------------
-// This example shows how to:
-// - Read selected value from a <select>
-// - Build a dynamic URL
-// - Use fetch() and .then() / .catch()
-// - Handle good responses and errors
-// - Update the DOM with JSON data
+// ================================
+// DOM ELEMENTS
+// ================================
+// We grab elements from the HTML so JavaScript can read and update the page
 
-const searchBtn = document.querySelector('#search-btn');
-const pokemonSelect = document.querySelector('#pokemon-select');
-const statusEl = document.querySelector('#status');
-const errorEl = document.querySelector('#error');
+const searchBtn = document.querySelector("#search-btn");
+const pokemonSelect = document.querySelector("#pokemon-select");
+const statusEl = document.querySelector("#status");
+const errorEl = document.querySelector("#error");
 
-const cardEl = document.querySelector('#pokemon-card');
-const imageEl = document.querySelector('#pokemon-image');
-const nameEl = document.querySelector('#pokemon-name');
-const idEl = document.querySelector('#pokemon-id');
-const typesEl = document.querySelector('#pokemon-types');
+const cardEl = document.querySelector("#pokemon-card");
+const imageEl = document.querySelector("#pokemon-image");
+const nameEl = document.querySelector("#pokemon-name");
+const idEl = document.querySelector("#pokemon-id");
+const typesEl = document.querySelector("#pokemon-types");
 
-// Base URL for the PokéAPI
-// Docs: https://pokeapi.co/
-const POKE_API_BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
+// ================================
+// API BASE URL
+// ================================
+// This is the base address for the Pokémon API
+// We will add the Pokémon name to the end of this URL
 
-// Helper to clear the current card
-function clearPokemonCard() {
-  cardEl.style.display = 'none';
-  imageEl.src = '';
-  nameEl.textContent = '';
-  idEl.textContent = '';
-  typesEl.innerHTML = '';
-}
+const API_URL = "https://pokeapi.co/api/v2/pokemon/";
 
-// Main function to search for a Pokémon
+// ================================
+// EVENT LISTENER
+// ================================
+// When the user clicks the button, run searchPokemon()
+
+searchBtn.addEventListener("click", searchPokemon);
+
+// ================================
+// MAIN SEARCH FUNCTION
+// ================================
+
 function searchPokemon() {
-  const name = pokemonSelect.value; // value comes from <option value="...">
+  // Get the selected Pokémon name from the dropdown
+  const pokemonName = pokemonSelect.value;
 
-  // Basic validation
-  if (!name) {
-    statusEl.textContent = '';
-    errorEl.textContent = 'Please choose a Pokémon from the list.';
-    clearPokemonCard();
+  // If nothing is selected, stop and show an error
+  if (!pokemonName) {
+    errorEl.textContent = "Please select a Pokémon.";
     return;
   }
 
-  // Reset UI
-  statusEl.textContent = 'Searching...';
-  errorEl.textContent = '';
-  clearPokemonCard();
+  // Clear old data and show loading state
+  resetUI();
+  statusEl.textContent = "Loading...";
 
-  // Build the dynamic URL
-  const url = POKE_API_BASE_URL + name.toLowerCase();
+  // ================================
+  // ASYNCHRONOUS FETCH REQUEST
+  // ================================
+  // fetch() starts a network request and returns a Promise
 
-  // Call fetch() which returns a Promise
-  fetch(url)
-    .then((response) => {
-      // HTTP-level error handling (e.g., 404 if Pokémon not found)
+  fetch(API_URL + pokemonName)
+    .then(response => {
+      // This runs when the server responds (not when data is ready yet)
+
       if (!response.ok) {
-        if (response.status === 404) {
-          throw new Error('Pokémon not found. Try a different one.');
-        } else {
-          throw new Error('Network response was not ok: ' + response.status);
-        }
+        // If the HTTP response failed (like 404)
+        throw new Error("Pokémon not found");
       }
 
-      // Parse JSON body, which also returns a Promise
+      // Convert the response body into JSON
+      // This ALSO returns a Promise
       return response.json();
     })
-    .then((data) => {
-      // data is the Pokémon object
-      // console.log(data); // uncomment to explore in DevTools
+    .then(data => {
+      // This runs AFTER the JSON data is fully ready
 
-      // Pull out some fields
-      const spriteUrl = data.sprites?.front_default;
-      const displayName = data.name;
-      const id = data.id;
-      const types = data.types.map((t) => t.type.name);
-
-      // Update UI
-      statusEl.textContent = 'Success!';
-
-      if (spriteUrl) {
-        imageEl.src = spriteUrl;
-        imageEl.alt = displayName + ' sprite';
-      } else {
-        imageEl.src = '';
-        imageEl.alt = '';
-      }
-
-      nameEl.textContent = displayName;
-      idEl.textContent = 'ID: ' + id;
-
-      // Create type "pills"
-      typesEl.innerHTML = '';
-      types.forEach((typeName) => {
-        const span = document.createElement('span');
-        span.classList.add('type-pill');
-        span.textContent = typeName;
-        typesEl.appendChild(span);
-      });
-
-      cardEl.style.display = 'block';
+      showPokemon(data);
+      statusEl.textContent = "Success!";
     })
-    .catch((error) => {
-      // This catches:
-      // - thrown Errors above
-      // - network errors
-      statusEl.textContent = '';
-      errorEl.textContent = error.message || 'Something went wrong.';
-      clearPokemonCard();
-      console.error('Pokémon fetch error:', error);
+    .catch(error => {
+      // This runs if ANY error happens above
+
+      errorEl.textContent = error.message;
     });
 }
 
-// Wire up the button click
-searchBtn.addEventListener('click', searchPokemon);
+// ================================
+// DISPLAY POKÉMON DATA
+// ================================
+// This function only handles updating the page
+
+function showPokemon(pokemon) {
+  imageEl.src = pokemon.sprites.front_default;
+  nameEl.textContent = pokemon.name;
+  idEl.textContent = "ID: " + pokemon.id;
+
+  // Clear previous types
+  typesEl.innerHTML = "";
+
+  // Create a "pill" for each Pokémon type
+  pokemon.types.forEach(type => {
+    const span = document.createElement("span");
+    span.textContent = type.type.name;
+    span.classList.add("type-pill");
+    typesEl.appendChild(span);
+  });
+
+  // Show the card
+  cardEl.style.display = "block";
+}
+
+// ================================
+// RESET UI STATE
+// ================================
+// Clears old messages and hides the Pokémon card
+
+function resetUI() {
+  statusEl.textContent = "";
+  errorEl.textContent = "";
+  cardEl.style.display = "none";
+  typesEl.innerHTML = "";
+}
+
