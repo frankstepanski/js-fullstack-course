@@ -4,8 +4,6 @@ This project builds on the **original Moonlight Pizza Co. website**, which focus
 
 In this **second project**, students take their frontend skills further by simulating a full-stack application. All page content is now dynamic, powered by data fetched from a locally hosted REST API using `json-server`.
 
----
-
 ## What’s New in This Version?
 
 Unlike Project 1, which primarily focused on:
@@ -21,11 +19,8 @@ This version now introduces:
 - Using `fetch()` for GET / POST / PUT / DELETE
 - Dynamically updating the DOM
 - A clearer separation between **frontend** and **backend**
-- Running the project **without Live Server**
 
 The data is pulled from a local REST API using [`json-server`](https://github.com/typicode/json-server).
-
----
 
 ## 📁 Project File Structure
 
@@ -45,66 +40,88 @@ demo/
 ├── package.json
 ```
 
-All frontend files live inside the **`public/` folder**, which is served by a local static server.
+All frontend files live inside the **`public/` folder**.
 
----
+### Why the `public/` folder is recommended
 
-## 🚫 No Live Server in This Project
+This structure is intentional and mirrors how real-world web apps are commonly organized.
 
-This project **does not use the VS Code Live Server extension**.
+- The `public/` folder contains **everything the browser is allowed to access directly**
+  - HTML pages
+  - CSS
+  - JavaScript
+  - images and other static assets
 
-Instead, it uses:
-- a **static file server** for the frontend
-- a **mock REST API** for the backend
+- `json-server` is configured to:
+  - serve all files inside `public/` as static frontend assets
+  - serve data from `db.json` as a REST API
 
-This setup more closely mirrors how real web applications are structured and deployed.
+Because of this:
+- You can load pages like `/index.html` or `/pages/menu.html` directly in the browser
+- All `fetch()` calls work correctly because the files are served through a server
+- There are no CORS or file-path issues caused by opening files locally
 
----
+### Real-world parallel
 
-## 🧠 How the App Runs (Frontend + Backend)
+In production apps:
+- Frontend build files are often served from a `public`, `dist`, or `build` folder
+- Backend APIs live alongside them on the same server
 
-The project runs **two servers at the same time**:
+This project uses the same mental model — **one server, one public directory, multiple responsibilities** — without adding unnecessary complexity.
 
-| Server | Purpose | Port |
-|------|--------|------|
-| Frontend Server | Serves HTML / CSS / JS files | `3000` |
-| Backend Server | Simulated REST API (`json-server`) | `3001` |
 
----
+## How the App Runs (Single Server)
 
-## 📜 npm Scripts (Important)
+Because the `index.html` file lives in the `public/` folder, **`json-server` serves both the frontend and the backend from the same server**.
 
-These scripts are already defined in `package.json`:
+| What It Serves | Description | Port |
+|---------------|------------|------|
+| Frontend | Static files (HTML, CSS, JS) from `public/` | `3001` |
+| Backend (API) | Simulated REST API from `db.json` | `3001` |
+
+There is **only one server running**:
+- `json-server` acts as a **static file server** for the UI  
+- and a **REST API** for your data  
+
+This mirrors how many real-world apps work in development and small deployments—one server, two responsibilities.
+
+
+## 📜 npm Scripts
+
+This project uses **a single npm script** to run both the frontend and backend.
+
+### `package.json`
 
 ```json
 "scripts": {
-  "frontend": "serve public -p 3000",
-  "backend": "json-server --watch db.json --port 3001",
-  "dev": "concurrently -n frontend,backend -c auto \"npm run frontend\" \"npm run backend\""
+  "server": "json-server --watch db.json --port 3001 --static public"
 }
 ```
 
-### What each script does
+### What this script does
 
-- **`npm run frontend`**  
-  Starts a static server that serves files from the `public/` folder.  
-  Your site is available at:
-  ```
-  http://localhost:3000
-  ```
+- **`npm run server`**  
+  Starts `json-server`, which handles **both responsibilities**:
 
-- **`npm run backend`**  
-  Starts `json-server`.  
-  Your API is available at:
+  - Serves static frontend files (HTML, CSS, JS) from the `public/` folder  
+  - Serves a simulated REST API based on `db.json`
+
+  Everything runs on:
   ```
   http://localhost:3001
   ```
 
-- **`npm run dev`**  
-  Runs **both servers at the same time**.  
-  This is the command you should usually use.
+### Why there is only one script
 
----
+Because `index.html` lives in the `public/` folder and the `--static public` flag is used:
+
+- There is **no separate frontend server**
+- There is **no need for `concurrently`**
+- `json-server` acts as both:
+  - a **static file server**
+  - and a **backend API**
+
+This setup keeps local development simple while still reflecting how frontend and backend often live together behind a single server in real-world applications.
 
 ## ▶️ How to Run the Project
 
@@ -112,18 +129,15 @@ From the `demo/` directory:
 
 ```bash
 npm install
-npm run dev
+npm run server
 ```
 
 Then open your browser:
 
-- Frontend: **http://localhost:3000**
-- API: **http://localhost:3001**
+- App (Frontend + API): **http://localhost:3001**
 
 > ⚠️ Do not double-click HTML files.  
-> All pages must be loaded through the frontend server.
-
----
+> All pages must be loaded through the server so `fetch()` requests to the API work correctly.
 
 ## API Endpoints Used
 
@@ -158,8 +172,6 @@ Each page only requests the data it needs:
 ### 📞 Contact Page
 - `GET /contactCards`
 
----
-
 ## Example Fetch Request
 
 ```js
@@ -175,20 +187,6 @@ fetch("http://localhost:3001/pizzas")
   })
   .catch((err) => console.error("API error:", err));
 ```
-
----
-
-## Helpful Tips
-
-- Always make sure **both servers are running**
-- Check the **Network tab** in DevTools if data isn’t loading
-- Restart servers if things get stuck:
-  ```bash
-  Ctrl + C
-  npm run dev
-  ```
-
----
 
 ## What Comes Next
 

@@ -111,48 +111,51 @@
   "cart": [
     {
       "id": "1",
+      "items": [],
+      "updatedAt": "2026-02-18T00:38:09.284Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "a820",
       "items": [
         {
-          "key": "3-medium",
-          "pizzaId": "3",
-          "name": "Stargazer Veggie",
-          "size": "medium",
-          "quantity": 4,
-          "unitPrice": 14,
-          "subtotal": 56
-        },
-        {
-          "key": "1-medium",
           "pizzaId": "1",
           "name": "The Classic Margherita",
           "size": "medium",
-          "quantity": 4,
+          "quantity": 1,
           "unitPrice": 12,
-          "subtotal": 48
+          "subtotal": 12
         },
         {
-          "key": "2-medium",
           "pizzaId": "2",
           "name": "Moonlight Supreme",
           "size": "medium",
-          "quantity": 2,
+          "quantity": 10,
           "unitPrice": 16,
-          "subtotal": 32
+          "subtotal": 160
         },
         {
-          "key": "4-medium",
           "pizzaId": "4",
           "name": "Comet BBQ Chicken",
           "size": "medium",
           "quantity": 1,
           "unitPrice": 15,
           "subtotal": 15
+        },
+        {
+          "pizzaId": "2",
+          "name": "Moonlight Supreme",
+          "size": "large",
+          "quantity": 6,
+          "unitPrice": 19,
+          "subtotal": 114
         }
       ],
-      "updatedAt": "2025-12-10T23:47:12.283Z"
+      "total": 301,
+      "createdAt": "2026-02-18T00:38:09.278Z"
     }
   ],
-  "orders": [],
   "testimonials": [
     {
       "id": "1",

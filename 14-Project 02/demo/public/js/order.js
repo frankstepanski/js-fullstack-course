@@ -13,6 +13,7 @@ const state = {
   cart: new Map(),
 };
 
+// Safe check to make sure DOM is loaded first
 document.addEventListener("DOMContentLoaded", () => {
   // Cache DOM references that MATCH YOUR HTML
   const menuStatusEl  = document.querySelector("#menu-status");

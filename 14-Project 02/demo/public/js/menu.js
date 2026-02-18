@@ -5,6 +5,7 @@
 
 const API_BASE_URL = "http://localhost:3001";
 
+// Safe check to make sure DOM is loaded first
 document.addEventListener("DOMContentLoaded", () => {
   const statusEl = document.querySelector("#menu-status");
   const listEl = document.querySelector("#menu-list");
