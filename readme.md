@@ -1,8 +1,5 @@
 # 👋 Welcome to Full-Stack Software Engineering
 
-In this program, you’ll learn how small pieces of code come together to form full applications, and how real engineering teams plan, build, and ship the products we use every day. The curriculum is delivered through live, interactive sessions, so you are learning directly with an instructor, asking questions, and receiving feedback along the way. You will work with the same tools and technologies used by real-world teams and develop skills that extend well beyond tutorials.
-
-
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-success)
 ![Industry Aligned](https://img.shields.io/badge/Aligned-Industry%20Practices-informational)
