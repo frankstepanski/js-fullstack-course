@@ -518,7 +518,7 @@ Job preparation is about **removing uncertainty** before you ever sit down in an
 
 ---
 
-### Key Mindset Shifts (The Hidden Curriculum)
+### Key Mindset Shifts 
 
 | Concept | Common Beginner Thought | Reality |
 |---|---|---|
@@ -532,7 +532,7 @@ Job preparation is about **removing uncertainty** before you ever sit down in an
 
 ---
 
-###  One‑Sentence Summary Per Interview Type
+###  Interview Type Overviews
 
 | Interview Type | In Plain English |
 |---|---|
