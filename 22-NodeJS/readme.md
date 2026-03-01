@@ -650,3 +650,34 @@ These tools make your code easier to read and faster because you’re not doing 
 
 ✅ **In short:** Node’s asynchronous power lets you do more at once — fetch data, read files, or contact other services — all without slowing your app down.
 
+## Summary
+
+Node.js allows JavaScript to move beyond the browser and into the server
+environment. Instead of only manipulating the DOM or responding to user
+clicks, JavaScript can now:
+
+-   Run web servers
+-   Handle HTTP requests and responses
+-   Read and write files
+-   Connect to databases
+-   Perform background jobs
+-   Secure and validate data
+
+Node unified frontend and backend development by allowing developers to use the same language across the entire stack.
+
+**Client-side UI logic → to server-side application logic**
+
+The next step is applying this knowledge by building real servers and
+APIs.
+
+### Next Topics to Explore
+
+#### 🌐 [Building a Server with Node's `http` Module](1-http-server.md)
+
+Learn what a server actually is, how HTTP works at a low level, and how
+to create a basic server using Node's built-in `http` module.
+
+#### 🚀 [Building APIs with Express](2-express.md)
+
+Learn how Express simplifies routing, middleware, and API development
+--- and how to structure real backend applications.
