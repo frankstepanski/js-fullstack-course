@@ -1,10 +1,11 @@
-import About from './About'
-import Menu from './Menu'
-import Specials from './Specials'
-import OrderForm from './OrderForm'
-import Contact from './Contact'
+import About from '../About'
+import Menu from '../Menu'
+import Specials from '../Specials'
+import OrderForm from '../OrderForm'
+import Contact from '../Contact'
 
 /*
+
   Main.jsx
   --------
   This component is a CHILD of App.jsx.

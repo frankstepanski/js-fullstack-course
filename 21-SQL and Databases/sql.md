@@ -1578,9 +1578,58 @@ HAVING COUNT(*) > 5;
 
 ## Wrapping Up & Next Steps
 
-You've now learned how to precisely retrieve and analyze data using SQL's searching, filtering, and grouping tools. These skills are key to working with real-world databases—whether you're narrowing in on specific records using `WHERE`, building metrics with aggregations like `COUNT` and `SUM`, or grouping data to understand trends across customers, products, or time periods. Mastering these techniques means you can confidently build backend APIs, generate reports, and even respond to unexpected product or user questions with data-informed answers.
+You've now learned the fundamentals of working with **SQL and relational
+databases**.
 
-But SQL is a deep and powerful language, and there’s plenty more to explore as you grow. Next steps include learning how to write modular queries using subqueries and Common Table Expressions (CTEs), performing advanced analytics with window functions, optimizing performance with index strategies, and applying SQL in business intelligence tools like PowerBI or Tableau. 
+Throughout this section you practiced how to:
 
-With these advanced tools, you'll expand from extracting data to truly understanding it—and using SQL to drive smarter decisions across any application or domain.
+-   Retrieve data using `SELECT`
+-   Filter results with `WHERE`
+-   Sort and limit results with `ORDER BY` and `LIMIT`
+-   Insert new records using `INSERT`
+-   Update existing data with `UPDATE`
+-   Remove records using `DELETE`
+-   Understand how relational databases organize data into **tables,
+    rows, and columns**
 
+However, in real-world applications, users don't run SQL queries
+themselves. Instead, applications communicate with databases through a
+**backend server**.
+
+When someone signs up for an account, creates a post, or views data in
+an app, the flow usually looks like this:
+
+    User
+     │
+     ▼
+    Frontend (React)
+     │
+     ▼
+    Backend API (Node.js / Express)
+     │
+     ▼
+    SQL Query
+     │
+     ▼
+    Database (PostgreSQL / MySQL)
+
+The backend server receives requests from the frontend, runs SQL queries
+to read or modify data, and then returns the results back to the
+application.
+
+## What You'll Learn Next
+
+In the next section, we'll shift our focus to **how applications connect
+to databases**.
+
+You'll learn how to:
+
+-   Build a **Node.js backend**
+-   Design a **REST API**
+-   Connect your server to a **PostgreSQL database** and **MongoDB database**
+-   Execute **SQL queries from your application code**
+-   Send database results back to the frontend
+
+This is where everything starts to come together. Instead of running SQL
+manually, you'll build a real backend system that powers a full web
+application.

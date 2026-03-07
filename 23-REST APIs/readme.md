@@ -539,8 +539,10 @@ layered architecture ensures maintainability and scalability.
 
 ### Next Topics to Explore
 
-#### ➡️ [Testing & Debugging](1-testing-and-debugging.md) - Learn how to verify your API works correctly and catch issues early.
+[Testing & Debugging](1-testing-and-debugging.md) - Learn how to verify your API works correctly and catch issues early.
 
-#### ➡️ [API Security](2-api-security.md) - Learn how to protect your backend from real-world threats.
+[API Security](2-api-security.md) - Learn how to protect your backend from real-world threats.
 
-#### ➡️ [Databases](3-databases.md) - Move from object to persistent storage.
+[Connecting APIs to MongoDB](3-connecting-mongodb.md) - Connect your REST API to a MongoDB instance.
+
+[Connecting APIs to PostgreSQL](4-connecting-postgres.md) - Connect your REST API to a PostgreSQL instance.

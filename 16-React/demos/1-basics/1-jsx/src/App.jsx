@@ -123,7 +123,7 @@ export default function App() {
 
           <p>
             This section mirrors plain HTML, but it is now written in JSX —
-            React’s HTML-like syntax that lives inside JavaScript.
+            React's HTML-like syntax that lives inside JavaScript.
           </p>
 
          <h3>Hours</h3>
@@ -151,7 +151,8 @@ export default function App() {
               - in React, that new array is usually JSX elements
             */
           }
-          {hours.map((hour, index) => (
+          {
+            hours.map((hour, index) => (
             /*
               🧠 WHAT THIS FUNCTION DOES
               --------------------------
@@ -189,7 +190,8 @@ export default function App() {
                 */
               }
             </li>
-          ))}
+          ))
+          }
         </ul>
 
         </section>
@@ -203,7 +205,8 @@ export default function App() {
             Each pizza below is rendered using JavaScript arrays and JSX.
           </p>
 
-          {pizzas.map((pizza) => (
+          {
+            pizzas.map((pizza) => (
             /*
               🧱 Each pizza object controls its own content
             */
@@ -222,7 +225,8 @@ export default function App() {
               <p>{pizza.description}</p>
               <p><strong>Price:</strong> {pizza.price}</p>
             </article>
-          ))}
+          ))
+          }
         </section>
 
         <hr />
@@ -233,12 +237,14 @@ export default function App() {
           <p>This section demonstrates list rendering in JSX.</p>
 
           <ul>
-            {specials.map((special, index) => (
+            {
+              specials.map((special, index) => (
               <li key={index}>
                 <strong>{special.split(":")[0]}:</strong>
                 {special.split(":")[1]}
               </li>
-            ))}
+            ))
+            }
           </ul>
         </section>
 

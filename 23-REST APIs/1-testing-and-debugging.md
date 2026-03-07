@@ -221,8 +221,6 @@ Use `console.log()` for normal flow and `console.error()` when catching issues.
 
 ✅ **Pro tip:** Add timestamps or colors (with libraries like `chalk`) for cleaner logs in larger apps.
 
----
-
 ## 2. Restarting and Watching the Server
 
 When you edit code, Node doesn’t reload automatically — you have to restart your server manually with:
@@ -240,8 +238,6 @@ nodemon server.js
 
 Now every time you save a change, the server restarts — so you can debug and test faster.
 
----
-
 ## 3. Common API Errors and Fixes
 
 | Error | What It Means | How to Fix |
@@ -251,8 +247,6 @@ Now every time you save a change, the server restarts — so you can debug and t
 | `Cannot read property 'x' of undefined` | You tried to access something that doesn’t exist | Log your variables to see what’s missing |
 | `CORS error` | The browser blocked your frontend from calling your API | Add CORS headers or use a proxy |
 | `ECONNREFUSED` | The API or database isn’t running | Start your server or check the connection URL |
-
----
 
 ## 4. Fixing CORS Issues
 
@@ -292,7 +286,6 @@ Access to fetch at 'http://localhost:3000/api/users' from origin 'http://localho
 has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present.
 ```
 
----
 ### Is CORS Common?
 
 Yes — **extremely common** for developers building frontend + backend apps locally.  
@@ -305,7 +298,6 @@ Because your frontend (React, Vue, etc.) and backend (Node, Express, etc.) usual
 Your Node API decides which origins can access it.  
 If those headers are missing, the browser blocks the response before your frontend can even read it.
 
----
 ### How to Fix CORS Errors
 
 You fix CORS errors by setting specific HTTP headers on your server to “grant permission” for requests coming from your frontend origin.
@@ -324,6 +316,55 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 ```js
 res.setHeader("Access-Control-Allow-Origin", "https://myfrontend.com");
 ```
+
+### Using Express
+
+When using Express, you should use the official `cors` middleware
+package instead of manually setting headers.
+
+It automatically:
+
+-   Sets correct CORS headers
+-   Handles preflight (`OPTIONS`) requests
+-   Applies rules consistently across all routes
+
+#### 1️⃣ Install CORS
+
+``` bash
+npm install cors
+```
+
+#### 2️⃣ Enable It in Your Server
+
+``` js
+import express from "express";
+import cors from "cors";
+
+const app = express();
+
+app.use(cors());
+```
+
+This allows all origins (`*`) during development.
+
+
+Instead of allowing all origins, specify the exact frontend URL:
+
+``` js
+app.use(cors({
+  origin: "http://localhost:5173"
+}));
+```
+
+For production:
+
+``` js
+app.use(cors({
+  origin: "https://myfrontend.com"
+}));
+```
+
+Avoid using `"*"` in production if your API handles sensitive data.
 
 ## 5. Check HTTP Status Codes
 
@@ -362,8 +403,6 @@ These codes are divided into **groups**, each representing a different type of o
 When your browser (or frontend) makes a request, it may include a cache header like `If-Modified-Since`. If the data on the server hasn’t changed, the server replies with **304** — “Not modified.”  
 This is **normal** and good! It means no new data needed to be downloaded.
 
----
-
 ### ⚠️ 4xx: Client Error Codes
 
 These indicate the **client made a mistake** — either in how it sent data, what URL it requested, or what it tried to do.
@@ -378,8 +417,6 @@ These indicate the **client made a mistake** — either in how it sent data, wha
 💡 **Common 400 & 404 scenarios:**
 - You forget to send `Content-Type: application/json` in a POST request → `400 Bad Request`
 - Your frontend requests `/api/items` but your backend only defines `/api/products` → `404 Not Found`
-
----
 
 ### 💥 5xx: Server Error Codes
 
