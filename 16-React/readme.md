@@ -705,9 +705,6 @@ Vite bundles your app:
                Browser Runs App
 ```
 
-
-
-
 ## 6 - Create Your First React App using Vite
 
 Run these commands in your terminal:
