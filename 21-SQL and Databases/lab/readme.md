@@ -254,10 +254,28 @@ Exercises:
 
 ## Final Challenge
 
-Write a query that answers:
+Write a query that answers this question:
 
-"Which students are enrolled in more than one course?"
+> **Which students are enrolled in more than one course?**
 
-Hint: - Use GROUP BY
-- Use COUNT
-- Use HAVING
+To solve this, we need to count how many courses each student is enrolled in and then only return the students who appear **more than once**.
+
+### Example Table: `enrollments`
+
+| student_id | course_id |
+|------------|-----------|
+| 1 | 101 |
+| 1 | 102 |
+| 2 | 101 |
+| 3 | 103 |
+| 3 | 104 |
+
+This table shows which students are enrolled in which courses.
+
+Notice that:
+
+- Student **1** appears twice
+- Student **3** appears twice
+- Student **2** appears only once
+
+So the answer should return **students 1 and 3**.

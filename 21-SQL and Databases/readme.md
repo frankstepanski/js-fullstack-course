@@ -572,86 +572,7 @@ Finally, the **backend sends a response to the frontend**, and the frontend upda
                 USER SEES
                 NEW DATA
 ```
-## Where SQL Fits In
-
-So far, we've talked about what databases are and how they fit into a
-modern web application.
-
-We've seen that:
-
--   Applications store important information in databases
--   Backend servers communicate with those databases
--   Data is stored in structured formats such as **tables, documents, or
-    key-value pairs**
-
-In many professional applications, the database used is a **relational
-database**, such as **PostgreSQL or MySQL**.
-
-Relational databases organize information into **tables**, which are
-made up of **rows and columns**, similar to a spreadsheet.
-
-Each **table** represents a specific type of data. For example, an
-application might have a table for users, another for products, and
-another for orders.
-
-Example table: `users`
-
-  id   name    email
-  ---- ------- -----------------
-  1    Alice   alice@email.com
-  2    Bob     bob@email.com
-
-In this table:
-
--   The **columns** (`id`, `name`, `email`) describe what type of
-    information is stored.
--   Each **row** represents a single record in the table.
-
-For example, the first row represents a user named **Alice**, while the
-second row represents **Bob**.
-
-But this raises an important question:
-
-**How does a developer actually retrieve or search through the data
-stored in these tables?**
-
-This is where **SQL** comes in.
-
-SQL (Structured Query Language) is the language developers use to
-**query relational databases** and retrieve information from tables.
-
-For example, SQL allows us to retrieve data from a table using the
-`SELECT` statement:
-
-``` sql
-SELECT * FROM users;
-```
-
-This query asks the database to return **all rows and columns** from the
-`users` table.
-
-SQL also allows developers to retrieve **specific columns** instead of
-the entire table:
-
-``` sql
-SELECT name, email FROM users;
-```
-
-And it allows developers to **filter results** using conditions with the
-`WHERE` clause:
-
-``` sql
-SELECT * FROM users
-WHERE id = 1;
-```
-
-In other words, SQL lets developers **search, filter, and retrieve
-exactly the data they need** from the tables stored in a relational
-database.
-
-
-
-## What We'll Learn Next
+## What's Next: SQL
 
 Now that we understand what databases are and how relational databases organize data, it's time to start working with **SQL queries**.
 
@@ -660,14 +581,14 @@ Each table represents a specific type of data — such as users, orders, or prod
 
 SQL is the language developers use to **retrieve and analyze the data stored inside these tables**.
 
-In the next section, we'll focus on the most common SQL operation: **reading data from tables**.
-
-We'll learn how to:
+We'll start by learning how to:
 
 - Use the `SELECT` statement to retrieve data from a table  
-- Select **specific columns** instead of the entire table  
-- **Filter results** using conditions with `WHERE`  
-- Use comparison operators like `=`, `>`, `<`, and `!=`  
+- Select specific columns instead of the entire table  
+- Filter results using conditions with `WHERE`  
 - Combine conditions to narrow down results  
+- Understand what tables are and how relational databases organize data
+- Learn how to create tables and define their structure
+- Adding, updating and delete data from tables
 
-These skills allow developers to **query databases and extract exactly the information they need**, which is one of the most common tasks when building applications or analyzing data.
+These skills allow developers to **query databases and manage the data inside them**, which is one of the most common tasks when building applications or analyzing data.
