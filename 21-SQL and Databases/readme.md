@@ -572,99 +572,102 @@ Finally, the **backend sends a response to the frontend**, and the frontend upda
                 USER SEES
                 NEW DATA
 ```
+## Where SQL Fits In
 
-## WHERE SQL Fits In
-
-
-So far, we've talked about **what databases are** and **how they fit
-into a modern web application**.
+So far, we've talked about what databases are and how they fit into a
+modern web application.
 
 We've seen that:
 
 -   Applications store important information in databases
 -   Backend servers communicate with those databases
--   Data is stored in structured formats like **tables, documents, or
+-   Data is stored in structured formats such as **tables, documents, or
     key-value pairs**
 
 In many professional applications, the database used is a **relational
-database** such as **PostgreSQL or MySQL**.
+database**, such as **PostgreSQL or MySQL**.
 
-These databases store information in **tables made of rows and
-columns**, similar to spreadsheets.
+Relational databases organize information into **tables**, which are
+made up of **rows and columns**, similar to a spreadsheet.
 
-Example:
+Each **table** represents a specific type of data. For example, an
+application might have a table for users, another for products, and
+another for orders.
 
-| id | name  | email              |
-|----|-------|--------------------|
-| 1  | Alice | alice@email.com    |
-| 2  | Bob   | bob@email.com      |
+Example table: `users`
+
+  id   name    email
+  ---- ------- -----------------
+  1    Alice   alice@email.com
+  2    Bob     bob@email.com
+
+In this table:
+
+-   The **columns** (`id`, `name`, `email`) describe what type of
+    information is stored.
+-   Each **row** represents a single record in the table.
+
+For example, the first row represents a user named **Alice**, while the
+second row represents **Bob**.
 
 But this raises an important question:
 
-**How does a developer actually interact with these tables?**
-
-How do we:
-
--   create tables
--   insert data
--   update records
--   retrieve information
--   delete rows
+**How does a developer actually retrieve or search through the data
+stored in these tables?**
 
 This is where **SQL** comes in.
 
-### What Is SQL?
+SQL (Structured Query Language) is the language developers use to
+**query relational databases** and retrieve information from tables.
 
-**SQL (Structured Query Language)** is the language used to communicate
-with relational databases.
-
-It allows developers to **ask questions about data** and **modify stored
-information**.
-
-For example, SQL lets us:
-
-Retrieve data:
+For example, SQL allows us to retrieve data from a table using the
+`SELECT` statement:
 
 ``` sql
 SELECT * FROM users;
 ```
 
-Insert new data:
+This query asks the database to return **all rows and columns** from the
+`users` table.
+
+SQL also allows developers to retrieve **specific columns** instead of
+the entire table:
 
 ``` sql
-INSERT INTO users (name, email)
-VALUES ('Alice', 'alice@email.com');
+SELECT name, email FROM users;
 ```
 
-Update existing data:
+And it allows developers to **filter results** using conditions with the
+`WHERE` clause:
 
 ``` sql
-UPDATE users
-SET email = 'alice@newdomain.com'
+SELECT * FROM users
 WHERE id = 1;
 ```
 
-Delete data:
+In other words, SQL lets developers **search, filter, and retrieve
+exactly the data they need** from the tables stored in a relational
+database.
 
-``` sql
-DELETE FROM users
-WHERE id = 1;
-```
 
-In other words:
-
-> **SQL is the language developers use to talk to relational
-> databases.**
 
 ## What We'll Learn Next
 
-In the next section, we'll start learning **SQL fundamentals**,
-including:
+Now that we understand what databases are and how relational databases organize data, it's time to start working with **SQL queries**.
 
--   creating tables
--   inserting data
--   retrieving data with queries
--   filtering results
--   updating and deleting records
+Relational databases store information in **tables**, which are made up of **rows and columns**.  
+Each table represents a specific type of data — such as users, orders, or products — and each row in that table represents an individual record.
 
-These skills are essential for any developer working with backend systems or data-driven applications.
+SQL is the language developers use to **retrieve and analyze the data stored inside these tables**.
+
+In the next section, we'll focus on the most common SQL operation: **reading data from tables**.
+
+We'll learn how to:
+
+- Use the `SELECT` statement to retrieve data from a table  
+- Select **specific columns** instead of the entire table  
+- **Filter results** using conditions with `WHERE`  
+- Use comparison operators like `=`, `>`, `<`, and `!=`  
+- Combine conditions to narrow down results  
+
+These skills allow developers to **query databases and extract exactly the information they need**, which is one of the most common tasks when building applications or analyzing data.

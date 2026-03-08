@@ -692,8 +692,50 @@ Component libraries are about **using systems**.
 | You want full control over markup and layout | ❌ Depends | Tailwind UI may fit, but traditional libraries may feel limiting |
 | You’re still learning React basics | ⚠️ Maybe later | Libraries can obscure how components and styles actually work |
 
-## Next Up: Global State
+## Next Up: Storybook
 
-As React applications grow, managing state with useState alone becomes limiting. Local state works well when data is only needed by a single component, but real applications often require sharing state across many parts of the UI. This leads to problems like **prop drilling**, where state must be passed through multiple layers of components, making code harder to read and maintain. 
+So far in React, you've learned several ways to style components:
 
-Global state solves this by providing a shared source of truth for data such as user authentication, themes, filters, or any information that multiple components rely on.
+-   Plain CSS
+-   CSS Modules
+-   Styled Components
+-   Component libraries like **MUI** or **Chakra UI**
+
+All of these approaches help you **control how components look and
+behave**.
+
+But as React applications grow, another challenge appears:
+
+**How do we organize, preview, and test all of our components?**
+
+Imagine a project with dozens or even hundreds of UI components:
+
+    Button
+    Card
+    Modal
+    Input
+    Dropdown
+    Navbar
+    Sidebar
+    Dashboard Widgets
+
+If you only test these components inside your main application, it can
+become difficult to:
+
+-   quickly see how components look
+-   test different states (loading, disabled, error)
+-   document how components should be used
+-   keep design consistent across the app
+
+This is where **Storybook** comes in.
+
+Storybook is a tool that allows developers to **build and preview React
+components in isolation**, outside of the main application.
+
+Instead of running your entire React app just to see a button or card,
+Storybook gives you a **component workshop** where you can:
+
+-   view one component at a time
+-   test different visual states
+-   experiment with props
+-   build a reusable UI library
