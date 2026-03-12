@@ -543,6 +543,10 @@ layered architecture ensures maintainability and scalability.
 
 [API Security](2-api-security.md) - Learn how to protect your backend from real-world threats.
 
-[Connecting APIs to MongoDB](3-connecting-mongodb.md) - Connect your REST API to a MongoDB instance.
+[Relational Databases and Using PostgreSQL](3-postgres.md) - Understand
 
 [Connecting APIs to PostgreSQL](4-connecting-postgres.md) - Connect your REST API to a PostgreSQL instance.
+
+[Non-relational Databases and Using MongoDB](5-mongodb.md) - Understand
+
+[Connecting APIs to MongoDB](6-connecting-mongodb.md) - Connect your REST API to a MongoDB instance.

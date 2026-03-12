@@ -1,13 +1,15 @@
 # SQL Practice Lab --- Using DB Fiddle
 
-We'll be using the tool https://www.db-fiddle.com/ for our SQL
+We'll be using the tool DB Fiddle for our SQL
 exercises.
+
+🔗 https://www.db-fiddle.com/
 
 DB Fiddle is an online SQL playground that allows you to:
 
--   Create tables\
--   Insert data\
--   Run queries\
+-   Create tables
+-   Insert data
+-   Run queries
 -   See results instantly
 
 All inside your browser --- no installation required.
@@ -24,7 +26,7 @@ DB Fiddle removes that overhead so you can:
 
 Think of it as the CodePen for databases.
 
-# Practice Scenario --- Education Platform
+## Practice Scenario --- Education Platform
 
 We'll simulate a simple education system with:
 
@@ -32,7 +34,7 @@ We'll simulate a simple education system with:
 -   Courses
 -   Enrollments
 
-## Step 1 --- Create the Tables
+### Step 1 --- Create the Tables
 
 ``` sql
 CREATE TABLE students (
@@ -56,7 +58,7 @@ CREATE TABLE enrollments (
 );
 ```
 
-## Step 2 --- Seed Some Data
+### Step 2 --- Seed Some Data
 
 ``` sql
 INSERT INTO students (full_name, email) VALUES
@@ -76,9 +78,9 @@ INSERT INTO enrollments (student_id, course_id) VALUES
 (3, 3);
 ```
 
-## Step 3 --- Basic SQL Practice Exercises
+### Step 3 --- Basic SQL Practice Exercises
 
-### 1️⃣ Retrieve All Students
+#### 1️⃣ Retrieve All Students
 
 ``` sql
 SELECT * FROM students;
@@ -86,7 +88,7 @@ SELECT * FROM students;
 
 Exercise: - Modify this to only return `full_name` and `email`.
 
-### 2️⃣ Filter With WHERE
+#### 2️⃣ Filter With WHERE
 
 ``` sql
 SELECT * FROM courses
@@ -96,7 +98,7 @@ WHERE credits = 3;
 Exercises: - Return students whose name starts with "A".\
 - Return students whose email ends in `email.com`.
 
-### 3️⃣ Ordering Results
+#### 3️⃣ Ordering Results
 
 ``` sql
 SELECT * FROM students
@@ -105,7 +107,7 @@ ORDER BY full_name ASC;
 
 Exercise: - Order courses by credits descending.
 
-### 4️⃣ Count Records
+#### 4️⃣ Count Records
 
 ``` sql
 SELECT COUNT(*) AS total_students
@@ -115,7 +117,7 @@ FROM students;
 Exercises: - Count how many enrollments exist.\
 - Count how many courses have 3 credits.
 
-### 5️⃣ Basic INNER JOIN
+#### 5️⃣ Basic INNER JOIN
 
 ``` sql
 SELECT s.full_name, c.title
@@ -127,7 +129,7 @@ JOIN courses c ON c.id = e.course_id;
 Exercises: - Modify this query to also show `enrolled_at`.\
 - Sort results by student name.
 
-### 6️⃣ LEFT JOIN
+#### 6️⃣ LEFT JOIN
 
 ``` sql
 SELECT s.full_name, c.title
@@ -138,7 +140,7 @@ LEFT JOIN courses c ON c.id = e.course_id;
 
 Exercise: - Identify which students are not enrolled in any course.
 
-### 7️⃣ GROUP BY
+#### 7️⃣ GROUP BY
 
 ``` sql
 SELECT c.title, COUNT(e.id) AS student_count
@@ -149,26 +151,26 @@ GROUP BY c.title;
 
 Exercise: - Only show courses with more than 1 student using `HAVING`.
 
-## Step 4 --- INSERT SQL Practice Exercises
+### Step 4 --- INSERT SQL Practice Exercises
 
 You've already used INSERT to seed data. Now let's practice adding new
 records manually.
 
-### Insert a New Student
+#### Insert a New Student
 
 ``` sql
 INSERT INTO students (full_name, email)
 VALUES ('David Kim', 'david@email.com');
 ```
 
-### Insert a New Course
+#### Insert a New Course
 
 ``` sql
 INSERT INTO courses (title, credits)
 VALUES ('Backend Systems', 4);
 ```
 
-### Enroll a Student in a Course
+#### Enroll a Student in a Course
 
 ``` sql
 INSERT INTO enrollments (student_id, course_id)
@@ -177,19 +179,19 @@ VALUES (4, 2);
 
 Exercises:
 
--   Add two more students.\
--   Add one new course.\
+-   Add two more students.
+-   Add one new course.
 -   Enroll an existing student into two courses.
 
 
-## Step 5 --- UPDATE SQL Practice Exercises
+### Step 5 --- UPDATE SQL Practice Exercises
 
 UPDATE allows you to change existing records.
 
 ⚠️ Always use a WHERE clause unless you intentionally want to update
 every row.
 
-### Update a Student's Email
+#### Update a Student's Email
 
 ``` sql
 UPDATE students
@@ -197,7 +199,7 @@ SET email = 'alice_new@email.com'
 WHERE id = 1;
 ```
 
-### Update Course Credits
+#### Update Course Credits
 
 ``` sql
 UPDATE courses
@@ -205,7 +207,7 @@ SET credits = 5
 WHERE title = 'Web Development';
 ```
 
-### Update Enrollment Status (if you add a status column)
+#### Update Enrollment Status (if you add a status column)
 
 ``` sql
 ALTER TABLE enrollments
@@ -218,24 +220,24 @@ WHERE student_id = 1 AND course_id = 1;
 
 Exercises:
 
--   Change Bob's email.\
--   Increase all 3-credit courses to 4 credits.\
+-   Change Bob's email.
+-   Increase all 3-credit courses to 4 credits.
 -   Update multiple rows at once using a broader WHERE condition.
 
-## Step 6 --- DELETE SQL Practice Exercises
+### Step 6 --- DELETE SQL Practice Exercises
 
 DELETE removes rows from a table.
 
 ⚠️ Be careful. If you forget WHERE, you delete everything.
 
-### Delete a Single Enrollment
+#### Delete a Single Enrollment
 
 ``` sql
 DELETE FROM enrollments
 WHERE student_id = 2 AND course_id = 1;
 ```
 
-### Delete a Student
+#### Delete a Student
 
 ``` sql
 DELETE FROM students
@@ -247,8 +249,8 @@ constraints.
 
 Exercises:
 
--   Delete a course that has no enrollments.\
--   Delete all enrollments for a specific student.\
+-   Delete a course that has no enrollments.
+-   Delete all enrollments for a specific student.
 -   Try deleting a student who still has enrollments --- observe what
     happens.
 
@@ -279,3 +281,18 @@ Notice that:
 - Student **2** appears only once
 
 So the answer should return **students 1 and 3**.
+
+## More SQL Practice
+
+If you want additional interactive exercises to improve your SQL skills, a great resource is:
+
+🔗 https://sqlbolt.com/
+
+**SQLBolt** is an interactive SQL tutorial that lets you:
+
+- Practice writing SQL queries step-by-step
+- See results immediately
+- Learn through guided exercises
+- Work through progressively harder problems
+
+Each lesson includes a short explanation followed by a **live query editor**, making it an excellent way to reinforce the concepts we covered in this lab.
