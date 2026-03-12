@@ -548,12 +548,12 @@ Understand how to protect your backend using validation, authentication, environ
 #### 🐘 [Using PostgreSQL](3-postgres.md)  
 Learn how relational databases work using PostgreSQL, including tables, rows, relationships, and how SQL queries interact with structured data.
 
-#### 🔗 [Connecting APIs to PostgreSQL](4-connecting-postgres.md)  
+#### 🔗 [Connecting APIs to PostgreSQL](4-postgres-service.md)  
 Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
 
 #### 🍃 [Using MongoDB](5-mongodb.md)  
 Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
 
-#### 🔌 [Connecting APIs to MongoDB](6-connecting-mongodb.md)  
+#### 🔌 [Connecting APIs to MongoDB](6-mongodb-service.md)  
 Learn how to connect your API to MongoDB and use tools like Mongoose to create models, run queries, and manage application data.
 
