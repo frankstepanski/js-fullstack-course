@@ -109,6 +109,5 @@ Following the SDLC ensures that:
 Here are the rest of the resources for this topic.
 
 1. [Software Development Life Cyle](1-sldc.md)
-2. [Mini Project Solution](2-project-solution.md)  
-3. [Agile and Scrum](3-agile-scrum.md)  
-4. [The Project Team](4-project-team.md)  
+2. [Agile and Scrum](2-agile-scrum.md)  
+3. [The Project Team](3-project-team.md)  
