@@ -70,3 +70,4 @@ For a detailed overview of these topics, see the full documents:
 - [Systems Foundations](1-system-foundations.md)
 - [Web Dev Essentials](2-dev-essentials.md)
 - [Visual Studio Code](3-vscode.md)
+- [Adding AI to VSC](4-ai-in-vscode.md)
