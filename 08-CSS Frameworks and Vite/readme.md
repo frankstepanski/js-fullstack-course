@@ -204,6 +204,17 @@ Add this inside your `<head>` tag:
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 ```
 
+> ## Before You Continue
+>
+> The next section uses **Vite**, which is a modern development tool for running and building front-end projects.
+>
+> If you have not learned Vite yet, pause here and read this guide first:
+>
+> **[Introduction to Vite](what-is-Vite.md)**
+>
+> Then come back to this document when you are ready to continue with **Using Bootstrap with Vite**.
+ 
+
 ### ✅ Option 2: Using Bootstrap with Vite (Dev Sever + Bundler + Node)
 
 This option uses **modern JavaScript imports** with a real bundler:
@@ -605,112 +616,7 @@ Or use utility overrides in HTML:
 
 >  Bootstrap gives you a strong foundation, but customization makes your site unique.
 
-
-##  10. Bootstrap Themes
-
-A **Bootstrap theme** is a customized version of Bootstrap that changes the look and feel of your project — usually through updated **colors**, **fonts**, **spacing**, and **component styles**.  
-Think of a theme as a “new outfit” for Bootstrap’s default appearance.
-
-Themes let you keep Bootstrap’s structure and components while giving your site a unique visual identity.
-
-A theme typically updates:
-
-- **Color palette** (brand colors, button colors, link colors)
-- **Typography** (custom Google Fonts, font weights, line-height)
-- **Spacing scale** (margins, padding, gutter sizes)
-- **Component styles** (cards, navbars, modals)
-- **Border styles** (radius, thickness)
-- **Shadow & elevation** (depth effects)
-- **Dark mode / light mode behavior**
-
-> 💡 The *functionality* stays the same — only the appearance changes.
-
-Bootstrap offers premium themes at:
-
-https://themes.getbootstrap.com
-
-Other sites offer free versions:
-- Start Bootstrap  
-- MDBootstrap  
-- BootstrapMade  
-- CreativeTim  
- 
-##  11. Containers and Grids
-
-###  Containers
-Containers center your content and add padding:
-```html
-<div class="container">
-  <p>This is inside a fixed-width container.</p>
-</div>
-<div class="container-fluid">
-  <p>This container is full-width across all screens.</p>
-</div>
-```
-
-| Type | Description |
-|-------|--------------|
-| `.container` | Fixed width, changes per screen size |
-| `.container-fluid` | Always 100% width |
-| `.container-{breakpoint}` | Fixed until a breakpoint (e.g., `.container-md`) |
-
----
-
-###  Grid System
-
-Bootstrap’s grid uses **rows and columns** to structure content.
-
-```html
-<div class="container">
-  <div class="row">
-    <div class="col">Column 1</div>
-    <div class="col">Column 2</div>
-    <div class="col">Column 3</div>
-  </div>
-</div>
-```
-
-You can control column sizes:
-```html
-<div class="col-md-6 col-lg-4">Responsive column</div>
-```
-
-> 💡 Use grids to create balanced, responsive layouts without writing custom CSS.
-
-##  12. Navbar and Forms
-
-### Navbar Example
-```html
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">MySite</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-    </ul>
-  </div>
-</nav>
-```
-
-### Form Example
-```html
-<form class="mt-3">
-  <div class="mb-3">
-    <label class="form-label">Email address</label>
-    <input type="email" class="form-control" placeholder="name@example.com">
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Message</label>
-    <textarea class="form-control" rows="3"></textarea>
-  </div>
-  <button class="btn btn-primary">Submit</button>
-</form>
-```
-
-## 13. How Bootstrap Is Used in the Real World Today
+## 10. How Bootstrap Is Used in the Real World Today
 
 Bootstrap still has many strengths—fast setup, a full UI component library, a responsive grid, and excellent documentation. But as the web ecosystem evolved, many developers have shifted how they use Bootstrap in modern workflows.
 
@@ -730,7 +636,7 @@ During early design phases, teams prioritize speed over perfect branding, so Boo
 > **Beginners benefit too:**  
 Bootstrap helps new developers skip boilerplate and focus on learning layout, spacing, components, and responsiveness.
 
-### 2. Not Always Ideal for Final Production Designs
+### 2. Not Ideal for Final Production Designs
 Modern companies usually want:
 - Unique branding  
 - Custom design systems  
