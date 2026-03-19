@@ -264,8 +264,6 @@ AI can generate code that:
 
 Testing helps you verify whether the suggestion is actually useful.
 
----
-
 ### Rule 4: Ask Questions When You Do Not Understand Something
 
 If AI gives you code or an explanation that confuses you, stop and ask follow-up questions.
@@ -283,9 +281,7 @@ AI should help you **learn**, not just copy code.
 
 Asking follow-up questions turns AI from a code generator into a learning tool.
 
----
-
-## 📖 Beginner Rule 5: Compare Important Answers with Documentation
+### Rule 5: Compare Important Answers with Documentation
 
 Do not assume AI is always correct.
 
@@ -319,15 +315,13 @@ The table below compares several popular AI tools for VS Code so you can better 
 | [**Codex (OpenAI)**](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) | A chat-based AI tool inside VS Code. | Asking coding questions, generating examples, debugging, getting explanations. | Works more like a chatbot inside the editor rather than only autocomplete. |
 | [**GitHub Copilot**](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) | An AI tool that provides real-time code suggestions while you type. | Writing code faster, completing functions, generating repeated patterns, speeding up development. | Focused on in-editor code suggestions and completion while coding. |
 
-### Quick Comparison by Use
+You do not need to learn or install every tool at once.
 
-| If You Want To... | Possible Tool to Explore |
-|---|---|
-| Ask questions inside VS Code | **Codex (OpenAI)**, **Claude Code** |
-| Get code suggestions while typing | **Windsurf (Codeium)**, **GitHub Copilot** |
-| Understand code more deeply | **Claude Code** |
-| Generate quick starter code | **Windsurf (Codeium)**, **GitHub Copilot** |
-| Debug or discuss code in chat form | **Codex (OpenAI)**, **Claude Code** |
+The main takeaway from this table is that AI tools inside VS Code can help in different ways.
+
+Some are more focused on **real-time code suggestions**, while others are more useful for **chat, explanation, reasoning, or debugging**.
+
+As a beginner, it is usually best to start with **one tool**, try it on a small task, and begin using it as part of your learning workflow.
 
 ## Summary
 
