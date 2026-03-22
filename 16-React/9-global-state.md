@@ -797,7 +797,7 @@ Large app global state        → Zustand or Redux Toolkit
 
 There is no “best” state tool — only the **right tool for the current problem**. Understanding these tradeoffs is far more important than memorizing APIs.
 
-## Next Up: Deployment
+### Next Up: Deployment
 
 You've learned all the tools to build real, dynamic React applications using components, state and global state, styling strategies, routing, and reusable layouts. At this point, your app behaves like a real product—but it still only runs on your local machine. Deployment is the step that turns your work into something others can actually access, share, and use through a public URL.
 

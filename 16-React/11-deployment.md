@@ -122,7 +122,7 @@ You usually do 4 things:
 ✅ Code pushed to GitHub  
 ✅ `npm run build` succeeds  
 ✅ You know if you’re using React Router  
-✅ Environment variables are identified  
+✅ API configuration is set up properly  
 
 ## Step-by-Step: Deploying a Vite React App
 
@@ -142,7 +142,7 @@ npm run build
 What this does:
 - Installs all project dependencies
 - Runs Vite’s production build
-- Converts your React app into browser‑ready files
+- Converts your React app into browser-ready files
 
 After this step, you should see a new folder:
 
@@ -223,47 +223,25 @@ No manual uploads required.
 
 **Best for:**
 - Static React apps
-- Beginner‑friendly dashboards
+- Beginner-friendly dashboards
 - Simple redirects and forms
 
 **Two ways to deploy:**
 
-#### 1️⃣ Git‑based (Recommended)
+#### 1️⃣ Git-based (Recommended)
 - Connect GitHub
 - Netlify builds on every push
 - Automatic redeploys
 
-#### 2️⃣ Drag‑and‑Drop
+#### 2️⃣ Drag-and-Drop
 - Run `npm run build`
 - Drag the `dist/` folder into Netlify
 
-Great for demos, but does **not** auto‑update on future pushes.
+Great for demos, but does **not** auto-update on future pushes.
 
 ---
 
-### Option C: GitHub Pages (Good for Portfolios)
-
-**Best for:**
-- Student portfolios
-- Simple demos
-- Free hosting on GitHub
-
-**Important note:**
-GitHub Pages does **not** build your app for you.
-
-You must:
-- Build locally
-- Push the `dist/` folder to a special branch
-
-It requires:
-- Setting a base path
-- Extra React Router configuration
-
-Totally doable, but more setup‑heavy.
-
----
-
-### Option D: Cloudflare Pages (Fast + Free)
+### Option C: Cloudflare Pages (Fast + Free)
 
 **Best for:**
 - Free static hosting
@@ -275,15 +253,14 @@ Very similar to Vercel and Netlify:
 - Connect GitHub
 - Set build command
 - Set output directory
-- Auto‑deploy on pushes
+- Auto-deploy on pushes
 
 ### How to Choose 
 
 ```text
 First React app        → Vercel
 Static site + forms    → Netlify
-Portfolio site         → GitHub Pages
-Fast free hosting      → Cloudflare Pages
+Fast hosting           → Cloudflare Pages
 ```
 
 If you’re new to deployment, **Vercel first** is usually the smoothest experience.
@@ -292,7 +269,7 @@ If you’re new to deployment, **Vercel first** is usually the smoothest experie
 
 These deployment options are considered more “pro” not because they are better, but because they offer more control and are commonly used in professional environments. Beginners do not need to use these right away, but understanding them helps you see how React apps are deployed at scale.
 
-### Option E: Firebase Hosting  
+### Option D: Firebase Hosting  
 **Best for:** apps that already use Firebase Authentication, Firestore, or Firebase Functions
 
 Firebase Hosting is part of Google’s Firebase platform and works especially well when your React app already depends on Firebase services.
@@ -322,7 +299,7 @@ Firebase Hosting gives you strong integration with backend services, but require
 
 ---
 
-### Option F: AWS (S3 + CloudFront) 
+### Option E: AWS (S3 + CloudFront) 
 **Best for:** learning cloud infrastructure, enterprise applications, AWS-based systems
 
 AWS is the most widely used cloud platform in production environments and offers multiple ways to deploy React apps.
@@ -351,40 +328,7 @@ Users worldwide
 - Extremely scalable
 - Common in enterprise environments
 
-
----
-
-###  Option G: AWS Amplify
-
-AWS Amplify simplifies deployment while still using AWS infrastructure.
-
-**How it works**
-```text
-GitHub repository
-   ↓
-Amplify builds app
-   ↓
-Amplify deploys dist/
-   ↓
-Live site + automatic redeploys
-```
-
-**Why Amplify is easier**
-- GitHub-based workflow
-- Automatic builds and deployments
-- Built-in CI/CD
-- Easier routing setup
-
-
-### How To Choose
-
-```text
-Firebase Hosting → Firebase-first apps
-S3 + CloudFront → Maximum control and scale
-AWS Amplify     → AWS with modern developer experience
-```
-
-## SPA Routing & Environment Variables in React Deployments
+## SPA Routing in React Deployments
 
 By this point, you're already comfortable with how React Router works during development. Your application is a **Single Page Application (SPA)**, meaning it is powered by a single `index.html` file and navigation is handled entirely in the browser. 
 
@@ -454,7 +398,6 @@ This is often referred to as:
 
 Different platforms use different terminology, but the concept is the same.
 
-
 ### How Beginner-Friendly Hosting Platforms Handle This
 
 **Vercel**
@@ -464,129 +407,107 @@ Different platforms use different terminology, but the concept is the same.
 
 **Netlify**
 - Requires an explicit redirect rule:
+
 ```text
 /*  /index.html  200
 ```
+
 - This tells Netlify to always serve `index.html` for unknown routes
 
 **GitHub Pages**
 - Does not support SPA routing by default
 - Often requires hash-based routing (`/#/dashboard`)
 - Requires extra setup and workarounds
----
 
-### Environment Variables: Development vs Deployment
+## Environment Variables in Deployment
 
-You use Environment variables 5o allow your React app to change behavior without changing source code. They exist to separate **configuration** from **application logic**. They answer questions about *where* and *how* your app runs, not *what* your app does.
+When you deploy your React app, the cloud hosting platform does **not** automatically take your local `.env` files and use them for you.
 
-Environment variables are store information like:
-- API base URLs
-- Public (non-secret) keys
-- Feature flags and environment-specific settings
+That means:
 
-They are **not** meant to:
-- Store user data
-- Replace React state
-- Change frequently while the app is running
+- the `.env` files on your computer stay on your computer
+- your hosting provider needs its **own copy** of the environment variable values
+- you usually enter those values manually in the cloud dashboard
 
-Once your app is built, environment variables behave like constants baked into the code.
-
->Hard-coding these values often works locally but breaks once the app is deployed, especially when moving away from `localhost`.
-
-### Environment Variables in Production
-
-During development, your app might communicate with:
+So if your app needs something like:
 
 ```text
-http://localhost:3000
+VITE_API_URL=https://api.myapp.com
 ```
 
-In production, however:
-- Your backend runs on a different domain
-- You may have multiple environments (development, staging, production)
-- Sensitive configuration should not be committed to GitHub
+you must usually go into your hosting platform dashboard and re-create that variable there.
 
-Environment variables make your app portable across environments, but only when they are configured correctly for deployment.
+### Why This Matters
 
-### How Vite Handles Environment Variables
+If the cloud platform does not have the correct environment variable values, your deployed app may:
 
-Vite enforces a simple rule:
+- fail to load correctly
+- call the wrong API
+- still point to `localhost`
+- miss public keys or feature flag settings
+- behave differently from your local version
 
-> Only environment variables prefixed with `VITE_` are exposed to your React app.
+This is one of the most common reasons an app works locally but breaks after deployment.
 
-Example:
-```bash
-VITE_API_URL=https://api.example.com
+### What You Usually Do in Practice
+
+A common workflow looks like this:
+
+1. Create your environment variables locally  
+2. Test the app on your machine  
+3. Open your cloud hosting dashboard  
+4. Re-create the required production variables there  
+5. Trigger a new deployment  
+6. Test the live app again  
+
+### Example
+
+Locally, you might have this in:
+
+#### `.env.development`
+
+```env
+VITE_API_URL=http://localhost:3000
+VITE_SHOW_DEBUG=true
 ```
 
-In your React code:
+But in your cloud hosting platform, you would add production values such as:
+
+```text
+VITE_API_URL=https://api.myapp.com
+VITE_SHOW_DEBUG=false
+```
+
+Your React code stays the same:
+
 ```js
 const apiUrl = import.meta.env.VITE_API_URL;
+const showDebug = import.meta.env.VITE_SHOW_DEBUG === "true";
 ```
 
-During the build step (`npm run build`), Vite reads these variables and injects their values directly into the built JavaScript files.
+The difference is that your cloud provider must supply the production values during deployment.
 
-Platforms like **Vercel**, **Netlify**, and **Cloudflare Pages** handle environment variables similarly:
-
-- Variables are set in the platform dashboard
-- Values are injected during the build step
-- The app is redeployed automatically after changes
-
-If environment variables are updated without triggering a new deployment, the app will continue using the old values.
-
----
-
-### Why Frontend Environment Variables Must Be Public
-
-In frontend React apps:
-- Environment variables are injected into JavaScript
-- JavaScript is downloaded by the browser
-- Anyone can view those values in DevTools
-
-This means:
-- API base URLs are safe
-- Public API keys are safe
-- Database passwords and private keys are **not**
-
-> 🔒 If something must stay secret, it belongs in a backend service, not in your React app.
-
----
-
-#### `.env` Files Are Development Tools
-
-Locally, you may use files like:
+### Final Mental Model
 
 ```text
-.env
-.env.local
-.env.development
+local .env files
+→ used on your machine
+
+cloud dashboard env variables
+→ used when the app is built and deployed online
 ```
 
-These files:
-- Are read by Vite on your machine
-- Help with local development
-- Are usually ignored by Git
+So the key idea is:
 
-In production:
-- Hosting platforms do not read your `.env` files
-- You must define environment variables in the platform dashboard
-- The platform injects them during the build step
+> Creating `.env` files locally is only part of the setup. For deployment to work correctly, you usually must re-create those environment variable values in your cloud hosting dashboard too.
 
-Think of `.env` files as helpers for development, not deployment.
 
-```text
-Code       → behavior
-Env vars   → configuration
-Build step → locks them together
-```
-
-Once deployed, changing configuration requires a rebuild.
 
 ## Key Takeaways
 
 Now, you should have a clear mental model of what “deploying a React app” actually means. You are not deploying React itself, your components, or your source code — you are deploying the **result of a build**. After `npm run build`, your app is just a folder of static files (`dist/`) that any web server can deliver.
 
-The biggest shift from development to production is understanding that **your development server is gone**. Vite’s dev server hides many details for you — routing always works, environment variables feel dynamic, and errors are easy to spot. In production, those conveniences must be handled explicitly by your hosting platform through build configuration, SPA routing fallbacks, and environment variable setup.
+The biggest shift from development to production is understanding that **your development server is gone**. Vite’s dev server hides many details for you — routing always works, errors are easy to spot, and everything feels automatic. In production, those conveniences must be handled explicitly by your hosting platform through build configuration and SPA routing fallbacks.
 
 If you remember nothing else, remember this flow:
 
@@ -594,7 +515,7 @@ If you remember nothing else, remember this flow:
 Write React code
 → Build the app
 → Deploy the dist/ folder
-→ Configure routing and environment variables
+→ Configure routing
 → Verify in production
 ```
 

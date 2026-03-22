@@ -120,6 +120,15 @@
           "price": 12,
           "quantity": 1,
           "subtotal": 12
+        },
+        {
+          "key": "3-medium",
+          "pizzaId": "3",
+          "name": "Stargazer Veggie",
+          "size": "medium",
+          "price": 14,
+          "quantity": 3,
+          "subtotal": 42
         }
       ]
     }
@@ -162,5 +171,6 @@
       "quote": "The Comet BBQ Chicken is my go-to. Smoky, tangy, and so good.",
       "rating": 5
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
