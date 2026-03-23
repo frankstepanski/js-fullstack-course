@@ -40,12 +40,8 @@ const server = jsonServer.create();
 // This router is what knows how to handle routes like /posts and /users
 const router = jsonServer.router("db.json");
 
-// Create the default middleware provided by JSON Server
-// Middleware runs before the final route response and adds helpful server behavior
+// Create default middleware, but do not look for a public folder
 const middlewares = jsonServer.defaults();
-
-// Attach the middleware to the server
-// This is required so the server actually runs that helper logic for requests
 server.use(middlewares);
 
 // Attach the router to the server

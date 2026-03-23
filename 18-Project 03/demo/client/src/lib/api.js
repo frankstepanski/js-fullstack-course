@@ -1,5 +1,11 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
+console.log("API_BASE_URL =", API_BASE_URL);
+
+if (!API_BASE_URL) {
+  throw new Error("Missing VITE_API_BASE_URL");
+}
+
 async function fetchJson(path, options) {
   const res = await fetch(`${API_BASE_URL}${path}`, options);
   if (!res.ok) {
