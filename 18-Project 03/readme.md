@@ -79,14 +79,15 @@ Wireframes should show:
 
 6. Create a `server` folder
 7. Navigate to your `server` folder  
-8. Install json-server  
+8. Run `npm init` to create your Node package.json file
+9. Install json-server  
 
 ```bash
 npm install json-server@0.17.4
 ```
 
-9. Create a `db.json` file  
-10. Create a `server.js` file  
+10. Create a `db.json` file  
+11. Create a `server.js` file  
 
 ```
 import jsonServer from "json-server";
@@ -105,7 +106,7 @@ server.listen(PORT, () => {
 });
 ```
 
-11. Update your package.json file:
+12. Update your package.json file:
 
 ```
  "type": "module",
