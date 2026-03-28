@@ -1,0 +1,303 @@
+/* index.css */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f3;
+  color: #1a1a1a;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── App layout ─────────────────────────────────────────────────────────────── */
+
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.app-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.app-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: #555;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+
+.tab:hover { background: #f0f0f0; }
+
+.tab.active {
+  background: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+  font-weight: 500;
+}
+
+.demo-panel { min-height: 300px; }
+
+/* ── Cards ───────────────────────────────────────────────────────────────────── */
+
+.card {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+/* ── User rows ───────────────────────────────────────────────────────────────── */
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+  transition: background 0.1s;
+  border-radius: 6px;
+}
+
+.user-row:last-child { border-bottom: none; }
+.user-row:hover { background: #f8f8f8; padding-left: 6px; }
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e8eaf6;
+  color: #3949ab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.avatar-lg {
+  width: 48px;
+  height: 48px;
+  font-size: 15px;
+}
+
+.user-name { font-size: 14px; font-weight: 500; color: #1a1a1a; }
+.user-sub  { font-size: 12px; color: #888; }
+.arrow     { margin-left: auto; color: #ccc; font-size: 18px; }
+
+/* ── Profile detail ──────────────────────────────────────────────────────────── */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #f7f7f7;
+}
+.field-row:last-child { border-bottom: none; }
+
+.field-label { color: #888; font-size: 13px; }
+
+/* ── Post cards ──────────────────────────────────────────────────────────────── */
+
+.post-card { margin-bottom: 10px; }
+
+.post-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-title { font-size: 14px; font-weight: 500; color: #1a1a1a; }
+.post-meta  { font-size: 12px; color: #888; margin-top: 2px; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────────────── */
+
+.btn {
+  padding: 7px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+  color: #1a1a1a;
+  transition: all 0.15s;
+}
+.btn:hover:not(:disabled) { background: #f0f0f0; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary {
+  background: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+  font-weight: 500;
+}
+.btn-primary:hover:not(:disabled) { background: #333; }
+
+.btn-danger {
+  background: white;
+  color: #c0392b;
+  border-color: #f5c6c6;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+.btn-danger:hover:not(:disabled) { background: #fff5f5; }
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+  padding: 4px 0;
+  display: block;
+}
+.back-btn:hover { color: #1a1a1a; }
+
+/* ── Add form ────────────────────────────────────────────────────────────────── */
+
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.text-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.text-input:focus { border-color: #1a1a1a; }
+.text-input:disabled { background: #f8f8f8; }
+
+/* ── State indicators ────────────────────────────────────────────────────────── */
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+  font-size: 14px;
+  padding: 1.5rem 0;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ddd;
+  border-top-color: #555;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.background-fetch-badge {
+  font-size: 12px;
+  background: #e8f4fd;
+  color: #1565c0;
+  border: 1px solid #bbdefb;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.error { color: #c0392b; font-size: 14px; padding: 1rem 0; }
+
+/* ── Callout boxes ───────────────────────────────────────────────────────────── */
+
+.callout {
+  font-size: 13px;
+  line-height: 1.6;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 1rem;
+  border-left: 3px solid;
+}
+
+.callout-info {
+  background: #e8f4fd;
+  border-color: #1565c0;
+  color: #0d47a1;
+}
+
+.callout-warn {
+  background: #fff8e1;
+  border-color: #f9a825;
+  color: #6d4c00;
+}
+
+.callout strong { font-weight: 600; }
+.callout code, code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  background: rgba(0,0,0,0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.callout em { font-style: italic; }
+
+/* ── Stale time meta row ─────────────────────────────────────────────────────── */
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.meta-label { color: #888; }
+.fresh-text { color: #2e7d32; font-weight: 500; }
+.stale-text { color: #e65100; font-weight: 500; }
