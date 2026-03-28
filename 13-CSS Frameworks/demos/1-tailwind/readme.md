@@ -1,4 +1,4 @@
-# Tailwind Profile Page — Learning Project
+# Tailwind Profile Page
 
 A beginner-friendly profile page built with **Vite** and **Tailwind CSS**.
 

@@ -1,4 +1,4 @@
-# CSS Modules Profile Page — Learning Project
+# CSS Modules Profile Page 
 
 The **same profile page** as the Tailwind example — rebuilt using
 **CSS Modules** with Vite. Compare the two projects side by side
