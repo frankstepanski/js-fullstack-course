@@ -1,0 +1,85 @@
+/*
+  style.css
+  =========
+  This is the main CSS file for the project.
+
+  The single line below is all you need to load ALL of
+  Tailwind's utility classes into your project.
+
+  Vite reads this import, the Tailwind plugin processes it,
+  and every class like bg-white, p-4, flex, etc. becomes
+  available in your HTML.
+
+  You can still write regular CSS here too — Tailwind and
+  your own styles work side by side.
+*/
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+
+@import "tailwindcss";
+
+/*
+  ── Custom styles ──────────────────────────────────────────
+
+  Use regular CSS here for anything Tailwind can't do in a
+  single utility class — like multi-step animations or
+  custom gradients with animation.
+
+  Think of Tailwind as handling 90% of your styling needs,
+  and this block handling the remaining 10%.
+*/
+
+/* Apply fonts globally */
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/*
+  Animated gradient background for the hero section.
+  We define this here because Tailwind doesn't have a
+  built-in animated gradient utility class.
+
+  The animation shifts the background position back and
+  forth, creating a slow colour movement effect.
+*/
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1e3a5f 50%,
+    #0f172a 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/*
+  Fade-up animation for the content cards.
+  Each card starts invisible and slightly below its final
+  position, then animates into place when the page loads.
+*/
+.fade-up {
+  animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

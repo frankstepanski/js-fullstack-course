@@ -1,0 +1,14 @@
+{
+  "name": "cssmodules-profile",
+  "version": "1.0.0",
+  "description": "A beginner CSS Modules profile page built with Vite",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

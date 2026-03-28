@@ -1,0 +1,104 @@
+/*
+  global.css
+  ==========
+  This is a REGULAR CSS file — NOT a CSS Module.
+
+  We use this for styles that should apply to the whole page:
+  - Font imports
+  - CSS custom properties (variables)
+  - Base body styles
+  - Keyframe animations (used across multiple modules)
+
+  You can tell this is NOT a module because:
+  ✗ The filename does NOT end in .module.css
+  ✓ It ends in just .css
+
+  Styles in this file are global — they apply everywhere.
+  That is fine for base/reset styles, but NOT for component
+  styles (which is where .module.css files come in).
+*/
+
+/* ── Google Fonts — must be first ── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+
+/*
+  ── CSS Custom Properties (Variables) ──────────────────────
+  These are like variables in JavaScript, but for CSS.
+  Define a value once here, use it everywhere.
+
+  Syntax:
+    --variable-name: value;       (define it)
+    color: var(--variable-name);  (use it)
+
+  We put them on :root so they are available on every element
+  in the page.
+*/
+:root {
+  --color-bg-page:      #f1f5f9; /* slate-100 — page background  */
+  --color-dark:         #0f172a; /* slate-900 — dark navy         */
+  --color-dark-mid:     #1e3a5f; /* mid navy — used in gradient   */
+  --color-text-light:   #cbd5e1; /* slate-300 — light body text   */
+  --color-text-muted:   #94a3b8; /* slate-400 — muted text        */
+  --color-accent:       #fbbf24; /* amber-400 — gold accent       */
+  --color-accent-hover: #fcd34d; /* amber-300 — lighter gold      */
+  --color-heading:      #ffffff; /* white headings on dark bg     */
+
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Lato', sans-serif;
+
+  --radius-full: 9999px; /* pill / circle shape */
+  --radius-xl:   1rem;   /* rounded card corners */
+
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* ── Base Styles ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* padding doesn't add to element width */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-page);
+  min-height: 100vh;
+  color: var(--color-dark);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ── Keyframe Animations ─────────────────────────────────── */
+/*
+  Animations are defined here in the global file so they
+  can be referenced by name from any .module.css file.
+
+  If they were inside a .module.css file, the name would get
+  scoped and renamed — making it hard to reference reliably.
+*/
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

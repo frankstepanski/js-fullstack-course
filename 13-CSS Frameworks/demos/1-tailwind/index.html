@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jamie Rivera — Profile</title>
+
+  <!--
+  ============================================================
+  HOW THIS PROJECT WORKS
+  ============================================================
+
+  This is a real Vite project — not a CDN shortcut.
+
+  When you run `npm run dev`, Vite:
+    1. Reads this index.html
+    2. Finds the <script> tag at the bottom pointing to main.js
+    3. Reads main.js, which imports style.css
+    4. style.css imports Tailwind via @import "tailwindcss"
+    5. Tailwind generates all the utility classes
+    6. Vite bundles everything and serves it to the browser
+
+  So the chain is:
+    index.html → main.js → style.css → Tailwind CSS
+
+  You do NOT need a <link> tag for Tailwind here.
+  Vite and the Tailwind plugin handle everything through
+  that single JavaScript import in main.js.
+  ============================================================
+  -->
+
+</head>
+
+<body class="
+  bg-slate-100
+  min-h-screen
+">
+<!--
+  bg-slate-100  → background-color: a very light grey
+                  (slate is a blue-grey colour family)
+                  Numbers go from 50 (lightest) to 950 (darkest)
+
+  min-h-screen  → min-height: 100vh
+                  Ensures the body fills the full browser height
+                  even if there isn't much content
+-->
+
+
+  <!-- ====================================================
+       HERO / PROFILE HEADER
+       ====================================================
+       This is the main section of the page.
+       It uses our custom .hero-gradient class (defined in
+       style.css) for the animated dark background, then
+       Tailwind classes for all the layout and spacing.
+  ==================================================== -->
+  <header class="hero-gradient">
+  <!--
+    hero-gradient → our custom CSS class in style.css
+                    Creates the animated dark blue gradient
+                    background. Not a Tailwind class — we wrote
+                    this ourselves because Tailwind doesn't have
+                    animated gradients built in.
+  -->
+
+    <!--
+      This inner div centres and constrains the content.
+      Without max-w-2xl, the content would stretch across
+      the full width of the screen on large monitors.
+    -->
+    <div class="
+      max-w-2xl
+      mx-auto
+      px-6
+      py-20
+      flex
+      flex-col
+      items-center
+      text-center
+      gap-6
+    ">
+    <!--
+      max-w-2xl     → max-width: 672px
+                      Stops the content getting too wide.
+
+      mx-auto       → margin-left: auto; margin-right: auto
+                      Centers the div horizontally on the page.
+                      This is the standard Tailwind way to center
+                      a block element.
+
+      px-6          → padding-left: 24px; padding-right: 24px
+                      Horizontal breathing room on small screens.
+
+      py-20         → padding-top: 80px; padding-bottom: 80px
+                      Generous vertical space above and below.
+
+      flex          → display: flex
+                      Turns this into a flex container so we can
+                      control how children are arranged.
+
+      flex-col      → flex-direction: column
+                      Stack children vertically (top to bottom).
+                      Without this, flex defaults to row (side by side).
+
+      items-center  → align-items: center
+                      In a flex-col, this centres children
+                      horizontally.
+
+      text-center   → text-align: center
+                      Centres all text inside this div.
+
+      gap-6         → gap: 24px
+                      Adds 24px of space between each child element.
+                      Much cleaner than adding margin to every child.
+    -->
+
+
+      <!-- ── AVATAR IMAGE ─────────────────────────────── -->
+      <img
+        src="https://api.dicebear.com/7.x/adventurer/svg?seed=Jamie&backgroundColor=b6e3f4"
+        alt="Profile photo of Jamie Rivera"
+        class="
+          w-32
+          h-32
+          rounded-full
+          border-4
+          border-white
+          object-cover
+          bg-sky-200
+          shadow-xl
+        "
+      />
+      <!--
+        w-32          → width: 128px  (8rem)
+        h-32          → height: 128px
+                        Setting both to the same value makes a square,
+                        which becomes a circle with rounded-full.
+
+        rounded-full  → border-radius: 9999px
+                        A very large radius that turns any square
+                        element into a perfect circle.
+
+        border-4      → border-width: 4px
+                        Adds a border around the image.
+
+        border-white  → border-color: white
+                        Makes that border white — stands out nicely
+                        on the dark background.
+
+        object-cover  → object-fit: cover
+                        If the image isn't square, this crops it to
+                        fill the circle without stretching.
+
+        bg-sky-200    → background-color: light blue
+                        Shows while the image loads.
+
+        shadow-xl     → box-shadow: a large drop shadow
+                        Gives the avatar a lifted, floating look.
+      -->
+
+
+      <!-- ── NAME AND TITLE ───────────────────────────── -->
+      <div>
+
+        <h1 class="
+          text-5xl
+          font-bold
+          text-white
+          tracking-tight
+        ">
+          Jamie Rivera
+        </h1>
+        <!--
+          text-5xl      → font-size: 48px; line-height: 1
+                          A large, bold heading size.
+
+          font-bold     → font-weight: 700
+
+          text-white    → color: white
+                          Needed because the body text colour
+                          is dark — we override it here.
+
+          tracking-tight → letter-spacing: -0.025em
+                           Slightly tighter letter spacing looks
+                           better for large display headings.
+        -->
+
+        <p class="
+          mt-2
+          text-amber-400
+          tracking-widest
+          uppercase
+          text-sm
+          font-light
+        ">
+          Front-End Developer
+        </p>
+        <!--
+          mt-2          → margin-top: 8px
+                          A small gap between the name and the role.
+
+          text-amber-400 → color: a warm gold/amber
+                           Creates a nice contrast against the dark
+                           background and white name above.
+
+          tracking-widest → letter-spacing: 0.1em
+                            Wide spacing looks great on short
+                            uppercase labels like job titles.
+
+          uppercase     → text-transform: uppercase
+                          ALL CAPS styling for the subtitle.
+
+          text-sm       → font-size: 14px
+                          Smaller than the default to feel like
+                          a subtitle rather than a heading.
+
+          font-light    → font-weight: 300
+                          Light weight contrasts nicely with the
+                          bold name above it.
+        -->
+
+      </div>
+
+
+      <!-- ── BIO ──────────────────────────────────────── -->
+      <p class="
+        text-slate-300
+        max-w-md
+        leading-relaxed
+        text-lg
+      ">
+        I build clean, accessible interfaces and love turning
+        design ideas into code. Currently learning React and
+        exploring the world of component-driven development.
+      </p>
+      <!--
+        text-slate-300  → color: light grey
+                          Slightly dimmed white — easier on the eyes
+                          than pure white for body text on dark backgrounds.
+
+        max-w-md        → max-width: 448px
+                          Keeps the paragraph from getting too wide.
+                          Long lines are hard to read — this forces a
+                          comfortable line length.
+
+        leading-relaxed → line-height: 1.625
+                          More space between lines makes paragraphs
+                          easier to read.
+
+        text-lg         → font-size: 18px
+                          Slightly larger than the 16px default —
+                          good for a short bio that should be easy to read.
+      -->
+
+
+      <!-- ── SOCIAL LINKS ─────────────────────────────── -->
+      <div class="
+        flex
+        gap-3
+        flex-wrap
+        justify-center
+      ">
+      <!--
+        flex            → display: flex (side by side layout)
+        gap-3           → 12px between each button
+        flex-wrap       → if buttons don't fit on one line,
+                          wrap them onto the next line
+        justify-content → centers the buttons horizontally
+      -->
+
+        <!-- Primary button — filled gold -->
+        <a href="#" class="
+          bg-amber-400
+          text-slate-900
+          px-6
+          py-2
+          rounded-full
+          font-bold
+          text-sm
+          transition-all
+          hover:bg-amber-300
+          hover:scale-105
+        ">
+          GitHub
+        </a>
+        <!--
+          bg-amber-400    → gold background
+          text-slate-900  → very dark text (good contrast on gold)
+          px-6            → padding-left + right: 24px
+          py-2            → padding-top + bottom: 8px
+          rounded-full    → pill shape
+          font-bold       → bold label
+          text-sm         → 14px font
+
+          transition-all  → animate any property that changes
+                            (required for hover effects to animate
+                            smoothly instead of snapping instantly)
+
+          hover:bg-amber-300  → lighter gold on hover
+          hover:scale-105     → grows to 105% size on hover
+                                Creates a satisfying "press" feel.
+                                Note: hover: prefix means this class
+                                only applies when the mouse is over
+                                the element.
+        -->
+
+        <!-- Secondary button — outlined white -->
+        <a href="#" class="
+          border
+          border-white
+          text-white
+          px-6
+          py-2
+          rounded-full
+          font-bold
+          text-sm
+          transition-all
+          hover:bg-white
+          hover:text-slate-900
+          hover:scale-105
+        ">
+          LinkedIn
+        </a>
+        <!--
+          border          → border-width: 1px (adds a border)
+          border-white    → border-color: white
+          text-white      → white text
+                            Together these create an "outlined" button
+                            style — no background fill, just a border.
+
+          hover:bg-white       → fills white on hover
+          hover:text-slate-900 → text goes dark on hover
+                                 The button "inverts" when hovered —
+                                 a classic outlined button pattern.
+        -->
+
+        <a href="#" class="
+          border
+          border-white
+          text-white
+          px-6
+          py-2
+          rounded-full
+          font-bold
+          text-sm
+          transition-all
+          hover:bg-white
+          hover:text-slate-900
+          hover:scale-105
+        ">
+          Portfolio
+        </a>
+
+      </div><!-- end social links -->
+
+    </div><!-- end inner container -->
+
+  </header><!-- end hero -->
+
+
+  <!--
+  ============================================================
+  WHAT TO TRY NEXT
+  ============================================================
+  Now that you understand how these classes work, try making
+  some changes:
+
+  1. Change the name and bio text to your own information
+
+  2. Change the colour scheme:
+     - Replace bg-amber-400 with bg-emerald-400 for green buttons
+     - Replace text-amber-400 with text-emerald-400 for the title
+
+  3. Change the avatar:
+     - Replace the ?seed=Jamie in the image URL with any name
+       to get a different generated avatar
+
+  4. Add a new section below the header using what you learned:
+     - A <main> tag with class="max-w-2xl mx-auto px-6 py-10"
+     - Some cards using bg-white rounded-2xl p-6 shadow-md
+     - Try adding your own skills or projects
+
+  5. Try making it responsive:
+     - Resize your browser window — notice how it already adapts
+     - This is because Tailwind is mobile-first by default
+  ============================================================
+  -->
+
+
+  <!--
+  The script tag below is how Vite connects your JavaScript.
+  type="module" tells the browser this is a modern ES module.
+  Vite uses this as the entry point to find main.js,
+  which then imports style.css, which loads Tailwind.
+  -->
+  <script type="module" src="/src/main.js"></script>
+
+</body>
+</html>

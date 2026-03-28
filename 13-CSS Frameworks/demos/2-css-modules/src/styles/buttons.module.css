@@ -1,0 +1,81 @@
+/*
+  buttons.module.css
+  ==================
+  Styles for the social link buttons in the hero section.
+
+  These are in their OWN module file, separate from hero.module.css.
+  This is the key lesson: even though both files might have a class
+  called .primary or .base, they will NEVER conflict because each
+  module file gets its own unique scope.
+
+  Compare this to the Tailwind approach, where buttons were styled
+  purely with utility classes directly in the HTML. Here we write
+  real CSS — but safely scoped so it can't leak out.
+*/
+
+/* ── Base styles shared by all buttons ─────────────────── */
+.base {
+  /*
+    .base contains the properties every button needs.
+    In main.js we apply BOTH .base and a variant class
+    (like .primary or .outline) to get the full style.
+
+    This is like how Tailwind uses btn as a base and
+    btn-primary for the variant — but in plain CSS.
+  */
+  display: inline-block;
+  padding: 0.5rem 1.5rem;   /* py-2 px-6 */
+  border-radius: var(--radius-full); /* pill shape */
+  font-size: 0.875rem;       /* text-sm */
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+
+  /*
+    transition makes property changes animate smoothly
+    instead of snapping instantly.
+    All hover effects below rely on this.
+  */
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.base:hover {
+  /*
+    scale(1.05) grows the button to 105% of its size on hover.
+    This is the same as Tailwind's hover:scale-105.
+    transform is used for this because it doesn't affect layout
+    — other elements don't shift when the button grows.
+  */
+  transform: scale(1.05);
+}
+
+/* ── Primary button — filled gold ──────────────────────── */
+.primary {
+  background-color: var(--color-accent);
+  color: var(--color-dark);   /* dark text on gold background */
+  border-color: var(--color-accent);
+}
+
+.primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+/* ── Outline button — white border, no fill ────────────── */
+.outline {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+}
+
+.outline:hover {
+  /*
+    On hover the outline button "inverts" — it fills white
+    and the text goes dark. A classic outlined button pattern.
+  */
+  background-color: white;
+  color: var(--color-dark);
+}

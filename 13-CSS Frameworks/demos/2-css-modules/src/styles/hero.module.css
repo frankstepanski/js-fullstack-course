@@ -1,0 +1,116 @@
+/*
+  hero.module.css
+  ===============
+  Styles for the hero / header section of the profile page.
+
+  ┌─────────────────────────────────────────────────────────┐
+  │  WHAT MAKES THIS A CSS MODULE?                          │
+  │                                                         │
+  │  The filename ends in .module.css                       │
+  │                                                         │
+  │  When Vite sees this extension, it automatically        │
+  │  renames every class to something unique like:          │
+  │                                                         │
+  │    .hero  →  .hero_a8fK2                                │
+  │    .name  →  .name_b3Lp9                                │
+  │                                                         │
+  │  This means even if buttons.module.css ALSO has a       │
+  │  class called .name, the two will NEVER conflict.       │
+  │  They get different generated names.                    │
+  └─────────────────────────────────────────────────────────┘
+
+  In main.js we import this file like:
+    import hero from './styles/hero.module.css'
+
+  Then use classes like:
+    document.querySelector('header').className = hero.section
+*/
+
+/* ── Outer hero section ────────────────────────────────── */
+.section {
+  /*
+    The animated gradient background.
+    background-size: 200% 200% makes the gradient larger than
+    the element so the animation has room to "move".
+    gradientShift is defined in global.css.
+  */
+  background: linear-gradient(
+    135deg,
+    var(--color-dark) 0%,
+    var(--color-dark-mid) 50%,
+    var(--color-dark) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* ── Inner container ────────────────────────────────────── */
+.container {
+  /*
+    Centers and constrains the content width.
+    Without max-width, content stretches across the full screen
+    on large monitors — uncomfortable to read.
+  */
+  max-width: 42rem;     /* ~672px — same as Tailwind's max-w-2xl */
+  margin: 0 auto;       /* center horizontally */
+  padding: 5rem 1.5rem; /* py-20 px-6 in Tailwind */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* center children horizontally */
+  text-align: center;
+  gap: 1.5rem;          /* space between each child — like Tailwind gap-6 */
+}
+
+/* ── Avatar image ───────────────────────────────────────── */
+.avatar {
+  width: 8rem;          /* 128px — same as Tailwind w-32 */
+  height: 8rem;
+  border-radius: var(--radius-full); /* perfect circle */
+  border: 4px solid white;
+  object-fit: cover;    /* crop image to fill circle without stretching */
+  background-color: #bae6fd; /* sky-200 — shows while image loads */
+  box-shadow: var(--shadow-xl);
+}
+
+/* ── Name heading ───────────────────────────────────────── */
+.name {
+  /*
+    Notice this class is called .name — a very generic word.
+    In global CSS this would be risky — another file might
+    also use .name and the two would clash.
+
+    In a CSS Module, this is completely safe because Vite
+    will rename it to something unique like .name_x7k2.
+  */
+  font-size: 3rem;      /* text-5xl in Tailwind */
+  font-weight: 700;
+  color: var(--color-heading);
+  letter-spacing: -0.025em; /* tracking-tight */
+  margin-bottom: 0.25rem;
+}
+
+/* ── Job title / role ───────────────────────────────────── */
+.role {
+  font-size: 0.875rem;  /* text-sm */
+  font-weight: 300;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;  /* tracking-widest */
+  text-transform: uppercase;
+}
+
+/* ── Bio paragraph ──────────────────────────────────────── */
+.bio {
+  color: var(--color-text-light);
+  max-width: 28rem;     /* max-w-md — keeps line length comfortable */
+  line-height: 1.625;   /* leading-relaxed */
+  font-size: 1.125rem;  /* text-lg */
+}
+
+/* ── Social links row ───────────────────────────────────── */
+.links {
+  display: flex;
+  gap: 0.75rem;         /* gap-3 */
+  flex-wrap: wrap;      /* wrap to next line on small screens */
+  justify-content: center;
+}

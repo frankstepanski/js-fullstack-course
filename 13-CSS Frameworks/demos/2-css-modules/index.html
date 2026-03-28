@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jamie Rivera — Profile (CSS Modules)</title>
+
+  <!--
+  ============================================================
+  NOTICE: No <link> or <style> tags here.
+  ============================================================
+  In the Tailwind project, there were also no <link> tags —
+  Vite handled CSS through the JS import chain.
+
+  CSS Modules work the exact same way:
+
+    index.html
+      └── <script src="/src/main.js">
+            └── import './styles/global.css'    ← global styles
+            └── import hero from './styles/hero.module.css'
+            └── import buttons from './styles/buttons.module.css'
+
+  Vite sees all those CSS imports, processes them, and injects
+  the styles into the page automatically.
+
+  You never write a <link> tag when using Vite — it handles
+  all CSS delivery for you.
+  ============================================================
+  -->
+
+</head>
+<body>
+
+  <!--
+    This div is our "mount point" — an empty container that
+    main.js will fill with the page's HTML content.
+
+    In the Tailwind project, all HTML was written directly in
+    index.html. Here we build the HTML in JavaScript instead,
+    so we can use the CSS Module class names (hero.name, etc.)
+    directly in the template strings.
+
+    Both approaches are valid. Frameworks like React always
+    build HTML via JavaScript — so this pattern is good practice.
+  -->
+  <div id="app"></div>
+
+  <!--
+    Vite entry point — same as the Tailwind project.
+    type="module" enables ES module imports in main.js.
+  -->
+  <script type="module" src="/src/main.js"></script>
+
+</body>
+</html>
