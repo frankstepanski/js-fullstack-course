@@ -6,7 +6,7 @@ You may have also heard that AI can sometimes get things wrong — making up fac
 
 You have used an AI tool inside a code editor like Visual Studio Code — one that suggests the next line of code as you type — you have also seen how AI can show up not just in a browser chat window, but directly inside your work environment.
 
-AI agents are the next step after all of those experiences. They combine what you already understand and take it further.
+>AI agents are the next step after all of those experiences. They combine what you already understand and take it further. You may also see them referred to as **agentic AI** — it means the same thing, and you will encounter both terms as you explore these tools.
 
 ## The Big Picture: Three Levels of AI Help
 
