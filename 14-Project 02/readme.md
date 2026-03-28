@@ -1,7 +1,7 @@
 # Project 02: Multi-Page Website Using an API 
 
 ## Project Overview
-In this project, you’ll build a **multi-page website** that connects to an API and displays real data using JavaScript.
+In this project, you'll build a **multi-page website** that connects to an API and displays real data using JavaScript.
 
 🔹 **Recommended approach:**  
 Use json-server with a local `db.json` file to create your own API during local development.
@@ -10,7 +10,7 @@ Use json-server with a local `db.json` file to create your own API during local 
 If you find an appropriate third-party API, you may use it instead of json-server for this project.
 A POST request is **optional**.
 
-> ⚠️ **Important:** While a third-party API is allowed in **Project 02**, **json-server will be required in Project 03**, so using it now is strongly recommended to prepare you for what’s next.
+> ⚠️ **Important:** While a third-party API is allowed in **Project 02**, **json-server will be required in Project 03**, so using it now is strongly recommended to prepare you for what's next.
 
 Your website may have multiple pages, but **at least two pages must fetch and display API data** using JavaScript `fetch()`.
 
@@ -109,8 +109,10 @@ Before coding:
 | 8 | **POST request** | Submit a review, add an item, or send user input to an API. |
 | 9 | **Bootstrap** | Use Bootstrap for layout or components. |
 | 10 | **Local images** | Store images inside project folders. |
+| 11 | **Vite** | Use Vite as your local dev server and build tool. |
+| 12 | **Tailwind CSS** | Use Tailwind CSS for styling instead of plain CSS or Bootstrap. |
 
----
+> 💡 **Vite + Tailwind:** If you're comfortable with Vite and Tailwind from class, you're welcome to use them here. Note that Vite requires a build step to use Tailwind properly — if your config gives you trouble, plain CSS or Bootstrap are perfectly fine for this project. These tools will be revisited in future projects.
 
 ## Required JSON Data (If Using json-server)
 
@@ -149,13 +151,16 @@ Upload under Project Submission.
 - Draw.io  
 - W3C HTML Validator  
 - JSON Formatter  
+- [Vite docs](https://vitejs.dev/) *(optional)*  
+- [Tailwind CSS docs](https://tailwindcss.com/) *(optional)*  
 
 ## Final Notes
 - **json-server is strongly recommended**
 - GET requests are required
 - POST requests are optional
 - Project 03 **will require json-server**
-- Don’t hard-code repeated lists
+- Don't hard-code repeated lists
 - This project is about **learning API integration**
+- Vite and Tailwind are **optional** — use them if you're comfortable, but don't let tooling setup get in the way of the core assignment
 
-> “This is your first real step toward full-stack development — understanding how data flows from an API into a user interface.”
+> "This is your first real step toward full-stack development — understanding how data flows from an API into a user interface."
