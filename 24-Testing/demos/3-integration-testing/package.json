@@ -1,0 +1,28 @@
+{
+  "name": "03-integration-testing",
+  "version": "1.0.0",
+  "description": "Demo project: integration testing with Vitest + React Testing Library + MSW",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "@vitest/coverage-v8": "^4.1.2",
+    "jsdom": "^26.1.0",
+    "msw": "^2.12.14",
+    "vite": "^5.2.0",
+    "vitest": "^4.1.2"
+  }
+}
