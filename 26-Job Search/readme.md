@@ -737,6 +737,6 @@ Once you've worked through everything in this guide, you're ready for **Step 2**
 
 Step 2 covers the interview process from start to finish — every round explained, what each one is actually testing, and exactly how to prepare for it.
 
-**→ Continue to [Step 2: Interview Prep](interview_prep.md)**
+**→ Continue to [Step 2: Interview Prep](2-interview_prep.md)**
 
 > Start Step 2 when your resume is solid, your LinkedIn and GitHub are polished, and you have at least 2–3 target companies on your list. Don't rush into interviews before your foundation is ready — that's what this guide was for.
