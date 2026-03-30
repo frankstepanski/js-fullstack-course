@@ -653,6 +653,6 @@ Once you've worked through everything in this guide, you're ready for **Step 3**
 
 Step 3 covers what happens after the interviews — how to evaluate and negotiate your offer confidently, how to show up in your first 90 days in a way that builds trust, and how to start growing toward mid-level intentionally.
 
-**→ Continue to [Step 3: Offer and Onboarding](3-offer_and_onboarding.md)**
+**→ Continue to [Step 3: Offer and Onboarding](3-offer-and-onboarding.md)**
 
 > Start Step 3 when you have an offer in hand or are close to one. The decisions you make in the next few weeks — and the habits you build in your first 90 days — will shape your reputation and trajectory for years.
