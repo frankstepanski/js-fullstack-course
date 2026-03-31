@@ -170,7 +170,7 @@ You'll learn the foundations of Agile and the **Scrum** framework:
 
 ### 🏗️ Projects
 
-Four hands-on capstone projects are woven throughout the course — each one a milestone that applies everything learned up to that point.
+Four hands-on capstone projects are woven throughout the course — each one a milestone that applies everything learned up to that point. Deployment strategies are covered and reviewed throughout, including proper use of `.env` files for managing environment variables across local and production environments.
 
 - **Project 01** — Static site built with HTML, CSS, and Git  
 - **Project 02** — JavaScript-powered interactive application  
