@@ -9,11 +9,11 @@ Software engineering today is about building real systems, collaborating with ot
 
 This course teaches the foundations of modern full-stack development while also showing how engineers actually work in professional teams.
 
-You’ll learn how to design applications, build user interfaces, create backend services, work with databases, test your code, and deploy software that runs in the real world.
+You'll learn how to design applications, build user interfaces, create backend services, work with databases, test your code, and deploy software that runs in the real world.
 
 Along the way you'll also learn how to use AI-assisted development tools, debug complex problems, and structure projects in ways that scale beyond simple tutorials.
 
-By the end of the course you won’t just know syntax — you’ll understand how modern applications are built from end to end.
+By the end of the course you won't just know syntax — you'll understand how modern applications are built from end to end.
 
 ## 📘 Prerequisites
 
@@ -28,7 +28,7 @@ You only need:
 
 Software engineering is a skill learned through building, breaking, and improving code.
 
-## 🚀 What You’ll Learn — A Complete Journey Through the JavaScript Stack
+## 🚀 What You'll Learn — A Complete Journey Through the JavaScript Stack
 
 ### **Frontend Development**
 Build the parts of a website users see and interact with.
@@ -37,9 +37,17 @@ Build the parts of a website users see and interact with.
 - **JavaScript** — from fundamentals to advanced concepts (DOM, APIs, events, logic)  
 - **React.js** — build dynamic, component-based interfaces using hooks, props, and state  
 
+### 🖌️ UX Design
+
+Learn how to think like a designer before you write a line of code.
+
+- User-centered design principles and design thinking  
+- Wireframing and prototyping interfaces before building them  
+- Understanding user flows, accessibility, and visual hierarchy  
+
 ### ⚙️ Intermediate & Advanced JavaScript
 
-Go beyond “just making it work” and understand how JavaScript runs under the hood — both in the browser and in Node.js.
+Go beyond "just making it work" and understand how JavaScript runs under the hood — both in the browser and in Node.js.
 
 - **Object-Oriented Programming**: classes, inheritance, reusable architecture  
 - **Asynchronous Programming**  
@@ -56,7 +64,6 @@ Go beyond “just making it work” and understand how JavaScript runs under the
   - Error handling  
   - Browser APIs & Fetch  
   - Debugging strategies with breakpoints and stack traces  
-
 
 ### 🔷 TypeScript Fundamentals
 
@@ -88,7 +95,6 @@ Learn how engineers verify that code works — and keeps working as applications
 
 > Testing is taught as a **confidence and safety tool**, not a requirement for perfection.
 
-
 ### 🖥️ Backend Development
 
 Learn how to build the systems that power applications behind the scenes.
@@ -103,9 +109,45 @@ Learn how to build the systems that power applications behind the scenes.
   - Authentication & authorization  
   - Environment variables & secure configuration  
 
+### 🔧 Version Control with Git
+
+Git is a foundational skill for every professional developer.
+
+- Tracking changes and writing meaningful commits  
+- Branching, merging, and resolving conflicts  
+- Collaborating on shared codebases  
+- Using GitHub for remote repositories and pull requests  
+
+### 🐳 Docker
+
+Learn how modern teams ship software consistently across environments.
+
+- Containers vs virtual machines — understanding the difference  
+- Writing Dockerfiles and building images  
+- Running applications in isolated, reproducible environments  
+- Why Docker matters for deployment and team collaboration  
+
+### 📦 Data Structures & Algorithms
+
+Build the problem-solving foundation that powers technical interviews and efficient code.
+
+- Core data structures: arrays, linked lists, stacks, queues, trees, and hash maps  
+- Common algorithms: sorting, searching, and recursion  
+- Big O notation and thinking about performance  
+- Practical application in JavaScript  
+
+### 🏗️ System Design
+
+Learn how to think about and architect large-scale software systems.
+
+- Scalability, reliability, and performance trade-offs  
+- Load balancing, caching, and databases at scale  
+- Designing APIs and distributed services  
+- How senior engineers approach system-level thinking  
+
 ### 🤖 Using AI Tools as a Problem-Solving Partner
 
-Modern software engineers increasingly use AI tools to work faster and smarter. You’ll practice how to:
+Modern software engineers increasingly use AI tools to work faster and smarter. You'll practice how to:
 
 - Use tools like **GitHub Copilot**, **ChatGPT**, **Cursor**, and **Codeium** to get unstuck and explore code solutions  
 - Prompt AI clearly with context and constraints (e.g. "Write a function in JavaScript that...")  
@@ -117,14 +159,23 @@ AI tools are powerful collaborators — but **your logic, judgment, and debuggin
 
 ### 👥 Work Like a Real Development Team: Agile & Scrum
 
-This course doesn’t just teach you code — it teaches you **how professional engineering teams operate**.
+This course doesn't just teach you code — it teaches you **how professional engineering teams operate**.
 
-You’ll learn the foundations of Agile and the **Scrum** framework:
+You'll learn the foundations of Agile and the **Scrum** framework:
 
 - Sprint cycles  
 - Daily standups  
 - Sprint planning & retrospectives  
 - Team roles: Developer, Product Owner, Scrum Master  
+
+### 🏗️ Projects
+
+Four hands-on capstone projects are woven throughout the course — each one a milestone that applies everything learned up to that point.
+
+- **Project 01** — Static site built with HTML, CSS, and Git  
+- **Project 02** — JavaScript-powered interactive application  
+- **Project 03** — Full React application  
+- **Project 04** — Full-stack app with a frontend, backend, and database  
 
 ### 💼 Career Readiness: Job Search Prep
 
@@ -142,7 +193,7 @@ Mastering code is only one part of becoming a professional engineer. You'll also
 - Common question types: data structures, system design, behavioral
 - **STAR** method for communicating clearly in interviews
 
-Ready to build? Let’s get started — one line of code at a time. 💻✨
+Ready to build? Let's get started — one line of code at a time. 💻✨
 
 > This curriculum repository is for educational use and is protected under a custom proprietary license.
 
