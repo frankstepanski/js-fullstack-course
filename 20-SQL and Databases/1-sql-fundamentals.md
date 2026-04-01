@@ -26,12 +26,12 @@ For example, a user might:
 
 These actions are known as **CRUD operations**:
 
-| Action | Meaning | Example |
-|------|------|------|
-| **Create** | Add new data | Register a new user |
-| **Read** | Retrieve data | View a profile |
-| **Update** | Modify existing data | Change an email |
-| **Delete** | Remove data | Delete an account |
+| Action | Meaning | HTTP Request | SQL Command | Example |
+|---|---|---|---|---|
+| **Create** | Add new data | `POST` | `INSERT` | Register a new user |
+| **Read** | Retrieve data | `GET` | `SELECT` | View a profile |
+| **Update** | Modify existing data | `PUT` / `PATCH` | `UPDATE` | Change an email |
+| **Delete** | Remove data | `DELETE` | `DELETE` | Delete an account |
 
 When a user performs one of these actions, the **backend server** sends a
 request to the database.
@@ -110,21 +110,7 @@ This means:
 -   `*` → all columns
 -   `FROM users` → from the `users` table
 
-### Example Table
-
-| id | name  | email            |
-|----|-------|------------------|
-| 1  | Alice | alice@email.com  |
-| 2  | Bob   | bob@email.com    |
-| 3  | Carla | carla@email.com  |
-
-Running this query:
-
-``` sql
-SELECT * FROM users;
-```
-
-Returns **all rows and all columns** from the table.
+Running `SELECT * FROM users;` returns **all rows and all columns** from the table.
 
 ### Selecting Specific Columns
 
@@ -510,50 +496,9 @@ like `id`**.
 
 ### How UPDATE Relates to the Frontend
 
-In real applications, `UPDATE` usually happens when a user **edits
-existing information**.
+In real applications, `UPDATE` usually happens when a user **edits existing information** — editing a profile, changing a password, updating an address, or editing a blog post.
 
-For example:
-
--   editing a profile
--   changing a password
--   updating an address
--   editing a blog post
-
-### Frontend Example
-
-
-For example, imagine a user editing their profile. A updates a form:
-
-    Name: Alice
-    Email: alice@newdomain.com
-
-They click **Save**.
-
-    [ User edits profile ]
-            │
-            ▼
-    [ React Frontend ]
-    User clicks Save
-            │
-            ▼
-    PUT /api/users/1
-            │
-            ▼
-    [ Backend Server (Node / Express) ]
-    Processes request
-            │
-            ▼
-    Runs SQL Query
-    UPDATE users
-    SET email = 'alice@newdomain.com'
-    WHERE id = 1;
-            │
-            ▼
-    [ Database ]
-    User row is updated
-
-#### The frontend might send a request like this:
+The frontend sends a `PUT` request to the backend, which runs the SQL query:
 
     PUT /api/users/1
 
@@ -564,8 +509,6 @@ With data:
   "email": "alice@newdomain.com"
 }
 ```
-
-The backend then runs the SQL update query.
 
 ## Deleting Data
 
@@ -611,74 +554,15 @@ The row for **Alice** has been removed from the table.
 
 ### ⚠️ Why the WHERE Clause Is Important
 
-Just like `UPDATE`, the `WHERE` clause prevents deleting **every row in
-the table**.
-
-Example (dangerous):
-
-``` sql
-DELETE FROM users;
-```
-
-Result:
-
-| id | name | email |
-|----|------|-------|
-
-The entire table would be empty.
-
-That is why developers almost always delete rows using a **unique identifier like `id`**.
+The same rule applies here as with `UPDATE` — always use `WHERE` with a unique identifier. Without it, `DELETE FROM users;` would wipe every row in the table.
 
 ### How DELETE Relates to the Frontend
 
-In real applications, `DELETE` usually happens when a user **removes
-something**.
+In real applications, `DELETE` usually happens when a user **removes something** — deleting an account, removing a post, or clearing a saved item.
 
-Examples include:
-
--   deleting an account
--   removing a product from an admin dashboard
--   deleting a comment or post
--   removing a saved item
-
-### Frontend Example
-
-Imagine a user deleting their account.
-
-    Account: Alice
-    Email: alice@email.com
-
-They click **Delete Account**.
-
-### What Happens Next
-
-    [ User clicks delete ]
-            │
-            ▼
-    [ React Frontend ]
-    Sends delete request
-            │
-            ▼
-    DELETE /api/users/1
-            │
-            ▼
-    [ Backend Server (Node / Express) ]
-    Processes request
-            │
-            ▼
-    Runs SQL Query
-    DELETE FROM users
-    WHERE id = 1;
-            │
-            ▼
-    [ Database ]
-    Row is removed from users table
-
-#### The frontend might send a request like this:
+The frontend sends a `DELETE` request, and the backend runs the SQL query:
 
     DELETE /api/users/1
-
-The backend then runs the SQL query to remove that user.
 
 ### Real-World Considerations When Deleting Data
 
@@ -744,69 +628,35 @@ In these cases, data might be **archived instead of deleted**.
 
 
 
-# Creating Tables
+## What's Next: Creating Tables and Database Schemas
 
-Before storing data, we need to **create tables**.
+You now know how to read, write, update, and delete data from a database table. But before any of that can happen, the table itself has to exist — and that means designing it first.
 
-Example:
+The next document covers **creating tables and building a database schema**. A schema is the overall blueprint of your database — it defines what tables exist, what columns each table has, what type of data each column holds, and how the tables relate to each other.
 
-``` sql
+Here's a taste of what's coming. The `CREATE TABLE` statement defines the structure of a table before any data goes in:
+
+```sql
 CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT
+  id    SERIAL PRIMARY KEY,
+  name  TEXT NOT NULL,
+  email TEXT NOT NULL
 );
 ```
 
-This defines the structure of the table.
+Each part of that statement has a specific meaning — `SERIAL` auto-increments the id for each new row, `PRIMARY KEY` marks it as the unique identifier, and `NOT NULL` means the column can't be left empty. You'll learn what all of these mean and when to use them.
 
-------------------------------------------------------------------------
+Beyond single tables, you'll also learn how to **link tables together using foreign keys**. Real applications don't store everything in one table — they split data across multiple related tables. For example, a blog might have a `users` table and a `posts` table, where each post knows which user wrote it:
 
-# SQL in Backend Development
-
-In real applications:
-
-1.  The **frontend** sends a request.
-2.  The **backend server** runs a SQL query.
-3.  The **database executes the query**.
-4.  Results are returned to the frontend.
-
-Example in Node.js:
-
-``` javascript
-const result = await pool.query(
-  "SELECT * FROM users WHERE id = $1",
-  [1]
+```sql
+CREATE TABLE posts (
+  id      SERIAL PRIMARY KEY,
+  title   TEXT NOT NULL,
+  body    TEXT NOT NULL,
+  user_id INTEGER REFERENCES users(id)
 );
 ```
 
-------------------------------------------------------------------------
+The `user_id` column is a **foreign key** — it connects each post back to a row in the `users` table. This is the foundation of relational databases, and understanding it will make your database designs significantly more powerful.
 
-# The Big Picture
-
-SQL allows developers to **control and interact with relational
-databases**.
-
-With SQL you can:
-
--   define database structure
--   store application data
--   retrieve information
--   update records
--   analyze datasets
-
-Modern application flow:
-
-    Frontend (React)
-          │
-          ▼
-    Backend API (Node / Express)
-          │
-          ▼
-    SQL Query
-          │
-          ▼
-    Database (PostgreSQL / MySQL)
-          │
-          ▼
-    Stored Data
+The next document covers all of this — column types, constraints, primary keys, foreign keys, and how to think about structuring a real database schema for an application.
