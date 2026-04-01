@@ -8,12 +8,9 @@ A **database** is a structured system that stores information so it can be easil
 
 Unlike data kept in memory or files — which disappears when your app restarts — a database **persists data**, meaning it keeps your information available across sessions, users, and devices.  
 
-Every time you interact with an app that remembers something, a database is working behind the scenes. When you log in to a site, your credentials come from a database. When you purchase something online, details about your order are saved there. When you post a comment, your name, text, and timestamp are all stored in a database table or document. Without a database, none of this data would survive a page refresh or server restart — every app would be “stateless” and forgetful.
+Every time you interact with an app that remembers something, a database is working behind the scenes. When you log in to a site, your credentials come from a database. When you purchase something online, details about your order are saved there. When you post a comment, your name, text, and timestamp are all stored in a database table or document. Without a database, none of this data would survive a page refresh or server restart — every app would be "stateless" and forgetful.
 
 Databases allow your application to remember users, store transactions, track analytics, and manage the dynamic data that powers nearly every feature in a real-world web app.
-
-
-A **database** is a structured collection of information — stored and organized so that software and people can easily access, manage, and update it.
 
 You already use applications that use databases every day.
 
@@ -147,8 +144,6 @@ Many **NoSQL databases fall into one of these models**, while relational databas
 
 ## Choosing the Right Database
 
-Selecting the right database depends on your project’s needs.  
-
 Selecting the right database depends on your **data structure, scalability needs, and team experience**.
 
 | Consideration | SQL Databases (PostgreSQL, MySQL) | NoSQL Databases (MongoDB) |
@@ -167,29 +162,31 @@ Selecting the right database depends on your **data structure, scalability needs
 
 ## Understanding the Three Layers of Database Interaction
 
-When working with **any database** (MongoDB, PostgreSQL, etc.),
-there are **three layers involved**.
+When you build a web app and connect it to a database, there are always three layers involved — even if you don't think about them separately.
 
-    Your Application Code
-            │
-            │ uses a database library
-            ▼
-    Database Server
-            │
-            │ stores data
-            ▼
-    Actual Stored Data
+**Layer 1 — Your application code.** This is the Node.js or React code you write. It sends instructions like "get me all the users" or "save this new post."
 
-Developers also typically use a **database management tool** to view and
-manage the data.
+**Layer 2 — A database library.** Your code doesn't talk to the database directly. It uses a library (like `pg` for PostgreSQL or Mongoose for MongoDB) that translates your code into a format the database understands.
 
-    Database Management Tool
-            │
-            ▼
-    Database Server
-            │
-            ▼
-    Your Application Code
+**Layer 3 — The database server.** This is the actual database running on your computer or in the cloud. It receives the query, does the work, and sends the result back.
+
+```
+Your Application Code
+        │
+        │  uses a library (pg, Mongoose, Prisma...)
+        ▼
+Database Library
+        │
+        │  sends the query
+        ▼
+Database Server
+        │
+        │  stores and retrieves data
+        ▼
+Actual Stored Data
+```
+
+There is also a fourth tool that sits outside this chain — a **database management tool** like pgAdmin or MongoDB Compass. This is a visual app developers use to browse their database, inspect records, and run queries by hand. Your application never uses it — it's just for you as a developer.
 
 ## Level 1 --- The Database Server
 
@@ -231,7 +228,7 @@ The database runs on a remote server.
 
 Your application connects over the internet.
 
-## Level 2 --- Database Management Tools
+## Database Management Tools
 
 A database management tool allows developers to **view and manage the database visually**.
 
@@ -266,7 +263,7 @@ PostgreSQL
 
 These tools are used by **developers**, not by the application itself.
 
-## Level 3 --- Your Application Code
+## Your Application Code
 
 Your application needs a **library** to communicate with the database
 server.
@@ -300,42 +297,7 @@ Without a library, your code cannot send queries.
 
 ## How The Layers Work Together
 
-When a user interacts with your application, several layers work together to retrieve or store data.
-
-Each layer has a **specific responsibility**.
-
-```
-User
- │
- ▼
-Frontend (React)
- │
- ▼
-Backend API (Node.js / Express)
- │
- ▼
-Database Library (pg / Prisma / Mongoose)
- │
- ▼
-Database Server (PostgreSQL / MongoDB)
- │
- ▼
-Stored Data (Tables / Documents)
-```
-
-
-```
-Developer
- │
- ▼
-Database Management Tool
-(pgAdmin / DBeaver / Beekeeper Studio / MongoDB Compass)
- │
- ▼
-Database Server
-```
-
-Let's walk through what happens at each step.
+When a user interacts with your application, several layers work together to retrieve or store data. Each layer has a specific responsibility. Let's walk through what happens at each step.
 
 ### User
 
@@ -518,9 +480,9 @@ Example PostgreSQL row:
 
 ## How Data Moves Through an Application
 
-When a user interacts with an app (like clicking a button or submitting a form), the **frontend** sends a request to the **backend server** asking for data or asking to save data.  
+When a user interacts with an app (like clicking a button or submitting a form), the **frontend** sends a request to the **backend server** asking for data or asking to save data.
 
-The **backend** processes that request and communicates with the **database** by running a query. The database retrieves or stores the data, then sends the result back to the backend.  
+The **backend** processes that request and communicates with the **database** by running a query. The database retrieves or stores the data, then sends the result back to the backend.
 
 Finally, the **backend sends a response to the frontend**, and the frontend updates what the user sees on the screen.
 
@@ -553,25 +515,23 @@ Finally, the **backend sends a response to the frontend**, and the frontend upda
         │ (PostgreSQL, Mongo) │
         │  Stores / Gets Data │
         └─────────────────────┘
-                   ▲
                    │
-            Data Returned
-                   │
-                   ▲
+                   ▼
         ┌─────────────────────┐
         │ Backend Sends       │
         │ Response            │
         └─────────────────────┘
-                   ▲
                    │
+                   ▼
         ┌─────────────────────┐
         │ Frontend Updates UI │
         └─────────────────────┘
-                   ▲
                    │
+                   ▼
                 USER SEES
                 NEW DATA
 ```
+
 ## What's Next: SQL
 
 Now that we understand what databases are and how relational databases organize data, it's time to start working with **SQL queries**.
