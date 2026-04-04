@@ -1,4 +1,4 @@
-# 🌐 Web Rendering Architectures: From Classic HTML to Server Components
+# Web Rendering Architectures
 
 > The SPA model — where React lives in the browser, calls your Express API for data, and owns every rendering decision — isn't the only way to build for the web, and depending on what you're building, it might not even be the best way.
 
