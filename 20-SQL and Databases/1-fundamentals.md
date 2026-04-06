@@ -628,35 +628,8 @@ In these cases, data might be **archived instead of deleted**.
 
 
 
-## What's Next: Creating Tables and Database Schemas
+## What's Next: Database Schemas and Creating Tables
 
 You now know how to read, write, update, and delete data from a database table. But before any of that can happen, the table itself has to exist — and that means designing it first.
 
-The next document covers **creating tables and building a database schema**. A schema is the overall blueprint of your database — it defines what tables exist, what columns each table has, what type of data each column holds, and how the tables relate to each other.
-
-Here's a taste of what's coming. The `CREATE TABLE` statement defines the structure of a table before any data goes in:
-
-```sql
-CREATE TABLE users (
-  id    SERIAL PRIMARY KEY,
-  name  TEXT NOT NULL,
-  email TEXT NOT NULL
-);
-```
-
-Each part of that statement has a specific meaning — `SERIAL` auto-increments the id for each new row, `PRIMARY KEY` marks it as the unique identifier, and `NOT NULL` means the column can't be left empty. You'll learn what all of these mean and when to use them.
-
-Beyond single tables, you'll also learn how to **link tables together using foreign keys**. Real applications don't store everything in one table — they split data across multiple related tables. For example, a blog might have a `users` table and a `posts` table, where each post knows which user wrote it:
-
-```sql
-CREATE TABLE posts (
-  id      SERIAL PRIMARY KEY,
-  title   TEXT NOT NULL,
-  body    TEXT NOT NULL,
-  user_id INTEGER REFERENCES users(id)
-);
-```
-
-The `user_id` column is a **foreign key** — it connects each post back to a row in the `users` table. This is the foundation of relational databases, and understanding it will make your database designs significantly more powerful.
-
-The next document covers all of this — column types, constraints, primary keys, foreign keys, and how to think about structuring a real database schema for an application.
+The next document covers **building a database schema**. A schema is the overall blueprint of your database — it defines what tables exist, what columns each table has, what type of data each column holds, and how the tables relate to each other.

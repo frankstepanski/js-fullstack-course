@@ -1,11 +1,10 @@
 # Database Schemas, Relationships, and Joins
 
-Previously you learned about database design and the big pictire of how you build a database determining what data needs to available in an application how they can be related in a database schemas
+Previously you learned about database design and the big picture of how you build a database — determining what data needs to be available in an application and how they can be related in a database schema.
 
->Now we are now devling deeping into the schema and then moving into implementation. 
+> Now we are devling deeper into the schema and then moving into implementation.
 
-It starts with keys, the mechanism that uniquely identifies rows and links tables together, then covers how relationships are  actually enforced in SQL. From there it explores JOINs for querying across multiple tables, 
-how to modify a table's structure after it's been created, and how to choose the right data type for each column.
+It starts with keys, the mechanism that uniquely identifies rows and links tables together, then covers how relationships are actually enforced in SQL. From there it explores JOINs for querying across multiple tables, how to modify a table's structure after it's been created, and how to choose the right data type for each column.
 
 ## Keys — How Tables Connect
 
@@ -103,7 +102,7 @@ CREATE TABLE profiles (
 
 ```
 ┌──────────┐    1   1    ┌──────────────┐
-│  users   │◄──────────►│   profiles   │
+│  users   │◄──────────► │   profiles   │
 │──────────│             │──────────────│
 │ id  (PK) │             │ user_id (FK) │
 │ name     │             │ bio          │
@@ -216,7 +215,7 @@ You can't represent this with just a foreign key in one direction. Instead you n
 Alice is enrolled in both courses. Bob is enrolled in SQL Basics only.
 
 ```
-┌──────────┐         ┌─────────────┐         ┌────────────┐
+┌──────────┐         ┌─────────────┐          ┌────────────┐
 │ students │  1    N │ enrollments │  N    1  │  courses   │
 │──────────│◄────────│─────────────│─────────►│────────────│
 │ id  (PK) │         │ student_id  │          │ id   (PK)  │
@@ -252,6 +251,25 @@ CREATE TABLE enrollments (
 ## Referential Integrity — Keeping Your Data Honest
 
 Referential integrity means your data always makes sense across tables. Foreign keys are what enforce it.
+
+### What happens without a foreign key
+
+Foreign keys are opt-in — you have to explicitly write `REFERENCES` to get the protection. If you skip it, PostgreSQL won't complain, but the column is just a plain number with no enforcement at all:
+
+```sql
+-- ❌ No foreign key — just a bare integer column
+CREATE TABLE enrollments (
+  id         SERIAL PRIMARY KEY,
+  student_id INT,   -- no REFERENCES, no protection
+  course_id  INT
+);
+```
+
+With this definition, nothing stops you from inserting `student_id = 999` even if no student with that id exists. PostgreSQL has no idea the two tables are meant to be related. JOINs will still technically run, but they'll silently return incomplete or nonsense data — and you won't get any error to tell you something is wrong.
+
+This is exactly how ghost records appear: not just from deletes, but from any insert or update that points to a row that doesn't exist. The database won't catch it without a foreign key in place.
+
+### What happens with a foreign key
 
 Imagine you delete Alice from `students`. But `enrollments` still has rows with `student_id = 1`. Now your database has enrollments pointing to a student who no longer exists — a broken reference sometimes called a "ghost record."
 
@@ -321,6 +339,32 @@ A teacher leaves the school → their courses remain in the system, but `teacher
 A JOIN combines rows from two or more tables based on a related column — almost always a primary key and foreign key pair.
 
 Without JOINs you can only query one table at a time. With JOINs you can ask questions like "which courses is Alice enrolled in?" — a question that spans three tables.
+
+### Table Aliases
+
+Before looking at the JOIN types, it's worth explaining the shorthand you'll see in every JOIN query.
+
+When a query involves multiple tables, writing the full table name every time gets verbose quickly. **Aliases** let you give a table a short nickname for the duration of the query:
+
+```sql
+FROM students s
+```
+
+Here `s` is an alias for `students`. You define it by putting the alias right after the table name — no special keyword needed. From that point on in the query, you use `s` instead of `students`.
+
+This is where the dot notation comes from. `s.name` means "the `name` column from the table aliased as `s`":
+
+```sql
+SELECT s.name, c.title
+FROM students s
+INNER JOIN courses c ON ...
+```
+
+Without aliases you'd have to write `students.name` and `courses.title` everywhere — and in longer queries with three or four tables, that becomes hard to read fast. Aliases keep things concise and make it immediately clear which table each column belongs to.
+
+The alias only exists for that query. It doesn't rename the table in the database.
+
+---
 
 ### The Four JOIN Types
 

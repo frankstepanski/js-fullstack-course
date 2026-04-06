@@ -162,14 +162,27 @@ Keep it to what you actually need. A common mistake is designing columns for inf
 
 Now look at your entities and ask: **how do these things connect to each other?**
 
-For the blog:
+There are three types of relationships you'll encounter:
+
+**One-to-one** — one row in a table relates to exactly one row in another table.
+
+- A user has one profile → **one-to-one**
+
+This is less common. You'd use it when you want to split a table that's getting very wide, or to keep optional or sensitive data (like billing details) separate from the main record.
+
+**One-to-many** — one row in a table relates to many rows in another table. This is the most common relationship.
 
 - A user can write many posts → **one-to-many**
 - A user can write many comments → **one-to-many**
 - A post can have many comments → **one-to-many**
+
+**Many-to-many** — many rows in one table relate to many rows in another. This always requires a junction table to represent it.
+
 - A post can have many tags; a tag can belong to many posts → **many-to-many**
 
 Writing these out in plain English before touching SQL helps you spot the structure clearly.
+
+> 💡 **Something to think about:** for every relationship you define, you'll also need to decide what happens when a parent row is deleted. If a user is deleted, should their posts be deleted too? Or should the deletion be blocked until the posts are removed first? You don't need to answer this now, but it's worth noting as you sketch your relationships. The next document covers this in full when you write the actual foreign key SQL.
 
 ---
 
@@ -348,6 +361,26 @@ posts → comments  one-to-many  (one post can have many comments)
 ### Step 4 — Sketch the connections
 
 Before writing any SQL, draw the links between tables. Each arrow goes from the child table (the one with the foreign key) to the parent table (the one being referenced).
+
+**users and profiles (one-to-one):**
+
+```
+┌─────────────────┐          ┌─────────────────┐
+│      users      │          │    profiles     │
+│─────────────────│          │─────────────────│
+│ id   PK         │◄── 1:1 ──│ user_id   FK    │
+│ name            │          │ bio             │
+│ email           │          │ avatar_url      │
+│ password        │          │ location        │
+└─────────────────┘          └─────────────────┘
+
+One user has exactly one profile.
+Each profile belongs to exactly one user.
+```
+
+The profile's `user_id` column has a `UNIQUE` constraint on it — that's what enforces the one-to-one. Without it, multiple profile rows could reference the same user, making it a one-to-many instead.
+
+---
 
 **users and posts:**
 
