@@ -6,7 +6,7 @@ You may have also heard that AI can sometimes get things wrong — making up fac
 
 You have used an AI tool inside a code editor like Visual Studio Code — one that suggests the next line of code as you type — you have also seen how AI can show up not just in a browser chat window, but directly inside your work environment.
 
->AI agents are the next step after all of those experiences. They combine what you already understand and take it further. You may also see them referred to as **agentic AI** — it means the same thing, and you will encounter both terms as you explore these tools.
+> AI agents are the next step after all of those experiences. They combine what you already understand and take it further. You may also see them referred to as **agentic AI** — it means the same thing, and you will encounter both terms as you explore these tools.
 
 ## The Big Picture: Three Levels of AI Help
 
@@ -34,7 +34,7 @@ Here is the same situation — "I want to build a simple to-do list app" — app
 
 ---
 
-### How a Chatbot Works (and Where It Stops)
+### 💬 How a Chatbot Works (and Where It Stops)
 
 It is worth being precise here, because this is a common point of confusion: a chatbot can absolutely write code for you. If you ask "Can you build me a to-do list app?", a good chatbot will give you working files, explain what each part does, and answer follow-up questions. That is genuinely useful and more than just an explanation.
 
@@ -49,22 +49,95 @@ A chatbot is like a talented chef who writes out a full recipe, explains every s
 
 ---
 
-### How Autocomplete Tools Work (and Where They Stop)
+### ⌨️ How Autocomplete Tools Work (and Where They Stop)
 
-An AI autocomplete tool, like the kind built into many code editors, is different because it lives inside your workspace.
+An autocomplete tool is different from a chatbot because it lives directly inside your code editor — always watching as you type, ready to offer suggestions without you having to ask.
 
-As you type, it watches. If you start writing `function calculateTotal(`, it may suggest the rest based on what you have written before and what typically comes next in similar code. You can accept the suggestion with a key press or ignore it and keep typing.
+#### What Is IntelliSense?
 
-This makes you faster. It reduces the small mental effort of remembering exact syntax and lets you focus on the bigger picture.
+VS Code's built-in autocomplete is called **IntelliSense**. The two terms mean the same thing in this context — IntelliSense is simply the name Microsoft gave to VS Code's autocomplete system. It comes installed with VS Code and is switched on by default, so if you have ever seen a suggestion dropdown appear while typing in VS Code, that was IntelliSense.
 
-But it is still a helper that reacts to you. It does not plan. It does not decide what you should build next. It does not notice that you made a mistake three files ago and adjust. It helps with the sentence you are already writing.
+It is important to know that **IntelliSense is not AI**. It does not use a language model or learn from the internet. Instead, it works by reading your own code and suggesting completions based on what it finds — variables and functions you have already defined, language keywords, and library documentation linked to your project. It is fast, works offline, and never leaves your machine.
 
-**An analogy:**
-An autocomplete tool is like having a cooking assistant who stands next to you and hands you the next ingredient before you even reach for it — based on watching you cook before. They are excellent at anticipating small next steps. But they are not the chef.
+As you type, a small dropdown appears with suggestions. Press Tab or Enter to accept one, or just keep typing to ignore it.
+
+#### Where IntelliSense Is Set
+
+IntelliSense is turned on by default in VS Code. The key settings that control it are:
+
+**`editor.quickSuggestions`**
+This controls whether the suggestion dropdown appears automatically as you type. By default it is set to `true` for most contexts. You can set it to `false` globally, or control it separately for regular code, comments, and strings.
+
+**`editor.suggestOnTriggerCharacters`**
+This controls whether suggestions appear when you type certain characters — for example, typing a dot (`.`) after an object name. This is also on by default.
+
+#### How to Turn Off Built-in Autocomplete
+
+You can turn off IntelliSense either globally (for all projects) or just for a single project.
 
 ---
 
-### How AI Agents Work
+**Option 1 — Turn it off globally (all projects)**
+
+To disable IntelliSense everywhere, add the following to your global `settings.json` file:
+
+```json
+{
+    "editor.quickSuggestions": {
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false
+}
+```
+
+To open your global `settings.json`, press **Ctrl+Shift+P** (or **Cmd+Shift+P** on Mac), type **Open User Settings (JSON)**, and press Enter. Paste the block above inside the outermost curly braces.
+
+The global `settings.json` file is stored at:
+
+- **Windows:** `C:\Users\YourName\AppData\Roaming\Code\User\settings.json`
+- **Mac:** `~/Library/Application Support/Code/User/settings.json`
+- **Linux:** `~/.config/Code/User/settings.json`
+
+---
+
+**Option 2 — Turn it off for one project only**
+
+VS Code also supports per-project settings. Inside your project folder, create a `.vscode` folder, and inside that create a `settings.json` file:
+
+```
+your-project/
+└── .vscode/
+    └── settings.json
+```
+
+Add the same content:
+
+```json
+{
+    "editor.quickSuggestions": {
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false
+}
+```
+
+VS Code will use the workspace settings for that project only, and fall back to your global settings everywhere else. This means you can have autocomplete **on globally** but **off for one specific project**, or the other way around. The workspace settings always take priority over the global ones when both exist.
+
+---
+
+#### AI-Powered Autocomplete Is Separate
+
+The settings above only affect VS Code's built-in IntelliSense. If you have installed an AI extension such as **GitHub Copilot**, **Tabnine**, or **Codeium**, those have their own separate settings and must be disabled independently — usually from the Extensions panel or the status bar at the bottom of the editor.
+
+If you have not installed any AI extensions, you do not have AI-powered autocomplete running. IntelliSense is the only autocomplete active.
+
+---
+
+### 🤖 How AI Agents Work
 
 An AI agent is given a goal and then figures out how to reach it.
 
@@ -280,6 +353,8 @@ Agents are great for tasks that need to get done. But if you are trying to *unde
 | Automate repetitive tasks across apps | Zapier, Make |
 | Understand a concept or get code explained | Claude, ChatGPT (chatbot mode) |
 | Speed up coding as you type | Cursor (autocomplete), GitHub Copilot |
+| Disable built-in VS Code autocomplete globally | Edit your global `settings.json` (User Settings) |
+| Disable built-in VS Code autocomplete per project | Add a `.vscode/settings.json` inside your project folder |
 
 
 ## Your First Week with an Agent Tool
@@ -380,5 +455,3 @@ Now that you have a map of the tools and how they work, the most useful thing yo
 Start with the tool that matches something you actually want to do. If you want to learn coding, try Cursor or Claude Code with a small project. If you do research, try Perplexity for your next real question. If you have a repetitive task at work, look at Zapier's template library.
 
 You will not fully understand these tools by reading about them. You understand them by watching them work — and then by learning how to guide them better over time.
-
-
