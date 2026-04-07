@@ -1,4 +1,4 @@
-# Introduction to Express.js
+ # Introduction to Express.js
 
 When you were building servers directly with Node’s `http` module, you probably noticed a few pain points:
 - You had to manually check the request method (`GET`, `POST`, etc.).  
@@ -426,55 +426,4 @@ If your frontend and backend are in one project, serving the static frontend thr
 - **Other cases:** You can still use it for images, PDFs, or simple static pages.
 
 So even if you’re using React, Express’s static file serving is a handy tool for deployment and flexibility.
-
-
----
-
-### Error Handling in Express
-
-Even well-written APIs need to handle things that go wrong — like missing data or broken routes.
-
-### Example: 404 and Server Errors
-
-```js
-import express from "express";
-const app = express();
-
-app.get("/api", (req, res) => {
-  res.json({ message: "Welcome to the API" });
-});
-
-// 404 Handler (Not Found)
-app.use((req, res) => {
-  res.status(404).json({ error: "Route not found" });
-});
-
-// Error Handler (Server Errors)
-app.use((err, req, res, next) => {
-  console.error("❌ Error:", err.stack);
-  res.status(500).json({ error: "Something went wrong" });
-});
-
-app.listen(3000, () => console.log("🚀 API running on http://localhost:3000"));
-```
-
-### How Error Handling Works
-- The **404 handler** catches any request that didn’t match a route.  
-- The **error handler** catches thrown errors and prevents the app from crashing.  
-- Express knows it’s an error handler when your function has **four parameters**: `(err, req, res, next)`.
-
-### ✅ Summary
-
-You’ve now learned the four most essential parts of Express:
-
-| Concept | What It Does |
-|----------|---------------|
-| **Routing** | Defines which code runs for each URL and method |
-| **Middleware** | Adds extra functionality (logging, validation, auth) |
-| **Static Files** | Lets Express serve HTML, CSS, JS, or images |
-| **Error Handling** | Gracefully catches errors and prevents crashes |
-
-Together, these make Express one of the most flexible and widely used Node.js frameworks.
-
-Next, you’ll learn how to organize routes into **separate files** using `express.Router()` and build more scalable project structures.
 
