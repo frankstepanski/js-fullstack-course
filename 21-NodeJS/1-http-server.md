@@ -3,7 +3,7 @@
 ### What Is a Server?
 
 At the most basic level, a **server** is any computer or program that provides a service to another computer or program (called a *client*).  
-It’s part of the **client–server model**, the foundation of almost everything on the internet.
+It's part of the **client–server model**, the foundation of almost everything on the internet.
 
 - When you open a website, your **browser** (client) sends a request to a **server** somewhere on the internet.  
 - That server processes your request and **responds** with something — usually HTML, CSS, JavaScript, or JSON data.  
@@ -19,26 +19,26 @@ Servers come in many forms and serve different purposes:
 - **File servers** — store and share files across a network.  
 - **Game servers** — manage multiplayer sessions and game data.
 
-Even your laptop can act as a “server” if you run a program that listens for requests — it doesn’t have to be a big data center in the cloud.
+Even your laptop can act as a "server" if you run a program that listens for requests — it doesn't have to be a big data center in the cloud.
 
 ### What Does a Server Actually Do?
 
 In simple terms, a server:
 
 1. **Listens for incoming connections** (on a specific network port).  
-2. **Receives a request** — like “send me this web page” or “give me this data.”  
+2. **Receives a request** — like "send me this web page" or "give me this data."  
 3. **Processes the request** — possibly reading files, running logic, or querying a database.  
 4. **Sends a response back** — often text, HTML, JSON, or a file.  
 5. **Waits for the next request** — and does it all over again.
 
 ### A Server Stays Running All the Time
 
-Servers don’t know when a request will come, so they must stay online continuously.
+Servers don't know when a request will come, so they must stay online continuously.
 
-If a web server went offline, users wouldn’t be able to access your website or API.  
-That’s why large companies like Google, Netflix, and GitHub keep **thousands of servers** running 24/7 across multiple data centers around the world — so users always get a fast and reliable response.
+If a web server went offline, users wouldn't be able to access your website or API.  
+That's why large companies like Google, Netflix, and GitHub keep **thousands of servers** running 24/7 across multiple data centers around the world — so users always get a fast and reliable response.
 
-Because the server’s job is to **respond whenever a client sends a request**.
+Because the server's job is to **respond whenever a client sends a request**.
 
 So servers stay running so that at **any time** the browser (or another app) can talk to it.
 
@@ -50,7 +50,7 @@ An **HTTP server** is a specific kind of server that speaks the **HTTP protocol*
 
 These are the servers you interact with every day —
 when you open a website in your browser, or when your React or JavaScript frontend sends a request to an API using fetch().
-Whenever you make a GET, POST, PUT, or DELETE request, it’s the HTTP server on the other end receiving that request, processing it, and sending a response back.
+Whenever you make a GET, POST, PUT, or DELETE request, it's the HTTP server on the other end receiving that request, processing it, and sending a response back.
 
 
 Think of it like this:
@@ -58,7 +58,7 @@ Think of it like this:
 | Type | Description | Example |
 |------|--------------|----------|
 | **Server (general)** | Any program that listens for requests and responds with data. Could be about files, games, or databases. | A chat server, game server, or database server |
-| **HTTP Server** | A server that speaks the HTTP protocol, used by browsers and APIs to send and receive data over the web. | Node’s `http` module, Apache, Nginx, Express |
+| **HTTP Server** | A server that speaks the HTTP protocol, used by browsers and APIs to send and receive data over the web. | Node's `http` module, Apache, Nginx, Express |
 
 When you visit a website, your browser sends an **HTTP request** like this:
 
@@ -87,11 +87,11 @@ Some use other protocols like FTP (for file transfers), SMTP (for email), or Web
 
 In Node.js, you can build a server with just a few lines of JavaScript.  
 
-Instead of needing to install and configure large software systems like Apache or Nginx, you can use Node’s built-in `http` module to handle requests and responses yourself.
+Instead of needing to install and configure large software systems like Apache or Nginx, you can use Node's built-in `http` module to handle requests and responses yourself.
 
 This gives you full control — you can decide exactly what happens when a request comes in, what data gets returned, and how your server behaves.
 
-That’s what makes Node.js so powerful: it brings the same JavaScript logic you already know from the frontend into the **backend world**, allowing you to create lightweight, fast, and flexible web servers.
+That's what makes Node.js so powerful: it brings the same JavaScript logic you already know from the frontend into the **backend world**, allowing you to create lightweight, fast, and flexible web servers.
 
 
 ### How Does It Run?
@@ -117,35 +117,127 @@ Then you run:
 node server.js
 ```
 
-Now that file keeps running — it **doesn’t exit** like a normal script — because the server is **waiting for requests**.
+Now that file keeps running — it **doesn't exit** like a normal script — because the server is **waiting for requests**.
 
-### What’s Happening When It Is “Running”?
+---
 
-When the server is running, Node is basically doing this:
+### ⚠️ Watch Out: "Port Already in Use"
 
-1. “I’m listening on port 3000.”  
-2. “Did someone send me an HTTP request?”  
-3. “If yes, run the callback you gave me (`createServer((req, res) => { ... })`).”  
-4. “Send back a response.”  
-5. “Go back to listening.”  
+Because your server keeps running until you explicitly stop it, it's very easy to accidentally have **multiple instances of the same server running at the same time** — and this is one of the most common sources of confusion for developers new to Node.
 
-So it’s not doing work constantly — it’s **waiting** most of the time. That’s why this works well with Node’s event loop.  
+Here's how it happens: you run `node server.js` in one terminal, then open a new terminal tab and run it again without stopping the first one. Or you start the server, your terminal crashes, and you start it again — but the original process is still alive in the background, quietly holding onto port 3000.
+
+When that happens, you'll see an error like this:
+
+```
+Error: listen EADDRINUSE: address already in use :::3000
+```
+
+**What this means:** `EADDRINUSE` stands for "Error: Address In Use." Every server has to "claim" a port when it starts up — that's how the operating system knows which program should receive traffic on that port. Only **one process at a time** can hold a given port. So when your second server tries to claim port 3000, the OS refuses — because something (your first server) already owns it.
+
+Think of it like two people trying to rent the same apartment at the same time. The landlord (your OS) will only hand out the key to one of them.
+
+---
+
+#### How to Find and Stop Rogue Node Processes
+
+The fix is to find the process that's already holding port 3000 and stop it.
+
+**On Mac (Terminal):**
+
+First, find what's using the port:
+```bash
+lsof -i :3000
+```
+
+This lists all processes listening on port 3000. You'll see output like:
+```
+COMMAND  PID     USER   FD   TYPE  ...
+node     48291   alice  22u  IPv6  ...
+```
+
+The `PID` column is the **Process ID** — a unique number the OS assigns to every running program. To stop it:
+```bash
+kill 48291
+```
+
+If the process is stubborn and doesn't stop, use `kill -9` (force kill):
+```bash
+kill -9 48291
+```
+
+Alternatively, you can do it in one command without needing to look up the PID first:
+```bash
+npx kill-port 3000
+```
+
+**On Windows (Command Prompt or PowerShell):**
+
+First, find what's using the port:
+```cmd
+netstat -ano | findstr :3000
+```
+
+You'll see output like:
+```
+TCP    0.0.0.0:3000    0.0.0.0:0    LISTENING    48291
+```
+
+The last number (`48291`) is the PID. To stop it:
+```cmd
+taskkill /PID 48291 /F
+```
+
+The `/F` flag forces the process to stop immediately.
+
+---
+
+#### Mac vs Windows: Quick Reference
+
+| Task | Mac (Terminal) | Windows (CMD/PowerShell) |
+|------|----------------|--------------------------|
+| Find what's using a port | `lsof -i :3000` | `netstat -ano \| findstr :3000` |
+| Stop a process by PID | `kill <PID>` | `taskkill /PID <PID> /F` |
+| Force stop a process | `kill -9 <PID>` | `taskkill /PID <PID> /F` |
+| One-command shortcut | `npx kill-port 3000` | `npx kill-port 3000` |
+
+---
+
+#### The Easiest Fix
+
+Most of the time, the quickest solution is to go back to the terminal where your server is running and press **`Ctrl + C`**. That sends an interrupt signal to Node and shuts the server down cleanly — freeing up the port immediately.
+
+If you can't find that terminal window, use the commands above to track down and stop the process.
+
+---
 
 ### What Is It Listening To?
 
-It’s listening to **a port** on your computer or server.
+It's listening to **a port** on your computer or server.
 
 - A **port** is like a numbered door that lets network traffic in and out.  
 - Common ports: `80` (HTTP), `443` (HTTPS), `3000/4000` (local development).  
-- When you say `server.listen(3000)`, you’re telling Node:  
-  “Open door #3000 and wait for incoming HTTP requests.”
+- When you say `server.listen(3000)`, you're telling Node:  
+  "Open door #3000 and wait for incoming HTTP requests."
 
 Then, when you go to `http://localhost:3000` in your browser, your browser sends a request to that port, and your Node server sees it.
+
+### What's Happening When It Is "Running"?
+
+When the server is running, Node is basically doing this:
+
+1. "I'm listening on port 3000."  
+2. "Did someone send me an HTTP request?"  
+3. "If yes, run the callback you gave me (`createServer((req, res) => { ... })`)."  
+4. "Send back a response."  
+5. "Go back to listening."  
+
+So it's not doing work constantly — it's **waiting** most of the time. That's why this works well with Node's event loop.  
 
 
 ## Adding a HTTP REST API
 
-Now that you’ve built a basic Node server, the next step is to make it **useful** — by adding an **HTTP REST API** on top of it.
+Now that you've built a basic Node server, the next step is to make it **useful** — by adding an **HTTP REST API** on top of it.
 
 A **REST API** (short for **Representational State Transfer**) is a way for different programs — like your frontend app and your server — to talk to each other over the web using HTTP.
 
@@ -158,15 +250,15 @@ At a **code level**, a REST API is implemented as a **collection of functions** 
 Each function decides what to do when a client sends a request, such as fetching data, saving data, or deleting something in a database.
 
 Think of it like a shared agreement between client and server:
-- **Frontend (client):** “Hey server, I’d like to get a list of users.”  
-- **Backend (server):** “Got it — here’s the data you asked for in JSON format.”
+- **Frontend (client):** "Hey server, I'd like to get a list of users."  
+- **Backend (server):** "Got it — here's the data you asked for in JSON format."
 
 Each request follows standard **HTTP rules**, and data is usually exchanged as JSON (JavaScript Object Notation). 
 
 ### HTTP Rules
 
 **HTTP (HyperText Transfer Protocol)** defines how browsers, servers, and applications communicate on the web.  
-It’s a standardized set of rules that ensures all clients and servers “speak the same language.”
+It's a standardized set of rules that ensures all clients and servers "speak the same language."
 
 Below is a breakdown of the most important HTTP rules and concepts:
 
@@ -189,12 +281,12 @@ The code below shows how the **HTTP rules** (method, headers, body, and response
 
 ### Reviewing Your Frontend Requests
 
-Before diving deeper, let's pause and look back at what you’ve already done on the frontend.
-So far, you’ve written JavaScript (and React) code that uses the fetch() function to call external APIs.
+Before diving deeper, let's pause and look back at what you've already done on the frontend.
+So far, you've written JavaScript (and React) code that uses the fetch() function to call external APIs.
 
 You already learned how to send and receive data with GET, POST, and other HTTP methods, handle Promises with .then() or async/await, and update the DOM or React components with the results.
 
-What's changing now is perspective: instead of being the client calling someone else’s API, you’re going to build your own APIs — and your Node.js server will become the one listening for requests, sending responses, and following all the same HTTP rules you’ve already been using.
+What's changing now is perspective: instead of being the client calling someone else's API, you're going to build your own APIs — and your Node.js server will become the one listening for requests, sending responses, and following all the same HTTP rules you've already been using.
 
 ---
 
@@ -252,7 +344,7 @@ Request  →  Process  →  Response  →  Display
 ```
 
 When you call `fetch()`, the browser follows all the same HTTP rules that power the web — sending headers, methods, and data in a standardized way.  
-Now, as you move into backend development with **Node.js**, you’ll learn how to handle those requests on the **server side** — how to read them, process them, and send proper HTTP responses back.
+Now, as you move into backend development with **Node.js**, you'll learn how to handle those requests on the **server side** — how to read them, process them, and send proper HTTP responses back.
 
 
 
@@ -263,7 +355,7 @@ When you build an API, a **route** (sometimes called an **endpoint**) is like an
 If you think of your Node server as a big office building:
 - Each **route** is a different **office room** inside it.
 - Each room handles one type of request — one for users, one for posts, one for messages, etc.
-- When someone “visits” a room (by going to a certain URL), your server runs the code that belongs to that route.
+- When someone "visits" a room (by going to a certain URL), your server runs the code that belongs to that route.
 
 ### Example: A Simple API with Routes
 
@@ -281,7 +373,7 @@ Each route corresponds to one **task** or **piece of data** your app can handle.
 
 ### How This Relates to Frontend Code
 
-When you worked with **React** or **JavaScript** on the frontend, you already interacted with routes — even if you didn’t realize it.  
+When you worked with **React** or **JavaScript** on the frontend, you already interacted with routes — even if you didn't realize it.  
 
 For example:
 
@@ -291,13 +383,13 @@ fetch("https://api.example.com/api/users")
   .then(data => console.log(data));
 ```
 
-Here’s what’s happening:
+Here's what's happening:
 - Your browser (client) is sending an **HTTP GET request** to the server.
 - The server receives it on the `/api/users` **route**.
 - The function attached to that route runs and sends back some JSON data.
 - Your frontend app receives that data and displays it on the page.
 
-So that line of code is literally you “knocking” on the `/api/users` door of someone’s server to get information back.
+So that line of code is literally you "knocking" on the `/api/users` door of someone's server to get information back.
 
 ---
 
@@ -306,10 +398,10 @@ So that line of code is literally you “knocking” on the `/api/users` door of
 Routes work hand-in-hand with HTTP methods like `GET`, `POST`, `PUT`, and `DELETE`.  
 Together, they form the rules for **how the frontend and backend talk to each other**.
 
-- `GET` → “Give me data”  
-- `POST` → “Create something new”  
-- `PUT` → “Update something that already exists”  
-- `DELETE` → “Remove this item”
+- `GET` → "Give me data"  
+- `POST` → "Create something new"  
+- `PUT` → "Update something that already exists"  
+- `DELETE` → "Remove this item"
 
 Every time you send one of these requests from your frontend, your server looks at:
 1. The **route path** (`/api/users`, `/api/products`, etc.)  
@@ -340,7 +432,7 @@ The **frontend** (your React or JavaScript app) is just the **client** sending t
 
 
 You already created a simple HTTP server that listens for requests on a specific port (like 3000).  
-Now we’ll **add logic** so it can handle real API routes.
+Now we'll **add logic** so it can handle real API routes.
 
 A quick refresher of your basic server:
 
@@ -357,12 +449,12 @@ server.listen(3000, () => {
 });
 ```
 
-This server listens for connections — but it doesn’t yet know *what to do* with specific URLs like `/api/users` or `/api/products`.  
-That’s what we’re about to fix.
+This server listens for connections — but it doesn't yet know *what to do* with specific URLs like `/api/users` or `/api/products`.  
+That's what we're about to fix.
 
 ## Adding API Routes
 
-We’ll use simple `if` statements to check both the **method** (GET, POST, etc.) and the **URL path**.  
+We'll use simple `if` statements to check both the **method** (GET, POST, etc.) and the **URL path**.  
 
 ```js
 import http from "http";
@@ -391,24 +483,24 @@ server.listen(3000, () => {
 });
 ```
 
-When you run this server and visit `http://localhost:3000/api/users` in your browser, here’s what happens:
+When you run this server and visit `http://localhost:3000/api/users` in your browser, here's what happens:
 
 1. Your browser sends an **HTTP GET request** to `/api/users`.
-2. Node checks the request’s `method` and `url`.
+2. Node checks the request's `method` and `url`.
 3. The code inside the matching `if` block runs.
 4. The server sends back a **JSON response** with the right `Content-Type`.
 5. The browser (or your frontend app) displays or processes that data.
 
-It’s the same request–response flow you used on the frontend — but now you’re controlling the other side.
+It's the same request–response flow you used on the frontend — but now you're controlling the other side.
 
 
 ### What is `http.createServer(...)`?
 
-- `createServer(...)` tells Node: **“Whenever someone makes an HTTP request, run this function.”**
+- `createServer(...)` tells Node: **"Whenever someone makes an HTTP request, run this function."**
 - The function `(req, res) => { ... }` is called the **request handler** — it runs **for every single request** your server receives.
 
 So in plain English:  
-> “Make a web server, and every time a browser or app sends a request, handle it using this code.”
+> "Make a web server, and every time a browser or app sends a request, handle it using this code."
 
 ### What are `req` and `res`?
 
@@ -445,7 +537,7 @@ You can also pass custom headers here, but we usually set them with `setHeader()
 ### What Does `res.end(...)` Do?
 
 This is the **final step** in sending your response.  
-It means: “Here’s my data — I’m done!”  
+It means: "Here's my data — I'm done!"  
 
 Whatever you pass into `res.end()` becomes the **body of the response**.
 
@@ -455,11 +547,11 @@ res.end(JSON.stringify(users));
 ```
 That sends back your data in JSON format to whoever made the request.
 
-If you forget `res.end()`, the browser will keep waiting forever — the request never “finishes.”
+If you forget `res.end()`, the browser will keep waiting forever — the request never "finishes."
 
 ### Why Do We Check `req.method` and `req.url`?
 
-Because in plain Node, there’s no built-in “router” like Express.  
+Because in plain Node, there's no built-in "router" like Express.  
 You manually check which method (GET, POST, etc.) and which path (`/api/users`, `/api/users/1`) was requested.
 
 ```js
@@ -468,7 +560,7 @@ if (req.method === "GET" && req.url === "/api/users") {
 }
 ```
 
-This is the manual version of what you’ll later do with Express:
+This is the manual version of what you'll later do with Express:
 ```js
 app.get("/api/users", (req, res) => { ... });
 ```
@@ -490,7 +582,7 @@ So, in short:
 
 ---
 
-This small piece of code is the foundation for everything you’ll build in Node.  
+This small piece of code is the foundation for everything you'll build in Node.  
 When you add more features (like reading POST data, handling files, or connecting to databases), it all still runs through these same `req` and `res` objects.
 
 ## Handling Request Data (JSON, Query Params, and Files)
@@ -502,7 +594,7 @@ Behind the scenes, the server has to:
 1. **Receive the request** — it listens for incoming messages from the browser or frontend app.  
    When your code calls `fetch("/api/users")`, the server sees that message and figures out *which part* of the code should handle it.
 
-2. **Read and understand the data** — if the request includes information (like form data or JSON), the server needs to read it, convert it into usable JavaScript objects, and make sure it’s valid.
+2. **Read and understand the data** — if the request includes information (like form data or JSON), the server needs to read it, convert it into usable JavaScript objects, and make sure it's valid.
 
 3. **Verify and process the data** — before saving or using it, the server might check things like:  
    - Is the data formatted correctly?  
@@ -510,7 +602,7 @@ Behind the scenes, the server has to:
    - Does this user have permission to make this request?
 
 4. **Find or create the right data** — sometimes the client asks for something specific (like `/api/users/5`).  
-   The server must locate that exact piece of data — whether it’s in a file, a database, or memory.
+   The server must locate that exact piece of data — whether it's in a file, a database, or memory.
 
 5. **Send back the correct response** — finally, the server prepares a reply — usually in JSON format — and sends it back to the browser.  
 
@@ -522,7 +614,7 @@ So, while frontend developers focus on *asking* for data, backend servers are re
 
 When a client sends data (for example, using `fetch()` in a React app), it sends it as a **stream of bytes** — not as a complete object. Node handles this stream using **events**.
 
-Here’s how you read it manually:
+Here's how you read it manually:
 
 ```js
 import http from "http";
@@ -561,7 +653,7 @@ server.listen(3000, () => console.log("🚀 Server running at http://localhost:3
 - When all data is received, `req.on("end")` fires.
 - You parse it using `JSON.parse()` and can now use it in your logic.
 
-💡 **In Express**, this step is automatic (via `express.json()`), but here you’re doing it manually — a great way to understand what’s really happening.
+💡 **In Express**, this step is automatic (via `express.json()`), but here you're doing it manually — a great way to understand what's really happening.
 
 ---
 
@@ -570,7 +662,7 @@ server.listen(3000, () => console.log("🚀 Server running at http://localhost:3
 Query parameters are the `?key=value` pairs at the end of URLs.  
 Example: `/api/users?limit=5&sort=desc`
 
-You can extract them using Node’s built-in `url` module:
+You can extract them using Node's built-in `url` module:
 
 ```js
 import http from "http";
@@ -602,7 +694,7 @@ Query parameters are often used for filtering, pagination, or sorting data — f
 
 ### 3. Handling Dynamic Routes (Route Parameters)
 
-Without Express, there’s no fancy `:id` syntax — but you can still detect routes manually.
+Without Express, there's no fancy `:id` syntax — but you can still detect routes manually.
 
 Example: `/api/users/2`
 
@@ -621,16 +713,16 @@ if (req.method === "GET" && req.url.startsWith("/api/users/")) {
 }
 ```
 
-This logic looks primitive, but it’s exactly what Express automates later.
+This logic looks primitive, but it's exactly what Express automates later.
 
 ## Wrapping Up: From Core Node to Express
 
-At this point, you’ve seen how to build a real API using only Node’s built-in tools — handling routes, reading data, and sending JSON back to the frontend. You’ve also learned how servers process incoming data, interpret query parameters, and store information in files.
+At this point, you've seen how to build a real API using only Node's built-in tools — handling routes, reading data, and sending JSON back to the frontend. You've also learned how servers process incoming data, interpret query parameters, and store information in files.
 
-But you’ve probably noticed something:  
+But you've probably noticed something:  
 as your API grows, the code starts getting **longer**, **harder to read**, and **full of repetitive logic** (checking `req.method`, parsing JSON, writing headers, etc.).
 
-That’s where **Express.js** comes in.
+That's where **Express.js** comes in.
 
 ### Why Express Matters
 
@@ -644,4 +736,4 @@ Express is a lightweight framework that makes it easier to:
 
 In other words — everything you just learned to do manually in Node, Express helps you do **faster**, **cleaner**, and **more maintainably**.
 
-So next, we’ll refactor your existing Node API into an **Express.js application**, and you’ll immediately see how much cleaner and more powerful your backend can become.
+So next, we'll refactor your existing Node API into an **Express.js application**, and you'll immediately see how much cleaner and more powerful your backend can become.
