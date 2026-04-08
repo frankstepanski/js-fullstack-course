@@ -127,6 +127,8 @@ app.listen(3000, () => console.log("🚀 Express server running on http://localh
 
 Express simplifies all the repetitive steps so you can focus on **what your API should do**, not the plumbing.
 
+> ⚠️ **Browsers can only send GET requests.** You can test the GET routes above by visiting the URL directly in your browser, but to test POST, PUT, or DELETE routes you'll need a tool like **Postman**, **Insomnia**, or the **Thunder Client** extension in VS Code. We'll do a full deep dive into testing and working with these tools when we cover REST APIs and Express in detail later.
+
 ## Routing, Middleware, Static Files, and Error Handling
 
 Now that you've set up your first Express server, it's time to dive deeper into the features that make Express powerful and beginner-friendly.  
