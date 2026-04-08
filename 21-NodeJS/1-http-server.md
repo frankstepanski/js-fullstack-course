@@ -484,21 +484,39 @@ So, while frontend developers focus on *asking* for data, backend servers are re
 
 When a client sends data (for example, using `fetch()` in a React app), it sends it as a **stream of bytes** — not as a complete object. Node handles this stream using **events**.
 
-```mermaid
-sequenceDiagram
-    participant Browser as Frontend (Browser)
-    participant Node as Backend (Node.js)
-
-    Browser->>Node: HTTP POST /api/users
-    Note over Browser,Node: Headers: Content-Type: application/json
-
-    Node->>Node: req.on("data") — receive chunks
-    Node->>Node: body += chunk.toString()
-    Node->>Node: req.on("end") — all chunks received
-    Node->>Node: JSON.parse(body) — now a JS object
-
-    Node-->>Browser: HTTP 201 Created
-    Note over Browser,Node: { message: "User created", user: data }
+```
+FRONTEND (Browser)
+                               │
+                               │  HTTP POST /api/users
+                               │  Content-Type: application/json
+                               ▼
+                         BACKEND (Node.js)
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   req.on("data")    │  Receive chunks
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │  body += chunk      │  Build the string
+                    │  .toString()        │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   req.on("end")     │  All chunks received
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   JSON.parse(body)  │  Now a JS object ✅
+                    └──────────┬──────────┘
+                               │
+                               │  HTTP 201 Created
+                               │  { message: "User created", user: data }
+                               ▼
+                         FRONTEND (Browser)
 ```
 
 Here's how you read it manually:
