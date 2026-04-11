@@ -44,14 +44,13 @@ So servers stay running so that at **any time** the browser (or another app) can
 
 Think of it like a person answering phones — if they go home, no calls get answered.
 
-##  What Is an HTTP Server?
+## What Is an HTTP Server?
 
 An **HTTP server** is a specific kind of server that speaks the **HTTP protocol**, which is the language of the web.
 
 These are the servers you interact with every day —
 when you open a website in your browser, or when your React or JavaScript frontend sends a request to an API using fetch().
 Whenever you make a GET, POST, PUT, or DELETE request, it's the HTTP server on the other end receiving that request, processing it, and sending a response back.
-
 
 Think of it like this:
 
@@ -92,7 +91,6 @@ Instead of needing to install and configure large software systems like Apache o
 This gives you full control — you can decide exactly what happens when a request comes in, what data gets returned, and how your server behaves.
 
 That's what makes Node.js so powerful: it brings the same JavaScript logic you already know from the frontend into the **backend world**, allowing you to create lightweight, fast, and flexible web servers.
-
 
 ### How Does It Run?
 
@@ -206,18 +204,9 @@ Think of it like a shared agreement between client and server:
 - **Frontend (client):** "Hey server, I'd like to get a list of users."  
 - **Backend (server):** "Got it — here's the data you asked for in JSON format."
 
-Each request follows standard **HTTP rules**, and data is usually exchanged as JSON (JavaScript Object Notation). 
+Each request follows standard **HTTP rules**, and data is usually exchanged as JSON (JavaScript Object Notation).
 
-### HTTP Rules
-
-**HTTP (HyperText Transfer Protocol)** defines how browsers, servers, and applications communicate on the web.  
-It's a standardized set of rules that ensures all clients and servers "speak the same language."
-
-Below is a breakdown of the most important HTTP rules and concepts:
-
-HTTP is the **bridge** between your browser (frontend) and your server (backend). Every time you load a webpage, click a button, or submit a form, your app is sending an **HTTP request** to a server — and the server responds with an **HTTP response** that tells the browser what to do next.  
-
-### What Is a Route? 
+### What Is a Route?
 
 When you build an API, a **route** (sometimes called an **endpoint**) is like an **address** or **doorway** on your server that your frontend can knock on to ask for data or perform an action.
 
@@ -237,6 +226,97 @@ If you think of your Node server as a big office building:
 | `/api/users/1` | `DELETE` | Deletes the user with ID 1 |
 
 Each route corresponds to one **task** or **piece of data** your app can handle.
+
+> 💡 **Why `/api/` at the start?**  
+> The `/api/` prefix is a convention, not a requirement. It signals to anyone reading the URL — developers, tools, or other services — that this address returns **data** (usually JSON), not an HTML page.  
+> For example, if your app also serves a frontend, you'd have:
+> - `/` → your React/HTML frontend page  
+> - `/api/users` → your backend API returning JSON data  
+>
+> It keeps your routes organized and avoids confusion between "pages" and "data endpoints."
+
+---
+
+### HTTP Rules
+
+**HTTP (HyperText Transfer Protocol)** defines how browsers, servers, and applications communicate on the web.  
+It's a standardized set of rules that ensures all clients and servers "speak the same language."
+
+HTTP is the **bridge** between your browser (frontend) and your server (backend). Every time you load a webpage, click a button, or submit a form, your app is sending an **HTTP request** to a server — and the server responds with an **HTTP response** that tells the browser what to do next.
+
+Here's a breakdown of the four most important HTTP rules and concepts:
+
+---
+
+#### 1. HTTP Methods
+
+Every HTTP request includes a **method** — a word that describes the *intent* of the request. Think of it as the verb that tells the server what action to perform.
+
+| Method | Intent | Example |
+|--------|--------|---------|
+| `GET` | Retrieve data — don't change anything | Fetch a list of users |
+| `POST` | Send new data to create something | Register a new user |
+| `PUT` | Send updated data to replace something | Edit a user's profile |
+| `DELETE` | Remove something | Delete a user account |
+
+You'll see exactly how these pair with routes in the next section.
+
+---
+
+#### 2. Status Codes
+
+Every HTTP **response** includes a **status code** — a 3-digit number that tells the client what happened on the server. You'll use these constantly when building APIs.
+
+| Code | Name | What It Means |
+|------|------|---------------|
+| `200` | OK | Request succeeded — here's your data |
+| `201` | Created | A new resource was successfully created (used for POST) |
+| `204` | No Content | Success, but nothing to return (common after DELETE) |
+| `400` | Bad Request | The client sent invalid or missing data |
+| `401` | Unauthorized | Not logged in / no auth token provided |
+| `403` | Forbidden | Logged in but not allowed to do this action |
+| `404` | Not Found | That route or resource doesn't exist |
+| `500` | Internal Server Error | Something broke on the server side |
+
+Choosing the right status code matters. Sending `200` when something actually failed, for example, can cause confusing bugs on the frontend that are hard to track down.
+
+---
+
+#### 3. Headers
+
+**Headers** are metadata that travel alongside every HTTP request and response. They don't contain your main data — they describe *what kind of data* is being sent, *who's sending it*, and *how the receiver should handle it*.
+
+The most important header for REST APIs is `Content-Type: application/json` — it tells the receiver: "the body of this message is JSON, please parse it that way."
+
+You've already seen this used in Node code:
+
+```js
+res.setHeader("Content-Type", "application/json");
+```
+
+Other common headers you'll encounter as you go deeper:
+
+| Header | Purpose |
+|--------|---------|
+| `Content-Type` | Describes the format of the data being sent (`application/json`, `text/html`, etc.) |
+| `Authorization` | Carries auth tokens so the server knows who's making the request |
+| `Accept` | Tells the server what format the client can handle in return |
+| `Content-Length` | The size of the request or response body in bytes |
+
+---
+
+#### 4. Statelessness
+
+One of the fundamental rules of HTTP is that it is **stateless** — meaning the server does **not** remember anything about a previous request.
+
+Every request your frontend sends is treated as completely new and independent. The server has no memory of what you asked for a second ago.
+
+```
+Request 1:  GET /api/users       → Server responds, then forgets it happened
+Request 2:  GET /api/users/1     → Server has no idea Request 1 ever occurred
+```
+
+This is why things like **auth tokens** exist. Since the server forgets who you are after every request, you have to re-identify yourself each time by including a token in the `Authorization` header. The server reads it, verifies it, and then processes your request.
 
 ---
 
@@ -267,11 +347,6 @@ So that line of code is literally you "knocking" on the `/api/users` door of som
 Routes work hand-in-hand with HTTP methods like `GET`, `POST`, `PUT`, and `DELETE`.  
 Together, they form the rules for **how the frontend and backend talk to each other**.
 
-- `GET` → "Give me data"  
-- `POST` → "Create something new"  
-- `PUT` → "Update something that already exists"  
-- `DELETE` → "Remove this item"
-
 Every time you send one of these requests from your frontend, your server looks at:
 1. The **route path** (`/api/users`, `/api/products`, etc.)  
 2. The **method type** (`GET`, `POST`, etc.)  
@@ -296,9 +371,32 @@ When the server receives a request:
 
 The **frontend** (your React or JavaScript app) is just the **client** sending these requests — the **Node API** is what processes them.
 
+Here's a visual overview of how a request travels from browser to server and back:
 
-##  Extending the Server You Already Built
+```
+BROWSER (Frontend)
+       │
+       │  fetch("/api/users")
+       │  HTTP GET /api/users
+       ▼
+  ─────────────────────────────────────
+       │  Node.js Server (port 3000)
+       │
+       ├─ Is method GET?         ✅
+       ├─ Is path /api/users?    ✅
+       │
+       ▼
+  Run matching route handler
+       │
+       │  res.end(JSON.stringify(users))
+       │  HTTP 200 OK
+       ▼
+BROWSER (Frontend)
+  receives JSON → renders data on the page
+```
 
+
+## Extending the Server You Already Built
 
 You already created a simple HTTP server that listens for requests on a specific port (like 3000).  
 Now we'll **add logic** so it can handle real API routes.
@@ -376,22 +474,20 @@ So in plain English:
 
 When Node receives a request, it automatically gives your handler two objects:
 
-###  `req` (Request)
+### `req` (Request)
 Represents **what the client sent**. It contains details such as:
 - `req.method` → The HTTP method (`"GET"`, `"POST"`, `"PUT"`, `"DELETE"`, etc.)
 - `req.url` → The path requested (`"/api/users"`, `"/api/users/1"`, etc.)
 - `req.headers` → Metadata like `Content-Type` or authentication tokens
 - `req.on("data")` → Streams data when someone sends a body (e.g., JSON from a POST request)
 
-###  `res` (Response)
+### `res` (Response)
 Represents **what you send back** to the client.  
 You use it to:
 - Set headers (e.g., content type)
 - Send a status code (e.g., 200, 404, 500)
 - Return data (like text or JSON)
 - End the response
-
-
 
 ### What Does `res.writeHead(...)` Do?
 
@@ -599,13 +695,55 @@ Query parameters are often used for filtering, pagination, or sorting data — f
 
 ### 3. Handling Dynamic Routes (Route Parameters)
 
-Without Express, there's no fancy `:id` syntax — but you can still detect routes manually.
+A **route parameter** is a value embedded directly inside the URL path itself — like the `1` in `/api/users/1`.  
+This is how your frontend tells the server *which specific item* it wants to work with.
 
-Example: `/api/users/2`
+For example, if you want to get, update, or delete a single user, you include their ID in the URL:
+
+```
+GET    /api/users/1   →  fetch user with ID 1
+PUT    /api/users/1   →  update user with ID 1
+DELETE /api/users/1   →  delete user with ID 1
+```
+
+Without Express, there's no fancy `:id` syntax — but you can still detect route parameters manually by inspecting `req.url`.
+
+#### Extracting the ID from the URL
+
+When a request comes in for `/api/users/1`, you can extract the ID like this:
+
+```js
+const id = Number(req.url.split("/")[3]);
+```
+
+To understand why this works, let's break down what `split("/")` does to the URL:
+
+```
+req.url = "/api/users/1"
+
+"/api/users/1".split("/")
+//  returns: ["", "api", "users", "1"]
+//  index:    [0]   [1]    [2]     [3]
+```
+
+The URL starts with `/`, so splitting on `/` produces an empty string at index `0`. That means:
+- `[1]` → `"api"`
+- `[2]` → `"users"`
+- `[3]` → `"1"` ← this is the ID you want
+
+You wrap it in `Number(...)` to convert the string `"1"` into the number `1`, so it can be compared against IDs stored as numbers.
+
+#### GET — Fetch a Single User
 
 ```js
 if (req.method === "GET" && req.url.startsWith("/api/users/")) {
-  const id = Number(req.url.split("/")[3]); // extract ID from URL
+  const id = Number(req.url.split("/")[3]);
+
+  const users = [
+    { id: 1, name: "Alice" },
+    { id: 2, name: "Bob" },
+  ];
+
   const user = users.find(u => u.id === id);
 
   if (!user) {
@@ -618,7 +756,58 @@ if (req.method === "GET" && req.url.startsWith("/api/users/")) {
 }
 ```
 
-This logic looks primitive, but it's exactly what Express automates later.
+#### PUT — Update a Single User
+
+```js
+if (req.method === "PUT" && req.url.startsWith("/api/users/")) {
+  const id = Number(req.url.split("/")[3]);
+  let body = "";
+
+  req.on("data", chunk => { body += chunk.toString(); });
+
+  req.on("end", () => {
+    const updates = JSON.parse(body);
+    // In a real app, you'd find the user and apply the updates
+    res.writeHead(200);
+    res.end(JSON.stringify({ message: `User ${id} updated`, updates }));
+  });
+}
+```
+
+#### DELETE — Remove a Single User
+
+```js
+if (req.method === "DELETE" && req.url.startsWith("/api/users/")) {
+  const id = Number(req.url.split("/")[3]);
+  // In a real app, you'd find and remove the user from your data store
+  res.writeHead(200);
+  res.end(JSON.stringify({ message: `User ${id} deleted` }));
+}
+```
+
+> 💡 **In Express**, this whole pattern becomes much cleaner using `:id` in the route definition and `req.params.id` to access it — but what Express does under the hood is essentially the same splitting and matching you see here.
+
+---
+
+#### Route Parameters vs. Query Parameters
+
+These two patterns look similar but serve different purposes. Here's how to tell them apart:
+
+| | Route Parameter | Query Parameter |
+|---|---|---|
+| **Example URL** | `/api/users/1` | `/api/users?id=1` |
+| **Where it lives** | Embedded in the path | After the `?` at the end of the URL |
+| **How you read it** | `req.url.split("/")[3]` | `parse(req.url, true).query.id` |
+| **Best used for** | Identifying a specific resource | Filtering, sorting, or pagination |
+| **Typical use case** | "Give me user 1" | "Give me users, sorted by name, page 2" |
+
+**Use a route parameter** when the ID or identifier is a core part of *what* you're requesting — like a specific user, post, or product.
+
+**Use a query parameter** when you're customizing *how* a list of data is returned — like filtering by category or limiting how many results come back.
+
+---
+
+This logic looks primitive compared to Express, but it's exactly what Express automates later.
 
 ## Wrapping Up: From Core Node to Express
 

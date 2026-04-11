@@ -61,6 +61,8 @@ app.listen(3000, () => console.log("🚀 Express server running on http://localh
 
 That's it — no need for `createServer`, manual header setting, or body parsing!
 
+> 💡 You'll notice `app.use(express.json())` near the top. Don't worry about what that means just yet — we'll cover it fully in the **Middleware** section below. For now, just know it's the one line that tells Express to automatically read JSON data sent from the frontend, replacing the manual `req.on("data")` chunk-reading you did in plain Node.
+
 ##  Converting Your Node Server to Express
 
 Here's a direct comparison between your previous Node HTTP server and its Express version:
@@ -126,10 +128,6 @@ app.listen(3000, () => console.log("🚀 Express server running on http://localh
 | Handle 404 errors | Custom logic | Built-in middleware or easily added |
 
 Express simplifies all the repetitive steps so you can focus on **what your API should do**, not the plumbing.
-
-> ⚠️ **Browsers can only send GET requests.** You can test the GET routes above by visiting the URL directly in your browser, but to test POST, PUT, or DELETE routes you'll need a tool like **Postman**, **Insomnia**, or the **Thunder Client** extension in VS Code. We'll do a full deep dive into testing and working with these tools when we cover REST APIs and Express in detail later.
-
----
 
 ## Middleware — The Heart of Express
 
@@ -417,8 +415,6 @@ Key things to notice in this diagram:
 | `morgan()` | Logs every request | Great for debugging during development |
 | Custom validation | Checks data before saving | Prevents invalid or missing data |
 
----
-
 ## Routing
 
 Now that you understand middleware, routing is easy to reason about — because routes are just middleware that only runs for a specific URL and HTTP method.
@@ -452,6 +448,8 @@ app.listen(3000, () => console.log("✅ Server running on http://localhost:3000"
 - `app.get("/api/users")` → runs for the exact path `/api/users`  
 - `req.params.id` → captures dynamic parts of the URL (like `/api/users/5`)  
 - `req.query` → reads query parameters from the URL (like `/api/search?q=react`)  
+
+> 💡 Notice that `req.params.id` and `req.query` are now available automatically — in the previous document, you had to extract these manually using `split("/")` and `parse()`. Express handles all of that parsing for you behind the scenes. The `:id` syntax in the route definition is Express's way of saying "whatever value appears here, make it available as `req.params.id`."
 
 #### Tip:
 Routes are matched **in order**, so always put more specific ones (like `/api/users/:id`) before generic ones.
@@ -506,8 +504,6 @@ and `/api/users` still works for the full list.
 | **First Match Wins** | Once a route matches, Express stops checking others. |
 | **Specific Before Generic** | Always put routes like `/api/users/:id` before `/api/users`. |
 | **Middleware Follows the Same Rule** | `app.use()` middleware runs in order too — top to bottom. |
-
----
 
 ## Serving Static Files — HTML, CSS, and Images
 
@@ -772,7 +768,7 @@ app.listen(3000, () => console.log("🚀 API running on http://localhost:3000"))
 ### How Error Handling Works — Key Rules
 
 - The **404 handler** is a regular middleware with no path, placed after all routes. It runs when nothing above it matched.
-- The **error handler** has exactly **four parameters** `(err, req, res, next)` — this is how Express identifies it. Miss one parameter and Express treats it as regular middleware.
+- The **error handler** requires exactly four parameters `(err, req, res, next)` — miss one and Express treats it as regular middleware.
 - Both handlers must be **at the very bottom** of your file, after all routes and other middleware.
 - Inside any route, call `next(err)` to trigger the error handler — never `throw` without catching it first.
 - In Express 4 (still common in existing codebases), always wrap `async` route handlers in `try/catch` and pass errors to `next(err)`. In Express 5 this is handled automatically.
