@@ -539,21 +539,26 @@ layered architecture ensures maintainability and scalability.
 
 ### Next Topics to Explore
 
-#### 🧪 [Testing & Debugging](1-testing-and-debugging.md)  
+#### 📐 [API Design](1-api-design.md)
+Learn the conventions that make APIs predictable and easy to work with — including route naming, status codes, consistent response shapes, versioning, and pagination.
+
+#### 🧪 [Testing & Debugging](2-testing-and-debugging.md)  
 Learn how to test your API endpoints, write Postman tests, and debug common backend issues so you can confidently verify that your server behaves correctly.
 
-#### 🔐 [API Security](2-api-security.md)  
+#### 📋 [Server Logging](3-server-logging.md)  
+Understand how to record what your API is doing using Morgan and Winston — including writing permanent log files, log levels, and what never to log.
+
+#### 🔐 [API Security](4-api-security.md)  
 Understand how to protect your backend using validation, authentication, environment variables, and other techniques that prevent common security vulnerabilities.
 
-#### 🐘 [Using PostgreSQL](3-postgres.md)  
+#### 🐘 [Using PostgreSQL](5-postgres.md)  
 Learn how relational databases work using PostgreSQL, including tables, rows, relationships, and how SQL queries interact with structured data.
 
-#### 🔗 [Connecting APIs to PostgreSQL](4-postgres-service.md)  
+#### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
 Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
 
-#### 🍃 [Using MongoDB](5-mongodb.md)  
+#### 🍃 [Using MongoDB](7-mongodb.md)  
 Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
 
-#### 🔌 [Connecting APIs to MongoDB](6-mongodb-service.md)  
+#### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  
 Learn how to connect your API to MongoDB and use tools like Mongoose to create models, run queries, and manage application data.
-
