@@ -12,6 +12,8 @@ When you build a REST API, you're usually protecting at least one of these:
 
 So security is just: **"Only the right people can do the right things with the right data."**
 
+---
+
 ## The Big Picture
 
 Imagine you're building an API for a note-taking app. Users can sign up, log in, and manage their own notes. Here's what could go wrong without security:
@@ -1181,16 +1183,18 @@ If you're deploying to Render, Railway, or Vercel, you get HTTPS for free withou
 
 ## Final Security Checklist
 
-As a quick reference, here's everything this doc covered:
+As a quick reference, here's everything this doc covered, in the order it was taught:
 
-- **Authenticate and authorize every request** — JWT proves identity; middleware enforces permissions
+- **Use HTTPS in production** — encrypts all data in transit; most platforms provide it automatically
+- **Understand tokens vs sessions** — tokens are stateless and scale easily; sessions offer instant revocation
+- **Authenticate every request** — use JWT to verify who the user is before running any route logic
+- **Authorize every request** — check role and ownership after authentication to control what users can do
 - **Protect your secrets** — keep passwords and keys in `.env`, never in your code or GitHub
 - **Control who can talk to your API** — configure CORS to whitelist only trusted frontends
 - **Use Helmet** — one line sets a strong baseline of secure HTTP headers against XSS, clickjacking, and more
 - **Validate every input** — never trust `req.body`, `req.params`, or `req.query`
 - **Hash passwords** — use bcrypt; never store plain text
 - **Handle errors gracefully** — log with Winston, send generic messages to the client
-- **Use HTTPS in production** — encrypts all data in transit; most platforms provide it automatically
 
 ### 💡 Security Mindset
 
