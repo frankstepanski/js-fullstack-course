@@ -680,4 +680,9 @@ to create a basic server using Node's built-in `http` module.
 #### 🚀 [Building APIs with Express](2-express.md)
 
 Learn how Express simplifies routing, middleware, and API development
---- and how to structure real backend applications.
+— and how to structure real backend applications.
+
+#### 🔗 [CORS — Connecting Your Frontend to Your Backend](3-cors.md)
+
+Learn why the browser blocks cross-origin requests, what CORS errors mean,
+and how to configure your Express server so your frontend can talk to your API.
