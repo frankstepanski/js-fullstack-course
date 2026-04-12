@@ -1,0 +1,51 @@
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  padding: 8px 12px;
+}
+
+.error {
+  color: red;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-button {
+  color: red;
+}
