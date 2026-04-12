@@ -1,152 +1,59 @@
-
 # MongoDB Setup and Introduction
 
-**MongoDB** is a popular **NoSQL document database** designed for modern applications that need flexibility, scalability, and fast development.
+You've already learned how to store data in PostgreSQL — a relational database that organises everything into tables, rows, and columns connected by foreign keys.
 
-Unlike relational databases such as PostgreSQL, MongoDB stores data as **documents** instead of rows in tables.
+MongoDB is a completely different kind of database. It stores data as **documents** — flexible JSON-like objects — instead of rigid table rows. Understanding when and why to use each is a core skill for any backend developer.
 
-MongoDB is widely used in applications built with:
+By the end of this doc you will understand:
+- What MongoDB is and how it differs from PostgreSQL
+- How documents and collections work
+- How to set up a cloud MongoDB database with Atlas
+- When to choose MongoDB over PostgreSQL (and when not to)
 
-- Node.js
-- Express
-- React
-- Next.js
-- Python
-- Mobile apps
+## The Big Picture — Where MongoDB Fits
 
-## Common Use Cases
-
-- Web and mobile backends
-- Real-time applications
-- APIs and microservices
-- Applications with flexible or evolving data structures
-
-MongoDB is especially popular in the **JavaScript ecosystem**, often used with **Node.js and Mongoose**.
-
-## MongoDB vs SQL
-
-Earlier we learned how to write SQL queries like:
-
-```sql
-SELECT * FROM students;
-```
-
-SQL is a language used to communicate with **relational databases** such as PostgreSQL.
-
-MongoDB works differently.
-
-Instead of tables and rows, MongoDB stores data in **collections and documents**.
-
-Think of it like this:
+Just like PostgreSQL, MongoDB sits at the bottom of your application stack. Your React frontend talks to your Express API, and your API talks to MongoDB.
 
 ```
-SQL → language used to query relational databases
-MongoDB → database system storing documents
-Mongoose → library that helps Node.js work with MongoDB
+  ┌─────────────────────┐
+  │    React Frontend   │  User interface
+  └──────────┬──────────┘
+             │  HTTP Request
+             ▼
+  ┌─────────────────────┐
+  │   Express REST API  │  Your backend (routes, controllers, services)
+  └──────────┬──────────┘
+             │  Query
+             ▼
+  ┌─────────────────────┐
+  │      MongoDB        │  Stores your application data as documents
+  └─────────────────────┘
 ```
 
-When an application uses MongoDB:
+The difference from PostgreSQL isn't where it sits — it's **how it stores data** and **what kind of data it handles best**.
 
-1. The application sends a query
-2. MongoDB processes the query
-3. It reads or updates stored documents
-4. It returns the result
+## MongoDB vs PostgreSQL — The Core Difference
 
-MongoDB is one of the most widely used **NoSQL databases** in modern web development.
+You've already used PostgreSQL which is a **relational database** — data lives in tables with strict structure and relationships enforced by foreign keys.
 
-## Understanding Documents and Collections
+MongoDB is a **document database** — data lives in flexible JSON-like documents that can hold whatever shape makes sense for that record.
 
-When working with databases, the **main goal is storing and organizing
-data** so applications can retrieve it later.
+Here's the same student data stored in both:
 
-Different database systems organize data in different ways.
-
-Two of the most common models are:
-
--   **Relational databases** (PostgreSQL, MySQL)
--   **Document databases** (MongoDB)
-
-Understanding how they structure data is the key to understanding
-MongoDB.
-
-### How MongoDB Stores Data
-
-MongoDB uses a **document-based model**.
-
-Instead of tables and rows, MongoDB stores data in:
-
--   **Collections**
--   **Documents**
-
-Structure:
-
-    Collection
-     ├─ Document
-     │   ├─ Field
-     │   ├─ Field
-     │   └─ Field
-     └─ Document
-
-### Table vs Collection
-
-    Relational Database (SQL)
-
-    Table
-     ├─ Row
-     │   ├─ Column
-     │   ├─ Column
-     │   └─ Column
-     └─ Row
-
-
-    MongoDB (NoSQL)
-
-    Collection
-     ├─ Document
-     │   ├─ Field
-     │   ├─ Field
-     │   └─ Field
-     └─ Document
-
-
-| SQL Concept | MongoDB Equivalent | What It Means |
-|--------------|-------------------|---------------|
-| Table | Collection | A container that stores a group of related records (for example: `students`, `orders`, or `products`). |
-| Row | Document | A single record in the database that represents one item, such as one student or one product. |
-| Column | Field | A specific piece of data inside the record, such as `name`, `email`, or `price`. |
-
-------------------------------------------------------------------------
-
-### Example SQL Data
-
-In PostgreSQL, you might store a student like this:
-
-students (table)
-
-### Example SQL Table
-
-**students (table)**
+**PostgreSQL — split across two tables:**
 
 | id | name | email |
-|----|------|------|
+|----|------|-------|
 | 1 | Alice Johnson | alice@email.com |
-
-To represent courses, you might need **another table**:
-
-**enrollments (table)**
 
 | id | student_id | course |
 |----|------------|--------|
 | 1 | 1 | JavaScript |
 | 2 | 1 | Databases |
 
-Relational databases split data into **multiple tables** and connect them using **relationships**.
+**MongoDB — one document:**
 
-### Example MongoDB Document
-
-In MongoDB, the same student could be stored as **one document**.
-
-``` json
+```json
 {
   "name": "Alice Johnson",
   "email": "alice@email.com",
@@ -154,314 +61,397 @@ In MongoDB, the same student could be stored as **one document**.
 }
 ```
 
-Instead of splitting information into multiple tables, MongoDB can **embed related data inside the document**.
+Instead of splitting related data into multiple tables and joining them, MongoDB can **embed related data directly inside a document**. This makes some types of reads much simpler — no JOIN queries needed.
 
-### Collections Contain Documents
+## When to Use MongoDB vs PostgreSQL
 
-Documents are stored inside **collections**.
+This is the question every developer faces. Here's an honest comparison:
 
-Example collection: `students`
+| | **PostgreSQL** | **MongoDB** |
+|---|---|---|
+| **Data structure** | Fixed schema — every row has the same columns | Flexible schema — each document can have different fields |
+| **Relationships** | Strong — foreign keys, JOINs, constraints | Weaker — references exist but no enforced foreign keys |
+| **Best for** | Structured data with clear relationships (users, orders, payments) | Flexible or evolving data (content, logs, user activity, configs) |
+| **Queries** | SQL — powerful for complex joins and aggregations | MongoDB query language — powerful for document retrieval |
+| **Transactions** | ✅ Strong ACID transactions | ⚠️ Limited (improving in recent versions) |
+| **Schema changes** | ❌ Harder — requires migrations | ✅ Easy — just add new fields to documents |
+| **Scaling** | Vertical (bigger server) | Horizontal (more servers) |
 
-    students (collection)
+**Choose PostgreSQL when:**
+- Your data has clear relationships (e.g. users → orders → products)
+- Data consistency and integrity are critical (e.g. financial data)
+- You need complex queries joining multiple entities
+- Your schema is stable and unlikely to change often
 
-    Document 1
+**Choose MongoDB when:**
+- Your data structure is flexible or evolving rapidly
+- You're storing content, logs, events, or user-generated data
+- Each record might have a different set of fields
+- You want to embed related data rather than join it
+
+> In practice, many applications use **both** — PostgreSQL for core business data and MongoDB for flexible content or activity logs. Neither is universally better. The right choice depends on what you're storing.
+
+## Understanding Documents and Collections
+
+MongoDB organises data into **collections** and **documents** — the equivalents of tables and rows in SQL.
+
+### The Terminology Mapping
+
+| SQL Concept | MongoDB Equivalent | What It Means |
+|-------------|-------------------|---------------|
+| Database | Database | A container for all your collections |
+| Table | Collection | A group of related documents (e.g. `users`, `products`) |
+| Row | Document | A single record — one user, one product |
+| Column | Field | A piece of data inside a document (e.g. `name`, `email`) |
+
+### Structure Comparison
+
+```
+  PostgreSQL (Relational)          MongoDB (Document)
+
+  Database                         Database
+  └── Table: students              └── Collection: students
+      ├── Row: { id, name, email }     ├── Document: { name, email, courses: [...] }
+      └── Row: { id, name, email }     └── Document: { name, email, courses: [...] }
+```
+
+### What a Collection Looks Like
+
+```
+students (collection)
+│
+├── Document 1
+│   {
+│     "_id": "64abc123...",
+│     "name": "Alice Johnson",
+│     "email": "alice@email.com",
+│     "courses": ["JavaScript", "Databases"]
+│   }
+│
+└── Document 2
     {
-      name: "Alice",
-      email: "alice@email.com"
+      "_id": "64abc456...",
+      "name": "Bob Smith",
+      "email": "bob@email.com",
+      "courses": ["Web Development"]
     }
+```
 
-    Document 2
-    {
-      name: "Bob",
-      email: "bob@email.com"
-    }
+Each document is its own self-contained record. Notice that documents in the same collection don't have to have exactly the same fields — MongoDB doesn't enforce a fixed structure. Bob could have a `phoneNumber` field that Alice doesn't, and that's fine.
 
-Each document represents **one record**, similar to a **row in a SQL
-table**.
+### The `_id` Field
 
-### BSON vs JSON
+Every MongoDB document automatically gets a unique `_id` field. This is MongoDB's equivalent of a primary key — it uniquely identifies each document in the collection.
 
-MongoDB stores documents using **BSON (Binary JSON)**.
-
-BSON is similar to JSON but optimized for databases.
-
-Example JSON document:
-
-``` json
+```json
 {
-  "name": "Alice",
-  "email": "alice@email.com"
+  "_id": "64abc123ef456789...",
+  "name": "Alice Johnson"
 }
 ```
 
-MongoDB stores this internally as **BSON**, which allows:
+You don't need to create it — MongoDB generates it automatically when you insert a document.
 
--   Faster queries
--   Additional data types
--   Efficient storage
+## Data Types in MongoDB
 
-Developers usually **write and read JSON**, while MongoDB handles the
-BSON conversion internally.
+This is one of the most important differences from PostgreSQL, and one that catches many beginners off guard.
+
+### PostgreSQL Enforces Types Strictly
+
+In PostgreSQL, you define the data type for every column when you create a table. The database enforces it — if you try to put the wrong type in, it rejects the insert entirely.
+
+```sql
+CREATE TABLE users (
+  name TEXT,
+  age  INTEGER
+);
+
+-- ✅ Works fine
+INSERT INTO users (name, age) VALUES ('Alice', 25);
+
+-- ❌ PostgreSQL rejects this — "twenty-six" is not an integer
+INSERT INTO users (name, age) VALUES ('Bob', 'twenty-six');
+```
+
+### MongoDB Does NOT Enforce Types By Default
+
+In MongoDB, there is no schema enforcement at the database level. You can store any value in any field, and different documents in the same collection can have completely different types for the same field.
+
+```json
+{ "name": "Alice", "age": 25 }
+{ "name": "Bob",   "age": "twenty-six" }
+{ "name": "Carol", "age": true }
+{ "name": "Dave" }
+```
+
+MongoDB accepts all of these without complaint. This is both the power and the danger of MongoDB — flexibility is great for fast development, but it means **you** are responsible for keeping your data consistent.
+
+### Why This Matters — A Real Example
+
+Imagine you store user ages inconsistently:
+
+```
+users (collection)
+│
+├── { name: "Alice", age: 25 }         ← number
+├── { name: "Bob",   age: "26" }       ← string
+├── { name: "Carol", age: null }       ← null
+└── { name: "Dave" }                   ← field missing entirely
+```
+
+Now when you try to find users over 18:
+
+```js
+db.users.find({ age: { $gt: 18 } })
+```
+
+You get back only Alice — because MongoDB can only compare numbers to numbers. Bob's `"26"` is a string, so it doesn't match. Carol and Dave are skipped entirely.
+
+```
+  Query: find users where age > 18
+
+  Alice  age: 25        ✅ returned  (number comparison works)
+  Bob    age: "26"      ❌ skipped   (string, not compared as number)
+  Carol  age: null      ❌ skipped   (null, not comparable)
+  Dave   age: missing   ❌ skipped   (field doesn't exist)
+```
+
+Your query appears to work — it returns results — but you're silently missing users. This kind of bug is very hard to diagnose.
+
+### MongoDB's Native Data Types
+
+MongoDB does understand and store different data types correctly in BSON — it just doesn't enforce them unless you tell it to. Here are the most common ones:
+
+| Type | Example | Notes |
+|------|---------|-------|
+| **String** | `"Alice"` | Text — most common |
+| **Number (Int)** | `25` | Whole numbers |
+| **Number (Double)** | `4.99` | Decimal numbers |
+| **Boolean** | `true` / `false` | Yes/no values |
+| **Array** | `["JS", "CSS"]` | List of values |
+| **Object** | `{ city: "London" }` | Nested document |
+| **Date** | `ISODate("2024-01-01")` | Dates and timestamps |
+| **ObjectId** | `ObjectId("64abc...")` | MongoDB's unique ID type |
+| **Null** | `null` | Absence of a value |
+
+### The Solution — Mongoose Adds Type Enforcement Back
+
+This is exactly why most Node.js applications use **Mongoose**. Mongoose lets you define a schema that enforces types at the application level before data ever reaches MongoDB:
+
+```js
+const userSchema = new mongoose.Schema({
+  name: { type: String,  required: true },
+  age:  { type: Number,  required: true },
+  email:{ type: String,  required: true, unique: true }
+});
+```
+
+Now if you try to save a user with the wrong type, Mongoose catches it:
+
+```js
+// ❌ Mongoose rejects this before it reaches MongoDB
+const user = new User({ name: "Bob", age: "twenty-six" });
+await user.save(); // throws ValidationError: age must be a number
+```
+
+```
+  Without Mongoose                  With Mongoose
+  ─────────────────                 ────────────────────
+  Your code                         Your code
+      │                                 │
+      │ any data, any type              │ Mongoose validates types
+      ▼                                 ▼
+  MongoDB                           MongoDB
+  (accepts everything)              (only receives valid data)
+```
+
+Think of Mongoose as a gatekeeper that enforces the rules MongoDB itself won't.
+
+> **Key takeaway:** Raw MongoDB has no type enforcement. Mongoose adds it back. This is one of the main reasons Mongoose exists — and why you should always use it in Node.js applications rather than querying MongoDB directly without a schema.
+
+## BSON vs JSON
+
+MongoDB stores documents using **BSON (Binary JSON)**.
+
+BSON is similar to JSON but designed for databases — it's faster to read and write, uses less space, and supports extra data types like dates and binary data.
+
+```
+  You write (JSON):                MongoDB stores internally (BSON):
+
+  {                                Binary format optimised for:
+    "name": "Alice",               - faster reads and writes
+    "email": "alice@email.com"     - smaller storage size
+  }                                - extra data types (dates, binary)
+        │                                      ▲
+        └──────── MongoDB converts ────────────┘
+                  automatically
+```
+
+As a developer you never write or read BSON directly — you always work with normal JSON, and MongoDB handles the conversion internally. This is just useful context for understanding why MongoDB is fast.
+
+---
 
 ## Where MongoDB Runs
 
-A MongoDB database server can run in two places:
-
-1. **Locally on your computer**
-2. **In the cloud on a remote server**
-
-Just like PostgreSQL, the database software is the same — only the **location of the server changes**.
-
-### Local Development Setup
-
-When running MongoDB locally for a full-stack application, you will typically have **three servers running on your computer**:
-
-1. A **React frontend server**
-2. A **Node.js / Express backend API**
-3. A **MongoDB database server**
+Just like PostgreSQL, MongoDB can run locally on your computer during development, or in the cloud for production.
 
 ```
-Your Computer
-│
-├── React Frontend Server
-│
-├── Node.js API Server
-│
-└── MongoDB Database Server
+  Development                        Production
+
+  Your Computer                      Your Computer
+  │                                  │
+  ├── React Frontend                 ├── React Frontend
+  ├── Node.js API                    └── Node.js API
+  └── MongoDB (local)                        │
+                                             ▼
+                                       Cloud MongoDB
+                                       (Atlas / Railway)
 ```
 
-Your backend connects to MongoDB using:
-
+### Local Connection String
 ```
 mongodb://localhost:27017/my_database
 ```
 
-Local databases are commonly used for:
-
-- development
-- testing
-- experimentation
-- learning database concepts
-
-### Cloud Database Setup
-
-Instead of installing MongoDB locally, you can use a **cloud database provider**.
-
-Your computer runs:
-
-- React frontend
-- Node backend
-
-The MongoDB database runs remotely.
-
-```
-Your Computer
-│
-├── React Frontend
-│
-└── Node API
-        │
-        ▼
-      Internet
-        │
-        ▼
-   Cloud MongoDB Server
-```
-
-Example connection string:
-
+### Cloud Connection String
 ```
 mongodb+srv://username:password@cluster.mongodb.net/mydatabase
 ```
+
+The only difference is the address — your code works the same way in both cases.
 
 ### Example MongoDB Cloud Providers
 
 | Provider | Description |
 |--------|-------------|
-| MongoDB Atlas | Official MongoDB cloud hosting platform |
-| Railway | Easy deployment platform |
+| **MongoDB Atlas** | Official MongoDB cloud hosting — most commonly used, has a free tier |
+| Railway | Easy deployment platform with MongoDB support |
 | Render | Cloud hosting with database support |
 | DigitalOcean | Managed MongoDB clusters |
 
-The most common option for beginners is **MongoDB Atlas**.
+The most common option for beginners is **MongoDB Atlas** — it has a generous free tier and is by far the most widely used in the MongoDB ecosystem.
 
 ## Tools for Managing MongoDB
 
-Managing a database means:
+Just like Beekeeper Studio lets you explore your PostgreSQL database visually, **MongoDB Compass** lets you explore your MongoDB database without writing code.
 
-- viewing documents
-- inserting records
-- debugging data
-- exploring database structure
-
-MongoDB can be managed using **GUI tools**.
-
-| Task | Using Code | Using GUI Tool |
-|-----|-----------|-------------|
-| Insert data | `db.users.insertOne()` | Form editor |
-| Query data | `db.users.find()` | Table viewer |
-| Update documents | `updateOne()` | Edit record |
-| Delete documents | `deleteOne()` | Delete row |
+| Task | Using Code | Using Compass |
+|------|-----------|---------------|
+| View all documents | `db.users.find()` | Open collection — see all documents in a grid |
+| Insert a document | `db.users.insertOne({...})` | Click "Add Data" and fill in fields |
+| Update a document | `db.users.updateOne(...)` | Click a document and edit fields directly |
+| Delete a document | `db.users.deleteOne(...)` | Select a document and click delete |
+| Filter documents | `db.users.find({ name: "Alice" })` | Use the filter bar at the top |
 
 ### MongoDB Compass (Recommended)
 
-MongoDB Compass is the **official GUI tool for MongoDB**.
+MongoDB Compass is the **official GUI tool for MongoDB**, built by the same team.
 
 Features:
+- Visual document browser
+- Document editor — edit fields directly in the UI
+- Query builder with filter, sort, and project
+- Index management
+- Performance monitoring
 
-- visual database explorer
-- document editor
-- query builder
-- index management
-- performance monitoring
+Download: https://www.mongodb.com/products/compass
 
-Download:
+## Creating a Cloud MongoDB Database with MongoDB Atlas
 
-https://www.mongodb.com/products/compass
-
-### Creating a Cloud MongoDB Database with MongoDB Atlas
-
-MongoDB Atlas is the **official cloud platform for MongoDB**.
-
-It allows you to create a database in minutes without installing anything locally.
+For beginners, the easiest way to start is with **MongoDB Atlas** — you get a free database running in the cloud in minutes, no installation needed.
 
 ### Step 1 — Create an Atlas Account
 
-Visit:
+Visit: https://www.mongodb.com/cloud/atlas
 
-https://www.mongodb.com/cloud/atlas
+Click **Sign Up**. You can use GitHub, Google, or email.
 
-Sign up and ffter signing up you will enter the **Atlas dashboard**.
+After signing up you will enter the **Atlas dashboard**.
 
 ### Step 2 — Create a Cluster
 
 Click **Create Cluster**.
 
-Choose **Free Shared Cluster**.
+Choose **Free Shared Cluster** (the M0 tier — no credit card needed).
 
-Give your cluster a name.
-
-Example:
+Give your cluster a name:
 
 ```
 student-database
 ```
 
-Click **Create Cluster**.
-
-Atlas will now create your MongoDB database server.
+Click **Create Cluster**. Atlas will provision your MongoDB database server — this usually takes about a minute.
 
 ### Step 3 — Create a Database User
 
-MongoDB requires authentication.
+MongoDB requires a username and password to connect.
 
-Create a user:
+In the Atlas dashboard, go to **Database Access** and create a user:
 
 ```
 username: student
 password: yourpassword
 ```
 
-### Step 4 — Get Your Connection String
+Save these — you'll need them in your connection string.
 
-Example:
+### Step 4 — Allow Network Access
 
-```
-mongodb+srv://student:password@cluster.mongodb.net/mydatabase
-```
+By default Atlas blocks all connections. Go to **Network Access** and either:
+- Add your current IP address (for local development)
+- Add `0.0.0.0/0` to allow connections from anywhere (easier for learning, less secure for production)
 
-## Using Mongoose with Node.js
+### Step 5 — Get Your Connection String
 
-Most Node.js applications use **Mongoose**.
+In the Atlas dashboard, click **Connect** → **Connect your application**.
 
-Install:
-
-```bash
-npm install mongoose
-```
-
-## Connecting Node.js to MongoDB
-
-Example:
-
-```javascript
-import mongoose from "mongoose";
-
-mongoose.connect(process.env.MONGO_URI);
-
-mongoose.connection.on("connected", () => {
-  console.log("MongoDB connected");
-});
-```
-
-Example `.env`:
+You'll see something like:
 
 ```
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/mydatabase
+mongodb+srv://student:yourpassword@cluster0.abc123.mongodb.net/mydatabase
 ```
 
-### Creating a Schema with Mongoose
+Copy this — you'll add it to your `.env` file in the next doc.
 
-```javascript
-import mongoose from "mongoose";
+## MongoDB vs PostgreSQL — Quick Reference
 
-const studentSchema = new mongoose.Schema({
-  name: String,
-  email: String
-});
+Now that you've set up both databases, here's a quick visual summary of how the two compare day-to-day:
 
-export default mongoose.model("Student", studentSchema);
 ```
+  PostgreSQL                       MongoDB
 
-### Creating Documents
+  students table:                  students collection:
+  ┌────┬───────┬───────────┐       { name: "Alice", courses: [...] }
+  │ id │ name  │ email     │       { name: "Bob",   courses: [...] }
+  ├────┼───────┼───────────┤
+  │  1 │ Alice │ alice@... │       No fixed columns — each document
+  │  2 │ Bob   │ bob@...   │       can have different fields
+  └────┴───────┴───────────┘
 
-```javascript
-const student = await Student.create({
-  name: "Alice Johnson",
-  email: "alice@email.com"
-});
-```
+  Relationships via foreign keys:  Relationships via embedding:
+  enrollments.student_id → id      { courses: ["JS", "Databases"] }
 
-### Querying Documents
-
-Retrieve all students:
-
-```javascript
-const students = await Student.find();
-```
-
-Find one student:
-
-```javascript
-const student = await Student.findOne({ name: "Alice Johnson" });
-```
-
-### Modeling Relationships
-
-MongoDB does not use **foreign keys** like SQL databases.
-
-Relationships are modeled using **references**.
-
-```javascript
-const enrollmentSchema = new mongoose.Schema({
-  studentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Student"
-  },
-  courseId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Course"
-  }
-});
+  Query language: SQL              Query language: MongoDB query API
+  SELECT * FROM students           db.students.find()
+  WHERE name = 'Alice'             .find({ name: "Alice" })
 ```
 
 ## What Happens Next
 
 Now that you have:
 
-- created a **MongoDB cloud database**
-- connected using **MongoDB Compass**
-- learned how **documents and collections work**
-- defined **Mongoose schemas**
+- understood how **documents and collections** differ from tables and rows
+- seen how to **compare MongoDB and PostgreSQL** and when to use each
+- created a **MongoDB cloud database** with Atlas
+- installed **MongoDB Compass** to explore your data visually
+- copied your **connection string** ready to use
 
-Next we will connect a **Node.js Express API** to MongoDB so our application can store and retrieve real data.
+The next step is connecting your **Node.js Express API** to MongoDB using Mongoose, so your application can actually store and retrieve real data.
+
+### Next Topics to Explore
+
+#### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)
+Learn how to connect your API to MongoDB and use tools like Mongoose to create models, run queries, and manage application data.
+
+#### 🚀 [Deployment](9-deployment.md)
+Learn how to deploy your REST API to the cloud with a live database, including environment configuration, hosting platforms, and making your backend accessible in production.

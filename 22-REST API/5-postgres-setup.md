@@ -14,8 +14,6 @@ It’s one of the most popular databases for modern **web applications** — esp
 - Data analytics and dashboards  
 - Enterprise applications  
 
-**PostgreSQL** (often called *Postgres*) is a powerful, open-source **relational database management system**.
-
 Earlier we learned how to write **SQL queries** like:
 
 ```sql
@@ -43,7 +41,7 @@ When you run a SQL query, PostgreSQL:
 
 PostgreSQL is one of the most widely used relational databases in modern web development.
 
-# Where PostgreSQL Runs
+## Where PostgreSQL Runs
 
 A PostgreSQL database server can run in two different places:
 
@@ -551,15 +549,11 @@ The **`neon`** schema is created by the Neon cloud platform. It contains interna
 
 The **`neon_migration`** schema is used by Neon for managing database migrations and internal infrastructure.
 
-### Step 7 — Create Tables and Relationships
+### Step 7 — Create Your First Tables in Neon
 
-In this example we will create a simple school database with:
+You already know how to design tables, define primary keys, and create relationships with foreign keys. Now let's do it for real inside your Neon database using the Beekeeper Studio SQL editor.
 
-- students
-- courses
-- enrollments (which links students to courses)
-
-#### Create the Students Table
+Open the SQL editor in Beekeeper Studio and run the following queries to create a simple school database:
 
 ```sql
 CREATE TABLE students (
@@ -567,67 +561,13 @@ CREATE TABLE students (
   name TEXT NOT NULL,
   email TEXT UNIQUE
 );
-```
 
-The `id` column is the **primary key**, meaning each student has a unique identifier.
-
-#### Insert Students
-
-```sql
-INSERT INTO students (name, email)
-VALUES
-('Alice Johnson', 'alice@email.com'),
-('Bob Smith', 'bob@email.com'),
-('Maria Garcia', 'maria@email.com');
-```
-
-Example data:
-
-| id | name | email |
-|----|------|------|
-| 1 | Alice Johnson | alice@email.com |
-| 2 | Bob Smith | bob@email.com |
-| 3 | Maria Garcia | maria@email.com |
-
----
-
-#### Create the Courses Table
-
-```sql
 CREATE TABLE courses (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
   instructor TEXT
 );
-```
 
-The `id` column is also the **primary key**.
-
-#### Insert Courses
-
-```sql
-INSERT INTO courses (title, instructor)
-VALUES
-('Intro to JavaScript', 'Dr. Lee'),
-('Database Fundamentals', 'Dr. Patel'),
-('Web Development Basics', 'Dr. Chen');
-```
-
-Example data:
-
-| id | title | instructor |
-|----|------|-----------|
-| 1 | Intro to JavaScript | Dr. Lee |
-| 2 | Database Fundamentals | Dr. Patel |
-| 3 | Web Development Basics | Dr. Chen |
-
----
-
-#### Create the Enrollments Table (Relationship Table)
-
-This table connects students and courses together.
-
-```sql
 CREATE TABLE enrollments (
   id SERIAL PRIMARY KEY,
   student_id INTEGER REFERENCES students(id),
@@ -635,25 +575,21 @@ CREATE TABLE enrollments (
 );
 ```
 
-The `REFERENCES` keyword creates a **foreign key relationship** between tables.
-
-Here:
-
-- `student_id` points to `students.id`
-- `course_id` points to `courses.id`
-
-These are called **foreign keys**.
-
-```
-students.id  → enrollments.student_id
-courses.id   → enrollments.course_id
-```
-
-#### Insert Enrollments
-
-Now we can connect students to courses.
+Then insert some sample data to work with:
 
 ```sql
+INSERT INTO students (name, email)
+VALUES
+('Alice Johnson', 'alice@email.com'),
+('Bob Smith', 'bob@email.com'),
+('Maria Garcia', 'maria@email.com');
+
+INSERT INTO courses (title, instructor)
+VALUES
+('Intro to JavaScript', 'Dr. Lee'),
+('Database Fundamentals', 'Dr. Patel'),
+('Web Development Basics', 'Dr. Chen');
+
 INSERT INTO enrollments (student_id, course_id)
 VALUES
 (1, 1),
@@ -663,105 +599,7 @@ VALUES
 (3, 3);
 ```
 
-This means:
-
-- Alice is enrolled in Intro to JavaScript and*Database Fundamentals
-- Bob is enrolled in Database Fundamentals
-- Maria is enrolled in Intro to JavaScript and Web Development Basics
-
-### Visualizing the Relationship
-
-```
-students
----------
-id (PK)
-name
-email
-   |
-   | 1
-   |
-   | student_id
-   v
-enrollments
----------
-id (PK)
-student_id (FK)
-course_id (FK)
-   ^
-   | course_id
-   |
-   | many
-   |
-courses
----------
-id (PK)
-title
-instructor
-```
-
-### One Student → Many Courses
-
-A student can enroll in multiple courses.
-
-Example:
-
-Alice can enroll in:
-
-- Intro to JavaScript
-- Database Fundamentals
-
-### One Course → Many Students
-
-A course can have many students.
-
-Example:
-
-Database Fundamentals might contain:
-
-- Alice
-- Bob
-- Maria
-
-### Why the Third Table Exists
-
-Because both sides can have **many records**, this is called a:
-
-**Many-to-Many Relationship**
-
-```
-Student  ----< Enrollments >----  Course
-```
-
-The `enrollments` table acts as the **bridge** between the two tables.
-
-Without this table, it would be very difficult to track which students belong in which courses.
-
-### The Relationship Structure
-
-```
-students
-   │
-   │ 1 student can appear many times
-   ▼
-enrollments
-   ▲
-   │
-   │ many courses can appear many times
-   │
-courses
-```
-
----
-
-### How the Database Combines the Data
-
-To view which students are in which courses, we combine the tables using a **JOIN query**.
-
-```
-students → enrollments → courses
-```
-
-Example:
+Once you've run these, click on the **students**, **courses**, and **enrollments** tables in Beekeeper Studio's sidebar to confirm the data is there. You can also run a quick JOIN to verify the relationships are working:
 
 ```sql
 SELECT
@@ -772,13 +610,13 @@ JOIN students ON enrollments.student_id = students.id
 JOIN courses ON enrollments.course_id = courses.id;
 ```
 
-Result:
-
 | Student | Course |
 |---|---|
-| Alice | Intro to JavaScript |
-| Alice | Database Fundamentals |
-| Bob | Database Fundamentals |
+| Alice Johnson | Intro to JavaScript |
+| Alice Johnson | Database Fundamentals |
+| Bob Smith | Database Fundamentals |
+| Maria Garcia | Intro to JavaScript |
+| Maria Garcia | Web Development Basics |
 
 
 ## What Happens Next
@@ -787,8 +625,47 @@ Now that you have:
 
 - created a **cloud PostgreSQL database**
 - connected it to **Beekeeper Studio**
-- create tables and inserted sample data
+- created and populated tables inside Neon
 
->You are ready for the next step.
+You are ready for the next step.
 
-Next we will learn how to connect our **Node.js Express API** to this database so our application can store and retrieve real data.
+### What's Coming Next
+
+In the next doc you will learn how to connect your **Node.js Express API** to this PostgreSQL database. That means replacing placeholder functions like `getUserByEmail()` with real SQL queries that read and write actual data.
+
+Here is a preview of what that looks like:
+
+```js
+// Before — placeholder
+const user = getUserByEmail(email);
+
+// After — real SQL query via pg
+const result = await pool.query(
+  'SELECT * FROM users WHERE email = $1',
+  [email]
+);
+const user = result.rows[0];
+```
+
+Specifically, you will learn how to:
+
+- Install and configure the **`pg`** library to connect Node.js to PostgreSQL
+- Use a **connection pool** to manage database connections efficiently
+- Write **parameterized queries** to safely read and write data
+- Wire your **Express routes** to real database queries
+- Handle **database errors** gracefully in your API
+
+
+### Next Topics to Explore
+
+#### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
+Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
+
+#### 🍃 [Using MongoDB](7-mongodb.md)  
+Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
+
+#### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  
+Learn how to connect your API to MongoDB and use tools like Mongoose to create models, run queries, and manage application data.
+
+#### 🚀 [Deployment](9-deployment.md)  
+Learn how to deploy your REST API to the cloud with a live database, including environment configuration, hosting platforms, and making your backend accessible in production.

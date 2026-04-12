@@ -551,7 +551,7 @@ Understand how to record what your API is doing using Morgan and Winston — inc
 #### 🔐 [API Security](4-api-security.md)  
 Understand how to protect your backend using validation, authentication, environment variables, and other techniques that prevent common security vulnerabilities.
 
-#### 🐘 [Using PostgreSQL](5-postgres.md)  
+#### 🐘 [Using PostgreSQL](5-postgres-setup.md)  
 Learn how relational databases work using PostgreSQL, including tables, rows, relationships, and how SQL queries interact with structured data.
 
 #### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
@@ -562,3 +562,6 @@ Understand how document databases work using MongoDB, including collections, doc
 
 #### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  
 Learn how to connect your API to MongoDB and use tools like Mongoose to create models, run queries, and manage application data.
+
+#### 🚀 [Deployment](9-deployment.md)  
+Learn how to deploy your REST API to the cloud with a live database, including environment configuration, hosting platforms, and making your backend accessible in production.

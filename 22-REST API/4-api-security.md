@@ -1206,3 +1206,22 @@ Think defensively:
 - Assume someone will test every route for weaknesses.
 
 If you build your API with those assumptions in mind — validating input, protecting data, and verifying every request — you'll have a backend that's reliable, resilient, and secure enough for real-world use.
+
+
+### Next Topics to Explore
+
+#### 🐘 [Using PostgreSQL](5-postgres-setup.md)  
+Learn how relational databases work using PostgreSQL, including tables, rows, relationships, and how SQL queries interact with structured data.
+
+#### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
+Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
+
+#### 🍃 [Using MongoDB](7-mongodb.md)  
+Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
+
+#### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  
+Learn how to connect your API to MongoDB and use tools like Mongoose to create models, run queries, and manage application data.
+
+#### 🚀 [Deployment](9-deployment.md)  
+Learn how to deploy your REST API to the cloud with a live database, including environment configuration, hosting platforms, and making your backend accessible in production.
+
