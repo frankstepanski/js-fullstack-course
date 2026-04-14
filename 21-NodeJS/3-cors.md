@@ -158,7 +158,9 @@ This is another reason to use the `cors` npm package in Express rather than sett
 
 You fix CORS errors by setting specific HTTP headers on your server to "grant permission" for requests coming from your frontend origin.
 
-### In Plain Node
+### In Plain Node (for context only — not recommended)
+
+This section shows how CORS headers work under the hood. In practice, you should use the `cors` npm package with Express (shown next) — but seeing the raw headers helps you understand what that package is doing for you.
 
 In a plain Node server, you can add headers manually:
 
@@ -175,20 +177,20 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 res.setHeader("Access-Control-Allow-Origin", "https://myfrontend.com");
 ```
 
-You'd also need to manually handle the `OPTIONS` preflight request — which gets repetitive and easy to get wrong. That's why Express with the `cors` package is the better approach.
+You'd also need to manually handle the `OPTIONS` preflight request for every route — which gets repetitive and easy to get wrong. That's exactly why the `cors` package exists.
 
 ---
 
-### Using Express
+### Using Express ✅ Recommended
 
-When using Express, you should use the official `cors` middleware package instead of manually setting headers.
+When using Express, use the official `cors` middleware package instead of manually setting headers.
 
 It automatically:
-- Sets correct CORS headers
+- Sets the correct CORS headers on every response
 - Handles preflight (`OPTIONS`) requests
 - Applies rules consistently across all routes
 
-#### 1️⃣ Install CORS
+#### 1️⃣ Install the cors package first
 
 ```bash
 npm install cors
@@ -202,12 +204,49 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors());
+app.use(cors());        // ← allow all origins (good for development)
+app.use(express.json()); // ← parse JSON request bodies
+
+// your routes go here
+app.get("/api/users", (req, res) => {
+  res.json([{ id: 1, name: "Alice" }]);
+});
+
+app.listen(3000, () => console.log("🚀 Server running on http://localhost:3000"));
 ```
 
 This allows all origins (`*`) during development.
 
 > ⚠️ **`app.use(cors())` must come before your routes** — just like `express.json()`. Since Express runs middleware top to bottom, any route defined before `cors()` won't have the CORS headers applied to it.
+
+Here's where `cors()` fits in the Express middleware chain you learned about in the previous document:
+
+```
+  Incoming request from React (localhost:5173)
+                │
+                ▼
+  ┌─────────────────────────┐
+  │  cors()                 │  ← adds Access-Control-Allow-Origin header
+  │  (runs first)           │    handles OPTIONS preflight automatically
+  └────────────┬────────────┘
+               │ next()
+               ▼
+  ┌─────────────────────────┐
+  │  express.json()         │  ← parses JSON request body
+  └────────────┬────────────┘
+               │ next()
+               ▼
+  ┌─────────────────────────┐
+  │  Your Routes            │  ← app.get(), app.post(), etc.
+  │  app.get("/api/users")  │
+  └────────────┬────────────┘
+               │
+               ▼
+       Response sent to browser ✅
+       (browser sees the CORS header — allows it)
+```
+
+Without `cors()` at the top, the response reaches the browser but has no `Access-Control-Allow-Origin` header — and the browser blocks it before your React app ever sees the data.
 
 ---
 
@@ -246,7 +285,27 @@ app.use(cors({
 }));
 ```
 
-> 💡 There's also a more advanced pattern using a callback function to dynamically check origins against a list stored in an environment variable. That's covered later when we get into environment variables and deployment configuration.
+#### Using an Environment Variable (the real-world pattern)
+
+Hardcoding URLs works for now, but the common real-world approach is to read the allowed origin from an **environment variable** — a value stored outside your code that changes depending on where the app is running (your laptop vs a live server).
+
+You'll cover `.env` files fully in a later module, but here's a preview of the pattern so it's not surprising when you see it:
+
+```js
+// .env file (never commit this to git)
+ALLOWED_ORIGIN=http://localhost:5173
+```
+
+```js
+// server.js
+import "dotenv/config"; // loads .env into process.env
+
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGIN  // reads from .env
+}));
+```
+
+This way, your local `.env` has `ALLOWED_ORIGIN=http://localhost:5173`, and your production server has `ALLOWED_ORIGIN=https://myfrontend.com` — same code, different behavior per environment. No hardcoded URLs to update when you deploy.
 
 ---
 

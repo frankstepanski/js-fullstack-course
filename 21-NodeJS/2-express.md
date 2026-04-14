@@ -34,6 +34,8 @@ To use Express in your project:
 npm install express
 ```
 
+> **Reminder:** The examples in this document use ES Module syntax (`import`). Make sure your `package.json` includes `"type": "module"` — otherwise Node will throw a syntax error when it sees `import`.
+
 Then create a simple server:
 
 ```js
@@ -63,7 +65,7 @@ That's it — no need for `createServer`, manual header setting, or body parsing
 
 > 💡 You'll notice `app.use(express.json())` near the top. Don't worry about what that means just yet — we'll cover it fully in the **Middleware** section below. For now, just know it's the one line that tells Express to automatically read JSON data sent from the frontend, replacing the manual `req.on("data")` chunk-reading you did in plain Node.
 
-##  Converting Your Node Server to Express
+## Converting Your Node Server to Express
 
 Here's a direct comparison between your previous Node HTTP server and its Express version:
 
@@ -421,7 +423,7 @@ Now that you understand middleware, routing is easy to reason about — because 
 
 Routing is how Express decides *which code to run* based on the request's **URL** and **HTTP method** (`GET`, `POST`, etc.).
 
-### Example:
+### Basic Routing Examples
 
 ```js
 import express from "express";
@@ -537,19 +539,29 @@ You might think you never need this if you use React, but static serving is stil
 
 #### 1. Serving Your Built React App (Production)
 
-In development, React runs its own server (`npm start`).  
+In development, React runs its own server (`npm run dev`).  
 But when you deploy, React becomes a folder of static files — HTML, JS, and CSS — that Express can serve.
 
-Example:
+> **Build folder names:** If you used **Create React App**, the build output goes into `build/`. If you used **Vite** (which this bootcamp uses), it goes into `dist/`. Use whichever matches your setup.
+
+> **⚠️ `__dirname` and ES Modules:** When using `"type": "module"`, Node's `__dirname` is not available — it only exists in CommonJS. You need to recreate it using `import.meta.url`. The example below shows how.
 
 ```js
 import path from "path";
+import { fileURLToPath } from "url";
 import express from "express";
+
+// Recreate __dirname for ES Modules
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 
-app.use(express.static("client/build"));
+// Serve the Vite build output (use "client/build" for Create React App)
+app.use(express.static(path.join(__dirname, "client", "dist")));
+
+// For any route not matched by the API, send back the React app
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 ```
 
@@ -633,7 +645,10 @@ app.use((err, req, res, next) => {
 });
 ```
 
-Using `err.status || 500` means you can attach a status code to the error object when you create it, and the handler will use it — otherwise it defaults to 500.
+A few things to note here:
+- **`err.stack`** is a built-in property of JavaScript `Error` objects. It's a multi-line string showing the full call stack — which file, which function, and which line the error originated from. It's very useful for debugging in the terminal, but you should never send it to the client (it leaks internal details about your server).
+- **`err.status || 500`** means you can attach a custom status code to the error when you create it (`err.status = 404`), and the handler will use it. If no status was set, it defaults to `500` (Internal Server Error).
+- **`err.message || "Something went wrong"`** uses the error's message if it has one, otherwise falls back to a generic string.
 
 ### Triggering the Error Handler from a Route
 

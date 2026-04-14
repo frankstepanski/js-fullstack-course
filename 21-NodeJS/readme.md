@@ -1,14 +1,59 @@
 # Understanding Node
 
+## Prerequisites: Node Installation
+
+You've already installed Node to use it with React — so you're likely good to go. Run this quick check to confirm:
+
+```bash
+node -v    # e.g. v22.12.0
+npm -v     # e.g. 11.6.4
+```
+
+If both print version numbers, you're set. For this module, **Node 18+** is recommended (needed for the built-in `fetch()` used in examples).
+
+**Need to install or update?** Use the version manager for your OS:
+
+| OS | Tool | Link |
+|---|---|---|
+| macOS / Linux | nvm | [github.com/nvm-sh/nvm](https://github.com/nvm-sh/nvm) |
+| Windows | nvm-windows | [github.com/coreybutler/nvm-windows](https://github.com/coreybutler/nvm-windows) |
+
+> ⚠️ These are two separate projects — `nvm` will not work on Windows. Windows users should also use **PowerShell or Command Prompt**, not Git Bash, when running nvm-windows commands.
+
+## Running Node Code
+
+You've already run Node scripts before — this is just a quick reminder:
+
+```bash
+node app.js       # runs a file directly
+node              # opens the interactive REPL (type .exit or Ctrl+C twice to quit)
+```
+
+No browser, no HTML — just your script and terminal output. The REPL is handy for quickly testing a snippet without creating a file.
+
+## npm and package.json
+
+You've used npm and package.json already with React — the same concepts apply here. Quick recap:
+
+| Command | What it does |
+|---|---|
+| `npm init -y` | Creates a `package.json` in the current folder |
+| `npm install <package>` | Installs a package and saves it to `dependencies` |
+| `npm install <package> --save-dev` | Installs a dev-only tool (e.g. `nodemon`) to `devDependencies` |
+| `npm install` | Installs all dependencies listed in `package.json` (e.g. after cloning a repo) |
+| `npm run <script>` | Runs a script defined in the `scripts` section of `package.json` |
+
+`package.json` tracks your project's name, version, scripts, and dependencies. `node_modules/` should always be in `.gitignore` — anyone cloning your project can restore it with `npm install`.
+
 ## What is Node?
 
-Node (often called “Node.js”) is a **runtime** — a platform that lets you run JavaScript **outside the browser**.
+Node (often called "Node.js") is a **runtime** — a platform that lets you run JavaScript **outside the browser**.
 
-Originally, JavaScript could only run **inside** a web browser (like Chrome or Firefox) to make web pages interactive. Then around 2009, Ryan Dahl created Node.js by taking **Google’s V8 JavaScript engine** (the thing Chrome uses to run JS) and wrapping it so JavaScript could run on a computer or a server — **not just in the browser**.
+Originally, JavaScript could only run **inside** a web browser (like Chrome or Firefox) to make web pages interactive. Then around 2009, Ryan Dahl created Node.js by taking **Google's V8 JavaScript engine** (the thing Chrome uses to run JS) and wrapping it so JavaScript could run on a computer or a server — **not just in the browser**.
 
 So you can think of Node as:
 
-> “JavaScript, but now it can do server stuff.”
+> "JavaScript, but now it can do server stuff."
 
 That means JavaScript can now:
 - read/write files
@@ -34,15 +79,15 @@ That meant developers used **different languages** for each part of a web app:
 
 This created a big gap between frontend and backend development:
 - Developers had to switch languages, tools, and even mental models between the client and server sides.
-- Code couldn’t easily be shared between browser and server.
-- Collaboration slowed down because frontend and backend teams spoke “different languages.”
+- Code couldn't easily be shared between browser and server.
+- Collaboration slowed down because frontend and backend teams spoke "different languages."
 
 ### The Idea That Changed Everything
 
 In 2009, **Ryan Dahl** had a breakthrough idea:  
-> “What if we could run JavaScript outside the browser — on the server?”
+> "What if we could run JavaScript outside the browser — on the server?"
 
-He built **Node.js** using Google Chrome’s **V8 JavaScript engine**, the same engine that powers Chrome’s lightning-fast JS execution.  
+He built **Node.js** using Google Chrome's **V8 JavaScript engine**, the same engine that powers Chrome's lightning-fast JS execution.  
 This meant JavaScript could now:
 - Read and write files on the server  
 - Handle HTTP requests and responses  
@@ -60,8 +105,8 @@ This allowed teams to use JavaScript for the entire web stack — which drastica
 
 ## What You Already Know (From Frontend)
 
-You’ve already built frontend apps using **JavaScript** and likely **React**.  
-In those apps you’ve:
+You've already built frontend apps using **JavaScript** and likely **React**.  
+In those apps you've:
 
 - Called **APIs** using `fetch()`.
 - Worked with **Promises** and **async/await**.
@@ -76,10 +121,26 @@ Node is how we build that **server** part with JavaScript.
 
 ## What Does the Server Do?
 
-When we talk about the **server**, we’re referring to the part of an application that runs behind the scenes — the engine that powers everything users see and interact with in the browser.
+When we talk about the **server**, we're referring to the part of an application that runs behind the scenes — the engine that powers everything users see and interact with in the browser.
 
 While the browser (the **client**) handles displaying pages, forms, and buttons, the **server** handles all the logic, data processing, and communication with other systems.  
 In short: the **browser asks**, and the **server responds**.
+
+```
+  Browser (Client)               Server (Node.js)
+  ─────────────────              ──────────────────────────
+  User clicks "Login"
+        │
+        │  POST /api/login ──────────►  Receives request
+        │  (username + password)        Checks credentials
+        │                               Queries database
+        │                               Hashes & validates
+        │◄─────────────── 200 OK ──────  Sends back token
+        │  (session token)
+  Stores token, redirects
+```
+
+Every time you use a web app — logging in, loading a feed, submitting a form — a request travels to a server and a response comes back. Node is what handles that server side.
 
 ### 1. Authenticating Users
 
@@ -88,21 +149,21 @@ One of the most important jobs of a server is managing **user authentication** �
 Examples include:
 - Logging in users with a username and password.
 - Validating tokens or cookies to maintain secure sessions.
-- Handling OAuth or third-party logins (e.g., “Login with Google”).
+- Handling OAuth or third-party logins (e.g., "Login with Google").
 - Hashing passwords before storing them in a database (for security).
 
 The server ensures that sensitive information (like passwords or access tokens) is never exposed to the browser. Instead, the browser only receives a confirmation or a secure session token.
 
 ### 2. Running Scheduled or Background Tasks
 
-Servers often perform **automated jobs** that don’t involve direct user interaction. These tasks might include:
+Servers often perform **automated jobs** that don't involve direct user interaction. These tasks might include:
 
 - Sending daily or weekly email notifications.  
 - Cleaning up unused data or expired sessions.  
 - Backing up databases or syncing data between systems.  
 - Running cron jobs or maintenance scripts at specific times.
 
-Because Node.js supports asynchronous operations, it’s especially good at scheduling and executing background tasks without blocking other processes.
+Because Node.js supports asynchronous operations, it's especially good at scheduling and executing background tasks without blocking other processes.
 
 ### 3. Providing APIs 
 
@@ -122,13 +183,13 @@ This separation of concerns makes modern web apps modular — the frontend just 
 
 ### 4. Talking to Databases
 
-A huge part of the server’s job is communicating with databases to store and retrieve information.  
+A huge part of the server's job is communicating with databases to store and retrieve information.  
 Common databases include:
 - **MongoDB** (NoSQL document database)
 - **PostgreSQL** and **MySQL** (relational databases)
 - **Redis** (for caching or temporary storage)
 
-Servers send database queries — for example, “find all users where `active = true`” — and send the results back to the client.  
+Servers send database queries — for example, "find all users where `active = true`" — and send the results back to the client.  
 This keeps the data centralized, secure, and consistent across all users.
 
 ### 5. Securing Data and Enforcing Rules
@@ -144,7 +205,7 @@ The browser can make requests, but the server decides **what** data can be seen 
 ## What Is a Module in Node?
 
 In Node.js, a **module** is a reusable piece of code that can be imported and used in other files.  
-Modules help keep code organized, easier to maintain, and more readable — just like how functions keep code DRY (Don’t Repeat Yourself).
+Modules help keep code organized, easier to maintain, and more readable — just like how functions keep code DRY (Don't Repeat Yourself).
 
 Everything in Node is modular.  
 
@@ -169,7 +230,7 @@ In that setup:
 - All scripts share the same global scope (`window` object).
 - If two files define the same variable, one can accidentally overwrite the other.
 - Code runs only after the page loads in the browser.
-- You can’t access local files, your file system, or create servers — for security reasons.
+- You can't access local files, your file system, or create servers — for security reasons.
 
 ---
 
@@ -235,7 +296,7 @@ Behind the scenes, Node wraps your code like this:
 });
 ```
 
-That’s why you can use `module.exports` — Node automatically provides it to let you share things between files.
+That's why you can use `module.exports` — Node automatically provides it to let you share things between files.
 
 You can export:
 ```js
@@ -247,6 +308,11 @@ exports.sayHello = function() {
   console.log("Hello!");
 };
 ```
+
+> **Which form should you use?**  
+> Use `module.exports = { ... }` when you want to export **multiple things at once** (an object, a class, or several functions together) — this is the most common pattern.  
+> Use `exports.name = ...` when you want to **add one thing at a time** to the exports incrementally.  
+> The two are mostly interchangeable, but never mix them in the same file — assigning directly to `module.exports` replaces the whole object, which can break `exports.name` assignments made earlier in the same file.
 
 ---
 
@@ -272,7 +338,7 @@ To use ES Modules in Node, you must tell Node to treat your files as modules by 
 }
 ```
 
-Once you’ve done that, you can write and import code using standard syntax:
+Once you've done that, you can write and import code using standard syntax:
 
 ```js
 // mathUtils.js
@@ -297,14 +363,14 @@ console.log(subtract(9, 4));
 
 ### Why Use ES Modules?
 
-Here’s why ES Modules are a better long-term choice than `require()` or `module.exports`:
+Here's why ES Modules are a better long-term choice than `require()` or `module.exports`:
 
 - ✅ **Standardized:** ES Modules are part of the JavaScript language spec, meaning your code will work the same in browsers and Node.js.  
 - 🧩 **Cleaner Syntax:** The `import` / `export` keywords are easier to read and maintain.  
 - ⚙️ **Static Analysis:** Tools like bundlers, editors, and IDEs can detect imports before runtime, improving speed and autocomplete support.  
 - 🚀 **Future-Proof:** Most modern frameworks (React, Vite, Next.js, Svelte, Astro, etc.) are built entirely around ES Modules.  
 
-In short, ES Modules bring Node fully in line with modern JavaScript development — letting you write code that looks and behaves the same whether it’s running in the **browser** or on the **server**.
+In short, ES Modules bring Node fully in line with modern JavaScript development — letting you write code that looks and behaves the same whether it's running in the **browser** or on the **server**.
 
 ### Quick Comparison
 
@@ -321,10 +387,10 @@ In short, ES Modules bring Node fully in line with modern JavaScript development
 
 ## Asynchronous Operations in Node 
 
-When you’re building frontend applications, you’ve already used `fetch()` to call APIs and update the DOM.  
+When you're building frontend applications, you've already used `fetch()` to call APIs and update the DOM.  
 That model works because the browser manages things like CORS, cookies, and rendering.
 
-But in **Node**, you’re not limited to the browser’s sandbox — you can perform asynchronous operations at the system level:
+But in **Node**, you're not limited to the browser's sandbox — you can perform asynchronous operations at the system level:
 - Read or write files  
 - Make API requests to any domain  
 - Query databases  
@@ -335,10 +401,10 @@ Node gives you full control of how asynchronous work happens — with no browser
 
 ### Example: Fetching Data in Node vs Browser
 
-Let’s say you want to get the current weather for a city using the **Open-Meteo API**.  
-Here’s how you might do that in both environments.
+Let's say you want to get the current weather for a city using the **Open-Meteo API**.  
+Here's how you might do that in both environments.
 
-### 🖥️ In the Browser
+#### 🖥️ In the Browser
 ```js
 fetch("https://api.open-meteo.com/v1/forecast?latitude=40.7&longitude=-74.0&current_weather=true")
   .then(res => res.json())
@@ -352,7 +418,7 @@ The browser automatically handles:
 - JSON parsing
 - Rendering results to the UI  
 
-### 💻 In Node (Command Line)
+#### 💻 In Node (Command Line)
 Starting from Node 18, `fetch()` is available globally (no need for an extra library).  
 You can use it the same way, but with system-level control — no DOM, no window, no rendering.
 
@@ -381,26 +447,28 @@ node weather.js
 ```
 
 Unlike the browser version:
-- There’s **no DOM**, so you just log results to the console.
+- There's **no DOM**, so you just log results to the console.
 - You can use environment variables, file storage, or even write the results to a database.  
-- You can integrate this with CRON jobs or other Node services — something browsers can’t do.
+- You can integrate this with CRON jobs or other Node services — something browsers can't do.
 
 Using `fetch()` is just one small example of how Node handles asynchronous behavior.  
-Node’s event-driven model means almost every task — from file reads to network requests — is handled **without blocking the main thread**.
+Node's event-driven model means almost every task — from file reads to network requests — is handled **without blocking the main thread**.
 
 
 Each example builds on the same idea: **Node can wait for slow operations (I/O, user input, or network calls) without stopping everything else.**
 
 ### Example: Reading and Writing to Files
 
-Node can also do file I/O asynchronously. This is a big difference from browser JavaScript, which can’t freely read and write files.
+Node can also do file I/O asynchronously. This is a big difference from browser JavaScript, which can't freely read and write files.
 
-Let’s make a tiny script that:
+Let's make a tiny script that:
 
 1. Asks the user for a note  
 2. Saves it to a file (async write)  
 3. Reads the file back (async read)  
 4. Prints the contents  
+
+> **Note:** This example uses ES Module syntax (`import`). Make sure your `package.json` includes `"type": "module"` before running it, or Node will throw a syntax error.
 
 ```js
 // save-note.js
@@ -437,11 +505,38 @@ In these examples, async happens when Node is waiting on something **outside of 
 - waiting for the network  
 - waiting for the file system  
 
-Node hands those jobs off to the underlying system (via the event loop and libuv) and then calls you back when it’s ready — using **events** or **Promises**.
+Node hands those jobs off to the underlying system (via the **event loop** and **libuv**) and then calls you back when it's ready — using **events** or **Promises**.
 
-You don’t always have to create your own Promise with `new Promise(...)` — most of Node’s APIs are already async for you.
+> **What is libuv?**  
+> libuv is a C library bundled with Node that handles all the low-level, non-blocking I/O work — like reading files, making network requests, and managing timers. When Node needs to do something slow (like read a file from disk), it passes that task to libuv, which runs it in the background using the operating system. When the task finishes, libuv notifies the event loop, which then runs your callback or resolves your Promise. You never interact with libuv directly — it's just what makes Node's async model work under the hood.
+
+You don't always have to create your own Promise with `new Promise(...)` — most of Node's APIs are already async for you.
 
 Node.js has an event-driven, non-blocking I/O model that allows it to handle multiple operations simultaneously — like reading files, listening for user input, or waiting for HTTP responses — without freezing the main thread.
+
+### How the Event Loop Works
+
+The **event loop** is the engine that makes Node's async behavior possible. Here's the simplified picture:
+
+```
+   Your Code (JS)
+        │
+        │  starts async task (e.g. read a file)
+        ▼
+  ┌─────────────┐       ┌──────────────────────┐
+  │  Event Loop │◄──────│  libuv / OS           │
+  │             │       │  (does the slow work) │
+  │  - timers   │       │  - file system        │
+  │  - I/O      │       │  - network            │
+  │  - callbacks│       │  - timers             │
+  └─────────────┘       └──────────────────────┘
+        │
+        │  task done → runs your callback / resolves Promise
+        ▼
+   Your Code continues
+```
+
+The key insight: **Node never actually waits.** It hands off the slow work, keeps going, and comes back when the result is ready. That's why Node can handle thousands of simultaneous connections on a single thread.
 
 The table below summarizes the most common types of asynchronous operations handled by Node, how they work, and where you might use them in real-world applications.
 
@@ -462,19 +557,19 @@ The table below summarizes the most common types of asynchronous operations hand
 ### Key Takeaways
 
 - **Everything that waits** — files, network, user input, or timers — is asynchronous in Node.  
-- Node’s **event loop** and **libuv** handle most async operations under the hood.  
-- You don’t need to manually create Promises — most modern Node APIs are already Promise-based.  
+- Node's **event loop** and **libuv** handle most async operations under the hood.  
+- You don't need to manually create Promises — most modern Node APIs are already Promise-based.  
 - Understanding these patterns helps you write faster, non-blocking, and scalable applications.
 
 ---
 
-✅ **In short:** Node’s biggest strength is handling multiple tasks efficiently — from APIs to file systems — all without blocking the main thread.
+✅ **In short:** Node's biggest strength is handling multiple tasks efficiently — from APIs to file systems — all without blocking the main thread.
 
 ## Digging Deeper with Promises in Node.js
 
-When you start working in Node.js, you quickly run into situations where you need to do **more than one asynchronous task** — maybe call two APIs, read a file and a database, or hit two services and use whichever responds first. That’s where **`Promise.all`** and **`Promise.race`** become super useful.
+When you start working in Node.js, you quickly run into situations where you need to do **more than one asynchronous task** — maybe call two APIs, read a file and a database, or hit two services and use whichever responds first. That's where **`Promise.all`** and **`Promise.race`** become super useful.
 
-### 1. What’s a Promise Again?
+### 1. What's a Promise Again?
 
 A **Promise** is a JavaScript object that represents something that will finish **in the future** (like a file read, API call, or database query).
 
@@ -492,13 +587,13 @@ const data = await fs.readFile("file.txt", "utf8");
 const user = await fetch("https://api.example.com/user/1");
 ```
 
-…sometimes you want to do **both at the same time**. That’s where `Promise.all` comes in.
+…sometimes you want to do **both at the same time**. That's where `Promise.all` comes in.
 
 ---
 
 ### 2. `Promise.all` — Wait for Everything
 
-### What it does
+#### What it does
 - Takes an **array of Promises**
 - Runs them **in parallel**
 - Resolves when **all** of them are done
@@ -506,7 +601,7 @@ const user = await fetch("https://api.example.com/user/1");
 
 This is perfect when your Node code needs **multiple pieces of data** before it can continue.
 
-### Example: Load two APIs at once
+#### Example: Load two APIs at once
 
 ```js
 // example-promise-all.js
@@ -526,17 +621,17 @@ Promise.all([userPromise, postsPromise])
   });
 ```
 
-### Why this is good in Node
-- You don’t waste time doing one request, **then** the other
+#### Why this is good in Node
+- You don't waste time doing one request, **then** the other
 - Node can handle many async tasks at once — this matches its strengths
 - Good for **gathering data** for an API response
 
-### Node use cases
+#### Node use cases
 - Your API route needs data from **two different services** (auth service + product service)
 - You want to read **multiple files** at the same time
 - You want to kick off several background tasks and wait until they all finish
 
-### Example: Reading multiple files
+#### Example: Reading multiple files
 
 ```js
 import fs from "fs/promises";
@@ -561,16 +656,16 @@ In this example, Node is reading all three files **at the same time**.
 
 ### 3. `Promise.race` — Use the First Result
 
-### What it does
+#### What it does
 - Takes an **array of Promises**
 - Resolves or rejects as soon as **the first one** finishes
 - Ignores the rest
 
 This is useful when you want **the fastest response** or when you want to **enforce a timeout**.
 
-### Example: API with a timeout
+#### Example: API with a timeout
 
-Sometimes an external API is slow. In Node, you don’t want to wait forever — you might want to fail fast or try something else.
+Sometimes an external API is slow. In Node, you don't want to wait forever — you might want to fail fast or try something else.
 
 ```js
 // example-promise-race.js
@@ -601,12 +696,12 @@ async function getData() {
 getData();
 ```
 
-### Why this is good in Node
-- Node apps often call other services — you don’t control how fast they are
+#### Why this is good in Node
+- Node apps often call other services — you don't control how fast they are
 - You can protect your server from **hanging** on slow dependencies
 - You can try **multiple mirrors/endpoints** and use whichever responds first
 
-### Another example: 2 mirrors, pick the fastest
+#### Another example: 2 mirrors, pick the fastest
 
 ```js
 const fast = fetch("https://mirror1.example.com/data");
@@ -637,18 +732,18 @@ This pattern is great for **high-availability** services.
 
 Node is built to handle lots of things happening at once — like reading files, calling APIs, or talking to databases — **without freezing or waiting**.  
 
-Even though Node runs on **one main thread** (it doesn’t create multiple threads like some languages do), it’s very good at managing things that take time, like network requests or file reads. It does this by using something called the **event loop**, which keeps track of what’s finished and what’s still waiting.
+Even though Node runs on **one main thread** (it doesn't create multiple threads like some languages do), it's very good at managing things that take time, like network requests or file reads. It does this by using something called the **event loop**, which keeps track of what's finished and what's still waiting.
 
 So, while one task is waiting (like reading data from a file), Node can keep working on other things.  
 
 - **`Promise.all`** lets Node do **several async tasks at once** — for example, reading three files or calling two APIs together — and wait until all of them are done.  
 - **`Promise.race`** lets Node start several tasks but move on **as soon as one finishes** — like using whichever API responds first.
 
-These tools make your code easier to read and faster because you’re not doing one slow thing after another.  
+These tools make your code easier to read and faster because you're not doing one slow thing after another.  
 
 ---
 
-✅ **In short:** Node’s asynchronous power lets you do more at once — fetch data, read files, or contact other services — all without slowing your app down.
+✅ **In short:** Node's asynchronous power lets you do more at once — fetch data, read files, or contact other services — all without slowing your app down.
 
 ## Summary
 
