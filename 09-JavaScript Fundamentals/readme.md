@@ -238,7 +238,7 @@ As a beginner, you'll mostly work with **String, Number, Boolean, Undefined, and
 
 ---
 
-#### String
+### String
 A **string** is any piece of text. Wrap it in single quotes, double quotes, or backticks.
 
 ```js
@@ -257,7 +257,7 @@ console.log(`I live in ${city}`);        // same result, cleaner syntax
 
 ---
 
-#### Number
+### Number
 JavaScript has just **one type for all numbers** — whole numbers and decimals alike.
 
 ```js
@@ -285,7 +285,7 @@ console.log(0 / 0);       // NaN
 
 ---
 
-#### Boolean
+### Boolean
 A **boolean** can only be one of two values: `true` or `false`. That's it.
 
 ```js
@@ -303,7 +303,7 @@ console.log(age < 10);  // false
 
 ---
 
-#### Undefined
+### Undefined
 A variable is `undefined` when it has been **declared but never given a value**. JavaScript sets this automatically.
 
 ```js
@@ -315,7 +315,7 @@ Think of it as an empty box — the box exists, but nothing is inside it yet.
 
 ---
 
-#### Null
+### Null
 `null` means **intentionally empty**. Unlike `undefined` which happens automatically, you set `null` on purpose to say "there is no value here."
 
 ```js
@@ -326,7 +326,7 @@ Think of it as a box that someone deliberately left empty with a note saying "no
 
 ---
 
-#### Symbol and BigInt — Advanced Types
+### Symbol and BigInt — Advanced Types
 
 > 🧰 **Note for beginners:** You won't need `Symbol` or `BigInt` for a long time. They exist for very specific advanced use cases. Feel free to skip these for now and come back later.
 
@@ -930,11 +930,85 @@ Loop through an array of numbers and log their **squares** (e.g., `num * num`).
 
 Once you get comfortable with loops, you'll see them everywhere — processing data, running animations, validating input, and more!
 
+## 10. Arrays
+
+Arrays are special data structures that store **ordered lists of items** — imagine a row of boxes, each with its own label (numbered starting from zero). Each box can hold anything: numbers, strings, or even other arrays and objects. This makes arrays extremely powerful because they can organize multiple related pieces of data in a single, easy-to-manage variable.
+
+For example, instead of having separate variables like `student1`, `student2`, and `student3`, you can store all your student names in one array:  
+`const students = ["Ava", "Ben", "Carla"];`.  
+
+This simplifies both storage and retrieval — you can loop through the list, update values, and even sort or filter them with built-in methods. Arrays are used constantly in programming for everything from lists of users, products, and search results to configuration options and game levels.
+
+It's also important to understand how arrays work *under the hood*. JavaScript arrays are dynamic — meaning you can add or remove items at any time — and they automatically resize themselves. Every element in an array has an **index**, starting at **0**, which represents its position. Learning how to access, iterate, and manipulate these indexes is one of the first big steps toward writing more advanced code.
+
 ---
 
-## 10. Putting It All Together
+```js
+const colors = ["red", "green", "blue"];
+console.log(colors[1]); // green
+```
 
-Before moving on, here's an example that combines **variables, strings, arrays, conditionals, and loops** — the building blocks you've learned so far. Reading and understanding code like this is a major milestone.
+### Mutating Arrays
+
+Mutating an array means changing its contents — adding, removing, or replacing elements. JavaScript provides built-in methods for each of these operations.
+
+**Adding items:**
+```js
+const colors = ["red", "green", "blue"];
+
+colors.push("yellow");    // adds to the END   → ["red", "green", "blue", "yellow"]
+colors.unshift("purple"); // adds to the FRONT → ["purple", "red", "green", "blue", "yellow"]
+```
+
+**Removing items:**
+```js
+colors.pop();   // removes from the END   → returns "yellow"
+colors.shift(); // removes from the FRONT → returns "purple"
+```
+
+**Adding or removing at a specific index with `splice`:**
+```js
+const fruits = ["apple", "banana", "mango"];
+
+// Remove 1 element at index 1 (removes "banana")
+fruits.splice(1, 1);
+console.log(fruits); // ["apple", "mango"]
+
+// Insert "kiwi" at index 1 without removing anything
+fruits.splice(1, 0, "kiwi");
+console.log(fruits); // ["apple", "kiwi", "mango"]
+```
+
+`splice(startIndex, deleteCount, ...itemsToInsert)` — the most flexible mutation tool.
+
+**Updating an element directly:**
+```js
+const colors = ["red", "green", "blue"];
+colors[1] = "orange";
+console.log(colors); // ["red", "orange", "blue"]
+```
+
+**Checking length:**
+```js
+console.log(colors.length); // 3
+```
+
+💡 **Try It Yourself**
+Create an array of your favorite foods. Add a new food to the end, remove the first one, then log the final result.
+
+ **Visual**
+```
+[ 0:"red" | 1:"green" | 2:"blue" ]
+```
+
+⚠️ **Common Mistake**
+Arrays start at index **0**, not 1. `colors[0]` is `"red"`, not `"green"`.
+
+---
+
+## 11. Putting It All Together
+
+Now that you understand variables, strings, arrays, conditionals, and loops, here's an example that combines all of them. Reading and understanding code like this is a major milestone.
 
 ```js
 const students = ["Alice", "Bob", "Carol", "David"];
@@ -964,78 +1038,6 @@ for (let i = 0; i < students.length; i++) {
 
 💡 **Try It Yourself**
 Extend this example: after the loop, count how many students passed and log `"X out of Y students passed."`.
-
----
-
-## 11. Arrays
-
- Arrays are special data structures that store **ordered lists of items** — imagine a row of boxes, each with its own label (numbered starting from zero). Each box can hold anything: numbers, strings, or even other arrays and objects. This makes arrays extremely powerful because they can organize multiple related pieces of data in a single, easy-to-manage variable.
-
-For example, instead of having separate variables like `student1`, `student2`, and `student3`, you can store all your student names in one array:  
-`const students = ["Ava", "Ben", "Carla"];`.  
-
-This simplifies both storage and retrieval — you can loop through the list, update values, and even sort or filter them with built-in methods. Arrays are used constantly in programming for everything from lists of users, products, and search results to configuration options and game levels.
-
-It's also important to understand how arrays work *under the hood*. JavaScript arrays are dynamic — meaning you can add or remove items at any time — and they automatically resize themselves. Every element in an array has an **index**, starting at **0**, which represents its position. Learning how to access, iterate, and manipulate these indexes is one of the first big steps toward writing more advanced code.
-
----
-
-```js
-const colors = ["red", "green", "blue"];
-console.log(colors[1]); // green
-```
-
-### Methods
-
-**Adding and removing items:**
-```js
-colors.push("yellow");   // adds to the end
-colors.pop();            // removes from the end
-console.log(colors.length);
-```
-
-**Iterating with forEach:**
-```js
-const fruits = ["apple", "banana", "mango"];
-fruits.forEach((fruit) => {
-  console.log(fruit);
-});
-```
-
-**Transforming with map** — creates a new array by applying a function to each element:
-```js
-const numbers = [1, 2, 3, 4];
-const doubled = numbers.map((n) => n * 2);
-console.log(doubled); // [2, 4, 6, 8]
-```
-
-**Filtering with filter** — creates a new array with only the elements that pass a test:
-```js
-const scores = [45, 82, 91, 60, 73];
-const passing = scores.filter((score) => score >= 70);
-console.log(passing); // [82, 91, 73]
-```
-
-**Finding with find** — returns the first element that matches:
-```js
-const users = ["Alice", "Bob", "Carol"];
-const found = users.find((user) => user.startsWith("B"));
-console.log(found); // "Bob"
-```
-
-🧰 **Pro Tip — Where to Start**
-If these methods are new to you, start with `forEach` — it's the most straightforward. Once you're comfortable with callbacks (covered in section 15), `map`, `filter`, and `find` will click naturally.
-
-💡 **Try It Yourself**
-Create an array of your favorite foods and log each one using a `for` loop.
-
- **Visual**
-```
-[ 0:"red" | 1:"green" | 2:"blue" ]
-```
-
-⚠️ **Common Mistake**
-Arrays start at index **0**, not 1.
 
 ## 12. Objects
 
@@ -1076,7 +1078,7 @@ Use dot notation for readability (`user.name`) instead of brackets (`user["name"
 
 ---
 
-> **Arrays and objects work great together.** You'll often see arrays *of* objects — like a list of users, each with their own properties. Everything you just learned about arrays (looping, filtering, mapping) applies to these too.
+> **Arrays and objects work great together.** You'll often see arrays *of* objects — like a list of users, each with their own properties. You can loop through them just like any other array.
 >
 > ```js
 > const users = [
@@ -1085,12 +1087,12 @@ Use dot notation for readability (`user.name`) instead of brackets (`user["name"
 >   { name: "Carol", age: 22 }
 > ];
 >
-> users.forEach((user) => {
->   console.log(`${user.name} is ${user.age} years old.`);
-> });
+> for (let i = 0; i < users.length; i++) {
+>   console.log(`${users[i].name} is ${users[i].age} years old.`);
+> }
 > ```
 >
-> Once you understand **functions** — which is exactly what comes next — you'll be able to do much more powerful things with arrays and objects together.
+> Once you understand **functions** — which is exactly what comes next — you'll unlock powerful array methods like `forEach`, `map`, and `filter` that make working with arrays of objects even easier.
 
 ## 13. Functions
 
@@ -1412,7 +1414,102 @@ Callbacks let your code **react** to things happening — like loading data from
 ### ✅ Key Takeaway
 Callbacks let you **pass behavior** into functions, giving your code flexibility and control over *what happens next*. They're one of the first steps toward mastering JavaScript's event-driven and asynchronous nature.
 
-## 16. Debugging in JavaScript 🪲
+## 16. Array Methods
+
+Now that you understand functions and callbacks, you can make full use of JavaScript's built-in array methods. These methods accept a **callback function** as an argument — they handle looping internally, so you focus only on the logic for each element.
+
+---
+
+### `forEach` — Run code for each element
+
+`forEach` replaces a `for` loop when you just need to *do something* with each item. It does **not** return a new array.
+
+```js
+const fruits = ["apple", "banana", "mango"];
+
+fruits.forEach((fruit) => {
+  console.log(fruit);
+});
+// apple
+// banana
+// mango
+```
+
+---
+
+### `map` — Transform every element into a new array
+
+`map` creates a **new array** by applying a function to each element. The original array is unchanged.
+
+```js
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map((n) => n * 2);
+console.log(doubled); // [2, 4, 6, 8]
+```
+
+---
+
+### `filter` — Keep only elements that pass a test
+
+`filter` creates a **new array** with only the elements for which the callback returns `true`.
+
+```js
+const scores = [45, 82, 91, 60, 73];
+const passing = scores.filter((score) => score >= 70);
+console.log(passing); // [82, 91, 73]
+```
+
+---
+
+### `find` — Get the first match
+
+`find` returns the **first element** that passes the test, or `undefined` if nothing matches.
+
+```js
+const users = ["Alice", "Bob", "Carol"];
+const found = users.find((user) => user.startsWith("B"));
+console.log(found); // "Bob"
+```
+
+---
+
+### `reduce` — Combine all elements into a single value
+
+`reduce` accumulates all elements into one result — a sum, a string, an object, anything.
+
+```js
+const prices = [10, 25, 5, 40];
+const total = prices.reduce((sum, price) => sum + price, 0);
+console.log(total); // 80
+```
+
+`reduce(callback, initialValue)` — the callback receives an **accumulator** (running result) and the current element.
+
+---
+
+### Choosing the right method
+
+| Goal | Method |
+|------|--------|
+| Do something with each item | `forEach` |
+| Create a transformed copy | `map` |
+| Keep only some items | `filter` |
+| Find one item | `find` |
+| Combine into one value | `reduce` |
+
+🧰 **Pro Tip**
+Start with `forEach` — it's the most straightforward. Once that clicks, `map` and `filter` follow naturally since they use the same callback pattern.
+
+💡 **Try It Yourself**
+Given `const temps = [30, 72, 85, 60, 45, 91]`:
+1. Use `filter` to get only temperatures above 70.
+2. Use `map` to convert Celsius to Fahrenheit: `(c * 9/5) + 32`.
+3. Use `reduce` to find the total of all temperatures.
+
+⚠️ **Common Mistake**
+`forEach` does **not** return a new array — use `map` when you need a transformed result.
+
+## 17. Debugging in JavaScript 🪲
 
 No matter how experienced you are, bugs are a normal part of writing code. **Debugging** is the process of finding and fixing errors — and developing good habits early will save you countless hours of frustration. JavaScript gives you several tools to inspect what your code is doing at runtime, from simple `console.log` statements to powerful browser developer tools with breakpoints and step-through execution.
 
@@ -1478,9 +1575,7 @@ Ignoring the console! It's your best friend for debugging.
 > 
 > Don't worry if these concepts feel abstract at first — that's completely normal. Take your time, revisit earlier sections if needed, and know that OOP tends to click gradually rather than all at once.
 
----
-
-## 17. Objects and Data Modeling in Applications
+## 18. Objects and Data Modeling in Applications
 
 In real-world software development — whether you're using JavaScript, Python, Java, or any modern language — **objects are the building blocks of application data models**.
 
@@ -1508,7 +1603,7 @@ How you define and use objects affects:
 - **Network payloads and serialization**: JSON and REST APIs rely on objects, and shape matters.
 
 
-## 18. Object Literals Review
+## 19. Object Literals Review
 
 JavaScript **object literals** are one of the simplest and most powerful tools in the language. They're used to group together **related data** and **functions that act on that data**.
 
@@ -1572,7 +1667,7 @@ delete player.stats.mana;
 
 **TL;DR:** Object literals are the most basic building block of JavaScript OOP — everything else builds on top of them.
 
-## 19. Why Copying Objects Matters
+## 20. Why Copying Objects Matters
 
 In JavaScript, objects are **reference types**. This means when you assign an object to a new variable, you're not copying it — you're **pointing to the same memory**.
 
@@ -1645,7 +1740,7 @@ deep     --> {
 }
 ```
 
-## 20. Shallow vs Deep Cloning
+## 21. Shallow vs Deep Cloning
 
 > ⚠️ **Heads Up — Advanced Topic**
 > Shallow and deep cloning is a concept that trips up even experienced developers. You don't need to master this right away — bookmark it and come back when you're working with state management or API data and start seeing unexpected mutations in your code.
@@ -1707,7 +1802,7 @@ const deep = cloneDeep(original);
 | Manual recursive function      | ⚠️ Partially          | ⚠️ Needs extra | ✅ if coded      | Great for learning           |
 | `lodash.cloneDeep()`           | ✅                    | ✅             | ✅               | Best for real-world projects |
 
-## 21. Classes
+## 22. Classes
 
 A **class** is a blueprint for creating multiple similar objects — it defines how an object should look and behave.
 
@@ -1782,7 +1877,7 @@ Pet.prototype.speak = function () {
 
 JavaScript still uses **prototypes** to link object behavior.
 
-## 22. What Is a Prototype in JavaScript?
+## 23. What Is a Prototype in JavaScript?
 
 In JavaScript, every object has a hidden internal property called `[[Prototype]]`, which refers to another object. This forms a **prototype chain**.
 
@@ -1809,7 +1904,7 @@ dog.speak(); // Buddy makes a sound.
 
 Even though `speak` is not defined directly on `dog`, it works because `dog.__proto__` (its prototype) points to `Animal.prototype`, which contains the method.
 
-## 23. Constructor Functions (Pre-ES6)
+## 24. Constructor Functions (Pre-ES6)
 
 Before `class` syntax existed, JavaScript used **constructor functions** with `new`:
 
@@ -1836,7 +1931,7 @@ This still works and is functionally equivalent to using `class`, but `class` sy
 - Understanding prototypes helps you debug and extend objects effectively.
 
 
-## 24. Factory Functions
+## 25. Factory Functions
 
 A **factory function** is a regular function that creates and returns a new object every time it's called — no `class`, no `new` keyword required. It's a simpler alternative to classes when you need multiple similar objects but don't need inheritance.
 
@@ -1872,7 +1967,7 @@ yourCar.honk(); // Beep beep!
 - Easier for simple objects or closures
 - Prefer a class when you need inheritance or many instances sharing methods
 
-## 25. Inheritance in JavaScript
+## 26. Inheritance in JavaScript
 
 **Inheritance** is one of the core principles of **Object-Oriented Programming (OOP)**, alongside **Encapsulation**, **Abstraction**, and **Polymorphism**.
 
@@ -1949,7 +2044,7 @@ Avoid inheritance when:
 - Composition (has-a) is a better fit than inheritance (is-a)
 
 
-## 26. Mini-Games Using Classes
+## 27. Mini-Games Using Classes
 
 ### 1. Dice Roller
 
