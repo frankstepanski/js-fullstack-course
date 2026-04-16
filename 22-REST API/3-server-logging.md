@@ -615,7 +615,7 @@ Learn how relational databases work using PostgreSQL, including tables, rows, re
 #### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
 Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
 
-#### 🍃 [Using MongoDB](7-mongodb.md)  
+#### 🍃 [Using MongoDB](7-mongodb-setup.md)  
 Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
 
 #### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  

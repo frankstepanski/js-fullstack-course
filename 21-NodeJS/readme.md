@@ -215,6 +215,176 @@ There are three main kinds of modules:
 2. **Local modules** – Custom modules you create yourself.
 3. **Third-party modules** – Installed from npm (e.g., `express`, `dotenv`, `chalk`).
 
+> 📦 **Throughout this section, all examples use ES Module syntax (`import`/`export`)** — the same syntax you already use in React. To enable this in Node, make sure your `package.json` includes:
+> ```json
+> {
+>   "type": "module"
+> }
+> ```
+> This tells Node to treat all `.js` files in your project as ES Modules. You only need to add this once per project.
+
+---
+
+### The Three Types of Modules — In Depth
+
+#### 1. Core Modules
+
+Core modules are **built directly into Node.js** — you don't install anything, they just exist. Think of them as Node's standard library.
+
+Some common ones you'll use regularly:
+
+| Module | What it does |
+|--------|--------------|
+| `fs` | Read and write files on the server |
+| `path` | Work with file paths in a cross-platform way |
+| `http` | Create HTTP servers |
+| `os` | Get info about the operating system |
+| `crypto` | Hashing, encryption, and security |
+
+You import them the same way you'd import anything else — Node just knows they're built-in:
+
+```js
+import fs from "fs/promises";
+import path from "path";
+```
+
+There's no install step, no `package.json` entry, no `node_modules` folder. They ship with Node itself.
+
+---
+
+#### 2. Local Modules
+
+Local modules are **files you create yourself** — your own reusable code that you split across files to keep things organized.
+
+For example, instead of writing all your database logic, route handlers, and utility functions in one giant file, you split them:
+
+```
+project/
+├── app.js
+├── utils/
+│   └── formatDate.js
+├── models/
+│   └── user.js
+└── routes/
+    └── auth.js
+```
+
+Each of those files is a local module. You import them using a **relative path** (a path that starts with `./` or `../`):
+
+```js
+import { formatDate } from "./utils/formatDate.js";
+import { User } from "./models/user.js";
+```
+
+The `./` is what tells Node: "look for this file locally, not in node_modules." Note that with ES Modules in Node, you need to include the `.js` file extension in your import path.
+
+---
+
+#### 3. Third-Party Modules
+
+Third-party modules are packages **built by other developers** and published to the npm registry. You install them with `npm install`, and they get saved into your `node_modules` folder.
+
+```bash
+npm install express
+npm install dotenv
+npm install chalk
+```
+
+Once installed, you import them **without** a `./` — just the package name:
+
+```js
+import express from "express";
+import dotenv from "dotenv";
+```
+
+Node knows that if there's no `./`, it should look inside `node_modules` for the package.
+
+---
+
+### This Is the Same Pattern You Already Know from the Frontend
+
+If any of this feels familiar — it should. **The module system in Node maps almost exactly to what you've already been doing in React.** The concepts are identical; only the terminology and tools shift slightly.
+
+Here's a side-by-side comparison:
+
+| Concept | Frontend (React) | Backend (Node.js) |
+|---|---|---|
+| **Built-in language features** | Browser APIs (e.g., `document`, `fetch`, `localStorage`) | Core modules (e.g., `fs`, `path`, `http`) |
+| **Files you create yourself** | `.js` / `.jsx` components and utility files | Local modules (`.js` files you write) |
+| **Code from the community** | npm packages (`react`, `axios`, `lodash`) | npm packages (`express`, `dotenv`, `chalk`) |
+| **How you install third-party code** | `npm install` | `npm install` |
+| **How you import third-party code** | `import axios from "axios"` | `import express from "express"` |
+| **How you import your own files** | `import MyComponent from "./MyComponent"` | `import { utils } from "./utils.js"` |
+| **Where packages live** | `node_modules/` | `node_modules/` |
+| **What tracks dependencies** | `package.json` | `package.json` |
+
+#### Third-Party Modules ↔ npm Packages (Frontend)
+
+On the frontend, when you want to use a library someone else built — say, `axios` for HTTP requests or `date-fns` for formatting dates — you run:
+
+```bash
+npm install axios
+```
+
+Then in your React file:
+
+```js
+import axios from "axios";
+```
+
+On the backend in Node, it's the same idea — install a package, import it, use it. A common example is `express`, the package you'll use to build APIs:
+
+```bash
+npm install express
+```
+
+```js
+import express from "express";
+```
+
+Same registry. Same install command. Same `node_modules` folder. Same syntax. The difference is just what the package *does* — `axios` manipulates HTTP requests in the browser, `express` creates a web server on the backend.
+
+#### Local Modules ↔ Your Own `.js` Files (Frontend)
+
+On the frontend, you create components and utilities all the time:
+
+```js
+// utils/formatCurrency.js
+export function formatCurrency(amount) {
+  return `$${amount.toFixed(2)}`;
+}
+```
+
+```js
+// SomeComponent.jsx
+import { formatCurrency } from "./utils/formatCurrency";
+```
+
+In Node, it's the same idea — you break your code into files and import them where you need them:
+
+```js
+// utils/formatCurrency.js
+export function formatCurrency(amount) {
+  return `$${amount.toFixed(2)}`;
+}
+```
+
+```js
+// app.js
+import { formatCurrency } from "./utils/formatCurrency.js";
+```
+
+Same pattern, same syntax. The only Node-specific detail is the `.js` extension in the import path — ES Modules in Node require it.
+
+#### The Key Difference: What the Code Can *Do*
+
+The module system works the same way on both sides. The difference is in what the modules have access to:
+
+- **Frontend modules** run in the browser — they can touch the DOM, read `localStorage`, respond to click events, but they cannot access the file system or make direct database calls.
+- **Node modules** run on the server — they can read and write files, open network connections, query databases, but there's no DOM, no `window` object, no browser APIs.
+
+> Think of it this way: **the import/export system is the same road. The vehicles (browser vs. Node APIs) are different.**
+
 ---
 
 ### Node Modules vs Browser JavaScript Files
@@ -248,98 +418,22 @@ In Node, your code interacts with the **system** and the **network**.
 
 ---
 
-### Default Module System in Node
+### A Note on CommonJS (the Old Way)
 
-By default, Node uses the **CommonJS** module pattern — the one with `require()` and `module.exports`:
+You may come across older Node.js code or tutorials that use `require()` and `module.exports`. This is called **CommonJS**, and it's the original module system Node shipped with:
 
 ```js
 const fs = require("fs");
 module.exports = { ... };
 ```
 
+You don't need to write this — but it's worth recognising when you see it. **We'll be using ES Modules (`import`/`export`) throughout this course**, which is the modern standard and the same syntax you already know from React.
+
 ### Creating a Simple Custom Module
 
+Here's what a local module looks like with ES Module syntax:
+
 #### Step 1: Create a file called `mathUtils.js`
-```js
-// mathUtils.js
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-// Export the functions so they can be used elsewhere
-module.exports = { add, subtract };
-```
-
-#### Step 2: Import and use it in another file
-```js
-// app.js
-const math = require("./mathUtils");
-
-console.log(math.add(5, 3));      // 8
-console.log(math.subtract(10, 4)); // 6
-```
-
-When you use `require("./mathUtils")`, Node looks for that file, runs it, and returns whatever you exported.
-
-### How `module.exports` Works
-
-Every file in Node is treated as its own isolated module.  
-Behind the scenes, Node wraps your code like this:
-
-```js
-(function(exports, require, module, __filename, __dirname) {
-  // your code here
-});
-```
-
-That's why you can use `module.exports` — Node automatically provides it to let you share things between files.
-
-You can export:
-```js
-module.exports = { sayHello };
-```
-Or attach things to the exports object:
-```js
-exports.sayHello = function() {
-  console.log("Hello!");
-};
-```
-
-> **Which form should you use?**  
-> Use `module.exports = { ... }` when you want to export **multiple things at once** (an object, a class, or several functions together) — this is the most common pattern.  
-> Use `exports.name = ...` when you want to **add one thing at a time** to the exports incrementally.  
-> The two are mostly interchangeable, but never mix them in the same file — assigning directly to `module.exports` replaces the whole object, which can break `exports.name` assignments made earlier in the same file.
-
----
-
-### Using Modern ES Modules
-
-In newer Node versions, you can also use the modern `import` / `export` syntax you already know from React or frontend JavaScript.
-
-**ES Modules (ECMAScript Modules)** are the official JavaScript standard for organizing and sharing code between files.  They were introduced in the **ES6 (ECMAScript 2015)** specification and became the native way to handle modular code in browsers — replacing older patterns like IIFEs or CommonJS.
-
-Unlike the traditional Node.js system (`require` and `module.exports`), ES Modules are part of the **JavaScript language itself**, not just a Node feature.  
-
-They use `import` and `export` keywords, which make the syntax cleaner, more readable, and consistent across both browser and server environments.
-
-### Node.js Support for ES Modules
-
-Node.js added **native support for ES Modules starting in version 12**, and it became **stable in version 14 and later**.  
-
-To use ES Modules in Node, you must tell Node to treat your files as modules by adding this line to your `package.json`:
-
-```json
-{
-  "type": "module"
-}
-```
-
-Once you've done that, you can write and import code using standard syntax:
-
 ```js
 // mathUtils.js
 export function add(a, b) {
@@ -351,39 +445,550 @@ export function subtract(a, b) {
 }
 ```
 
-And then import it elsewhere:
-
+#### Step 2: Import and use it in another file
 ```js
 // app.js
 import { add, subtract } from "./mathUtils.js";
 
-console.log(add(5, 2));
-console.log(subtract(9, 4));
+console.log(add(5, 3));      // 8
+console.log(subtract(10, 4)); // 6
 ```
 
-### Why Use ES Modules?
+When you use `import`, Node finds that file, runs it, and gives you back whatever was exported.
 
-Here's why ES Modules are a better long-term choice than `require()` or `module.exports`:
+---
 
-- ✅ **Standardized:** ES Modules are part of the JavaScript language spec, meaning your code will work the same in browsers and Node.js.  
-- 🧩 **Cleaner Syntax:** The `import` / `export` keywords are easier to read and maintain.  
-- ⚙️ **Static Analysis:** Tools like bundlers, editors, and IDEs can detect imports before runtime, improving speed and autocomplete support.  
-- 🚀 **Future-Proof:** Most modern frameworks (React, Vite, Next.js, Svelte, Astro, etc.) are built entirely around ES Modules.  
+### ES Modules — Setup and Syntax
 
-In short, ES Modules bring Node fully in line with modern JavaScript development — letting you write code that looks and behaves the same whether it's running in the **browser** or on the **server**.
+**ES Modules (ECMAScript Modules)** are the official JavaScript standard for organizing and sharing code between files. They were introduced in the **ES6 (ECMAScript 2015)** specification and are the native way to handle modules in both browsers and modern Node.js.
+
+They use `import` and `export` keywords — the same syntax you already know from React.
+
+### Enabling ES Modules in Node
+
+To use ES Modules in a Node project, add `"type": "module"` to your `package.json`:
+
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "type": "module"
+}
+```
+
+That's it. Once this is set, every `.js` file in your project is treated as an ES Module and you can use `import`/`export` freely.
+
+> ⚠️ **Don't forget the `.js` extension** when importing local files in Node. Unlike on the frontend (where bundlers like Vite handle this for you), Node requires the full filename:
+> ```js
+> import { add } from "./mathUtils.js";  // ✅ correct
+> import { add } from "./mathUtils";     // ❌ will throw an error
+> ```
+
+### Why ES Modules?
+
+Here's why ES Modules are the right choice for modern Node development:
+
+- ✅ **Standardized:** ES Modules are part of the JavaScript language spec — same syntax in the browser and in Node.
+- 🧩 **Familiar:** It's the exact same `import`/`export` syntax you already write in React.
+- ⚙️ **Static Analysis:** Editors and tools can detect imports before runtime, giving you better autocomplete and error catching.
+- 🚀 **Future-Proof:** All modern frameworks (React, Vite, Next.js, Svelte, Astro) are built around ES Modules.
 
 ### Quick Comparison
 
-| Feature | CommonJS (`require`) | ES Modules (`import/export`) |
+| Feature | CommonJS (`require`) — legacy | ES Modules (`import/export`) — use this |
 |----------|----------------------|------------------------------|
 | Introduced In | Node.js (2009) | ECMAScript 2015 (ES6) |
 | Syntax | `const x = require('x')` | `import x from 'x'` |
 | Exports | `module.exports = {}` | `export` / `export default` |
-| Support | Default in Node.js | Node 12+, stable in 14+ |
-| Static Imports | ❌ No | ✅ Yes |
 | Works in Browser | ❌ No | ✅ Yes |
+| Same as React syntax | ❌ No | ✅ Yes |
+| Recommended | ❌ Legacy codebases only | ✅ All new projects |
 
+## Reading and Writing Files
 
+One of the most powerful things Node can do that the **browser never could** is read and write files directly on your computer or server. This is one of the first places where Node starts to feel meaningfully different from frontend JavaScript.
+
+### Why Would You Read or Write Files?
+
+On the backend, files are everywhere. Here are real situations you'll encounter:
+
+| Scenario | What's happening |
+|---|---|
+| Saving a user's uploaded profile picture | Writing a file to the server |
+| Loading app configuration on startup | Reading a `.json` or `.env` file |
+| Generating a PDF or CSV report | Creating and writing a new file |
+| Logging errors to a file | Appending text to a log file |
+| Reading a template to send an email | Reading an HTML file from disk |
+| Storing data without a database | Reading and writing a JSON file |
+
+You can't do any of this from the browser — it would be a massive security risk if any website could just read files off your computer. But on the server, **you're in control**, so Node gives you full access.
+
+---
+
+### The `fs` Module
+
+File reading and writing in Node is handled by the **`fs` module** (short for "file system"). This is one of Node's built-in core modules — no install needed.
+
+```js
+const fs = require("fs");
+```
+
+Or with ES Modules:
+
+```js
+import fs from "fs/promises";
+```
+
+There are two ways to use `fs`:
+
+| Style | How it works | When to use it |
+|---|---|---|
+| `fs` (callback style) | Old-school — passes a function that runs when done | Older codebases |
+| `fs.promises` | Returns a Promise — works with `async/await` | Modern Node — use this |
+
+> 💡 **Stick with `fs.promises`** — it works with `async/await` just like `fetch()` does, so the pattern will feel familiar.
+
+---
+
+### This Is an Asynchronous Operation
+
+Reading and writing files takes time. Your code has to reach out to the hard drive, wait for it to respond, and get the data back. This is slow compared to just running JavaScript in memory.
+
+If Node stopped and waited every time it touched a file, your entire server would freeze for every other user while one file was being read. That's obviously bad.
+
+So **file operations in Node are asynchronous** — Node kicks off the file read or write, then keeps doing other work until the file is ready. This is the exact same idea as calling a `fetch()` API and waiting for the response.
+
+```
+Your Code                          Hard Drive
+──────────                         ──────────
+"Hey, read notes.txt"  ──────────► starts reading...
+                                   ...
+(Node keeps running other code)    ...
+                                   ...
+◄──────────────────── "Here's the data!"
+"Got it, now I'll use it"
+```
+
+This is why file operations use **Promises** and `async/await` — same as `fetch()`.
+
+---
+
+### Reading a File
+
+Let's say you have a file called `notes.txt` with some text in it. Here's how you read it:
+
+```js
+// read.js
+import fs from "fs/promises";
+
+async function readNote() {
+  try {
+    const content = await fs.readFile("notes.txt", "utf8");
+    console.log("Here's what's in the file:");
+    console.log(content);
+  } catch (error) {
+    console.error("Couldn't read the file:", error.message);
+  }
+}
+
+readNote();
+```
+
+Run it:
+
+```bash
+node read.js
+```
+
+A few things to notice:
+
+- `await fs.readFile(...)` — just like `await fetch(...)`, this pauses *that function* until the file is ready, without blocking the rest of Node.
+- `"utf8"` — this tells Node to give you back a readable string instead of raw binary data. Always include this when reading text files.
+- The `try/catch` handles errors — for example, if the file doesn't exist.
+
+---
+
+### Writing a File
+
+Writing a file is just as simple:
+
+```js
+// write.js
+import fs from "fs/promises";
+
+async function saveNote() {
+  const note = "Don't forget to build something cool with Node.";
+
+  try {
+    await fs.writeFile("notes.txt", note, "utf8");
+    console.log("Note saved!");
+  } catch (error) {
+    console.error("Couldn't save the file:", error.message);
+  }
+}
+
+saveNote();
+```
+
+> ⚠️ `writeFile` **replaces** the file completely if it already exists. If you want to **add** to an existing file without overwriting it, use `appendFile` instead (see below).
+
+---
+
+### Appending to a File
+
+If you want to keep adding content to a file (like writing to a log), use `appendFile`:
+
+```js
+// append.js
+import fs from "fs/promises";
+
+async function addLog() {
+  const entry = `[${new Date().toISOString()}] Server started\n`;
+
+  try {
+    await fs.appendFile("server.log", entry, "utf8");
+    console.log("Log entry added.");
+  } catch (error) {
+    console.error("Couldn't write to log:", error.message);
+  }
+}
+
+addLog();
+```
+
+Each time you run this, a new line gets added to `server.log` — the old content stays.
+
+---
+
+### Read, Modify, Write — A Real Pattern
+
+A very common real-world task: read a JSON file, update it, and save it back. This is essentially a tiny database using a file:
+
+```js
+// update-data.js
+import fs from "fs/promises";
+
+async function addUser(newUser) {
+  try {
+    // 1. Read the existing file
+    const raw = await fs.readFile("users.json", "utf8");
+    const users = JSON.parse(raw); // turn the string into a JS array
+
+    // 2. Make your change
+    users.push(newUser);
+
+    // 3. Write it back
+    await fs.writeFile("users.json", JSON.stringify(users, null, 2), "utf8");
+    console.log("User added!");
+  } catch (error) {
+    console.error("Something went wrong:", error.message);
+  }
+}
+
+addUser({ id: 3, name: "Maya" });
+```
+
+This pattern — **read → parse → modify → write** — shows up constantly in real backend code.
+
+---
+
+### Quick Reference
+
+| Task | Method | Overwrites? |
+|---|---|---|
+| Read a file | `fs.readFile("file.txt", "utf8")` | — |
+| Create or overwrite a file | `fs.writeFile("file.txt", data, "utf8")` | ✅ Yes |
+| Add to the end of a file | `fs.appendFile("file.txt", data, "utf8")` | ❌ No |
+| Delete a file | `fs.unlink("file.txt")` | ✅ Deletes it |
+| Check if a file exists | `fs.access("file.txt")` | — |
+
+All of these return Promises — wrap them in `async/await` with a `try/catch` and you're good to go.
+
+---
+
+> 💡 **Coming up:** Once you start building APIs with Express, you'll use this same `fs` knowledge to read config files, write logs, and handle uploaded files on the server.
+
+---
+
+## Scheduled and Background Tasks
+
+So far, everything you've written in Node runs once and stops — you run the file, it does something, it exits. But real backend applications often need to do things **automatically, on a timer**, without anyone pressing a button.
+
+That's what scheduled and background tasks are for.
+
+---
+
+### What Are Background Tasks?
+
+A **background task** is code that runs on its own schedule — not triggered by a user clicking something, but by time. Think of it like setting an alarm: you set it once, and it goes off whenever you told it to.
+
+Here are real examples of this in production apps:
+
+| Task | How often |
+|---|---|
+| Send a "weekly digest" email to users | Every Monday at 9am |
+| Clean up expired login sessions | Every night at midnight |
+| Back up the database | Every day at 3am |
+| Check an external API for new data | Every 5 minutes |
+| Generate a usage report | First day of every month |
+| Delete log entries older than 30 days | Every Sunday |
+
+None of these need a user. They just need Node to be running, and a schedule to follow.
+
+---
+
+### Two Ways to Schedule Tasks in Node
+
+```
+┌─────────────────────────────────────────────────────┐
+│             Scheduling in Node.js                   │
+│                                                     │
+│   Built-in (no install)      Third-party (npm)      │
+│   ─────────────────────      ───────────────────    │
+│   setTimeout()               node-cron              │
+│   setInterval()              node-schedule          │
+│                              agenda                 │
+│                                                     │
+│   Good for: simple delays    Good for: real         │
+│   and repeating loops        clock-based schedules  │
+│   ("every 5 seconds")        ("every Mon at 9am")   │
+└─────────────────────────────────────────────────────┘
+```
+
+You already know `setTimeout` and `setInterval` from the frontend — they work exactly the same in Node. For anything more precise (like "run this every Tuesday at 2pm"), you'll reach for a package like `node-cron`.
+
+---
+
+### Example 1: Repeating Tasks with `setInterval`
+
+`setInterval` runs a function repeatedly on a fixed delay. This is the simplest kind of background task — a **heartbeat**.
+
+```js
+// heartbeat.js
+
+let count = 0;
+
+console.log("Server started. Heartbeat running...");
+
+setInterval(() => {
+  count++;
+  const now = new Date().toLocaleTimeString();
+  console.log(`[${now}] ❤️  Heartbeat #${count} — server is alive`);
+}, 3000); // runs every 3 seconds
+```
+
+Run it:
+
+```bash
+node heartbeat.js
+```
+
+You'll see something like:
+
+```
+Server started. Heartbeat running...
+[10:04:01 AM] ❤️  Heartbeat #1 — server is alive
+[10:04:04 AM] ❤️  Heartbeat #2 — server is alive
+[10:04:07 AM] ❤️  Heartbeat #3 — server is alive
+```
+
+It keeps going until you press `Ctrl + C` to stop it.
+
+> 💡 Real servers use heartbeats to confirm they're still running. Monitoring tools ping the server every few seconds — if the heartbeat stops, an alert fires.
+
+---
+
+### Example 2: One-Time Delayed Task with `setTimeout`
+
+`setTimeout` runs something **once**, after a delay. Useful for "do this thing shortly after something else happens."
+
+```js
+// welcome-email.js
+
+function sendWelcomeEmail(username) {
+  console.log(`📧 Sending welcome email to ${username}...`);
+  // In a real app, you'd call your email service here
+}
+
+function onUserSignUp(username) {
+  console.log(`✅ ${username} just signed up!`);
+
+  // Wait 5 seconds, then send the welcome email
+  // (simulating a slight delay so the signup completes first)
+  setTimeout(() => {
+    sendWelcomeEmail(username);
+  }, 5000);
+
+  console.log("Signup complete. Welcome email will be sent shortly.");
+}
+
+onUserSignUp("Maya");
+```
+
+Output:
+
+```
+✅ Maya just signed up!
+Signup complete. Welcome email will be sent shortly.
+📧 Sending welcome email to Maya...   ← appears 5 seconds later
+```
+
+Notice that **"Signup complete"** prints before the email sends — Node didn't stop and wait. It scheduled the email and kept going. That's async in action.
+
+---
+
+### Example 3: Cron Jobs with `node-cron`
+
+`setInterval` is great for "every X milliseconds" — but what about "every day at midnight" or "every Monday at 9am"? For that, you need **cron syntax**, and the `node-cron` package makes it easy.
+
+First, install it:
+
+```bash
+npm install node-cron
+```
+
+#### Understanding Cron Syntax
+
+Cron uses a short string of 5 values to describe a schedule. It looks cryptic at first, but once you understand the positions it becomes readable:
+
+```
+┌─────────────── minute       (0–59)
+│   ┌─────────── hour         (0–23)
+│   │   ┌─────── day of month (1–31)
+│   │   │   ┌─── month        (1–12)
+│   │   │   │   ┌─ day of week (0–6, Sunday = 0)
+│   │   │   │   │
+*   *   *   *   *
+```
+
+A `*` means "every" — so `* * * * *` means "every minute of every hour of every day."
+
+Here are some common examples:
+
+| Cron string | When it runs |
+|---|---|
+| `* * * * *` | Every minute |
+| `*/5 * * * *` | Every 5 minutes |
+| `0 * * * *` | Every hour, on the hour |
+| `0 9 * * *` | Every day at 9:00am |
+| `0 0 * * *` | Every day at midnight |
+| `0 9 * * 1` | Every Monday at 9:00am |
+| `0 3 * * 0` | Every Sunday at 3:00am |
+| `0 0 1 * *` | First day of every month at midnight |
+
+#### Basic Example: Run a task every minute
+
+```js
+// cron-basic.js
+import cron from "node-cron";
+
+console.log("Scheduler started...");
+
+cron.schedule("* * * * *", () => {
+  const now = new Date().toLocaleTimeString();
+  console.log(`[${now}] 🔄 Running scheduled task...`);
+});
+```
+
+```bash
+node cron-basic.js
+```
+
+This will print a message every minute, on the minute, for as long as Node is running.
+
+#### Real Example: Daily cleanup at midnight
+
+```js
+// cleanup.js
+import cron from "node-cron";
+import fs from "fs/promises";
+
+// Runs every day at midnight: "0 0 * * *"
+cron.schedule("0 0 * * *", async () => {
+  console.log("🧹 Running nightly cleanup...");
+
+  try {
+    // Clear the contents of the log file
+    await fs.writeFile("server.log", "", "utf8");
+    console.log("✅ Log file cleared.");
+  } catch (error) {
+    console.error("❌ Cleanup failed:", error.message);
+  }
+});
+
+console.log("Cleanup job scheduled. Runs every night at midnight.");
+```
+
+This combines everything from the last two sections — a scheduled task that uses `fs` to work with a file. Notice it uses `async` in the callback because `fs.writeFile` is async.
+
+---
+
+### Example 4: Putting It All Together — Log Rotation
+
+Here's a more complete real-world example: a **log rotation** script. Every Sunday at 3am it reads the current log file, saves it as an archive with today's date, then clears the main log so it starts fresh.
+
+```js
+// log-rotation.js
+import cron from "node-cron";
+import fs from "fs/promises";
+
+async function rotateLogs() {
+  const timestamp = new Date().toISOString().split("T")[0]; // e.g. "2025-04-14"
+  const archiveName = `logs/archive-${timestamp}.log`;
+
+  try {
+    // 1. Read the current log
+    const currentLog = await fs.readFile("server.log", "utf8");
+
+    if (!currentLog.trim()) {
+      console.log("📋 Log is empty — nothing to archive.");
+      return;
+    }
+
+    // 2. Save it as an archive
+    await fs.writeFile(archiveName, currentLog, "utf8");
+    console.log(`📦 Log archived as ${archiveName}`);
+
+    // 3. Clear the main log file
+    await fs.writeFile("server.log", "", "utf8");
+    console.log("✅ Main log cleared. Fresh start.");
+
+  } catch (error) {
+    console.error("❌ Log rotation failed:", error.message);
+  }
+}
+
+// Every Sunday at 3:00am
+cron.schedule("0 3 * * 0", rotateLogs);
+
+console.log("📅 Log rotation scheduled for every Sunday at 3am.");
+```
+
+Here's what happens each Sunday at 3am:
+
+```
+📅 Log rotation scheduled for every Sunday at 3am.
+
+── Sunday 3:00am ──────────────────────────────────────
+📦 Log archived as logs/archive-2025-04-13.log
+✅ Main log cleared. Fresh start.
+```
+
+---
+
+### Quick Reference
+
+| Tool | Install needed? | Best for |
+|---|---|---|
+| `setTimeout` | ❌ Built-in | Run something once after a delay |
+| `setInterval` | ❌ Built-in | Repeat something every X milliseconds |
+| `node-cron` | ✅ `npm install node-cron` | Clock-based schedules ("every Monday at 9am") |
+
+---
+
+> 💡 **Keep in mind:** Scheduled tasks only run while your Node process is running. If your server restarts, the tasks restart too — which is usually fine. For very large-scale apps, dedicated job queue tools like **Bull** or **Agenda** give you more control, but `node-cron` is the right starting point for most projects.
+
+---
 
 ## Asynchronous Operations in Node 
 

@@ -111,9 +111,62 @@ You already know what GET, POST, PUT, and DELETE do. Here's the full picture of 
 | `PATCH` | Update part of a resource | ❌ No | ✅ Usually |
 | `DELETE` | Remove a resource | ❌ No | ✅ Yes |
 
-**Safe** means the request doesn't change anything on the server — `GET` requests should never cause side effects.
+### Safe Methods
 
-**Idempotent** means making the same request multiple times has the same result as making it once. Deleting a user twice should return the same state as deleting it once (the user is gone).
+**Safe** means the request doesn't change anything on the server. `GET` requests should never create, update, or delete data — they should only read it. A safe request is one you could make a hundred times with zero consequences.
+
+### Idempotent Methods
+
+**Idempotent** is a fancy word for a simple idea: making the same request once or ten times produces the same result.
+
+Think of a light switch with an "off" button — not a toggle, just an "off" button. Press it once, the light goes off. Press it five more times, the light is still off. The outcome is always the same no matter how many times you press it. That's idempotency.
+
+```
+IDEMPOTENT — same result no matter how many times you call it
+══════════════════════════════════════════════════════════════
+
+  DELETE /api/users/1
+
+  First call:   user 1 exists → deleted → user is gone   ✅
+  Second call:  user 1 is gone → still gone               ✅
+  Third call:   user 1 is gone → still gone               ✅
+
+  The end state is always the same: user 1 does not exist.
+
+
+NOT IDEMPOTENT — each call creates something new
+══════════════════════════════════════════════════════════════
+
+  POST /api/users  { name: "Alice" }
+
+  First call:   creates Alice with id 1   ✅
+  Second call:  creates Alice with id 2   ⚠️ now there are two Alices
+  Third call:   creates Alice with id 3   ⚠️ now there are three
+
+  Each call changes the state — the result is never the same.
+```
+
+### Why This Matters in Practice
+
+This isn't just academic — it affects how browsers, networks, and frontend code behave:
+
+- **Networks drop requests.** If a `GET` or `DELETE` request fails midway, it's safe to retry automatically — the result will be the same. If a `POST` request fails midway, retrying might create a duplicate record. That's why browsers will warn you "are you sure you want to resubmit?" on a form refresh.
+
+- **Frontend retry logic.** If you write code that retries a failed request, you need to know whether it's safe to retry. Idempotent methods are always safe to retry. `POST` is not.
+
+- **Debugging.** If a `GET` request is changing data on your server, that's a bug — `GET` should never have side effects. This convention helps you spot unexpected behaviour quickly.
+
+```
+Quick rule of thumb
+══════════════════════════════════════════════════════════════
+
+  Safe to retry automatically?
+  ├── GET    ✅ always — reads only, nothing changes
+  ├── PUT    ✅ yes — replacing with same data = same result
+  ├── DELETE ✅ yes — already gone = still gone
+  ├── PATCH  ⚠️ usually — depends on implementation
+  └── POST   ❌ no — creates a new record every time
+```
 
 ## 3. Status Codes — Communicating What Happened
 
@@ -144,14 +197,145 @@ Choosing the right status code is part of the contract between your API and the 
 500 Internal Server Error → Unexpected error on the server
 ```
 
-### Common Mistakes
+---
+
+### How to Handle Non-200 Codes on the Frontend
+
+Status codes are only useful if your frontend actually reads and acts on them. Most beginners write `fetch()` calls that only handle the happy path — which means errors either silently fail or crash the app.
+
+Here's the pattern every `fetch()` call should follow:
+
+```js
+// ❌ Only handles success — errors are ignored or cause crashes
+const response = await fetch("/api/users/1");
+const user = await response.json();
+displayUser(user);
+
+// ✅ Checks the status code before assuming success
+const response = await fetch("/api/users/1");
+
+if (!response.ok) {
+  // response.ok is true for 200-299, false for everything else
+  const error = await response.json();
+  console.error(`Error ${response.status}:`, error.message);
+  showErrorMessage(error.message);
+  return;
+}
+
+const data = await response.json();
+displayUser(data.user);
+```
+
+`response.ok` is a shortcut that's `true` for any 2xx status and `false` for everything else. It's the quickest way to split success from failure.
+
+For more control, you can check the specific status code:
+
+```js
+const response = await fetch("/api/users/1");
+
+if (response.status === 404) {
+  showMessage("This user doesn't exist");
+  return;
+}
+
+if (response.status === 401) {
+  redirectToLogin();
+  return;
+}
+
+if (response.status === 403) {
+  showMessage("You don't have permission to do this");
+  return;
+}
+
+if (!response.ok) {
+  showMessage("Something went wrong — please try again");
+  return;
+}
+
+const data = await response.json();
+displayUser(data.user);
+```
+
+---
+
+### Using Status Codes to Troubleshoot
+
+When something goes wrong, the status code tells you exactly where to look. This saves a lot of time compared to blindly checking everything at once.
+
+```
+Error received → read the status code → know where to look
+══════════════════════════════════════════════════════════════
+
+  400 Bad Request
+  └── Problem is in what you SENT
+      Check: req.body contents, missing fields, wrong data types
+      Ask: "What did I send? Is it formatted correctly?"
+
+  401 Unauthorized
+  └── Problem is with AUTHENTICATION
+      Check: Authorization header, token presence, token expiry
+      Ask: "Did I include a token? Is it still valid?"
+
+  403 Forbidden
+  └── Problem is with PERMISSIONS
+      Check: User role, resource ownership, access control logic
+      Ask: "Am I allowed to do this? Does this resource belong to me?"
+
+  404 Not Found
+  └── Problem is with the URL or the data
+      Check: Route spelling, URL params, whether the record exists
+      Ask: "Is the URL correct? Does this ID actually exist?"
+
+  409 Conflict
+  └── Problem is with DUPLICATE DATA
+      Check: Unique fields like email, username
+      Ask: "Does this record already exist?"
+
+  500 Internal Server Error
+  └── Problem is on the SERVER — nothing wrong with the request
+      Check: Server logs, console errors, unhandled exceptions
+      Ask: "What does the server log say? Did I handle errors correctly?"
+```
+
+> 💡 **4xx errors are your fault as the API caller. 5xx errors are the server's fault.** This is the single most useful thing to remember when troubleshooting. If you're getting a `4xx`, fix the request. If you're getting a `5xx`, fix the server code and check your logs.
+
+---
+
+### Troubleshooting Workflow
+
+When you hit an error during development, follow this sequence:
+
+```
+Got an error response?
+        │
+        ▼
+  Read the status code
+        │
+        ├── 4xx? ──► Look at what you sent
+        │               Open the Network tab in browser DevTools
+        │               Check the request body, headers, URL
+        │               Read the error message in the response body
+        │
+        └── 5xx? ──► Look at your server
+                        Check the terminal where your server is running
+                        Look for the stack trace or console.error output
+                        Add more logging to narrow down where it crashed
+```
+
+The browser's **Network tab** (in DevTools) is your best friend here. It shows every request your frontend makes, the status code it got back, and the full response body — all in one place.
+
+---
+
+### Common Status Code Mistakes
 
 | Mistake | Why It's a Problem |
 |---------|-------------------|
-| Using `200` for everything, even errors | The frontend has to read the body to know if it failed — unpredictable |
-| Using `400` for "user not found" | `400` means bad request, not missing data — use `404` |
-| Using `500` for validation errors | `500` implies your code crashed — use `400` or `422` for bad input |
-| Returning `200` with `{ success: false }` in the body | Contradicts the status code — use the right code instead |
+| Using `200` for everything, even errors | The frontend has to read the body to know if it failed — unpredictable and forces extra parsing |
+| Using `400` for "user not found" | `400` means the request itself was bad — use `404` for a missing resource |
+| Using `500` for validation errors | `500` implies your code crashed — use `400` or `422` for bad input from the client |
+| Returning `200` with `{ success: false }` in the body | Contradicts the status code — pick one source of truth |
+| Not checking `response.ok` in fetch | Silent failures that are hard to debug — always check the status |
 
 ## 4. Consistent Response Shapes
 
@@ -490,7 +674,7 @@ Learn how relational databases work using PostgreSQL, including tables, rows, re
 #### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
 Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
 
-#### 🍃 [Using MongoDB](7-mongodb.md)  
+#### 🍃 [Using MongoDB](7-mongodb-setup.md)  
 Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
 
 #### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  

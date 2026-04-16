@@ -4,8 +4,6 @@ You've built a working Express API with solid architecture and good design conve
 
 This doc covers both sides of that process: **testing** (checking that your routes behave correctly) and **debugging** (figuring out why they don't). The two are tightly connected — you'll move between them constantly as you build.
 
----
-
 ## Testing vs. Debugging — What's the Difference?
 
 These two things often get lumped together, but they have different jobs:
@@ -454,7 +452,7 @@ Learn how relational databases work using PostgreSQL, including tables, rows, re
 #### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
 Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
 
-#### 🍃 [Using MongoDB](7-mongodb.md)  
+#### 🍃 [Using MongoDB](7-mongodb-setup.md)  
 Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
 
 #### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  

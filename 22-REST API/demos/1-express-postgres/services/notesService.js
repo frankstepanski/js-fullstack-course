@@ -46,38 +46,6 @@ export async function addNote(text) {
 }
 
 /**
- * Update an existing note by id and return the updated row.
- *
- * RETURNING * sends back the full updated row so the caller gets
- * the latest state without a second query.
- *
- * Returns the updated note object:
- *   { id: 1, text: "updated text" }
- *
- * Returns null if no row matched the id.
- */
-export async function editNote(id, text) {
-  const result = await pool.query(
-    "UPDATE notes SET text = $1 WHERE id = $2 RETURNING *",
-    [text, id]
-  );
-  return result.rows[0] ?? null;
-}
-
-/**
- * Delete a note by id.
- *
- * Returns true if a row was deleted, false if no row matched the id.
- */
-export async function removeNote(id) {
-  const result = await pool.query(
-    "DELETE FROM notes WHERE id = $1",
-    [id]
-  );
-  return result.rowCount > 0;
-}
-
-/**
  * Test the database connection by running a minimal query.
  *
  * SELECT 1 is the simplest valid SQL query — it just asks PostgreSQL

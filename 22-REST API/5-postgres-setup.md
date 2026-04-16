@@ -96,6 +96,49 @@ Local setups are common for:
 
 Because everything runs on the same computer, the connection is usually **fast and simple to manage**.
 
+### How a Request Flows Through the Full Stack
+
+When a user does something in your app — like clicking a button to view their profile — here's what happens end to end:
+
+```
+  User clicks "View Profile" in the browser
+          │
+          │  HTTP GET /api/users/1
+          ▼
+  ┌─────────────────────────────┐
+  │   React Frontend            │  running on localhost:5173
+  │   fetch("/api/users/1")     │
+  └──────────────┬──────────────┘
+                 │  sends HTTP request
+                 ▼
+  ┌─────────────────────────────┐
+  │   Node / Express API        │  running on localhost:3000
+  │   GET /api/users/:id        │
+  │   calls the database        │
+  └──────────────┬──────────────┘
+                 │  sends SQL query
+                 ▼
+  ┌─────────────────────────────┐
+  │   PostgreSQL                │  running on localhost:5432
+  │   SELECT * FROM users       │
+  │   WHERE id = 1              │
+  └──────────────┬──────────────┘
+                 │  returns the row
+                 ▼
+  ┌─────────────────────────────┐
+  │   Node / Express API        │
+  │   res.json(user)            │  sends JSON back to React
+  └──────────────┬──────────────┘
+                 │
+                 ▼
+  ┌─────────────────────────────┐
+  │   React Frontend            │
+  │   displays the profile      │  user sees the result
+  └─────────────────────────────┘
+```
+
+This is why three servers need to be running at the same time during development — each one handles a different part of the chain. If any one of them is stopped, the whole flow breaks.
+
 ### Installing PostgreSQL on Windows
 
 1. Visit: https://www.postgresql.org/download/windows/
@@ -201,6 +244,20 @@ The database server itself is fully managed by the cloud provider.
 >In development, many developers use **local databases** for convenience and speed.  
 In production, applications typically connect to **cloud databases** so the database can scale and remain accessible to many users.
 
+### Local vs Cloud — At a Glance
+
+| | Local | Cloud |
+|--|-------|-------|
+| **Setup** | Install PostgreSQL on your machine | Create a database on a provider's dashboard |
+| **Internet required** | ❌ No — works offline | ✅ Yes — always |
+| **Speed** | Faster — no network round trip | Slightly slower — queries travel over the internet |
+| **Data lives** | On your computer | On the provider's servers |
+| **If your laptop breaks** | ⚠️ Data could be lost | ✅ Data is safe — managed by provider |
+| **Backups** | Your responsibility | Handled automatically by the provider |
+| **Cost** | Free | Free tier available, paid for larger usage |
+| **Best for** | Development and learning | Production apps and team projects |
+| **Not ideal for** | Sharing with teammates or deploying | Quick local experimentation |
+
 ## Tools for Managing PostgreSQL
 
 Whether you install PostgreSQL **locally on your computer** or use a **cloud provider**, the database still needs to be **managed**.
@@ -273,77 +330,18 @@ SQL is used to **work with data**, while database tools help **explore and manag
 
 ### Common PostgreSQL Management Tools
 
-Several tools are commonly used to manage PostgreSQL databases. These tools provide a **graphical interface (GUI)** that allows developers to explore databases, run SQL queries, inspect data, and manage database structures without needing to type everything manually in the terminal.
+These tools provide a graphical interface (GUI) so you can explore your database, run SQL queries, and inspect data without typing everything in the terminal.
 
-While SQL is still the language that communicates with the database, these tools make it much easier to **visualize and manage the database structure and data**.
+| Tool | Strengths | What It Can Do | When to Use It |
+|------|-----------|----------------|----------------|
+| **Beekeeper Studio** ✅ Recommended | Clean, beginner-friendly interface. Lightweight and fast. Open-source. | Run SQL queries, browse tables, manage connections, view and edit data | Perfect for learners and day-to-day development. The simplest way to explore your database. |
+| **pgAdmin** | The official PostgreSQL tool. Most complete feature set. | Full database administration — schemas, indexes, users, backups, performance monitoring, extensions | When you need deep PostgreSQL-specific configuration or are working as a DBA |
+| **DBeaver** | Works with many databases — PostgreSQL, MySQL, SQLite, Oracle, SQL Server, MongoDB | SQL editor, schema browser, data export, ER diagrams | When you work across multiple different databases and want one tool for all of them |
+| **TablePlus** | Polished native app. Fast and well-designed. | Browse tables, run queries, edit data, manage connections | When you want a premium feel and are comfortable paying for a licence |
 
-Below are some of the most commonly used PostgreSQL management tools.
+For this course, use **Beekeeper Studio**. It's free, open-source, and gets out of your way so you can focus on learning SQL.
 
----
-
-### pgAdmin
-
-**pgAdmin** is the official administration tool developed by the PostgreSQL project.  
-It is designed specifically for managing PostgreSQL databases and supports nearly every feature the database offers.
-
-Because it is built by the PostgreSQL community, it is often the **most complete and fully supported management interface** for PostgreSQL.
-
-Features:
-
-- full database administration interface
-- supports all PostgreSQL features and extensions
-- graphical tools for creating databases, schemas, tables, and indexes
-- built-in SQL editor for running queries
-- database performance monitoring tools
-- backup and restore utilities
-- user and permission management
-
-pgAdmin is often used by **database administrators and backend developers** who need deep access to PostgreSQL configuration and management features.
-
-Download: 
-https://www.pgadmin.org/
-
----
-
-### DBeaver
-
-**DBeaver** is a popular **universal database client**, meaning it works with many different database systems—not just PostgreSQL.
-
-It supports databases such as:
-
-- PostgreSQL
-- MySQL
-- SQLite
-- Oracle
-- SQL Server
-- MongoDB (with extensions)
-
-Download: https://dbeaver.io/
-
----
-
-### Beekeeper Studio (Recommended)
-
-**Beekeeper Studio** is a modern and beginner-friendly SQL client designed with simplicity and usability in mind.
-
-Compared to larger database tools, Beekeeper Studio focuses on providing a clean and lightweight interface that makes working with databases easier for developers.
-
-Because of its simplicity, it is often a great choice for students and beginners learning SQL and databases for the first time.
-
-Features:
-
-- lightweight and fast interface
-- easy-to-use SQL editor
-- clean table data viewer
-- simple database connection management
-- supports PostgreSQL, MySQL, SQLite and others
-- open-source and actively maintained
-
-Beekeeper Studio is particularly useful when you want a **simple and distraction-free environment** to explore tables, run SQL queries, and inspect data.
-
-Download:
-
-https://www.beekeeperstudio.io/
+Download: https://www.beekeeperstudio.io/
 
 ## Creating a Cloud PostgreSQL Database with Neon
 
@@ -403,14 +401,25 @@ postgresql://username:password@ep-example.us-east-1.aws.neon.tech/neondb
 
 It tells tools and applications how to connect to your PostgreSQL database.
 
-It includes:
+Here's what each part means:
 
-| Part | Meaning |
-|-----|------|
-| username | database user |
-| password | database password |
-| host | Neon server address |
-| database | database name |
+```
+postgresql://  username  :  password  @  ep-example.us-east-1.aws.neon.tech  :  5432  /  neondb
+─────────────  ────────     ────────     ──────────────────────────────────────   ────     ──────
+protocol       your DB      your DB      the server address                       port     database
+               username     password     (provided by Neon)                                name
+```
+
+| Part | Example | What It Is |
+|------|---------|-----------|
+| Protocol | `postgresql://` | Tells the tool this is a PostgreSQL connection |
+| Username | `username` | Your database login name |
+| Password | `password` | Your database password |
+| Host | `ep-example.us-east-1.aws.neon.tech` | The address of the server where your database lives |
+| Port | `5432` | The numbered "door" PostgreSQL listens on — almost never changes |
+| Database | `neondb` | The name of your specific database on that server |
+
+> 💡 **What is port 5432?** A port is like a numbered door on a server. PostgreSQL always uses door number `5432` by default — the same way websites use port `80` for HTTP and `443` for HTTPS. You'll almost never need to change it.
 
 You will use this connection string in database tools and applications.
 
@@ -458,57 +467,48 @@ If the connection is successful, Beekeeper Studio will open your PostgreSQL data
 
 This makes the process very simple:
 
+```
 Neon → Copy Connection String → Paste in Beekeeper → Connect
+```
 
-### Step 6 - Understanding the Database Sections (Schemas)
+**What success looks like:** Beekeeper Studio's left sidebar will populate with your database name, and underneath it you'll see a list of schemas including `public`. If you already created tables, they'll appear under `public`. If not, that's fine — you'll create them in the next step.
 
-When you connect to a PostgreSQL database in a tool like **Beekeeper Studio**, you will see several sections listed under the database. These sections are called **schemas**.
+### Step 6 — Understanding the Database Sections (Schemas)
 
-A **schema** is simply a way for PostgreSQL to **organize tables, views, and other database objects into groups**.
+When you connect to your Neon database in Beekeeper Studio, you will see several sections listed in the sidebar. These are called **schemas**.
 
-You can think of schemas like **folders inside a database**.
+A schema is just a way PostgreSQL organises tables into groups — think of them like folders inside a database.
 
 ```
 Database
 │
-├── Schema
-│      └── Tables
-│
-├── Schema
-│      └── Tables
-│
-└── Schema
-       └── Tables
+├── public              ← your tables live here
+├── information_schema  ← system schema (ignore)
+├── pg_catalog          ← system schema (ignore)
+├── neon                ← Neon internal (ignore)
+└── neon_migration      ← Neon internal (ignore)
 ```
 
-When you first connect to a Neon PostgreSQL database, you will usually see several schemas such as:
+As a beginner you only need to care about one:
 
-- `public`
-- `information_schema`
-- `neon`
-- `neon_migration`
-- `pg_catalog`
+| Schema | What It Is | Do you need it? |
+|--------|-----------|----------------|
+| `public` | Where your application tables are created | ✅ Yes — this is where you work |
+| `information_schema` | Metadata about the database structure | ❌ Not for beginners |
+| `pg_catalog` | PostgreSQL internal system tables | ❌ Not for beginners |
+| `neon` | Internal objects used by Neon to run the service | ❌ Not for beginners |
+| `neon_migration` | Used by Neon for internal infrastructure | ❌ Not for beginners |
 
-Most of these are **system schemas used internally by PostgreSQL or Neon**.
-
-In most applications, you will primarily work with **one schema: `public`**.
-
-#### public
-
-The **`public` schema** is the default place where your application tables are created.
-
-When you run a command like:
+When you create a table like this:
 
 ```sql
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  name TEXT
+  name TEXT NOT NULL
 );
 ```
 
-the table will be created inside the **public schema**.
-
-Example:
+it gets created inside the `public` schema automatically. For most beginner projects, all of your tables will live here:
 
 ```
 public
@@ -517,37 +517,198 @@ public
  └── comments
 ```
 
-For most beginner projects, **all of your tables will live here**.
+You can ignore everything else in the sidebar.
 
-#### information_schema
+### Running Queries: Two Ways
 
-The **`information_schema`** schema is part of the SQL standard and contains **metadata about the database**.
+Before you start creating tables, it's important to understand that there are **two different ways** to run SQL queries against your Neon database — and they behave slightly differently.
 
-Metadata means **information about the structure of the database**, not the application data itself.
-
-For example, it stores information about:
-
-- tables
-- columns
-- data types
-- permissions
-- constraints
-
-Developers sometimes query this schema when they want to inspect the structure of the database programmatically.
-
-Example:
-
-```sql
-SELECT * FROM information_schema.tables;
+```
+Your Neon PostgreSQL Database
+         │
+         ├── Neon SQL Editor (browser)
+         │       Built into the Neon dashboard
+         │       Runs in your browser, no setup needed
+         │
+         └── Beekeeper Studio (desktop app)
+                 Installed on your computer
+                 Connects to Neon over the internet
 ```
 
-For beginners, you usually do not need to modify anything here.
+| | Neon SQL Editor | Beekeeper Studio |
+|--|----------------|-----------------|
+| **Where it runs** | In your browser | On your computer |
+| **Setup required** | ❌ None — built in | ✅ Download and install |
+| **How to access** | Neon dashboard → SQL Editor tab | Open the app, connect via connection string |
+| **Best for** | Quick queries, setup, and verification | Day-to-day development, browsing tables |
+| **Transaction mode** | Autocommit — each statement runs independently | Wraps statements in a transaction by default |
+| **See table contents** | ❌ Limited — query only | ✅ Click any table to browse rows visually |
+| **Use for Step 7** | ✅ Works | ✅ Recommended |
 
-The **`pg_catalog`** schema is PostgreSQL’s internal system catalog. It contains PostgreSQL's internal tables and functions that describe how the database works. PostgreSQL itself relies heavily on this schema to operate.
+Both tools connect to the **exact same database**. Any table you create in one will immediately appear in the other.
 
-The **`neon`** schema is created by the Neon cloud platform. It contains internal objects that Neon uses to manage and operate the database service.
+#### Where to Find the Neon SQL Editor
 
-The **`neon_migration`** schema is used by Neon for managing database migrations and internal infrastructure.
+The SQL Editor is built into the Neon dashboard. You don't need to install anything — just open your project and click **SQL Editor** in the left sidebar.
+
+```
+Neon Dashboard
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│   = my-project                                      │
+│  ─────────────────────                              │
+│  🏠  Home                                           │
+│  💾  SQL Editor          ← click here               │
+│  🌿  Branches                                       │
+│  ⚙️  Settings                                       │
+│                                                     │
+│ ┌─────────────────────────────────────────────────┐ │
+│ │  Query #1                              [ Run ]  │ │
+│ │                                                 │ │
+│ │  SELECT * FROM students;                        │ │
+│ │                                                 │ │
+│ └─────────────────────────────────────────────────┘ │
+│                                                     │
+│  Results                                            │
+│  ┌──────┬───────────────┬─────────────────────┐     │
+│  │  id  │  name         │  email              │     │
+│  ├──────┼───────────────┼─────────────────────┤     │
+│  │  1   │  Alice        │  alice@email.com    │     │
+│  │  2   │  Bob          │  bob@email.com      │     │
+│  └──────┴───────────────┴─────────────────────┘     │
+└─────────────────────────────────────────────────────┘
+```
+
+This is a good place to run quick one-off queries or verify that something worked after you made a change in Beekeeper.
+
+#### What is Autocommit?
+
+This is the most important behavioral difference between the two tools.
+
+When you run a query in **Neon's SQL Editor**, each statement is executed immediately and independently — this is called **autocommit** mode.
+
+When you run a query in **Beekeeper Studio**, it wraps your statements in a **transaction block** behind the scenes. Most queries work fine inside a transaction, but a small number of PostgreSQL commands — including `CREATE DATABASE` — **cannot run inside a transaction block** at all.
+
+```
+Neon SQL Editor
+─────────────────────────────────────────────────────
+  CREATE TABLE students (...);
+        │
+        └──▶  Executes immediately ✅
+              No transaction wrapper
+
+
+Beekeeper Studio (default)
+─────────────────────────────────────────────────────
+  BEGIN;                        ← added automatically
+    CREATE TABLE students (...);
+          │
+          └──▶  Executes inside transaction block
+  COMMIT;                       ← added automatically
+
+  CREATE TABLE:    ✅ works fine inside a transaction
+  CREATE DATABASE: ❌ error — not allowed inside a transaction
+```
+
+This is why `CREATE DATABASE` works in Neon's SQL Editor but throws an error in Beekeeper Studio:
+
+```
+ERROR: CREATE DATABASE cannot run inside a transaction block
+```
+
+#### The Auto Commit Toggle in Beekeeper Studio
+
+Beekeeper Studio has an **Auto Commit** button visible at the bottom of the SQL editor. This controls whether your queries run inside a transaction or not.
+
+```
+Beekeeper Studio — SQL Editor toolbar
+┌──────────────────────────────────────────────────────────────┐
+│  Query #1                                                    │
+│                                                              │
+│  CREATE DATABASE notesdb;                                    │
+│                                                              │
+│                                                              │
+│  [ Auto Commit ]  [ Manual ]              [ Save ]  [ Run ]  │
+└──────────────────────────────────────────────────────────────┘
+         ▲
+         └── This toggle controls transaction behaviour
+```
+
+| Mode | What it does | When to use it |
+|------|-------------|----------------|
+| **Auto Commit** | Each statement commits immediately — no transaction wrapper | Most day-to-day queries: `CREATE TABLE`, `INSERT`, `SELECT` |
+| **Manual** | You must explicitly `COMMIT` or `ROLLBACK` each query | When you want full control over multi-step operations |
+
+> 💡 For most beginner work, **Auto Commit** mode is the right choice. Leave it as the default.
+
+Even with Auto Commit on, `CREATE DATABASE` will still fail in Beekeeper when connected to Neon — because of how Neon manages databases (see below). The toggle alone won't fix it.
+
+#### The Rule for Neon: Never Use `CREATE DATABASE`
+
+When working with Neon, you should **never write `CREATE DATABASE` in SQL**. Neon creates and manages databases through its dashboard — not through SQL commands.
+
+Your database (`neondb`) already exists the moment your Neon project is created.
+
+```
+❌ Common mistake
+────────────────────────────────────────────────
+CREATE DATABASE notesdb;   ← don't do this
+CREATE TABLE IF NOT EXISTS notes (
+  id SERIAL PRIMARY KEY,
+  text TEXT NOT NULL
+);
+
+  Result in Beekeeper:
+  ERROR: CREATE DATABASE cannot run inside a transaction block
+
+
+✅ Correct approach for Neon
+────────────────────────────────────────────────
+-- Skip CREATE DATABASE entirely.
+-- Your database already exists.
+
+CREATE TABLE IF NOT EXISTS notes (
+  id SERIAL PRIMARY KEY,
+  text TEXT NOT NULL
+);
+
+  Result: ✅ Table created successfully
+```
+
+| ❌ Don't do this in Neon | ✅ Do this instead |
+|--------------------------|-------------------|
+| `CREATE DATABASE mydb;` in SQL | Create databases through the Neon dashboard UI |
+| Run `CREATE DATABASE` in Beekeeper | Use Neon's SQL Editor if you must run it |
+| Assume both tools behave identically | Know that transaction mode differs between tools |
+
+#### Which Tool to Use and When
+
+```
+Task                                    Tool to Use
+──────────────────────────────────────────────────────────
+Creating tables for the first time   →  Either (both work)
+Inserting seed / sample data         →  Either (both work)
+Browsing table rows visually         →  Beekeeper Studio
+Day-to-day development queries       →  Beekeeper Studio
+Verifying a change worked            →  Neon SQL Editor
+Quick one-off queries                →  Neon SQL Editor
+Creating a new database              →  Neon dashboard UI
+```
+
+A common workflow is to **write and run queries in Beekeeper**, then **pop open Neon's SQL Editor to verify** the result looks right. Both views are live — they reflect the same data.
+
+**The practical rule:**
+
+```
+For Step 7 (creating tables and seeding data)
+  → Use Beekeeper Studio — it's what you'll use day-to-day
+
+For verifying your tables exist and data looks right
+  → Use Neon's SQL Editor for a quick cross-check
+
+For CREATE DATABASE
+  → Don't. Your database already exists in Neon.
+```
 
 ### Step 7 — Create Your First Tables in Neon
 
@@ -661,7 +822,7 @@ Specifically, you will learn how to:
 #### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
 Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
 
-#### 🍃 [Using MongoDB](7-mongodb.md)  
+#### 🍃 [Using MongoDB](7-mongodb-setup.md)  
 Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
 
 #### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  

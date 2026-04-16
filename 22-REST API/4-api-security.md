@@ -12,8 +12,6 @@ When you build a REST API, you're usually protecting at least one of these:
 
 So security is just: **"Only the right people can do the right things with the right data."**
 
----
-
 ## The Big Picture
 
 Imagine you're building an API for a note-taking app. Users can sign up, log in, and manage their own notes. Here's what could go wrong without security:
@@ -63,8 +61,6 @@ Security isn't one single thing — it's a set of layers that each block a diffe
 ```
 
 Each layer in this doc maps to one of those boxes. By the end, you'll know how to implement all of them.
-
----
 
 ## What Is "Logging In"? What Is a Token?
 
@@ -787,46 +783,6 @@ app.get("/api/profile", auth, (req, res) => {
 If the token is valid, `req.user` is available for that route.  
 If it's missing or invalid, the user gets a `401 Unauthorized` response.
 
-## CORS — Configuring It Securely
-
-You've already used CORS to get your frontend and backend talking. Now let's make sure it's configured securely for production — because the default setup leaves your API wide open.
-
-Using `app.use(cors())` with no configuration allows **any website** to make requests to your API, including malicious ones. Instead, whitelist only the origins you trust:
-
-```js
-import cors from "cors";
-import express from "express";
-
-const app = express();
-
-const allowedOrigins = ["http://localhost:5173", "https://myapp.com"];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true, // if you're using cookies or auth headers
-}));
-```
-
-### Why this is better
-- It **whitelists** multiple safe origins.  
-- It rejects unknown origins instead of allowing everything.  
-- `credentials: true` lets your frontend send cookies or tokens securely.
-
-### 🚫 Common Mistakes
-
-| Mistake | Why It's Risky |
-|----------|----------------|
-| Using `app.use(cors())` with no config | Allows **any website** to call your API — even malicious ones |
-| Forgetting `credentials: true` | Breaks cookie-based logins |
-| Using `"*"` with credentials | Not allowed by browsers — and unsafe |
-| Allowing all origins in production | Exposes your API to public abuse |
-
 ## Helmet — Easy Security Headers
 
 When you deploy an Express API, you're not just exposing your routes — you're exposing **HTTP responses** to the entire internet.  
@@ -1216,7 +1172,7 @@ Learn how relational databases work using PostgreSQL, including tables, rows, re
 #### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
 Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
 
-#### 🍃 [Using MongoDB](7-mongodb.md)  
+#### 🍃 [Using MongoDB](7-mongodb-setup.md)  
 Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
 
 #### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  

@@ -17,7 +17,7 @@
  * and the service stays focused purely on database work.
  */
 
-import { getAllNotes, addNote, editNote, removeNote } from "../services/notesService.js";
+import { getAllNotes, addNote } from "../services/notesService.js";
 
 /**
  * CONTROLLER: GET /notes
@@ -77,76 +77,5 @@ export async function createNote(req, res) {
     res.status(201).json(newNote);
   } catch (error) {
     res.status(500).json({ error: "Failed to create note" });
-  }
-}
-
-/**
- * CONTROLLER: PUT /notes/:id
- *
- * Updates the text of an existing note.
- *
- * req.params.id    → the note id from the URL  : "42"
- * req.body.text    → the new text content
- *
- * Validation checks:
- *   1. req.params.id is a valid integer  — prevents garbage queries
- *   2. req.body.text exists and is a non-empty string
- *   3. text.length <= 1000
- *
- * If the id does not match any note → 404 Not Found
- * If any check fails                → 400 Bad Request
- * If database fails                 → 500 Internal Server Error
- */
-export async function updateNote(req, res) {
-  try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({ error: "Invalid id" });
-    }
-
-    const text = req.body && req.body.text;
-    if (!text || typeof text !== "string" || text.trim() === "") {
-      return res.status(400).json({ error: "Text is required" });
-    }
-    if (text.length > 1000) {
-      return res.status(400).json({ error: "Text must be 1000 characters or less" });
-    }
-
-    const updated = await editNote(id, text.trim());
-    if (!updated) {
-      return res.status(404).json({ error: "Note not found" });
-    }
-
-    res.json(updated);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to update note" });
-  }
-}
-
-/**
- * CONTROLLER: DELETE /notes/:id
- *
- * Deletes a note by id.
- *
- * req.params.id → the note id from the URL : "42"
- *
- * If the id does not match any note → 404 Not Found
- * If database fails                 → 500 Internal Server Error
- */
-export async function deleteNote(req, res) {
-  try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({ error: "Invalid id" });
-    }
-
-    const deleted = await removeNote(id);
-    if (!deleted) {
-      return res.status(404).json({ error: "Note not found" });
-    }
-
-    res.json({ message: "Note deleted" });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to delete note" });
   }
 }

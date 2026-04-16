@@ -361,6 +361,92 @@ server.listen(3000, () => {
 This server listens for connections — but it doesn't yet know *what to do* with specific URLs like `/api/users` or `/api/products`.  
 That's what we're about to fix.
 
+## The Four Ways Data Travels to a Server
+
+Before diving into the code, it's worth stepping back and asking: *how does data actually get from a browser to a server?*
+
+There are four main ways. Each one looks different in the URL (or doesn't appear in the URL at all), and each one is read differently on the server. Understanding these four patterns first will make every code example that follows much easier to follow.
+
+```
+THE FOUR WAYS DATA TRAVELS TO A SERVER
+=======================================
+
+1. PATH ONLY
+   Browser ──────────────────────────────────────────► Server
+            GET /api/users
+            └── the URL is the whole message
+
+2. ROUTE PARAMETER
+   Browser ──────────────────────────────────────────► Server
+            GET /api/users/1
+                          └── ID baked into the path
+
+3. QUERY PARAMETER
+   Browser ──────────────────────────────────────────► Server
+            GET /api/users?name=frank
+                          └──────────── key=value after the ?
+
+4. REQUEST BODY (form / JSON)
+   Browser ──────────────────────────────────────────► Server
+            POST /api/users
+            ┌─────────────────────────┐
+            │ { "name": "frank" }     │  ← hidden inside,
+            └─────────────────────────┘    not in the URL
+```
+
+### 1. Path only — `/api/users`
+
+The simplest case. The URL itself is the entire message — "give me all users." No extra data is attached. The server reads `req.url`, sees `/api/users`, and knows exactly what to do.
+
+**When to use it:** When you want a full list of something, with no filtering.
+
+---
+
+### 2. Route parameter — `/api/users/1`
+
+The `1` is baked directly into the URL path. It's how the frontend says *"I want this specific thing."* The server has to extract it manually — in plain Node that means splitting the URL string and grabbing the right segment.
+
+**When to use it:** When you're targeting one specific resource — one user, one post, one product.
+
+---
+
+### 3. Query parameter — `/api/users?name=frank`
+
+Everything after the `?` is called a query string. It's a list of `key=value` pairs that customize your request without changing the route itself. You can chain multiple together:
+
+```
+/api/users?name=frank&sort=asc&page=2
+```
+
+The server parses them out using Node's built-in `url` module.
+
+**When to use it:** When you're filtering, searching, sorting, or paginating a list.
+
+---
+
+### 4. Request body — form or JSON, not in the URL
+
+Sometimes data shouldn't be visible in the URL at all — think passwords, form submissions, or creating a new user. Instead, it travels *inside* the request itself, invisible to the address bar. The server reads it as a stream of incoming chunks, assembles them, and then parses the result.
+
+**When to use it:** Whenever you're creating or updating something, or sending sensitive data.
+
+---
+
+### Quick reference
+
+| Method | Where it lives | How server reads it | Best used for |
+|---|---|---|---|
+| `/api/users` | The URL path | `req.url` | Listing resources |
+| `/api/users/1` | Embedded in path | `url.split("/")[3]` | One specific item |
+| `/api/users?name=frank` | After the `?` in URL | `parse(url).query` | Filtering / sorting |
+| Body / form data | Hidden in request | `req.on("data", ...)` | Creating / updating |
+
+> 💡 **A useful rule of thumb:** If you're *asking for* something, the data usually goes in the URL (path or query). If you're *sending* something to be saved, it usually goes in the body.
+
+Each of these patterns is covered in detail with code examples in the sections below. This overview is just the map — now let's look at how each one actually works.
+
+---
+
 ## Adding API Routes
 
 We'll use simple `if` statements to check both the **method** (GET, POST, etc.) and the **URL path**.
@@ -499,7 +585,7 @@ In short:
 
 ---
 
-This small piece of code is the foundation for everything you'll build in Node.  
+This small piece of code is the foundation for everything you'll build in Node.
 When you add more features (like reading POST data, handling files, or connecting to databases), it all still runs through these same `req` and `res` objects.
 
 ## Handling Request Data (JSON, Query Params, and Files)
@@ -526,6 +612,8 @@ While frontend developers focus on *asking* for data, backend servers are respon
 ---
 
 ### 1. Reading JSON Data from the Request Body
+
+> 💡 **Remember from earlier:** the request body is how data travels to the server when it shouldn't be visible in the URL — like when creating a new user or submitting a form.
 
 When a client sends data (for example, using `fetch()` in a React app), it sends it as a **stream of bytes** — not as a complete object all at once. Node handles this stream using **events**.
 
@@ -616,7 +704,8 @@ server.listen(3000, () => console.log("🚀 Server running at http://localhost:3
 
 ### 2. Handling Query Parameters
 
-Query parameters are the `?key=value` pairs at the end of URLs.  
+> 💡 **Remember from earlier:** query parameters are the `?key=value` pairs at the end of a URL, used for filtering, sorting, or searching a list.
+
 Example: `/api/users?limit=5&sort=desc`
 
 You can extract them using Node's built-in `url` module:
@@ -651,8 +740,7 @@ Query parameters are often used for filtering, pagination, or sorting:
 
 ### 3. Handling Dynamic Routes (Route Parameters)
 
-A **route parameter** is a value embedded directly inside the URL path — like the `1` in `/api/users/1`.  
-This is how your frontend tells the server *which specific item* it wants to work with.
+> 💡 **Remember from earlier:** a route parameter is a value baked directly into the URL path — like the `1` in `/api/users/1`. It tells the server which specific item you want.
 
 ```
 GET    /api/users/1   →  fetch user with ID 1
