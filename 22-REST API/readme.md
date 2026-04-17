@@ -495,15 +495,15 @@ createUser controller — doing five different jobs
         │
         ▼
   ┌─────────────────────────────────────────────────┐
-  │  controller                                      │
-  │                                                  │
-  │  1. Read req.body ................. (HTTP)        │
-  │  2. Check if email is taken ....... (business)   │
-  │  3. Hash the password ............. (business)   │
-  │  4. Save the user to database ..... (data)       │
-  │  5. Send a welcome email .......... (business)   │
-  │  6. Send res.json() ............... (HTTP)       │
-  │                                                  │
+  │  controller                                     │
+  │                                                 │
+  │  1. Read req.body ................. (HTTP)      │
+  │  2. Check if email is taken ....... (business)  │
+  │  3. Hash the password ............. (business)  │
+  │  4. Save the user to database ..... (data)      │
+  │  5. Send a welcome email .......... (business)  │
+  │  6. Send res.json() ............... (HTTP)      │
+  │                                                 │
   └─────────────────────────────────────────────────┘
 
   Only steps 1 and 6 are the controller's job.
@@ -528,12 +528,12 @@ BEFORE — everything in the controller
 
   Controller
   ┌─────────────────────────────────────────────────┐
-  │  reads req                                       │
-  │  checks email                                    │
-  │  hashes password                                 │
-  │  saves to database                               │
-  │  sends welcome email                             │
-  │  sends res                                       │
+  │  reads req                                      │
+  │  checks email                                   │
+  │  hashes password                                │
+  │  saves to database                              │
+  │  sends welcome email                            │
+  │  sends res                                      │
   └─────────────────────────────────────────────────┘
 
 
@@ -545,7 +545,7 @@ AFTER — controller delegates to service
   │  reads req       │            │                          │
   │                  │──calls────►│  checks email            │
   │  const user =    │            │  hashes password         │
-  │    userService   │◄─returns──│  saves to database       │
+  │    userService   │◄─returns── │  saves to database       │
   │    .createUser() │            │  sends welcome email     │
   │                  │            │                          │
   │  sends res       │            │  returns the new user    │
