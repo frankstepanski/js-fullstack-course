@@ -1099,3 +1099,33 @@ If you ever find yourself importing a model directly into a controller, or writi
 | Painful to test | Services can be unit tested without starting an HTTP server |
 | Swapping databases means rewriting everything | Only the model file changes — service and controller stay the same |
 | Impossible to work on as a team | Different people can own different layers without stepping on each other |
+
+
+### Next Topics to Explore
+
+#### 🎨 [API Design](1-api-design.md)
+Learn the principles of well-designed REST APIs, including naming conventions, resource modeling, status codes, and versioning strategies that make your API intuitive and maintainable.
+
+#### 🧪 [Testing & Debugging](2-testing-and-debugging.md)  
+Learn how to test your API endpoints, write Postman tests, and debug common backend issues so you can confidently verify that your server behaves correctly.
+
+#### 📋 [Server Logging](3-server-logging.md)  
+Understand how to record what your API is doing using Morgan and Winston — including writing permanent log files, log levels, and what never to log.
+
+#### 🔐 [API Security](4-api-security.md)  
+Understand how to protect your backend using validation, authentication, environment variables, and other techniques that prevent common security vulnerabilities.
+
+#### 🐘 [Using PostgreSQL](5-postgres-setup.md)  
+Learn how relational databases work using PostgreSQL, including tables, rows, relationships, and how SQL queries interact with structured data.
+
+#### 🔗 [Connecting APIs to PostgreSQL](6-postgres-service.md)  
+Connect your Node.js REST API to a PostgreSQL database and learn how backend services run SQL queries to store and retrieve application data.
+
+#### 🍃 [Using MongoDB](7-mongodb-setup.md)  
+Understand how document databases work using MongoDB, including collections, documents, fields, and how data can be stored in flexible JSON-like structures.
+
+#### 🔌 [Connecting APIs to MongoDB](8-mongodb-service.md)  
+Learn how to connect your API to MongoDB and use tools like Mongoose to create models, run queries, and manage application data.
+
+#### 🚀 [Deployment](9-deployment.md)  
+Learn how to deploy your REST API to the cloud with a live database, including environment configuration, hosting platforms, and making your backend accessible in production.
