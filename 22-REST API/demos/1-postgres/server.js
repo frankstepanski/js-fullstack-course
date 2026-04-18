@@ -14,8 +14,6 @@
 import app from "./app.js";
 import { testConnection } from "./notesService.js";
 
-const PORT = 3000;
-
 /**
  * Start Server
  *
@@ -28,17 +26,19 @@ const PORT = 3000;
  *
  * testConnection() runs a simple "SELECT 1" query against PostgreSQL.
  * If it succeeds  → database is reachable and queries will work
- * If it fails     → something is wrong (bad connection string, network issue, etc.)
- *
- * The server continues running either way — the check is for visibility only.
+ * If it fails     → server will shut down with an error code rather than
+ *                   running in a broken state with no database access
  */
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, async () => {
-  console.log(`🚀 Express server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 
   try {
     await testConnection();
     console.log("✅ Connected to PostgreSQL");
   } catch (error) {
     console.error("❌ Database connection failed:", error.message);
+    process.exit(1);
   }
 });

@@ -1,7 +1,5 @@
--- seed.sql
--- Inserts sample data into the notes table.
---
--- Run this after setup.sql to populate the database with test data.
+-- schema.sql
+-- Creates the notes table inside your current database.
 --
 -- ─────────────────────────────────────────────────
 -- BEEKEEPER STUDIO
@@ -16,9 +14,14 @@
 -- 1. Open your project in the Neon dashboard
 -- 2. Click SQL Editor in the left sidebar
 -- 3. Paste this file and click Run
+--
 -- ─────────────────────────────────────────────────
- 
-INSERT INTO notes (text) VALUES
-  ('Buy groceries'),
-  ('Call the dentist'),
-  ('Finish the project');
+-- NOTE: There is no CREATE DATABASE here.
+-- Your Neon database (neondb) already exists.
+-- This file only creates the tables inside it.
+-- ─────────────────────────────────────────────────
+
+CREATE TABLE IF NOT EXISTS notes (
+  id   SERIAL PRIMARY KEY,
+  text TEXT NOT NULL
+);

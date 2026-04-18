@@ -12,7 +12,7 @@
  * - Query functions can be reused across multiple routes if needed
  */
 
-import pool from "./db.js"
+import pool from "./db/db.js"
 
 /**
  * Fetch all notes from the database, newest first.

@@ -1,6 +1,6 @@
 // services/notesService.js
 
-import pool from "../db.js"
+import pool from "../db/db.js"
 
 export async function getAllNotes() {
   const result = await pool.query("SELECT * FROM notes ORDER BY id DESC");
