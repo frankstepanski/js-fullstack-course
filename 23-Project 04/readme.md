@@ -1,4 +1,3 @@
-
 # 💻 Project 04: Full-Stack CRUD Application (3-Tier Architecture)
 
 ## 🧭 Project Overview
@@ -98,6 +97,128 @@ Responsibilities include:
 ### Database Layer
 
 The service layer communicates with a **PostgreSQL database** using the **pg library**.
+
+## 🏷️ TypeScript Typing Requirements
+
+Adding types to key parts of your application improves reliability, makes your code self-documenting, and catches bugs at compile time rather than runtime. You do **not** need to type everything — focus on the areas where types provide the most value.
+
+### TypeScript Setup (if not already configured)
+
+```bash
+npm install --save-dev typescript @types/node @types/express @types/pg ts-node
+npx tsc --init
+```
+
+Recommended `tsconfig.json` settings for a Node.js + Express project:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  }
+}
+```
+
+---
+
+### Where to Add Types
+
+#### 1. Service Layer
+
+Type every function's parameters and return value. Since services interact with the database, typing them ensures the rest of the app always receives the shape it expects.
+
+> 💡 Define a type for your core entity to use as the return type across your service functions. For example, if your app manages tasks:
+
+```ts
+// This type should reflect the shape of a row in your database table
+type Task = {
+  id: number
+  name: string
+  description: string
+  created_at: Date
+}
+```
+
+```ts
+// services/taskService.ts
+export async function getAllTasks(): Promise<Task[]> { ... }
+
+export async function getTaskById(id: number): Promise<Task | null> { ... }
+
+export async function createTask(name: string, description: string): Promise<Task> { ... }
+
+export async function updateTask(id: number, name?: string, description?: string): Promise<Task | null> { ... }
+
+export async function deleteTask(id: number): Promise<boolean> { ... }
+```
+
+---
+
+#### 2. Controller Layer
+
+Type Express `Request` and `Response` parameters. Use `req.params`, `req.body`, and `res.json()` with typed shapes.
+
+```ts
+// controllers/itemController.ts
+import { Request, Response } from "express"
+
+export async function createItemController(req: Request, res: Response): Promise<void> {
+  const { name, description } = req.body as { name: string; description: string }
+  // validate and call service...
+}
+```
+
+For typed route parameters and request bodies, you can use Express generics:
+
+```ts
+// Request<Params, ResBody, ReqBody, Query>
+export async function getItemByIdController(
+  req: Request<{ id: string }>,
+  res: Response
+): Promise<void> {
+  const id = parseInt(req.params.id)
+  // ...
+}
+```
+
+---
+
+#### 3. API Response Shapes
+
+Define a typed wrapper for consistent API responses across all endpoints.
+
+```ts
+// types/api.ts
+export interface ApiResponse<T> {
+  success: boolean
+  data?: T
+  error?: string
+}
+```
+
+Use it in controllers:
+
+```ts
+res.json({ success: true, data: item } satisfies ApiResponse<Item>)
+res.status(404).json({ success: false, error: "Item not found" } satisfies ApiResponse<never>)
+```
+
+---
+
+### What You Don't Need to Type
+
+Not every file needs explicit types. Skip typing in:
+
+- Simple configuration files (e.g. `server.ts` bootstrapping code)
+- Database connection setup (the `pool` object is typed by the `pg` library automatically)
+- Route files (these just map paths to controllers — minimal logic)
+
+The goal is to type the **boundaries between layers** (service inputs/outputs and controller request/response shapes), not every line of code.
 
 ## 🗄️ PostgreSQL Database Requirements
 
@@ -424,7 +545,6 @@ Possible improvements include:
 - Adding **API documentation (Swagger / OpenAPI)**
 - Adding **authentication and user accounts**
 - Adding **automated tests**
-- Migrating the project to **TypeScript**
 - Implementing **pagination for large datasets**
 - Adding **input validation libraries**
 

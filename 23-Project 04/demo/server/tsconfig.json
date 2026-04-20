@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // Module system — nodenext matches Node's native ES module support
+    "module": "nodenext",
+    // Compile to modern JavaScript
+    "target": "esnext",
+    // Source files location
+    "rootDir": "./src",
+    // Compiled output location
+    "outDir": "./dist",
+    // Enable all strict type checks as a baseline
+    "strict": true,
+    // Allow untyped parameters (e.g. req, res in controllers and routers)
+    // Only add explicit types where they add real value, like service files
+    "noImplicitAny": false,
+    // Enforce correct import/export syntax for ESM
+    "verbatimModuleSyntax": true,
+    // Treat each file as an isolated module for faster builds
+    "isolatedModules": true,
+    // Automatically detect whether a file is a module or script
+    "moduleDetection": "force",
+    // Skip type checking of node_modules for faster builds
+    "skipLibCheck": true,
+    // Prevent unsafe array/object index access without null checks
+    "noUncheckedIndexedAccess": true,
+    // Distinguish between missing properties and properties set to undefined
+    "exactOptionalPropertyTypes": true
+  },
+  "include": ["src/**/*.ts"]
+}

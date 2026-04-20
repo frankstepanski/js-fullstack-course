@@ -10,9 +10,6 @@ export const GlobalStyles = createGlobalStyle`
    - Basic typography and spacing
 ============================ */
 
-/* Import Google Font (Poppins)
-   Note: @import must come before all other rules */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 /* Global defaults:
    - Use border-box sizing so width includes padding + border
