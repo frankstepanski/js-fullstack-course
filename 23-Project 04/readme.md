@@ -1,6 +1,6 @@
-# 💻 Project 04: Full-Stack CRUD Application (3-Tier Architecture)
+#  Project 04: Full-Stack CRUD Application (3-Tier Architecture)
 
-## 🧭 Project Overview
+##  Project Overview
 
 This capstone project brings together **everything you’ve learned throughout the bootcamp** — including frontend development, backend APIs, and working with a database.
 
@@ -313,7 +313,7 @@ Delete
 
 The exact subject of the application is **up to you**, as long as the system demonstrates **full CRUD operations**.
 
-## 🖥️ Development Focus
+##  Development Focus
 
 You should design the project starting from the **frontend**, then connect it to the backend and database.
 
@@ -341,7 +341,7 @@ Stores persistent application data in PostgreSQL.
 
 Your backend will communicate with the database using the **pg library**.
 
-## 🚀 Deployment (Frontend and Backend on Separate Cloud Services)
+##  Deployment (Frontend and Backend on Separate Cloud Services)
 
 Both parts of the application must be deployed separately.
 
@@ -503,7 +503,7 @@ Even though some platforms allow hosting everything together, separating service
 - Security practices
 
 
-## 📦 Project Deliverables
+##  Project Deliverables
 
 Your submission should include:
 
