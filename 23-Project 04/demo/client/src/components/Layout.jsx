@@ -1,17 +1,18 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import styles from "./Layout.module.css";
 
 export default function Layout() {
   return (
     <>
-      <header>
-        <div className="header-inner">
-          <div className="brand">
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
+          <div className={styles.brand}>
             <h1>Moonlight Pizza Co.</h1>
             <p>Fresh, handmade pizza baked under a midnight sky.</p>
           </div>
 
-          <nav aria-label="Main site navigation">
+          <nav className={styles.nav} aria-label="Main site navigation">
             <ul>
               <li><NavLink to="/">About</NavLink></li>
               <li><NavLink to="/menu">Menu</NavLink></li>
@@ -27,8 +28,8 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer>
-        <p>&copy; 2025 Moonlight Pizza Co. | This is a fictional site for learning HTML and CSS</p>
+      <footer className={styles.footer}>
+        <p>&copy; 2026 Moonlight Pizza Co. | This is a fictional site for learning HTML and CSS</p>
       </footer>
     </>
   );

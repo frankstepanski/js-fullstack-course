@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../lib/api.js";
+import styles from "./MenuPage.module.css";
 
 export default function MenuPage() {
   const [status, setStatus] = useState("Loading menu…");
@@ -14,7 +15,7 @@ export default function MenuPage() {
         if (cancelled) return;
 
         setPizzas(Array.isArray(data) ? data : []);
-        setStatus("Here are some of our “famous” (pretend) pizzas:");
+        setStatus("Here are some of our \"famous\" (pretend) pizzas:");
       } catch (err) {
         if (cancelled) return;
         console.error(err);
@@ -22,9 +23,7 @@ export default function MenuPage() {
       }
     })();
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
   return (
@@ -33,7 +32,7 @@ export default function MenuPage() {
 
       <p id="menu-status">{status}</p>
 
-      <div className="menu-columns" id="menu-list">
+      <div className={styles.menuColumns} id="menu-list">
         {!pizzas.length ? (
           status.startsWith("There was") ? null : <p>No pizzas found. Check your db.json / json-server setup.</p>
         ) : (
@@ -47,13 +46,13 @@ export default function MenuPage() {
               <article aria-labelledby={headingId} key={pizza.id}>
                 <h3 id={headingId}>{pizza.name}</h3>
 
-                <div className="menu-card-content">
+                <div className={styles.menuCardContent}>
                   <figure>
                     <img src={imgSrc} width="150" alt={imgAlt} />
                     {imgCaption ? <figcaption>{imgCaption}</figcaption> : null}
                   </figure>
 
-                  <div className="menu-card-text">
+                  <div className={styles.menuCardText}>
                     <p>{pizza.description}</p>
                     <p>
                       <strong>Price:</strong> ${pizza.prices.medium.toFixed(2)} (Medium) / $

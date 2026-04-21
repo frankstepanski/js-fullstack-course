@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { api } from "../lib/api.js";
 import { useCart } from "../context/CartContext.jsx";
+import styles from "./OrderPage.module.css";
 
 function formatMoney(n) {
   return `$${Number(n || 0).toFixed(2)}`;
@@ -10,16 +11,16 @@ function PizzaMenuItem({ pizza, onAdd }) {
   const [size, setSize] = useState("medium");
 
   return (
-    <li className="pizza-card">
-      <div className="pizza-card__body">
-        <h3 className="pizza-card__title">{pizza.name}</h3>
-        <p className="pizza-card__description">{pizza.description}</p>
-        <p className="pizza-card__prices">
+    <li className={styles.pizzaCard}>
+      <div className={styles.pizzaCardBody}>
+        <h3 className={styles.pizzaCardTitle}>{pizza.name}</h3>
+        <p className={styles.pizzaCardDescription}>{pizza.description}</p>
+        <p className={styles.pizzaCardPrices}>
           <strong>Price:</strong> {formatMoney(pizza.prices.medium)} (Medium) / {formatMoney(pizza.prices.large)} (Large)
         </p>
       </div>
 
-      <div className="pizza-card__actions">
+      <div className={styles.pizzaCardActions}>
         <label>
           Size:
           <select data-size-select value={size} onChange={(e) => setSize(e.target.value)}>
@@ -28,7 +29,12 @@ function PizzaMenuItem({ pizza, onAdd }) {
           </select>
         </label>
 
-        <button type="button" className="btn btn-primary" data-add-to-cart onClick={() => onAdd(pizza, size)}>
+        <button
+          type="button"
+          className={`${styles.btn} ${styles.btnPrimary}`}
+          data-add-to-cart
+          onClick={() => onAdd(pizza, size)}
+        >
           Add to cart
         </button>
       </div>
@@ -38,13 +44,13 @@ function PizzaMenuItem({ pizza, onAdd }) {
 
 function CartItem({ item, onQty, onRemove }) {
   return (
-    <li className="cart-item">
-      <div className="cart-item__info">
+    <li className={styles.cartItem}>
+      <div className={styles.cartItemInfo}>
         <strong>{item.name}</strong>
-        <span className="cart-item__size">({item.size})</span>
+        <span className={styles.cartItemSize}>({item.size})</span>
       </div>
 
-      <div className="cart-item__controls">
+      <div className={styles.cartItemControls}>
         <label>
           Qty:
           <input
@@ -56,9 +62,14 @@ function CartItem({ item, onQty, onRemove }) {
           />
         </label>
 
-        <span className="cart-item__subtotal">{formatMoney(item.subtotal)}</span>
+        <span className={styles.cartItemSubtotal}>{formatMoney(item.subtotal)}</span>
 
-        <button type="button" className="cart-item__remove" data-remove onClick={() => onRemove(item.key)}>
+        <button
+          type="button"
+          className={styles.cartItemRemove}
+          data-remove
+          onClick={() => onRemove(item.key)}
+        >
           Remove
         </button>
       </div>
@@ -69,7 +80,6 @@ function CartItem({ item, onQty, onRemove }) {
 export default function OrderPage() {
   const [menuStatus, setMenuStatus] = useState("Loading menu…");
   const [pizzas, setPizzas] = useState([]);
-
   const [orderStatus, setOrderStatus] = useState("");
 
   const { cartItems, cartTotal, addToCart, updateQuantity, removeFromCart, clearCart, placeOrder, cartStatus } = useCart();
@@ -92,9 +102,7 @@ export default function OrderPage() {
       }
     })();
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
   const isCartEmpty = cartItems.length === 0;
@@ -114,15 +122,15 @@ export default function OrderPage() {
   return (
     <section id="order" aria-labelledby="order-heading">
       <h2 id="order-heading">Order Online</h2>
-      <p id="order-description">
+      <p className={styles.orderDescription}>
         Build a pretend order from our menu. When you place your order, it will be saved to a local JSON API (json-server) for demo purposes.
       </p>
 
-      <div className="order-layout">
-        <section aria-label="Menu" className="order-menu">
+      <div className={styles.orderLayout}>
+        <section aria-label="Menu" className={styles.orderMenu}>
           <h3>Menu</h3>
-          <p id="menu-status">{menuStatus}</p>
-          <ul id="menu-list" className="menu-list">
+          <p className={styles.menuStatus}>{menuStatus}</p>
+          <ul id="menu-list" className={styles.menuList}>
             {!pizzas.length ? (
               menuStatus.startsWith("There was") ? null : <li>No pizzas found. Check your db.json.</li>
             ) : (
@@ -133,28 +141,37 @@ export default function OrderPage() {
           </ul>
         </section>
 
-        <aside aria-label="Cart" className="order-cart">
+        <aside aria-label="Cart" className={styles.orderCart}>
           <h3>Your Cart</h3>
 
-          <ul id="cart-list" className="cart-list">
-            {isCartEmpty ? <li className="cart-empty">Your cart is empty.</li> : null}
+          <ul id="cart-list" className={styles.cartList}>
+            {isCartEmpty ? <li className={styles.cartEmpty}>Your cart is empty.</li> : null}
             {!isCartEmpty ? cartItems.map((item) => (
               <CartItem key={item.key} item={item} onQty={updateQuantity} onRemove={removeFromCart} />
             )) : null}
           </ul>
 
-          <p id="cart-total" className="cart-total">Total: {formatMoney(cartTotal)}</p>
+          <p className={styles.cartTotal}>Total: {formatMoney(cartTotal)}</p>
 
-          <div className="cart-actions">
-            <button type="button" id="cart-clear" onClick={() => { clearCart(); setOrderStatus(""); }}>
+          <div className={styles.cartActions}>
+            <button
+              type="button"
+              className={styles.cartClear}
+              onClick={() => { clearCart(); setOrderStatus(""); }}
+            >
               Clear Cart
             </button>
-            <button type="button" id="cart-checkout" disabled={!canCheckout} onClick={handleCheckout}>
+            <button
+              type="button"
+              className={styles.cartCheckout}
+              disabled={!canCheckout}
+              onClick={handleCheckout}
+            >
               Place Order (Demo)
             </button>
           </div>
 
-          <p id="order-status" className="order-status" aria-live="polite">{orderStatus}</p>
+          <p className={styles.orderStatus} aria-live="polite">{orderStatus}</p>
         </aside>
       </div>
     </section>
