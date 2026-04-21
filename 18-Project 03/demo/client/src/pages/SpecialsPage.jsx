@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../lib/api.js";
+import styles from "./SpecialsPage.module.css";
 
 export default function SpecialsPage() {
   const [status, setStatus] = useState("Loading specials…");
@@ -14,7 +15,7 @@ export default function SpecialsPage() {
         if (cancelled) return;
 
         setSpecials(Array.isArray(data) ? data : []);
-        setStatus("This week’s specials (pretend, but delicious):");
+        setStatus("This week's specials (pretend, but delicious):");
       } catch (err) {
         if (cancelled) return;
         console.error(err);
@@ -22,9 +23,7 @@ export default function SpecialsPage() {
       }
     })();
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
   return (
@@ -34,16 +33,16 @@ export default function SpecialsPage() {
 
       <p id="specials-status">{status}</p>
 
-      <div className="specials-grid" id="specials-list">
+      <div className={styles.specialsGrid} id="specials-list">
         {!specials.length ? (
           status.startsWith("There was") ? null : <p>No specials found. Check your db.json.</p>
         ) : (
           specials.map((special) => (
-            <article className="special-card" key={special.id ?? `${special.dayLabel}-${special.title}`}>
-              <p className="special-day">{special.dayLabel}</p>
+            <article className={styles.specialCard} key={special.id ?? `${special.dayLabel}-${special.title}`}>
+              <p className={styles.specialDay}>{special.dayLabel}</p>
               <h3>{special.title}</h3>
-              <p className="special-text" dangerouslySetInnerHTML={{ __html: special.descriptionHtml }} />
-              <p className="special-tag">{special.tagline}</p>
+              <p dangerouslySetInnerHTML={{ __html: special.descriptionHtml }} />
+              <p className={styles.specialTag}>{special.tagline}</p>
             </article>
           ))
         )}

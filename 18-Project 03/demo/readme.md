@@ -1,6 +1,6 @@
-# Moonlight Pizza Co. --- React Web App (Project 03)
+# Moonlight Pizza Co. --- React Web App (Project 03)
 
-This project rebuilds **Moonlight Pizza Co. Project 02** using **React**
+This project rebuilds **Moonlight Pizza Co. Project 02** using **React**
 while keeping the **same UI, same API, and same data**.
 
 The goal of this project is **not** to add new features --- it's to
@@ -54,7 +54,7 @@ updates.
 -   Vite + React
 -   React Router
 -   React Context
--   styled-components
+-   CSS Modules
 -   json-server
 
 ## 📁 Project Structure (Separated for Deployment)
@@ -68,14 +68,19 @@ moonlight-pizza-project/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   │   ├── Home.jsx
+│   │   │   ├── Home.module.css
 │   │   │   ├── Menu.jsx
+│   │   │   ├── Menu.module.css
 │   │   │   ├── Specials.jsx
+│   │   │   ├── Specials.module.css
 │   │   │   ├── Order.jsx
-│   │   │   └── Contact.jsx
+│   │   │   ├── Order.module.css
+│   │   │   ├── Contact.jsx
+│   │   │   └── Contact.module.css
 │   │   ├── context/
 │   │   │   └── CartContext.jsx
 │   │   ├── styles/
-│   │   │   └── GlobalStyles.js
+│   │   │   └── global.css
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── package.json
@@ -229,15 +234,15 @@ If you do not redeploy, your app may still use the old value.
 
 ### Now (React)
 
-Each page is a **React component**:
+Each page is a **React component** with its own CSS Module:
 
-  Page       Component
-  ---------- ----------------
-  Home       `Home.jsx`
-  Menu       `Menu.jsx`
-  Specials   `Specials.jsx`
-  Order      `Order.jsx`
-  Contact    `Contact.jsx`
+  Page       Component         Styles
+  ---------- ---------------- --------------------
+  Home       `Home.jsx`        `Home.module.css`
+  Menu       `Menu.jsx`        `Menu.module.css`
+  Specials   `Specials.jsx`    `Specials.module.css`
+  Order      `Order.jsx`       `Order.module.css`
+  Contact    `Contact.jsx`     `Contact.module.css`
 
 All pages render inside a **single HTML file** (`index.html`), which
 React controls.
@@ -264,7 +269,7 @@ Routes are defined once in the app:
 
 Navigation happens **without reloading the page**.
 
-## CSS → styled-components
+## CSS → CSS Modules
 
 ### Before
 
@@ -273,17 +278,51 @@ Navigation happens **without reloading the page**.
 
 ### Now
 
--   Styles live next to components
--   Components encapsulate structure + styles
+-   **Global styles** live in `src/styles/global.css` and are imported
+    once in `main.jsx` for things like resets, fonts, and CSS variables
+-   **Page-scoped styles** live in a `.module.css` file next to each
+    page component
+-   Class names are imported as an object and applied via JSX, which
+    automatically scopes them to avoid conflicts
 -   Visual output remains **identical**
 
-``` js
-import styled from "styled-components";
+``` css
+/* Home.module.css */
+.hero {
+  background: var(--color-primary);
+  padding: 2rem;
+}
+```
 
-const Card = styled.article`
-  background: white;
-  padding: 1rem;
-`;
+``` jsx
+/* Home.jsx */
+import styles from "./Home.module.css";
+
+function Home() {
+  return <section className={styles.hero}>...</section>;
+}
+```
+
+``` css
+/* src/styles/global.css */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #c0392b;
+  --font-main: "Georgia", serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+}
+```
+
+``` jsx
+/* main.jsx */
+import "./styles/global.css";
 ```
 
 ## DOM Manipulation → State

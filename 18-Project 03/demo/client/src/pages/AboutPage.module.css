@@ -1,0 +1,146 @@
+/* ============================
+   About layout
+============================ */
+.about {
+  padding: 1.25rem 1rem;
+}
+
+.aboutLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.aboutText {
+  flex: 2;
+}
+
+.aboutText p {
+  margin-bottom: 0.75rem;
+}
+
+.aboutTagline {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b45b1f;
+  margin-bottom: 0.9rem;
+}
+
+/* ============================
+   Hours card
+============================ */
+.aboutHours {
+  flex: 1;
+  background-color: #fffaf2;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.aboutHours h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #d35400;
+}
+
+.hoursList {
+  margin: 0;
+  padding: 0;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed #f1e0c8;
+  font-size: 0.95rem;
+}
+
+.hoursRow:last-child {
+  border-bottom: none;
+}
+
+.hoursRow dt {
+  font-weight: 600;
+}
+
+.hoursRow dd {
+  margin: 0;
+  text-align: right;
+}
+
+/* ============================
+   Reviews
+============================ */
+.aboutReviews {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f1e0c8;
+}
+
+.aboutReviews h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #34495e;
+}
+
+.reviewsList {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.reviewCard {
+  background-color: #fffaf2;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.reviewQuote {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.reviewMeta {
+  margin: 0;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  color: #555;
+}
+
+.reviewRating {
+  font-size: 0.85rem;
+  color: #e0a800;
+}
+
+/* ============================
+   Responsive
+============================ */
+@media (min-width: 768px) {
+  .about {
+    padding: 1.75rem 2rem;
+  }
+
+  .aboutLayout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .aboutHours {
+    min-width: 240px;
+    max-width: 280px;
+  }
+}

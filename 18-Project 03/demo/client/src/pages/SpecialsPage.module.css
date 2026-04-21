@@ -1,0 +1,39 @@
+/* ============================
+   Specials grid
+============================ */
+.specialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.specialCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f2e2cc;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+.specialCard h3 {
+  margin: 0 0 0.75rem;
+}
+
+.specialCard p {
+  margin: 0 0 0.5rem;
+}
+
+.specialDay {
+  margin-bottom: 0.5rem;
+}
+
+.specialTag {
+  margin-top: auto;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #7f7f7f;
+}

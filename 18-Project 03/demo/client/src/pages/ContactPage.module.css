@@ -1,0 +1,91 @@
+/* ============================
+   Contact section
+============================ */
+.contact {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.contactLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.contactCard {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.contactCard h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #d35400;
+}
+
+.contact address {
+  font-style: normal;
+}
+
+.contact a {
+  color: #d35400;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* ============================
+   Contact actions
+============================ */
+.contactActions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.contactButton {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #e67e22;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contactButton:hover {
+  background-color: #cf711f;
+}
+
+.contactButtonSecondary {
+  background-color: #7f8c8d;
+}
+
+.contactButtonSecondary:hover {
+  background-color: #636e72;
+}
+
+/* ============================
+   Responsive
+============================ */
+@media (min-width: 768px) {
+  .contactLayout {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .contactCard {
+    flex: 1;
+  }
+}

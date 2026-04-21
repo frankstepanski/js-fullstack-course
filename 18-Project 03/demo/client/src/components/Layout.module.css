@@ -1,0 +1,111 @@
+/* ============================
+   Header
+============================ */
+.header {
+  background-image: url("/images/pizza-hero.jpg");
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 2.5rem 1rem;
+}
+
+.headerInner {
+  margin: 0 auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.brand h1 {
+  font-size: 2.7rem;
+  margin: 0 0 0.25rem;
+}
+
+.brand p {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ============================
+   Navigation
+============================ */
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffe066;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav a:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* ============================
+   Footer
+============================ */
+.footer {
+  background-color: #2b2d42;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ============================
+   Responsive
+============================ */
+@media (min-width: 1000px) {
+  .header {
+    padding: 4rem 1rem;
+  }
+
+  .headerInner {
+    max-width: 1200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .brand h1 {
+    font-size: 2.3rem;
+  }
+
+  .brand p {
+    font-size: 1rem;
+  }
+
+  .nav ul {
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+
+  .nav a {
+    font-size: 1.05rem;
+  }
+}
