@@ -16,7 +16,7 @@ The project should follow the principles of **3-Tier Architecture**, separating 
 
 Demonstrate your ability to design, build, and deploy a **complete full-stack application** with a clean architecture and a persistent database.
 
-# 🧱 Key Skills Covered
+##  Key Skills Covered
 
 - **React** — building the client-side interface
 - **Node.js + Express** — backend API development
@@ -28,7 +28,7 @@ Demonstrate your ability to design, build, and deploy a **complete full-stack ap
 - **Full CRUD operations**
 - **Deployment of frontend and backend**
 
-# ⚙️ Architecture Overview
+## Architecture Overview
 
 Your application should follow a **3-tier architecture** structure.
 
@@ -52,7 +52,7 @@ Services (Business Logic)
 PostgreSQL Database
 ```
 
-## 🧠 Backend Architecture Requirements
+##  Backend Architecture Requirements
 
 Your backend must follow a **layered architecture**.
 

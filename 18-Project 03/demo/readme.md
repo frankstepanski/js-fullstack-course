@@ -1,395 +1,206 @@
-# Moonlight Pizza Co. --- React Web App (Project 03)
+# Project 03: React App Using an API (json-server)
 
-This project rebuilds **Moonlight Pizza Co. Project 02** using **React**
-while keeping the **same UI, same API, and same data**.
+## Project Overview
 
-The goal of this project is **not** to add new features --- it's to
-understand how a real-world vanilla JavaScript app translates into a
-modern React architecture.
+In this project, you will build a **React application** that connects to an API and displays real data.
 
-> If Project 02 taught you *how the browser works*, this project teaches
-> you *how teams actually build frontend apps*.
+This project moves beyond static HTML and vanilla JavaScript into a **component-based React architecture**.
 
-## What Stayed the Same
+🔹 You will use **json-server** to create your own API  
+🔹 Your React app will connect to that API using `fetch()`  
+🔹 You will work with both **GET and POST requests**
 
-This React version intentionally preserves everything that already
-worked:
+> ⚠️ This project introduces the foundation of full-stack development — separating your frontend (React) and backend (API).
 
--   Same visual design (100% UI parity)
--   Same responsive behavior (mobile-first)
--   Same REST API
--   Same endpoints
--   Same data flow
--   Same user experience
+## Key Skills Covered
 
-The backend still uses
-[`json-server`](https://github.com/typicode/json-server) as a mock REST
-API.
+- React fundamentals  
+- React Router  
+- useState (local + global state)  
+- useEffect  
+- API integration (GET + POST)  
+- json-server  
+- component-based architecture  
+- event-driven programming  
+- frontend ↔ backend communication  
+- Git & GitHub  
 
-## What Changed (High-Level)
+## Architecture Overview
 
-| Vanilla JS (Project 02) | React (Project 03) |
-|------------------------|-------------------|
-| Multiple HTML files | One HTML file |
-| File-based navigation | Client-side routing |
-| Manual DOM updates | State-driven rendering |
-| Global variables | React Context |
-| `querySelector` / `innerHTML` | JSX |
-| Script tags | ES module imports |
-| Event listeners | JSX event handlers |
-## Key Conceptual Shift
+Your application separates concerns into two layers:
 
-**Vanilla JS**\
-\> "Find elements → update them manually"
+| Layer | Description | Technologies |
+|-------|-------------|--------------|
+| **Presentation Layer** | User interface that interacts with the API | React |
+| **Application Layer** | Serves data via json-server | json-server |
 
-**React**\
-\> "Describe what the UI should look like for a given state"
+The request flow looks like this:
 
-You no longer *tell* the DOM what to do.\
-You *declare* what the UI should look like --- React handles the
-updates.
-
-## 🧱 Tech Stack
-
--   Vite + React
--   React Router
--   React Context
--   CSS Modules
--   json-server
-
-## 📁 Project Structure (Separated for Deployment)
-
-``` text
-moonlight-pizza-project/
-├── client/
-│   ├── public/
-│   │   └── images/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   │   ├── Home.jsx
-│   │   │   ├── Home.module.css
-│   │   │   ├── Menu.jsx
-│   │   │   ├── Menu.module.css
-│   │   │   ├── Specials.jsx
-│   │   │   ├── Specials.module.css
-│   │   │   ├── Order.jsx
-│   │   │   ├── Order.module.css
-│   │   │   ├── Contact.jsx
-│   │   │   └── Contact.module.css
-│   │   ├── context/
-│   │   │   └── CartContext.jsx
-│   │   ├── styles/
-│   │   │   └── global.css
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── package.json
-│   └── vite.config.js
-│
-└── server/
-    ├── db.json
-    ├── server.js
-    ├── public/
-    └── package.json
+```
+Frontend (React)
+        ↓
+json-server API
+        ↓
+db.json (data)
 ```
 
-## Why There Is a Separate `server/` Folder
+## Core CRUD Features
 
-In earlier example apps, you have run `json-server` inside the same
-folder as your frontend.
+Your React application must:
 
-That works for local development, but not for deployment.
+- connect to a **json-server API**
+- perform **GET requests** to retrieve data
+- perform **POST requests** to send data (at minimum)
+- use **React Router** with at least **3 page components**
+- manage **state globally** (shared across the app)
+- manage **local state** inside at least one component
+- use **useEffect** to:
+  - initialize components with API data
+- use **event handlers** to trigger API calls (such as POST)
 
-For this project, the backend is in its own **server folder** because:
+> 🎯 **Goal:** Learn how real React applications interact with APIs and manage state across components.
 
--   frontend and backend are deployed separately
--   each needs its own package.json
--   each runs independently in the cloud
+## Development Focus
 
-So you now have:
+### 1️⃣ User Stories
+Write at least **three user stories** describing what users can do in your app.
 
--   client → deployed to Vercel
--   server → deployed to Render or Railway
-
-This mirrors real-world apps.
-
-------------------------------------------------------------------------
-
-### Why There Is a `server.js` File
-
-The `server.js` file allows json-server to run as a real Node server.
-
-You must also include an empty:
-
-    server/public/
-
-This is required because json-server expects a public folder when using
-default middleware.
+**Example:**  
+As a user, I want to view menu items so I can decide what to order.
 
 ---
 
-### Important json-server Version
+### 2️⃣ Wireframes
+Create wireframes for **at least three pages**.
 
-Use this version only:
+Wireframes should show:
+- layout structure
+- where API data will be displayed
+- user interactions (buttons, forms)
+- navigation between pages
 
-``` json
-"json-server": "^0.17.4"
+## Backend Architecture Requirements
+
+### Frontend Setup
+
+1. Create a GitHub repository  
+2. Create a `client` folder
+3. Build your React app (using Vite) in the root of `client` folder  
+4. Set up your project structure  
+
+>When using Vite, use `.` as project name so scaffolded project folder is created in `client` folder
+
+5. Create a `.env` file
+
+---
+
+### Backend Setup (json-server)
+
+6. Create a `server` folder
+7. Navigate to your `server` folder  
+8. Run `npm init` to create your Node package.json file
+9. Install json-server  
+
+```bash
+npm install json-server@0.17.4
 ```
 
->Do NOT use the latest version --- it may break this setup.
+10. Create a `db.json` file  
+11. Create a `server.js` file  
 
-----
-
-### Important Server Script
-
-``` json
-"scripts": {
-  "start": "node server.js"
-}
 ```
-## Environment Variables (Local vs Production API)
+import jsonServer from "json-server";
 
-When your app is running locally, your frontend talks to your backend
-using a local URL such as:
+const server = jsonServer.create();
+const router = jsonServer.router("db.json");
 
-http://localhost:3000
+const middlewares = jsonServer.defaults();
+server.use(middlewares);
+server.use(router);
 
-But once your backend is deployed to a cloud service like Render or
-Railway, that backend is no longer running on your computer.
+const PORT = process.env.PORT || 3000;
 
-That means your React app cannot keep using localhost in production.
-
-Instead, it needs a way to switch between:
-
--   a local API URL during development
--   a deployed API URL after the app goes live
-
-That is why this project should use an environment variable.
-
-### Local Development
-
-Create a .env file inside your client folder:
-
-VITE_API_BASE_URL=http://localhost:3000
-
-This stores your local backend URL for development.
-
-### Using the Variable in React
-
-In your React code, read the value like this:
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL \|\|
-"http://localhost:3000";
-
-Then use it in your fetch requests:
-
-fetch(`${API_BASE_URL}/pizzas`)
-
-### Why This Matters
-
-If you hardcode http://localhost:3000 directly into your React app,
-everything may work locally, but once the frontend is deployed, the
-browser will still try to call your own computer.
-
-That will fail, because users visiting your deployed app do not have
-access to your local machine.
-
-Using an environment variable solves this by letting the app use a
-different base URL depending on where it is running.
-
-### Production Deployment
-
-When your frontend is deployed to Vercel, your local .env file is not
-automatically used.
-
-You must manually add the same variable inside the Vercel dashboard.
-
-Add this environment variable in Vercel:
-
-`VITE_API_BASE_URL=https://your-render-or-railway-url.com`
-
-Example:
-
-`VITE_API_BASE_URL=https://project3-hbsa.onrender.com`
-
-### Redeploy Required
-
-After adding or changing the environment variable in Vercel, you must
-redeploy your frontend.
-
-This is important because Vite reads environment variables during the
-build process.
-
-If you do not redeploy, your app may still use the old value.
-
-## HTML Pages → React Components
-
-### Before (Vanilla JS)
-
--   `index.html`
--   `menu.html`
--   `specials.html`
--   `order.html`
--   `contact.html`
-
-### Now (React)
-
-Each page is a **React component** with its own CSS Module:
-
-  Page       Component         Styles
-  ---------- ---------------- --------------------
-  Home       `Home.jsx`        `Home.module.css`
-  Menu       `Menu.jsx`        `Menu.module.css`
-  Specials   `Specials.jsx`    `Specials.module.css`
-  Order      `Order.jsx`       `Order.module.css`
-  Contact    `Contact.jsx`     `Contact.module.css`
-
-All pages render inside a **single HTML file** (`index.html`), which
-React controls.
-
-## Navigation → React Router
-
-### Before
-
-``` html
-<a href="menu.html">Menu</a>
+server.listen(PORT, () => {
+  console.log("JSON Server running");
+});
 ```
 
-### Now
+12. Update your package.json file:
 
-``` jsx
-<Link to="/menu">Menu</Link>
+```
+ "type": "module",
+ "scripts": {
+    "start": "node server.js"
+  },
 ```
 
-Routes are defined once in the app:
+12. Start your server:
 
-``` jsx
-<Route path="/menu" element={<Menu />} />
-```
-
-Navigation happens **without reloading the page**.
-
-## CSS → CSS Modules
-
-### Before
-
--   Global CSS files loaded with `<link>`
--   Styles applied by class names
-
-### Now
-
--   **Global styles** live in `src/styles/global.css` and are imported
-    once in `main.jsx` for things like resets, fonts, and CSS variables
--   **Page-scoped styles** live in a `.module.css` file next to each
-    page component
--   Class names are imported as an object and applied via JSX, which
-    automatically scopes them to avoid conflicts
--   Visual output remains **identical**
-
-``` css
-/* Home.module.css */
-.hero {
-  background: var(--color-primary);
-  padding: 2rem;
-}
-```
-
-``` jsx
-/* Home.jsx */
-import styles from "./Home.module.css";
-
-function Home() {
-  return <section className={styles.hero}>...</section>;
-}
-```
-
-``` css
-/* src/styles/global.css */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --color-primary: #c0392b;
-  --font-main: "Georgia", serif;
-}
-
-body {
-  margin: 0;
-  font-family: var(--font-main);
-}
-```
-
-``` jsx
-/* main.jsx */
-import "./styles/global.css";
-```
-
-## DOM Manipulation → State
-
-### Before
-
-``` js
-container.innerHTML += pizzaHTML;
-```
-
-### Now
-
-``` jsx
-{pizzas.map((pizza) => (
-  <PizzaCard key={pizza.id} {...pizza} />
-))}
-```
-
-React updates the DOM automatically whenever state changes.
-
-
-## ▶️ Running the Project Locally
-
-### Start the frontend
-
-``` bash
-cd client
-npm install
-npm run dev
-```
-
-### Start the backend
-
-``` bash
-cd server
-npm install
+```bash
 npm start
 ```
 
-Open in browser:
+## Database Seeding
 
--   Frontend → http://localhost:5173
--   API → http://localhost:3000
+Your `db.json` acts as the database for this project. You should populate it with initial data before starting development so your app has records to display and test against.
 
+### Required JSON Data
 
-Each page fetches **only the data it needs**.
+Your `db.json` should contain structured data such as:
 
-## Example Fetch in React
+- `pizzas`
+- `orders`
+- `cart`
+- `specials`
+- `reviews`
 
-``` js
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+Your app must:
+- read from multiple resources (GET)
+- write to at least one resource (POST)
 
-useEffect(() => {
-  fetch(`${API_BASE_URL}/pizzas`)
-    .then((res) => res.json())
-    .then(setPizzas)
-    .catch(console.error);
-}, []);
-```
+## Technical Requirements
 
-## What Comes Next
+| # | Requirement | Description |
+|---|-------------|-------------|
+| 1 | **React App** | Must be built using React (Vite). |
+| 2 | **React Router** | At least 3 page components using routing. |
+| 3 | **GET Requests** | Fetch and display API data. |
+| 4 | **POST Request** | Send data to the API. |
+| 5 | **useEffect** | Used for loading initial data. |
+| 6 | **State Management** | Global + local state required. |
+| 7 | **Event Handling** | Trigger API calls via user interaction. |
+| 8 | **json-server API** | Required backend for this project. |
+| 9 | **GitHub repository** | Full project pushed to GitHub. |
+| 10 | **Commit history** | At least 15 meaningful commits. |
 
-In future projects, you will:
+## Deployment
 
--   Build new features directly in React
--   Replace `json-server` with a real backend
--   Add authentication and persistence
--   Deploy frontend and backend separately
+While full deployment is not required for this project, your app should be runnable locally with both the React frontend and json-server backend running simultaneously.
 
-By then, React should feel **familiar**, not confusing.
+When ready to deploy in future projects:
+
+| Component | Platform |
+|-----------|----------|
+| Frontend | Vercel or Netlify |
+| Backend (json-server) | Render or Railway |
+
+## Project Deliverables
+
+| Category | Description |
+|-----------|-------------|
+| **Functionality** | Do GET and POST requests work correctly? |
+| **React Structure** | Proper use of components, routing, and state |
+| **API Integration** | Clean and correct fetch logic |
+| **State Management** | Proper use of global and local state |
+| **User Experience** | Clean, readable, usable UI |
+| **GitHub Workflow** | Frequent commits with good messages |
+| **Documentation** | README clearly explains setup |
+
+## Final Notes
+
+- json-server is **required**
+- GET and POST are **both required**
+- Do not hardcode data — use the API
+- Focus on understanding **data flow in React**
+
+> "This is where frontend development becomes real — your UI is now powered by live data."
