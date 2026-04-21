@@ -3527,7 +3527,7 @@ You'll hear the phrase **"composition over inheritance"** constantly in modern d
 
 With the foundations solid, the natural next topics (each a worthwhile deep dive in itself) include:
 
-- **Asynchronous JavaScript** — Promises, async/await, and `fetch` for loading data
 - **The DOM** — manipulating HTML and responding to user events in the browser
-- **A framework** — React, Vue, or Svelte for building modern UIs
+- **Asynchronous JavaScript** — Promises, async/await, and `fetch` for loading data
+- **A framework** — React for building modern UIs
 - **Tooling** — npm, bundlers, and the professional JavaScript ecosystem
