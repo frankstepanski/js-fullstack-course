@@ -1,4 +1,4 @@
-# Introduction to Storybook for React Beginners
+# Introduction to Storybook
 
 ## What is Storybook?
 
