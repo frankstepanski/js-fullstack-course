@@ -1,0 +1,95 @@
+/* ============================
+   Menu grid
+============================ */
+.menuColumns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.menuColumns article {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  background-color: #fffdf8;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.menuColumns h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* ============================
+   Menu card content
+============================ */
+.menuCardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.menuCardContent figure {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.4rem;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #f1e0c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  width: 100%;
+}
+
+.menuCardContent img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.menuCardContent figcaption {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.menuCardText {
+  flex: 1;
+}
+
+.menuCardText p {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.menuCardText p:last-of-type {
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* ============================
+   Responsive
+============================ */
+@media (min-width: 768px) {
+  .menuColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .menuCardContent {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .menuCardContent figure {
+    flex: 0 0 130px;
+    width: auto;
+  }
+}
