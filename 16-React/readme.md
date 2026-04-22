@@ -891,12 +891,15 @@ As you continue learning, you’ll build on this foundation with essential topic
 
 ### Next Topics to Explore
 
-- [Props](1-props.md) – Passing data into components  
-- [State](2-state.md) – Managing dynamic data inside components  
-- [Effects](3-effects.md) – Running code when components update  
-- [Custom Hooks](4-custom-hooks.md) – Reusing logic across components  
-- [Routing](5-routing.md) – Creating multi-page experiences in a single-page app  
-- [Layouts](6-layouts.md) – Reusable page structures  
-- [Styling Options](7-styling.md) – CSS patterns and libraries  
-- [Global State](8-global-state.md) – Managing state beyond useState  
-- [Deployment](9-deployment.md) – Getting our React App online  
+- 📦 [Props](1-props.md) – Passing data into components  
+- ⚡ [State](2-state.md) – Managing dynamic data inside components  
+- 🔄 [Effects](3-effects.md) – Running code when components update  
+- 🪝 [Custom Hooks](4-custom-hooks.md) – Reusing logic across components  
+- 🗺️ [Routing](5-routing.md) – Creating multi-page experiences in a single-page app  
+- 🏗️ [Layouts](6-layouts.md) – Reusable page structures  
+- 🎨 [Styling Options](7-styling.md) – CSS patterns and libraries  
+- 📖 [Storybook](8-storybook.md) – Building and documenting components in isolation  
+- 🌍 [Global State](9-global-state.md) – Managing state beyond useState  
+- ⚡ [Caching](10-caching.md) – Optimizing performance with smart data fetching  
+- 🔐 [Environment Variables](11-environment-variables.md) – Storing secrets and config outside your code  
+- 🚀 [Deployment](12-deployment.md) – Getting your React app online
