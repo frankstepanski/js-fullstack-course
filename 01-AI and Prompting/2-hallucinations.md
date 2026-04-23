@@ -13,23 +13,25 @@ This behavior is called a **hallucination**.
 
 ## What Is an AI Hallucination?
 
-An AI hallucination occurs when a language model generates information
-that:
+An **AI hallucination** is when a language model produces an answer
+that sounds confident and plausible but isn't grounded in reality.
 
--   is incorrect
--   is invented
--   is not supported by the provided data
--   or does not exist in reality
+The confident tone is the part that makes hallucinations dangerous.
+An obvious mistake is easy to catch. A hallucination reads like a
+correct answer — clear sentences, reasonable structure, believable
+details — while being wrong.
 
-In simple terms, the AI is **making something up that sounds
-believable**.
+A hallucinated answer may be:
+
+-   factually incorrect
+-   entirely invented
+-   not supported by the information you provided
+-   based on something that does not exist at all
 
 ### Example: Invented HTML or CSS Feature
 
-Hallucinations can also happen when developers ask questions about
-HTML or CSS.
-
-For example, a developer might ask:
+A common type of hallucination happens when developers ask about HTML
+or CSS features. For example, a developer might ask:
 
 ```
 Explain the HTML tag <flex-container>.
@@ -51,21 +53,57 @@ special HTML element. In this case, the AI generated an explanation based on pat
 This is a common type of hallucination where AI systems create
 plausible but incorrect HTML, CSS, or JavaScript features.
 
+### Example: Invented Function
+
+Another common hallucination is when the AI invents a function or
+method that doesn't exist. For example:
+
+```
+How do I remove an item from a JavaScript array using array.remove()?
+```
+
+The AI might confidently respond with example code using
+`array.remove(item)` — a method that **does not exist in JavaScript**.
+JavaScript arrays have `splice()`, `filter()`, `pop()`, and `shift()`,
+but no `remove()`. The AI blended patterns from languages that *do*
+have a `remove()` method (like Python's lists) and produced
+believable-looking JavaScript code that won't run.
+
+Related hallucinations to watch for:
+
+-   **Wrong method signatures** — real function name, invented
+    parameters
+-   **Mixed-up syntax** — Python conventions used in JavaScript, or
+    vice versa
+-   **Fabricated packages** — the AI suggests `npm install` for a
+    package that was never published. This has become a real security
+    issue: attackers sometimes publish malicious packages under names
+    they've noticed AI tools invent.
+
+Hallucinations tend to get **worse at the edges of the model's
+knowledge** — obscure libraries, very new releases, or niche topics
+where the training data was thin. The confident tone stays the same,
+but the accuracy drops sharply.
+
 ### Why Hallucinations Happen
 
-AI models do not search a database of verified facts when generating
-answers.
+AI models do not look up answers in a database of verified facts.
+Instead, they generate responses based on statistical patterns learned
+during training.
 
-Instead, they rely on patterns learned during training.
+> Some AI tools can also search the web (Perplexity, ChatGPT search,
+> Claude with web search). This **reduces** hallucinations on factual
+> questions but does not eliminate them — the model can still
+> misinterpret or misquote what it finds.
 
-This means the model may:
+Because the model is generating from patterns, it may:
 
 -   combine different pieces of information
 -   guess missing details
 -   produce outdated knowledge
 -   invent APIs or syntax
 
-This behavior is sometimes called **knowledge blending**.
+You can think of one common version of this as **knowledge blending**.
 
 ### Knowledge Blending
 
@@ -83,40 +121,25 @@ This can lead to incorrect answers.
 
 ### Example of Knowledge Blending
 
+A developer pastes a product description and asks a question:
+
 ```
-**Prompt:**
-
 Product Description:
-
 "The InnovateBook Pro is a high-performance laptop with an M4
-processor.
-It comes in Space Gray and Silver."
+processor. It comes in Space Gray and Silver."
 
-**Question:**
-
+Question:
 What is the warranty for the InnovateBook Pro?
 ```
 
-**AI response:**
+The AI might respond:
 
->The InnovateBook Pro includes a one-year limited warranty.
+> The InnovateBook Pro includes a one-year limited warranty.
 
-
-
-This answer **sounds reasonable**, but it is **incorrect**.
-
-The warranty information was **not in the provided text**.
-
-The AI simply guessed based on typical electronics warranties.
-
-### Hallucination vs Normal Errors
-
-| Type          | Explanation                                              |
-|---------------|----------------------------------------------------------|
-| Hallucination | The AI invents information that does not exist           |
-| Error         | The AI misunderstands or misinterprets the prompt        |
-
-Both require developers to **verify AI outputs carefully**.
+This answer **sounds reasonable**, but it is **incorrect**. The
+warranty information was never in the provided text. The AI guessed
+based on typical electronics warranties — blending your prompt with
+general knowledge from training.
 
 ## The Principle of Grounding
 
@@ -132,26 +155,24 @@ a **specific source of truth**.
 
 ### Example: Grounded Prompt
 
-**Context:**
+Here's the same warranty question, rewritten as a grounded prompt:
 
+```
+Context:
 "The InnovateBook Pro is a high-performance laptop with an M4
-processor.\
-It is made from recycled aluminum and comes in Space Gray and Silver."
+processor. It is made from recycled aluminum and comes in Space Gray
+and Silver."
 
-**Instruction:**
-
+Instruction:
 Using only the information provided in the context above, answer the
-following question.
+question. If the answer cannot be found in the text, respond with:
+"The information is not available in the provided document."
 
-If the answer cannot be found in the text, respond with:
-
-> "The information is not available in the provided document."
-
-**Question:**
-
+Question:
 What is the warranty for the InnovateBook Pro?
+```
 
-**AI response:**
+The AI now responds:
 
 > The information is not available in the provided document.
 
@@ -167,15 +188,13 @@ Grounding prevents the model from:
 
 It forces the model to rely on **specific information you provide**.
 
-Even when using techniques like grounding, AI systems can still make mistakes.
-
 ## How to Spot Possible AI Hallucinations
 
-Even when using good prompts and techniques like grounding, AI systems can still produce incorrect answers.
+Even with good prompts and techniques like grounding, AI systems can
+still produce incorrect answers. Developers need to recognize the
+warning signs that an AI response may be unreliable.
 
-Because of this, developers should learn how to recognize warning signs that an AI response may be unreliable.
-
-The table below highlights several common indicators that an AI-generated answer may contain a hallucination.
+The table below highlights common indicators.
 
 
 | Warning Sign | What It Looks Like | What You Should Do |
@@ -186,18 +205,35 @@ The table below highlights several common indicators that an AI-generated answer
 | Overly complex answers | The solution is much more complicated than necessary. | Simplify the problem and verify the core concept. |
 | No acknowledgement of uncertainty | The AI states everything as fact even when unsure. | Treat the answer as a suggestion and verify it. |
 
-## Summary
+## What to Do When You Catch One
 
-In this guide you learned:
+Spotting a likely hallucination is only half the work. When you
+suspect an answer is wrong:
 
-- What prompts are and how they control AI behavior
-- How to structure effective prompts using role, instruction, context, and format
-- Common prompting mistakes beginners make
-- How developers use AI for learning, coding, debugging, and code review
-- The major AI chatbot tools available today
-- The limitations of AI systems and how hallucinations occur
-- How to spot possible hallucinations and verify AI responses
+-   **Run the code.** For programming answers, testing is the fastest
+    way to confirm whether something works.
+-   **Check the official documentation.** MDN for web APIs, the
+    language's official docs, the library's GitHub repo. If the AI
+    invented something, the docs will tell you.
+-   **Ask the AI to cite a source.** Not a guarantee — the AI can
+    invent sources too — but a useful pressure test. If it can't
+    point to real documentation, be suspicious.
+-   **Rephrase with grounding.** Paste the real documentation or
+    specification into your prompt and ask the question again against
+    that source.
+-   **Try a different tool.** If two AI tools give contradicting
+    answers, at least one is wrong. This is often a fast way to flag
+    uncertainty.
 
-AI tools can significantly improve productivity and learning when used correctly.
+### Next Steps: Cognitive Debt
 
-The key is to treat AI as a **collaborative assistant** rather than a source of guaranteed truth.
+You now know how AI tools work, how to prompt them effectively, and
+how to recognize when their answers are wrong. There's one more
+thing worth understanding before making AI a daily part of your
+workflow — and it has less to do with the AI than it does with you.
+
+Every time you let an AI solve a problem you could have worked
+through yourself, you save time — but you may also skip the mental
+effort that would have built real skill. Over time, this can add up
+to something called **cognitive debt**: a quiet gap between what you
+appear to understand and what you can actually produce on your own.

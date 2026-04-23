@@ -33,9 +33,6 @@ It involves abilities such as:
 An entity capable of performing most of these tasks can be considered
 **intelligent**.
 
-Human intelligence is often measured using a metric called the
-**Intelligence Quotient (IQ)**.
-
 ## What Is Artificial Intelligence?
 
 This leads to an important set of questions:
@@ -71,9 +68,10 @@ Over time, advances in mathematics, computing, and data led to major breakthroug
 | Year | Milestone | Description |
 |-----|-----------|-------------|
 | 1642 | Blaise Pascal | Built one of the first mechanical calculators. |
-| 1837 | Charles Babbage & Ada Lovelace | Designed the first programmable machine (the Analytical Engine). |
+| 1837 | Charles Babbage | Designed the **Analytical Engine**, the first concept for a general-purpose programmable machine. |
+| 1843 | Ada Lovelace | Published notes on the Analytical Engine containing what is often considered the **first computer algorithm**. |
 | 1950 | Alan Turing | Published *Computing Machinery and Intelligence*, introducing the famous **Turing Test** to evaluate machine intelligence. |
-| 1955 | Dartmouth Conference | The term **Artificial Intelligence** was formally introduced. |
+| 1956 | Dartmouth Conference | The term **Artificial Intelligence** was formally introduced. |
 | 1965 | ELIZA Chatbot | MIT researchers created one of the first programs capable of conversing with humans. |
 | 1997 | Deep Blue vs Garry Kasparov | IBM's Deep Blue defeated the world chess champion, demonstrating the growing power of AI systems. |
 | 2009 | Self-Driving Cars | Google began developing autonomous vehicles capable of navigating city streets. |
@@ -192,7 +190,8 @@ complex datasets.
 Neural networks are loosely inspired by how the **human brain processes
 information**. They consist of many connected layers that analyze data
 step by step, allowing the system to detect increasingly complex
-patterns.
+patterns. The resemblance to the brain is loose, however — neural
+networks are built from math and data, not biology.
 
 Because these networks contain **many layers**, this approach is called
 *deep learning*.
@@ -593,7 +592,3 @@ Include a short example using the fetch API.
 Because AI responses depend heavily on the clarity of the prompt,
 writing effective prompts---often called **prompt engineering**---is an
 important skill for modern developers.
-
-In the next section, we will explore how developers use tools like
-**ChatGPT, GitHub Copilot, Claude, and Gemini** to assist with learning,
-coding, debugging, and documentation.
