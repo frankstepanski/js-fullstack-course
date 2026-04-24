@@ -1,19 +1,17 @@
-# 👋 Welcome to Full-Stack Software Engineering
+# 👋 Welcome to AI-First Full-Stack Software Engineering
 
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-success)
-![Industry Aligned](https://img.shields.io/badge/Aligned-Industry%20Practices-informational)
 ![Stack](https://img.shields.io/badge/Stack-JavaScript%20Full--Stack-yellow)
+![AI Focused](https://img.shields.io/badge/Focus-AI--First%20Development-blueviolet)
 
-Software engineering today is about building real systems, collaborating with others, and learning how to adapt as tools evolve.
+Software engineering has changed. Modern engineers don't just write code — they collaborate with AI, build AI-powered features into their apps, and ship products that would have taken entire teams to deliver just a few years ago.
 
-This course teaches the foundations of modern full-stack development while also showing how engineers actually work in professional teams.
+This course teaches you to be that kind of engineer.
 
-You'll learn how to design applications, build user interfaces, create backend services, work with databases, test your code, and deploy software that runs in the real world.
+You'll learn the full JavaScript stack — frontend, backend, databases, testing, and deployment — but with **AI woven through every step**. You'll use AI as a daily problem-solving partner, understand how the underlying technology actually works, and learn to build intelligent features directly into the applications you create.
 
-Along the way you'll also learn how to use AI-assisted development tools, debug complex problems, and structure projects in ways that scale beyond simple tutorials.
-
-By the end of the course you won't just know syntax — you'll understand how modern applications are built from end to end.
+By the end, you won't just know syntax. You'll understand how modern AI-powered applications are built from end to end — and you'll have the projects to prove it.
 
 ## 📘 Prerequisites
 
@@ -28,9 +26,50 @@ You only need:
 
 Software engineering is a skill learned through building, breaking, and improving code.
 
-## 🚀 What You'll Learn — A Complete Journey Through the JavaScript Stack
+## A Complete Journey Through the AI-Powered JavaScript Stack
 
-### **Frontend Development**
+
+### 🤖 AI-First Development: From Fundamentals to Building Intelligent Apps
+
+AI isn't a bonus topic in this course — it's the throughline. You'll learn to think about AI, work alongside it daily, and build it into the apps you ship. This section gives you the foundation; later sections show you how to apply it across the stack.
+
+#### 🧠 Understanding AI: The Fundamentals
+
+Before using AI tools, you'll learn what's actually happening under the hood — no math degree required.
+
+- What AI, machine learning, and deep learning really mean (and how they differ)
+- What **large language models (LLMs)** are and how they generate text
+- Key concepts: **tokens**, **context windows**, **temperature**, and **embeddings**
+- The difference between **training**, **fine-tuning**, and **prompting**
+- Strengths and limitations of modern AI — including hallucinations, bias, and knowledge cutoffs
+- Ethical considerations: privacy, attribution, and responsible AI use
+
+#### 🛠️ Using AI as a Problem-Solving Partner
+
+Modern software engineers use AI tools to work faster and smarter. You'll practice how to:
+
+- Use tools like **GitHub Copilot**, **ChatGPT**, **Claude**, **Cursor**, and **Codeium** to get unstuck and explore code solutions
+- Prompt AI clearly with context and constraints (e.g. "Write a function in JavaScript that...")
+- Review and refine AI-generated code, rather than copy-pasting blindly
+- Use AI as a research assistant — summarizing docs, explaining errors, or generating boilerplate code
+- Avoid over-reliance: always understand what code does before using it
+
+#### 🔌 Building AI-Powered Applications
+
+Go beyond *using* AI — learn how to **integrate it into the apps you build**. You'll add real AI features to your projects using modern APIs.
+
+- Calling LLM APIs (**OpenAI**, **Anthropic Claude**, and others) from a Node.js backend
+- Securely managing API keys with `.env` files and never exposing them on the frontend
+- Designing effective **system prompts** to shape model behavior
+- Streaming responses to the UI for a real-time, ChatGPT-style experience
+- Building practical AI features: **chatbots**, **summarizers**, **smart search**, and **content generators**
+- Introduction to **Retrieval-Augmented Generation (RAG)** — giving AI access to your own data
+- Using AI **tool calling / function calling** to connect models to real app logic
+- Cost, latency, and rate-limit considerations when shipping AI features to production
+
+> AI tools are powerful collaborators — but **your logic, judgment, and debugging skills still matter most**. You'll learn to balance speed with understanding, and to build apps where AI is a feature you control, not a black box you depend on.
+
+### 🎨 Frontend Development
 Build the parts of a website users see and interact with.
 
 - **HTML & CSS** — structure and style modern, accessible, responsive pages  
@@ -134,27 +173,6 @@ Build the problem-solving foundation that powers technical interviews and effici
 - Common algorithms: sorting, searching, and recursion  
 - Big O notation and thinking about performance  
 - Practical application in JavaScript  
-
-### 🏗️ System Design
-
-Learn how to think about and architect large-scale software systems.
-
-- Scalability, reliability, and performance trade-offs  
-- Load balancing, caching, and databases at scale  
-- Designing APIs and distributed services  
-- How senior engineers approach system-level thinking  
-
-### 🤖 Using AI Tools as a Problem-Solving Partner
-
-Modern software engineers increasingly use AI tools to work faster and smarter. You'll practice how to:
-
-- Use tools like **GitHub Copilot**, **ChatGPT**, **Cursor**, and **Codeium** to get unstuck and explore code solutions  
-- Prompt AI clearly with context and constraints (e.g. "Write a function in JavaScript that...")  
-- Review and refine AI-generated code, rather than copy-pasting blindly  
-- Use AI as a research assistant — summarizing docs, explaining errors, or generating boilerplate code  
-- Avoid over-reliance: always understand what code does before using it  
-
-AI tools are powerful collaborators — but **your logic, judgment, and debugging skills still matter most**. You'll learn how to balance speed with understanding as you grow from beginner to builder.
 
 ### 🏗️ Projects
 
