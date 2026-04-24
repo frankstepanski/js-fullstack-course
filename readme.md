@@ -49,7 +49,6 @@ Learn how to think like a designer before you write a line of code.
 
 Go beyond "just making it work" and understand how JavaScript runs under the hood — both in the browser and in Node.js.
 
-- **Object-Oriented Programming**: classes, inheritance, reusable architecture  
 - **Asynchronous Programming**  
   - Callbacks  
   - Promises  
@@ -156,17 +155,6 @@ Modern software engineers increasingly use AI tools to work faster and smarter. 
 - Avoid over-reliance: always understand what code does before using it  
 
 AI tools are powerful collaborators — but **your logic, judgment, and debugging skills still matter most**. You'll learn how to balance speed with understanding as you grow from beginner to builder.
-
-### 👥 Work Like a Real Development Team: Agile & Scrum
-
-This course doesn't just teach you code — it teaches you **how professional engineering teams operate**.
-
-You'll learn the foundations of Agile and the **Scrum** framework:
-
-- Sprint cycles  
-- Daily standups  
-- Sprint planning & retrospectives  
-- Team roles: Developer, Product Owner, Scrum Master  
 
 ### 🏗️ Projects
 
