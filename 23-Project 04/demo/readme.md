@@ -1,4 +1,4 @@
-# Moonlight Pizza Co. --- React Web App (Project 04)
+# Moonlight Pizza Co. --- Full-Stack Web App (Project 04)
 
 This project builds on **Project 03** by replacing the `json-server` mock
 backend with a **real Express API** backed by a **PostgreSQL database**.
