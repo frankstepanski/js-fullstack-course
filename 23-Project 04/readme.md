@@ -100,6 +100,13 @@ The service layer communicates with a **PostgreSQL database** using the **pg lib
 
 ## TypeScript Typing Requirements (Optional)
 
+> ## ⚠️ IMPORTANT
+> ### 🚨 If you are **NOT** using TypeScript, you do **NOT** need a `src` directory in your backend root folder. 🚨
+>
+> The `src` directory shown throughout this section exists because of the TypeScript compiler config (`rootDir: "./src"`), which separates your `.ts` source files from the compiled `.js` output in `dist`. Plain JavaScript projects don't require this separation — your backend files (routes, controllers, services, etc.) can live directly in the backend root folder. You *may* still choose to use a `src` folder for organization if you'd like, but it's optional.
+
+---
+
 Adding types to key parts of your application improves reliability, makes your code self-documenting, and catches bugs at compile time rather than runtime. You do **not** need to type everything — focus on the areas where types provide the most value.
 
 ### TypeScript Setup (if not already configured)
@@ -134,6 +141,8 @@ Type every function's parameters and return value. Since services interact with 
 
 > 💡 Define a type for your core entity to use as the return type across your service functions. For example, if your app manages tasks:
 
+**TypeScript:**
+
 ```ts
 // This type should reflect the shape of a row in your database table
 type Task = {
@@ -157,11 +166,38 @@ export async function updateTask(id: number, name?: string, description?: string
 export async function deleteTask(id: number): Promise<boolean> { ... }
 ```
 
+**JavaScript equivalent:**
+
+In plain JS you can't enforce the shape, but you can document it with a JSDoc comment so editors still give you autocomplete and hints:
+
+```js
+/**
+ * @typedef {Object} Task
+ * @property {number} id
+ * @property {string} name
+ * @property {string} description
+ * @property {Date} created_at
+ */
+
+// services/taskService.js
+export async function getAllTasks() { ... }
+
+export async function getTaskById(id) { ... }
+
+export async function createTask(name, description) { ... }
+
+export async function updateTask(id, name, description) { ... }
+
+export async function deleteTask(id) { ... }
+```
+
 ---
 
 #### 2. Controller Layer
 
 Type Express `Request` and `Response` parameters. Use `req.params`, `req.body`, and `res.json()` with typed shapes.
+
+**TypeScript:**
 
 ```ts
 // controllers/itemController.ts
@@ -186,11 +222,30 @@ export async function getItemByIdController(
 }
 ```
 
+**JavaScript equivalent:**
+
+In plain JS you simply destructure `req.body` and `req.params` directly — Express provides `req` and `res` automatically, no imports needed:
+
+```js
+// controllers/itemController.js
+export async function createItemController(req, res) {
+  const { name, description } = req.body
+  // validate and call service...
+}
+
+export async function getItemByIdController(req, res) {
+  const id = parseInt(req.params.id)
+  // ...
+}
+```
+
 ---
 
 #### 3. API Response Shapes
 
 Define a typed wrapper for consistent API responses across all endpoints.
+
+**TypeScript:**
 
 ```ts
 // types/api.ts
@@ -207,6 +262,22 @@ Use it in controllers:
 res.json({ success: true, data: item } satisfies ApiResponse<Item>)
 res.status(404).json({ success: false, error: "Item not found" } satisfies ApiResponse<never>)
 ```
+
+**JavaScript equivalent:**
+
+In plain JS you don't define an interface — you just consistently follow the same response shape across every endpoint. Optionally document it with JSDoc:
+
+```js
+/**
+ * Standard API response shape:
+ * { success: boolean, data?: any, error?: string }
+ */
+
+res.json({ success: true, data: item })
+res.status(404).json({ success: false, error: "Item not found" })
+```
+
+The key takeaway is the **consistency of the response shape**, not the type system enforcing it.
 
 ---
 
