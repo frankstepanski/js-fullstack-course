@@ -180,8 +180,9 @@ Four hands-on capstone projects are woven throughout the course — each one a m
 
 - **Project 01** — Static site built with HTML, CSS, and Git  
 - **Project 02** — JavaScript-powered interactive application  
-- **Project 03** — Full React application  
+- **Project 03** — Full React application with mock API (jons-server)
 - **Project 04** — Full-stack app with a frontend, backend, and database  
+- **Project 05** — AI-powered full-stack app integrating an LLM API  
 
 ### 💼 Career Readiness: Job Search Prep
 
