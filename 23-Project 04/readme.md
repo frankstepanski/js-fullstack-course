@@ -98,7 +98,7 @@ Responsibilities include:
 
 The service layer communicates with a **PostgreSQL database** using the **pg library**.
 
-## 🏷️ TypeScript Typing Requirements
+## TypeScript Typing Requirements (Optional)
 
 Adding types to key parts of your application improves reliability, makes your code self-documenting, and catches bugs at compile time rather than runtime. You do **not** need to type everything — focus on the areas where types provide the most value.
 
