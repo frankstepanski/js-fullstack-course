@@ -66,7 +66,7 @@ Learn how to think like a designer before you write a line of code. Most develop
   - Browser APIs & Fetch
   - Debugging strategies with breakpoints and stack traces
 
-> 💡 Deep understanding means you can debug confidently, optimize performance, and reason about code you didn't write
+> 💡 Having a deep understanding of your programming language means you can debug confidently, optimize performance, and reason about code you didn't write
 
 ### 🔷 TypeScript Fundamentals
 
