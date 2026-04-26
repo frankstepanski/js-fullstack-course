@@ -130,7 +130,7 @@ Learn how modern teams ship software consistently across environments. One of th
 - Running applications in isolated, reproducible environments
 - Why Docker matters for deployment and team collaboration
 
-> 💡 Docker packages your app and everything it needs into a container that runs the same everywhere
+> 💡 Packaging your app and everything it needs into a container that runs the same everywhere
 
 ### 📦 Data Structures & Algorithms
 
@@ -141,7 +141,7 @@ Build the problem-solving foundation that powers technical interviews and effici
 - Big O notation and thinking about performance
 - Practical application in JavaScript
 
-> 💡 DSA is how you develop the habit of thinking about trade-offs before writing code
+> 💡 Developing the habit of thinking about trade-offs before writing code
 
 ## 🤖 Understanding AI: What Every Developer Should Know
 
