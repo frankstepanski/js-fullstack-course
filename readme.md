@@ -108,7 +108,7 @@ Learn how to build the systems that power applications behind the scenes. While 
   - Authentication & authorization
   - Environment variables & secure configuration
 
-> 💡 The backend is where business logic, security, and data all meet
+> 💡 Where business logic, security, and data all meet
 
 ### 🔧 Version Control with Git
 
