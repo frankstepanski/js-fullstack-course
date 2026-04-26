@@ -1,4 +1,4 @@
-# 👋 Welcome to Full-Stack Software Engineering in the Age of AI
+# 👋 Full-Stack Software Engineering in the Age of AI
 
 ![Instructor Authored](https://img.shields.io/badge/Author-Instructor%20Created-important)
 ![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-success)
