@@ -1,12 +1,14 @@
 .DS_STORE
 
-21-REST API
-26-AI Integrations
-27-Docker
-28-CICD
-29-Prisma ORM
-30-Embedded Databases
-31-Rendering Models
-32-NextJS
-33-Project 05
-34-System Design
+17-Managing Dependencies
+22-REST API
+26-Testing
+27-AI Integrations
+28-Docker
+29-CICD
+30-Prisma ORM
+31-Embedded Databases
+32-Rendering Models
+33-NextJS
+34-Project 05
+35-System Design
